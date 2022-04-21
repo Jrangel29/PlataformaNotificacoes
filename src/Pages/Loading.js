@@ -8,9 +8,9 @@ class Loading extends React.Component {
 
     render(){
         return(
-            <div className='mainHomepage'>
+            <div>
                 <Navbar/>
-                <div className='conteudoLoading container d-flex'>
+                <div className='mainBody conteudoLoading d-flex'>
                     <Spinner style={{height: "50px", width: "50px", color: "#112D4E"}} animation='border'/>
                     <p className='tituloSeccaoPagina mt-2'>A carregar</p>
                 </div>

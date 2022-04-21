@@ -7,9 +7,9 @@ class Error404 extends React.Component {
 
     render(){
         return(
-            <div className='mainHomepage'>
+            <div>
                 <Navbar/>
-                <div className='conteudoLoading container d-flex'>
+                <div className='mainBody conteudoLoading d-flex'>
                     <h1 className='erro404 mb-0'>404</h1>
                     <p className='tituloSeccaoPagina'>Oops! Parece que aconteceu um erro!</p>
                 </div>
