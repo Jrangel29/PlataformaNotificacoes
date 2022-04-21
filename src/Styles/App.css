@@ -1,0 +1,155 @@
+*{
+    font-family: 'Roboto', sans-serif;
+}
+
+.tituloPagina{
+    font-size: 48px;
+    font-weight: 700;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #112D4E;
+    margin-bottom: 0;
+}
+
+.inicioPagina{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.tituloSeccaoPagina{
+    font-size: 26px;
+    font-weight: 700;
+    color: #3F72AF;
+}
+
+.subtituloSeccaoPagina{
+    font-size: 20px;
+    font-weight: 700;
+    color: #112D4E;
+    margin-bottom: 4px;
+}
+
+.obrigatorio{
+    font-size: 20px;
+    font-weight: 700;
+    color: red;
+}
+
+.indicaObrigatorio{
+    color: red;
+    font-size: 16px;
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.textoSeccaoPagina{
+    margin-bottom: 2px;
+    font-size: 16px;
+}
+
+.backArrow{
+    height: 20px;
+    width: auto;
+}
+
+.topIcons{
+    height: 30px;
+    width: auto;
+}
+
+.inputsForms{
+    background-color: #F9F7F7;
+    border: #112D4E solid 1px;
+    border-radius: 5px;
+}
+
+.userId{
+    background-color: #F9F7F7;
+    border: #112D4E solid 1px;
+    border-radius: 5px;
+    height: 50%!important;
+    width: 20%!important;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    padding: 0;
+}
+
+.divMargem{
+    padding-left: 0!important;
+}
+
+.btn-flat2{
+    background-color: #3F72AF!important;
+    color: #F9F7F7!important;
+}
+
+.btn-flat2:hover{
+    background-color: #289f52!important;
+    transition: background-color .3s cubic-bezier(0.55, 0, 0.55, 0.2)!important;
+}
+
+.btn-flat3{
+    background-color: #289f52!important;
+    color: #F9F7F7!important;
+}
+
+.btn-flat3:hover{
+    background-color: #3F72AF!important;
+    transition: background-color .3s cubic-bezier(0.55, 0, 0.55, 0.2)!important;
+}
+
+.AddImagem{
+    background-color: #2d507c;
+    height: 100%;
+}
+
+.mainBody{
+    background-color: #FFFFFF;
+    padding-left: 40px!important;
+    padding-right: 40px!important;
+    padding-bottom: 30px!important;
+    margin-top: -60px!important;
+    padding-top: 60px!important;
+    min-height: 100vh;
+}
+
+.erro404{
+    font-size: 90px;
+    font-weight: 700;
+    color: #112D4E;
+}
+
+.divPreview{
+    border: solid 1px #112D4E;
+    border-radius: 5px;
+    text-align: center;
+    min-height: 100px;
+    display: flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.notiPreview{
+    min-height: 64px!important;
+    min-width: 400px!important;
+    background-color: #181818;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.imgPreview{
+    height: 64px;
+    width: auto;
+}
+
+.textPreview{
+    width: 300px;
+    margin: auto;
+    overflow-wrap: break-word;
+}

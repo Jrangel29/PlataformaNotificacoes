@@ -1,0 +1,106 @@
+.cartasMainBody{
+    padding-top: 20px;
+}
+
+.headerCarta{
+    background-color: #3F72AF!important;
+    color: #F9F7F7!important;
+    font-weight: 500!important;
+}
+
+.bodyCarta{
+    background-color: #F9F7F7!important;
+    font-size: 14px!important;
+    text-align: left!important;
+}
+
+.bodyCartaTemplate{
+    background-color: #F9F7F7!important;
+    font-size: 14px!important;
+    text-align: center!important;
+}
+
+.dataMiddleCarta{
+    background-color: #DBE2EF!important;
+    color: #112D4E!important;
+    font-weight: 500!important;
+}
+
+.dataFooterUser{
+    font-size: 14px;
+    font-weight: 500;
+    color: #3F72AF;
+}
+
+.dataFooterUserTitle{
+    font-size: 15px!important;
+    margin-bottom: 2px!important;
+}
+
+.textoBtnUser{
+    font-size: 14px!important;
+}
+
+.tituloUserCarta{
+    color: #3F72AF;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.tituloGrupoCarta{
+    color: #3F72AF;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.iconeCard{
+    height: 25px;
+}
+
+.tituloNotificacao{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.dataNotifs{
+    font-size: 15px;
+    font-weight: 500;
+    color: #3F72AF;
+}
+
+.dataNotifsTitle{
+    font-size: 16px!important;
+    margin-bottom: 3px!important;
+}
+
+.dataNotificacao{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 14px;
+    text-align: end;
+}
+
+.adicionarConteudoNotif{
+    background-color: #B7F9B6!important;
+    color: #0EC00C!important;
+    font-size: 14px;
+    text-align: center;
+}
+
+.cartaGrupos{
+    background-color: #F9F7F7;
+}
+
+.iconeCardPlus{
+    height: 20px;
+}
+
+.textCards{
+    max-height: 60px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}

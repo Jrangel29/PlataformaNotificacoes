@@ -1,0 +1,44 @@
+.barraPesquisa{
+    background-color: #DBE2EF;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 16px;
+    color: #112D4E;
+}
+
+.btn-flat{
+    background-color: #3F72AF!important;
+    color: #F9F7F7!important;
+}
+
+.btn-flat:hover{
+    background-color: #2d507c!important;
+    transition: background-color .3s cubic-bezier(0.55, 0, 0.55, 0.2)!important;
+}
+
+.segundaLinhaFiltro{
+    padding-top: 10px;
+}
+
+.dropdown-flat{
+    background-color: #3F72AF!important;
+    color: #F9F7F7!important;
+}
+
+.dropdown-flat:hover{
+    background-color: #2d507c!important;
+    transition: background-color .3s cubic-bezier(0.55, 0, 0.55, 0.2)!important;
+}
+
+.FiltrarPor{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.dropdownFiltro{
+    width: 100%;
+    left: 0!important;
+    right: auto;
+}

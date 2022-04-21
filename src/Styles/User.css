@@ -1,0 +1,28 @@
+.seccaoBtn{
+    font-size: 14px!important;
+}
+
+.btn-flat{
+    background-color: #3F72AF!important;
+    color: #F9F7F7!important;
+}
+
+.btn-flat:hover{
+    background-color: #2d507c!important;
+    transition: background-color .3s cubic-bezier(0.55, 0, 0.55, 0.2)!important;
+}
+
+.btn-custom{
+    background-color: #999999!important;
+    color: #000000!important;
+}
+
+.btn-custom:hover{
+    background-color: #3F72AF!important;
+    color: #F9F7F7!important;
+    transition: background-color .3s cubic-bezier(0.55, 0, 0.55, 0.2)!important;
+}
+
+.tabelaHistorico{
+    width: 40%!important;
+}
