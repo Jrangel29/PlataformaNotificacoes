@@ -13,7 +13,8 @@ const arrayDias = {
     sexta: false,
     sabado: false,
     domingo: false,
-    nome: ""
+    nome: "",
+    horas: []
 }
 
 class CreateUser extends React.Component {
@@ -105,9 +106,50 @@ class CreateUser extends React.Component {
         })
     }
 
+    atualizaHorasMedicamento = (e) => {
+        const str = e.target.id
+        const first = str.match(/\d+/)[0];
+        const second = str.charAt(str.length - 1);
+        let arrayAnterior = [...this.state.mostraSaude];
+        let arrayHoras = this.state.mostraSaude[second].horas;
+
+        if(arrayHoras.length === 0) {
+            arrayHoras.push(e.target.value);
+        } else if(arrayHoras.length === first) {
+            arrayHoras.push(e.target.value);
+        } else {
+            arrayHoras[first] = e.target.value;
+        }
+        arrayDias.horas = [];
+        let objectNew = {
+            ...this.state.mostraSaude[second],
+            horas: arrayHoras
+        }
+        arrayAnterior[second] = objectNew
+        this.setState({
+            mostraSaude: arrayAnterior
+        })
+    }
+
+    adicionaHorasMedicamento = (valor) => {
+        let arrayAnterior = [...this.state.mostraSaude];
+        let arrayHoras = this.state.mostraSaude[valor].horas;
+        arrayHoras.push('');
+        arrayDias.horas = [];
+        let objectNew = {
+            ...this.state.mostraSaude[valor],
+            horas: arrayHoras
+        }
+        arrayAnterior[valor] = objectNew
+        this.setState({
+            mostraSaude: arrayAnterior
+        })
+    }
+
     render(){
         return(
             <div>
+                {console.log(this.state)}
                 <Navbar/>
                 <div className='mainBody container'>
                     <Header nome="Criar Utilizador" detalhe="sim" apagaMuda="nao" criaUser="sim"/>
@@ -200,16 +242,36 @@ class CreateUser extends React.Component {
                                         </span>
                                     </span>
                                 </span>
-
-                                <span className='row m-0 col-3 divMargem'>
-                                    <p className='subtituloSeccaoPagina p-0 mt-2'>Hora do dia</p>
-                                    <span className='col-6 p-0 me-3 h-100'>
-                                        <input type="time" id='horas' className='inputsForms w-100'/>
+                                {
+                                    this.state.mostraSaude[index].horas.length === 0 ?
+                                    <span className='row m-0 col-3 divMargem'>
+                                        <p className='subtituloSeccaoPagina p-0 mt-2'>Hora do dia</p>
+                                        <span className='col-6 p-0 me-3 h-100'>
+                                            <input type="time" id={`horas${index}`} className='inputsForms without_ampm w-100' onChange={this.atualizaHorasMedicamento} style={{height: "37px"}}/>
+                                        </span>
+                                        <span className='col-2 p-0'>
+                                            <Button className='w-100' variant="flat">+</Button>
+                                        </span>
                                     </span>
-                                    <span className='col-2 p-0'>
-                                        <Button className='w-100' variant="flat">+</Button>
+                                    :
+                                    <>
+                                    <span className='row m-0 col-3 divMargem'>
+                                        <p className='subtituloSeccaoPagina p-0 mt-2'>Hora do dia</p>
+                                    {this.state.mostraSaude[index].horas.map((elem, i) => {
+                                        return(
+                                            <>
+                                                <span className={i === 0 ? 'col-6 p-0 me-3 h-100' : 'col-6 p-0 me-3 mt-2 h-100'}>
+                                                    <input type="time" id={`horas${i}n${index}`} value={this.state.mostraSaude[index].horas[i]} className='inputsForms without_ampm w-100' onChange={this.atualizaHorasMedicamento} style={{height: "37px"}}/>
+                                                </span>
+                                                <span className={i === 0 ? 'col-2 p-0' : 'col-2 mt-2 p-0'}>
+                                                    <Button className='w-100' variant="flat" onClick={() => this.adicionaHorasMedicamento(index)}>+</Button>
+                                                </span>
+                                            </>
+                                        )
+                                    })}
                                     </span>
-                                </span>
+                                    </>
+                                }
                                 </>
                             )
                             })}

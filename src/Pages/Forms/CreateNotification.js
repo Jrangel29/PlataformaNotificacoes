@@ -173,7 +173,6 @@ class CreateNotification extends React.Component {
     render(){
         return(
             <div>
-                {console.log(this.state)}
                 <Navbar/>
                 <div className='mainBody container'>
                     <Header nome="Criar Notificação" detalhe="sim" apagaMuda="nao"/>

@@ -238,11 +238,7 @@ function NotificationTimeSelection(props) {
           )}
           <p className="subtituloSeccaoPagina p-0 mt-2">Horas</p>
           <span className="col-2 p-0">
-            <Dropdown>
-              <Dropdown.Toggle variant="flat" className="dropdownFiltro">
-                20:30
-              </Dropdown.Toggle>
-            </Dropdown>
+            <input type="time" className='inputsForms without_ampm w-50' style={{height: "37px"}}/>
           </span>
         </div>
       ) : props.parametros.tipologia === "Agenda" ? (
@@ -391,11 +387,7 @@ function NotificationTimeSelection(props) {
           )}
           <p className="subtituloSeccaoPagina p-0 mt-2">Horas</p>
           <span className="col-2 p-0">
-            <Dropdown>
-              <Dropdown.Toggle variant="flat" className="dropdownFiltro">
-                20:30
-              </Dropdown.Toggle>
-            </Dropdown>
+            <input type="time" className='inputsForms without_ampm w-50' style={{height: "37px"}}/>
           </span>
         </div>
       ) : props.parametros.tipologia === "Serviços" ? (
@@ -435,11 +427,7 @@ function NotificationTimeSelection(props) {
               <span className="col-2 m-0 p-0">
                 <p className="subtituloSeccaoPagina p-0 mt-2">Horas</p>
                 <span className="p-0">
-                  <Dropdown>
-                    <Dropdown.Toggle variant="flat" className="dropdownFiltro">
-                      20:30
-                    </Dropdown.Toggle>
-                  </Dropdown>
+                  <input type="time" className='inputsForms without_ampm w-50' style={{height: "37px"}}/>
                 </span>
               </span>
             </div>
@@ -667,11 +655,7 @@ function NotificationTimeSelection(props) {
               <span className="col-2 m-0 p-0">
                 <p className="subtituloSeccaoPagina p-0 mt-2">Horas</p>
                 <span className="p-0">
-                  <Dropdown>
-                    <Dropdown.Toggle variant="flat" className="dropdownFiltro">
-                      20:30
-                    </Dropdown.Toggle>
-                  </Dropdown>
+                  <input type="time" className='inputsForms without_ampm w-50' style={{height: "37px"}}/>
                 </span>
               </span>
             </div>
@@ -761,11 +745,7 @@ function NotificationTimeSelection(props) {
               </span>
               <p className="subtituloSeccaoPagina p-0 mt-2">Horas</p>
               <span className="col-2 p-0">
-                <Dropdown>
-                  <Dropdown.Toggle variant="flat" className="dropdownFiltro">
-                    20:30
-                  </Dropdown.Toggle>
-                </Dropdown>
+                <input type="time" className='inputsForms without_ampm w-50' style={{height: "37px"}}/>
               </span>
             </>
           )}
@@ -900,11 +880,7 @@ function NotificationTimeSelection(props) {
             <span className="col-2 m-0 p-0">
               <p className="subtituloSeccaoPagina p-0 mx-0">Horas <span className="obrigatorio">*</span></p>
               <span className="p-0">
-                <Dropdown>
-                  <Dropdown.Toggle variant="flat" className="dropdownFiltro">
-                    20:30
-                  </Dropdown.Toggle>
-                </Dropdown>
+                <input type="time" className='inputsForms without_ampm w-50' style={{height: "37px"}}/>
               </span>
             </span>
           </div>
@@ -914,11 +890,7 @@ function NotificationTimeSelection(props) {
           <span className="col-2 m-0 p-0 me-2">
             <p className="subtituloSeccaoPagina p-0">Horas <span className="obrigatorio">*</span></p>
             <span className="p-0">
-              <Dropdown>
-                <Dropdown.Toggle variant="flat" className="dropdownFiltro">
-                  20:30
-                </Dropdown.Toggle>
-              </Dropdown>
+              <input type="time" className='inputsForms without_ampm w-50' style={{height: "37px"}}/>
             </span>
           </span>
           <span className="col-3 m-0 p-0">
