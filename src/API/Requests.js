@@ -97,3 +97,9 @@ export const createNotification = (tipologia, subcategoria, categoriaSaude, envi
         body: JSON.stringify({...objectEnvio})
     }).then(response => response.json())
 }
+
+//Tipologias
+
+export const fetchTipologiaList = () =>
+  fetch(`http://geo-navsafety.ua.pt:443/overtv/tipologias`)
+    .then(response => response.json())

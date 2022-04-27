@@ -2,10 +2,12 @@ import { applyMiddleware, combineReducers, compose, createStore } from 'redux'
 import thunk from 'redux-thunk';
 import UsersReducer from './Users/Reducers';
 import GroupsReducer from './Groups/Reducers';
+import TipologiasReducer from './Tipologias/Reducers';
 
 const rootReducer = combineReducers({
     utilizadores: UsersReducer,
-    grupos: GroupsReducer
+    grupos: GroupsReducer,
+    tipologias: TipologiasReducer
 });
 
 const composeEnhancers =

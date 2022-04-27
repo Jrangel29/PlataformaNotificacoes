@@ -4,6 +4,7 @@ import Header from '../../Components/Geral/Header';
 import {Button, Dropdown} from 'react-bootstrap';
 import SuccessModal from '../../Components/Modal/SuccessModal';
 import SubmitButton from '../../Components/Geral/SubmitButton';
+import { BuscaTipologias } from '../../Components/Geral/Hooks';
 
 const arrayDias = {
     segunda: false,
@@ -31,7 +32,8 @@ class CreateUser extends React.Component {
                 distrito: "",
                 concelho: "",
                 infoAdicional: ""
-            }
+            },
+            tipologias: []
         }
     }
 
@@ -51,7 +53,7 @@ class CreateUser extends React.Component {
             ]
         })
     }
-
+    
     onOpen = () => this.setState({mostraModal: true});
     onClose = () => this.setState({mostraModal: false});
 
@@ -131,10 +133,48 @@ class CreateUser extends React.Component {
         })
     }
 
+    handleTipologia = (valor) => {
+        console.log(valor.target.value)
+        let contagem = 0;
+        this.state.tipologias.map((nr, index) => {
+            if(nr === valor.target.value){
+                contagem++;
+                let arrayMuda = [...this.state.tipologias];
+                arrayMuda.splice(index);
+                this.setState({
+                    tipologias: arrayMuda
+                })
+            }
+        })
+        if(contagem === 0){
+            let arrayAnterior = [...this.state.tipologias];
+            arrayAnterior.push(valor.target.value);
+            this.setState({
+                tipologias: arrayAnterior
+            })
+        }
+
+    }
+
     adicionaHorasMedicamento = (valor) => {
         let arrayAnterior = [...this.state.mostraSaude];
         let arrayHoras = this.state.mostraSaude[valor].horas;
         arrayHoras.push('');
+        arrayDias.horas = [];
+        let objectNew = {
+            ...this.state.mostraSaude[valor],
+            horas: arrayHoras
+        }
+        arrayAnterior[valor] = objectNew
+        this.setState({
+            mostraSaude: arrayAnterior
+        })
+    }
+    
+    removeHorasMedicamento = (valor) => {
+        let arrayAnterior = [...this.state.mostraSaude];
+        let arrayHoras = this.state.mostraSaude[valor].horas;
+        arrayHoras.pop();
         arrayDias.horas = [];
         let objectNew = {
             ...this.state.mostraSaude[valor],
@@ -195,6 +235,13 @@ class CreateUser extends React.Component {
                                         <Dropdown.Item eventKey='20'>20</Dropdown.Item>
                                     </Dropdown.Menu>
                                 </Dropdown>
+                            </span>
+                        </div>
+
+                        <div className='row col-12 p-0 m-0'>
+                            <span className='col-6 row m-0 p-0 divMargem'>
+                                <p className='subtituloSeccaoPagina p-0 mt-3'>Notificações que o utilizador não quer receber</p>
+                                <BuscaTipologias funcao={this.handleTipologia}/>
                             </span>
                         </div>
 
@@ -266,6 +313,13 @@ class CreateUser extends React.Component {
                                                 <span className={i === 0 ? 'col-2 p-0' : 'col-2 mt-2 p-0'}>
                                                     <Button className='w-100' variant="flat" onClick={() => this.adicionaHorasMedicamento(index)}>+</Button>
                                                 </span>
+                                                {i === 0 ? 
+                                                <></>
+                                                :
+                                                <span className='col-2 mt-2 ms-2 p-0'>
+                                                    <Button className='w-100' variant="flat" onClick={() => this.removeHorasMedicamento(index)}>-</Button>
+                                                </span>
+                                                }
                                             </>
                                         )
                                     })}
