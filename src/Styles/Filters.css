@@ -41,4 +41,6 @@
     width: 100%;
     left: 0!important;
     right: auto;
+    max-height: 250px!important;
+    overflow-y: auto;
 }

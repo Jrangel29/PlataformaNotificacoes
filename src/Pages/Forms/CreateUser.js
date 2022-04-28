@@ -4,7 +4,7 @@ import Header from '../../Components/Geral/Header';
 import {Button, Dropdown} from 'react-bootstrap';
 import SuccessModal from '../../Components/Modal/SuccessModal';
 import SubmitButton from '../../Components/Geral/SubmitButton';
-import { BuscaTipologias } from '../../Components/Geral/Hooks';
+import { BuscaTipologias, BuscaDistritosConcelhos } from '../../Components/Forms/Hooks';
 
 const arrayDias = {
     segunda: false,
@@ -189,7 +189,6 @@ class CreateUser extends React.Component {
     render(){
         return(
             <div>
-                {console.log(this.state)}
                 <Navbar/>
                 <div className='mainBody container'>
                     <Header nome="Criar Utilizador" detalhe="sim" apagaMuda="nao" criaUser="sim"/>
@@ -210,32 +209,7 @@ class CreateUser extends React.Component {
                         </div>
 
                         <div className='row col-12 p-0 m-0'>
-                            <span className='col-3 divMargem'>
-                                <p className='subtituloSeccaoPagina p-0 mt-3'>Distrito <span className='obrigatorio'>*</span></p>
-                                <Dropdown value={this.state.infoUser.distrito} onSelect={this.atualizaDistrito}>
-                                    <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
-                                        Distrito
-                                    </Dropdown.Toggle>
-
-                                    <Dropdown.Menu className='dropdownFiltro'>
-                                        <Dropdown.Item eventKey='abc'>10</Dropdown.Item>
-                                        <Dropdown.Item eventKey='def'>20</Dropdown.Item>
-                                    </Dropdown.Menu>
-                                </Dropdown>
-                            </span>
-                            <span className='col-3 divMargem'>
-                                <p className='subtituloSeccaoPagina p-0 mt-3'>Concelho <span className='obrigatorio'>*</span></p>
-                                <Dropdown value={this.state.infoUser.concelho} onSelect={this.atualizaConcelho}>
-                                    <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
-                                        Concelho
-                                    </Dropdown.Toggle>
-
-                                    <Dropdown.Menu className='dropdownFiltro'>
-                                        <Dropdown.Item eventKey="10">10</Dropdown.Item>
-                                        <Dropdown.Item eventKey='20'>20</Dropdown.Item>
-                                    </Dropdown.Menu>
-                                </Dropdown>
-                            </span>
+                            <BuscaDistritosConcelhos valor={this.state.infoUser.distrito} atualiza={this.atualizaDistrito} valorConcelho={this.state.infoUser.concelho} atualizaConcelho={this.atualizaConcelho}/>
                         </div>
 
                         <div className='row col-12 p-0 m-0'>

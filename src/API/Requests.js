@@ -103,3 +103,15 @@ export const createNotification = (tipologia, subcategoria, categoriaSaude, envi
 export const fetchTipologiaList = () =>
   fetch(`http://geo-navsafety.ua.pt:443/overtv/tipologias`)
     .then(response => response.json())
+
+//Distritos
+
+export const fetchDistritosList = () =>
+  fetch(`http://geo-navsafety.ua.pt:443/overtv/localidade/distritos`)
+    .then(response => response.json())
+
+//Concelhos
+
+export const fetchConcelhos = (id) =>
+  fetch(`http://geo-navsafety.ua.pt:443/overtv/localidade/concelhos/${id}`)
+    .then(response => response.json())
