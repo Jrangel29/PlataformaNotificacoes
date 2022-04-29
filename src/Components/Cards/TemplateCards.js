@@ -9,7 +9,7 @@ class TemplateCards extends React.Component {
 
     render(){
         return(
-            <div className='container m-0 p-0'>
+            <div className='container m-0'>
                 <div className='row cartasMainBody'>
                     <Card className='col-4 p-0'>
                         <Card.Header className='row headerCarta m-0 gx-1'>

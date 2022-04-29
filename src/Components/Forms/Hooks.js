@@ -5,6 +5,7 @@ import { getDistritosList } from '../../Store/Distritos/Actions';
 import { getConcelhos } from '../../Store/Concelhos/Actions';
 import { Form, Dropdown } from 'react-bootstrap';
 import Loading from '../../Pages/Loading';
+import LoadingComponent from '../../Components/Geral/LoadingComponent';
 
 export const BuscaTipologias = (props) => {
     const dispatch = useDispatch();
@@ -25,7 +26,7 @@ export const BuscaTipologias = (props) => {
 
     if (isLoadingTipologia || isLoadingDistrito) {
         return (
-            <Loading />
+            <LoadingComponent />
         )
     }
 
@@ -69,7 +70,7 @@ export const BuscaDistritosConcelhos = (props) => {
 
     if (isLoadingDistrito) {
         return (
-            <Loading />
+            <LoadingComponent />
         )
     }
 
@@ -113,7 +114,7 @@ export const BuscaDistritosConcelhos = (props) => {
                 <p className='subtituloSeccaoPagina p-0 mt-3'>Concelho <span className='obrigatorio'>*</span></p>
                 <Dropdown>
                     <Dropdown.Toggle variant="flat" disabled className='dropdownFiltro'>
-                        Escolhe um distrito
+                        Concelho
                     </Dropdown.Toggle>
                 </Dropdown>
             </span>
@@ -159,9 +160,25 @@ export const BuscaDistritosConcelhos = (props) => {
         <span className='col-3 divMargem'>
             <p className='subtituloSeccaoPagina p-0 mt-3'>Concelho <span className='obrigatorio'>*</span></p>
             <Dropdown value={props.valorConcelho} onSelect={props.atualizaConcelho}>
+                {props.valorConcelho !== '' ?
                 <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
-                    Concelhos
+                    {concelhosList.map(item => {
+                        return(
+                            <>
+                            {props.valorConcelho == item.id_localidade ?
+                            <>{item.nome}</>
+                            :
+                            <></>
+                            }
+                            </>
+                        )
+                    })}
                 </Dropdown.Toggle>
+                :
+                <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
+                    Concelho
+                </Dropdown.Toggle>
+                }
 
                 <Dropdown.Menu className='dropdownFiltro'>
                     {concelhosList.map(item => {

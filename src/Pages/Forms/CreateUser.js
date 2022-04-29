@@ -70,7 +70,8 @@ class CreateUser extends React.Component {
         this.setState({
             infoUser: {
                 ...this.state.infoUser,
-                distrito: e
+                distrito: e,
+                concelho: ''
             }
         })
     }

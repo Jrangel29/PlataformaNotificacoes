@@ -3,7 +3,7 @@ import '../../Styles/Cards.css';
 import '../../Styles/Filters.css';
 import {Card} from 'react-bootstrap';
 
-class UserCards extends React.Component {
+class GroupDetailsCards extends React.Component {
 
     render(){
         return(            
@@ -37,4 +37,4 @@ class UserCards extends React.Component {
     } 
 }
 
-export default UserCards;
+export default GroupDetailsCards;

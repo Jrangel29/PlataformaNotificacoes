@@ -7,7 +7,7 @@ class Filters extends React.Component {
 
     render(){
         return(
-            <div className='container m-0 p-0'>
+            <div className='container m-0'>
                 <div className='row'>
                     <input type="text" placeholder="Pesquisa" className='barraPesquisa col-3'/>
                     {this.props.tipo == "Histórico" ?
@@ -25,7 +25,7 @@ class Filters extends React.Component {
                 <div className='row d-flex flex-row segundaLinhaFiltro'>
                     <span className='FiltrarPor col-1 p-0'>Filtrar por:</span>
                     
-                    <Dropdown className='col-2 divMargem'>
+                    <Dropdown className='col-2 divMargem m-0 ps-2 pe-0'>
                         <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
                             Idade
                         </Dropdown.Toggle>
@@ -40,7 +40,7 @@ class Filters extends React.Component {
                 <div className='row d-flex flex-row segundaLinhaFiltro'>
                     <span className='FiltrarPor col-1 p-0'>Filtrar por:</span>
                     
-                    <Dropdown className='col-2 divMargem'>
+                    <Dropdown className='col-2 divMargem m-0 ps-2 pe-0'>
                         <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
                             Idade
                         </Dropdown.Toggle>
@@ -51,7 +51,7 @@ class Filters extends React.Component {
                         </Dropdown.Menu>
                     </Dropdown>
 
-                    <Dropdown className='col-2 divMargem'>
+                    <Dropdown className='col-2 divMargem m-0 ps-2 pe-0'>
                         <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
                             Localização
                         </Dropdown.Toggle>

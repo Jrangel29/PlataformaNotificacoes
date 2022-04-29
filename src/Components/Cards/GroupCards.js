@@ -9,7 +9,7 @@ class GroupCards extends React.Component {
         return(
             <div className='container m-0 p-0'>
                 <div className='row cartasMainBody'>
-                <Accordion defaultActiveKey="0" className='col-4 p-0'>
+                <Accordion defaultActiveKey="0" className='col-4'>
                         <Accordion.Item eventKey="1">
                             <Accordion.Header className='m-0'>
                                 <span>

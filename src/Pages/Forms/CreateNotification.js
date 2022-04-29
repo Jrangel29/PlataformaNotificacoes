@@ -200,7 +200,7 @@ class CreateNotification extends React.Component {
                             }
                         </span>
                     </div>
-
+                    {/*
                     <div className='row m-0 mt-3'>
                         <h1 className='tituloSeccaoPagina p-0'>Escolha de template</h1>
                         <Dropdown className='col-3 p-0 m-0'>
@@ -214,7 +214,7 @@ class CreateNotification extends React.Component {
                             </Dropdown.Menu>
                         </Dropdown>
                     </div>
-
+                    */}
                     <div className='row m-0 mt-3'>
                         <h1 className='tituloSeccaoPagina p-0'>Tipologia de notificação</h1>
                         <span className='col-3 p-0 me-3'>

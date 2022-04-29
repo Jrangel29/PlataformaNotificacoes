@@ -22,7 +22,7 @@ class NotificationCards extends React.Component {
 
     render(){
         return(
-            <div className={this.props.tipo == "RotinaUser" ? 'container' : 'container m-0 p-0'}>
+            <div className={this.props.tipo == "RotinaUser" ? 'container' : 'container m-0'}>
                 <div className='row cartasMainBody'>
                     <Card style={{cursor: "pointer"}} className='col-4 p-0'>
                         {this.props.tipo == "historico" ?

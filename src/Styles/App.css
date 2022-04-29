@@ -23,6 +23,13 @@
     color: #3F72AF;
 }
 
+.LoadingComponent{
+    font-size: 16px;
+    font-weight: 700;
+    color: #3F72AF;
+    margin-top: 5px!important;
+}
+
 .subtituloSeccaoPagina{
     font-size: 20px;
     font-weight: 700;
