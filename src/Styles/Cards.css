@@ -113,3 +113,8 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
 }
+
+.accordion-button {
+    background-color: #F9F7F7 !important;
+}
+  
