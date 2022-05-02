@@ -66,7 +66,7 @@ class User extends React.Component {
                 <Navbar/>
                 <div className='mainBody container'>
                     <Header nome="Utilizadores" detalhe="sim" apagaMuda="sim"/>
-                    <div>
+                    <div className='px-2'>
                         <div>
                             <h1 className='tituloSeccaoPagina'>Ricardo Lima</h1>
                             <p className='textoSeccaoPagina'>66 anos</p>

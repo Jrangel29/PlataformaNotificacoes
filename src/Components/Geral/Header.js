@@ -39,7 +39,7 @@ class Header extends React.Component {
                 </span>
                 <h1 className='tituloPagina col-8'>{this.props.nome}</h1>
                 {this.props.apagaMuda !== "nao" ?
-                    <span className="col-2 d-flex align-items-center justify-content-end p-0">
+                    <span className="col-2 d-flex align-items-center justify-content-end">
                         {this.props.nome === "Grupos" ?
                         <Link to="/groups/edit">
                             <img className="topIcons px-4" src={Editar}/>    
@@ -58,7 +58,7 @@ class Header extends React.Component {
                     </span>
                 :
                 this.props.criaUser === "sim" ?
-                <span className="col-2 d-flex align-items-center justify-content-end p-0">
+                <span className="col-2 d-flex align-items-center justify-content-end">
                     <span className='userId d-flex align-items-center justify-content-center'>
                         3
                     </span>

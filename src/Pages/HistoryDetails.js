@@ -13,7 +13,7 @@ class HistoryDetails extends React.Component {
                 <Navbar/>
                 <div className='mainBody container'>
                     <Header nome="Histórico" detalhe="sim" apagaMuda="nao"/>
-                    <div>
+                    <div className='px-2'>
                         <div>
                             <h1 className='tituloSeccaoPagina'>Descontos em carne do Lidl</h1>
                             <p className='subtituloSeccaoPagina'>Conteúdo</p>

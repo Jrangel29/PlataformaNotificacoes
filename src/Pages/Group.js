@@ -55,7 +55,7 @@ class Group extends React.Component {
                 <Navbar/>
                 <div className='mainBody container'>
                     <Header nome="Grupos" detalhe="sim" apagaMuda="sim"/>
-                    <div>
+                    <div className='px-2'>
                         <div>
                             <h1 className='tituloSeccaoPagina'>Idosos de Lisboa (+60 anos)</h1>
                             <p className='subtituloSeccaoPagina'>Descrição</p>
