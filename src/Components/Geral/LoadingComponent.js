@@ -7,7 +7,7 @@ const LoadingComponent = (props) => {
 
     return(
         <div>
-            <Spinner style={props.comp === "filters" ? {height: "25px", width: "25px", color: "#112D4E", marginLeft: "23px", marginTop: "5px"} : {height: "25px", width: "25px", color: "#112D4E", marginTop: "20px", marginLeft: "23px"}} animation='border'/>
+            <Spinner style={props.comp === "filters" ? {height: "25px", width: "25px", color: "#112D4E", marginLeft: "23px", marginTop: "7px"} : {height: "25px", width: "25px", color: "#112D4E", marginTop: "20px", marginLeft: "23px"}} animation='border'/>
             {props.comp === "filters" ?
             <></>
             :
