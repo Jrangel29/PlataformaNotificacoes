@@ -29,11 +29,11 @@ const SubmitButton = (props) => {
         return(
             <>
                 {props.params.infoUser.nomeUser === "" || props.params.infoUser.idade === "" || props.params.infoUser.idBox === "" || props.params.infoUser.distrito === "" || props.params.infoUser.concelho === "" ?
-                <span className='row m-0 justify-content-end p-0'>
+                <span className='row m-0 justify-content-end'>
                     <Button className='col-2' variant='custom' disabled>Criar Utilizador</Button>
                 </span>
                 :
-                <span className='row m-0 justify-content-end p-0'>
+                <span className='row m-0 justify-content-end'>
                     <Button 
                         className='col-2' 
                         variant='flat' 
@@ -48,11 +48,11 @@ const SubmitButton = (props) => {
         return(
             <>
             {props.params.infoGroup.nomeGroup === "" || props.params.infoGroup.descricao === "" ?
-            <span className='row m-0 p-0 justify-content-end'>
+            <span className='row m-0 justify-content-end'>
                 <Button className='col-2' variant='custom' disabled>Criar Grupo</Button>
             </span>
             :
-            <span className='row m-0 p-0 justify-content-end'>
+            <span className='row m-0 justify-content-end'>
                 <Button 
                     className='col-2' 
                     variant='flat' 
@@ -68,7 +68,7 @@ const SubmitButton = (props) => {
             <>
             {
             props.params.tipologia === "Personalizado" && props.params.paramsPersonalizado.popupSecundario === "Não" && props.params.tituloNotif !== "" && props.params.envioNotif.tipoNotif !== "" ?
-            <span className='row m-0 p-0 justify-content-end'>
+            <span className='row m-0 justify-content-end'>
                 <Button 
                     className='col-2' 
                     variant='flat' 
@@ -78,11 +78,11 @@ const SubmitButton = (props) => {
             </span>
             :
             props.params.tipologia === "" || props.params.tituloNotif === "" || props.params.subtituloNotif === "" || props.params.descricaoNotif === "" || props.params.envioNotif.tipoNotif === "" ?
-            <span className='row m-0 p-0 justify-content-end'>
+            <span className='row m-0 justify-content-end'>
                 <Button className='col-2' variant='custom' disabled>Criar Grupo</Button>
             </span>
             :
-            <span className='row m-0 p-0 justify-content-end'>
+            <span className='row m-0 justify-content-end'>
                 <Button 
                     className='col-2' 
                     variant='flat' 

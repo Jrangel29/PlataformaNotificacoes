@@ -177,9 +177,9 @@ class CreateNotification extends React.Component {
                 <div className='mainBody container'>
                     <Header nome="Criar Notificação" detalhe="sim" apagaMuda="nao"/>
                     <div className='row m-0'>
-                        <h1 className='tituloSeccaoPagina p-0'>Recetores da notificação</h1>
-                        <p className='subtituloSeccaoPagina p-0'>Tipo de recetor</p>
-                        <Dropdown className='col-3 p-0 m-0' onSelect={this.escolheRecetores}>
+                        <h1 className='tituloSeccaoPagina'>Recetores da notificação</h1>
+                        <p className='subtituloSeccaoPagina'>Tipo de recetor</p>
+                        <Dropdown className='col-3 m-0' onSelect={this.escolheRecetores}>
                             <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
                                 Recetores Individuais
                             </Dropdown.Toggle>
@@ -190,8 +190,10 @@ class CreateNotification extends React.Component {
                             </Dropdown.Menu>
                         </Dropdown>
 
-                        <h1 className='subtituloSeccaoPagina p-0 mt-3 mb-2'>Escolha de recetores <span className='obrigatorio'>*</span></h1>
-                        <input type="text" placeholder="Pesquisa" className='barraPesquisa col-3'/>
+                        <h1 className='subtituloSeccaoPagina mt-3 mb-2'>Escolha de recetores <span className='obrigatorio'>*</span></h1>
+                        <span className='m-0 col-3'>
+                            <input type="text" placeholder="Pesquisa" className='barraPesquisa py-1 px-3 w-100'/>
+                        </span>
                         <span className='row m-0'>
                             {this.state.recetores === "Individuais" ? 
                             <UserCards pagina="criaGrupo"/>
@@ -216,9 +218,9 @@ class CreateNotification extends React.Component {
                     </div>
                     */}
                     <div className='row m-0 mt-3'>
-                        <h1 className='tituloSeccaoPagina p-0'>Tipologia de notificação</h1>
-                        <span className='col-3 p-0 me-3'>
-                            <p className='subtituloSeccaoPagina p-0'>Categoria principal <span className='obrigatorio'>*</span></p>
+                        <h1 className='tituloSeccaoPagina'>Tipologia de notificação</h1>
+                        <span className='col-3 me-3'>
+                            <p className='subtituloSeccaoPagina'>Categoria principal <span className='obrigatorio'>*</span></p>
                             <Dropdown>
                                 <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
                                     {this.state.tipologia}
@@ -278,12 +280,14 @@ class CreateNotification extends React.Component {
                     </div>
 
                     <div className='row m-0 mt-3'>
-                        <h1 className='tituloSeccaoPagina p-0'>Conteúdo da notificação</h1>
-                        <p className='subtituloSeccaoPagina p-0'>Título da notificação principal <span className='obrigatorio'>*</span></p>
+                        <h1 className='tituloSeccaoPagina'>Conteúdo da notificação</h1>
+                        <span className='row m-0 col-12'>
+                        <p className='subtituloSeccaoPagina p-0 m-0'>Título da notificação principal <span className='obrigatorio'>*</span></p>
                         <input type="text" className='inputsForms' id='tituloNotif' value={this.state.tituloNotif} onChange={this.alteraTexto} maxLength="50"/>
+                        </span>
                         {this.state.tipologia === "Personalizado" ?
-                        <span className='col-3 p-0 mt-1'>
-                            <p className='subtituloSeccaoPagina p-0'>Tem popup secundário?</p>
+                        <span className='col-3 mt-1'>
+                            <p className='subtituloSeccaoPagina'>Tem popup secundário?</p>
                             <Dropdown>
                                 <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
                                     {this.state.paramsPersonalizado.popupSecundario}
@@ -299,7 +303,7 @@ class CreateNotification extends React.Component {
                         <></>
                         }
                         {this.state.tipologia === "Personalizado" && this.state.paramsPersonalizado.popupSecundario === "Sim" || this.state.tipologia !== "Personalizado" ?
-                        <span className='row col-12 mx-0 mt-2 p-0'>
+                        <span className='row col-12 mx-0 mt-2'>
                             <p className='subtituloSeccaoPagina p-0'>Título do pop-up secundário <span className='obrigatorio'>*</span></p>
                             <input type="text" className='inputsForms' id='subtituloNotif' value={this.state.subtituloNotif} onChange={this.alteraTexto} maxLength="50"/>
                             <p className='subtituloSeccaoPagina mt-2 p-0'>Mensagem informativa do pop-up secundário <span className='obrigatorio'>*</span></p>
@@ -312,8 +316,8 @@ class CreateNotification extends React.Component {
 
                     <div className='row m-0 mt-2'>
                         {this.state.tipologia === "Personalizado" ?
-                        <span className='col-2 p-0 me-2'>
-                            <p className='subtituloSeccaoPagina p-0'>Usar ícone?</p>
+                        <span className='col-2 me-2'>
+                            <p className='subtituloSeccaoPagina'>Usar ícone?</p>
                             <Dropdown>
                                 <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
                                     {this.state.paramsPersonalizado.usaIcone}
@@ -329,8 +333,8 @@ class CreateNotification extends React.Component {
                         <></>
                         }
                         {this.state.tipologia === "Personalizado" && this.state.paramsPersonalizado.usaIcone === "Sim" ?
-                        <span className='col-3 p-0'>
-                            <p className='subtituloSeccaoPagina p-0'>Ícone da notificação</p>
+                        <span className='col-3'>
+                            <p className='subtituloSeccaoPagina'>Ícone da notificação</p>
                             <Dropdown>
                                 <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
                                     {this.state.paramsPersonalizado.icone}
@@ -352,9 +356,9 @@ class CreateNotification extends React.Component {
 
                     <NotificationTimeSelection parametros={this.state} alterarEnvio={this.alteraEnvio} mudaDia={this.alteraCor} mudaMomento={this.alteraMomento}/>
 
-                    <div className='m-0 mt-3'>
-                        <h1 className='tituloSeccaoPagina p-0'>Pré-visualização da notificação</h1>
-                        <div className='w-100 divPreview'>
+                    <div className='mt-3 px-2'>
+                        <h1 className='tituloSeccaoPagina'>Pré-visualização da notificação</h1>
+                        <div className='divPreview'>
                             <span className='notiPreview'>
                             <img src={
                                 this.state.tipologia === "Agenda" ?
@@ -375,8 +379,8 @@ class CreateNotification extends React.Component {
                             </span>
                         </div>
                     </div>
-                    <span className='row m-0 mt-2 p-0 justify-content-end'>
-                        <p className='col-2 p-0 indicaObrigatorio'>*Obrigatório</p>
+                    <span className='row m-0 mt-2 justify-content-end'>
+                        <p className='col-2 indicaObrigatorio'>*Obrigatório</p>
                     </span>
                     <SubmitButton params={this.state} openModal={this.onOpen} tipoForm="Notification"/>
                 </div>

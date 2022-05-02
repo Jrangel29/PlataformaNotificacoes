@@ -12,6 +12,15 @@
     background-color: #F9F7F7!important;
     font-size: 14px!important;
     text-align: left!important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.bodyCartaRotina{
+    background-color: #F9F7F7!important;
+    font-size: 14px!important;
+    text-align: left!important;
 }
 
 .bodyCartaTemplate{

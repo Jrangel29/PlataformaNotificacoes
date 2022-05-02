@@ -59,20 +59,22 @@ class CreateGroup extends React.Component {
                 <div className='mainBody container'>
                     <Header nome="Criar Grupo" detalhe="sim" apagaMuda="nao"/>
                     <div className='row m-0'>
-                        <h1 className='tituloSeccaoPagina p-0'>Informação geral</h1>
-                        <p className='subtituloSeccaoPagina p-0'>Nome do grupo <span className='obrigatorio'>*</span></p>
-                        <input type="text" className='inputsForms' value={this.state.infoGroup.nomeGroup} id='nomeGroup' onChange={this.atualizaInfo}/>
-
-                        <p className='subtituloSeccaoPagina p-0 mt-3'>Descrição <span className='obrigatorio'>*</span></p>
-                        <textarea rows="4" className='inputsForms' value={this.state.infoGroup.descricao} id='descricao' onChange={this.atualizaInfo}/>
-
-                        <div className='row col-12 p-0 m-0'>
-                            <span className='col-2 p-0 mt-3 me-3'>
-                                <p className='subtituloSeccaoPagina p-0'>Idade</p>
+                        <h1 className='tituloSeccaoPagina'>Informação geral</h1>
+                        <span className='col-12 m-0'>
+                            <p className='subtituloSeccaoPagina'>Nome do grupo <span className='obrigatorio'>*</span></p>
+                            <input type="text" className='inputsForms w-100' value={this.state.infoGroup.nomeGroup} id='nomeGroup' onChange={this.atualizaInfo}/>
+                        </span>
+                        <span className='col-12 m-0'>
+                            <p className='subtituloSeccaoPagina mt-3'>Descrição <span className='obrigatorio'>*</span></p>
+                            <textarea rows="4" className='inputsForms w-100' value={this.state.infoGroup.descricao} id='descricao' onChange={this.atualizaInfo}/>
+                        </span>
+                        <div className='row col-12 m-0'>
+                            <span className='col-2 mt-3 me-3'>
+                                <p className='subtituloSeccaoPagina'>Idade</p>
                                 <input type="number" min="1" className='inputsForms w-100' value={this.state.infoGroup.idade} id='idade' onChange={this.atualizaInfo}/>
                             </span>
                             <span className='col-3 divMargem'>
-                                <p className='subtituloSeccaoPagina p-0 mt-3'>Distrito</p>
+                                <p className='subtituloSeccaoPagina mt-3'>Distrito</p>
                                 <Dropdown value={this.state.infoGroup.distrito} onSelect={this.atualizaDistrito}>
                                     <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
                                         Distrito
@@ -85,7 +87,7 @@ class CreateGroup extends React.Component {
                                 </Dropdown>
                             </span>
                             <span className='col-3 divMargem'>
-                                <p className='subtituloSeccaoPagina p-0 mt-3'>Concelho</p>
+                                <p className='subtituloSeccaoPagina mt-3'>Concelho</p>
                                 <Dropdown value={this.state.infoGroup.concelho} onSelect={this.atualizaConcelho}>
                                     <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
                                         Concelho
@@ -99,13 +101,15 @@ class CreateGroup extends React.Component {
                             </span>
                         </div>
 
-                        <h1 className='tituloSeccaoPagina p-0 mt-3 mb-2'>Membros do grupo <span className='obrigatorio'>*</span></h1>
-                        <input type="text" placeholder="Pesquisa" className='barraPesquisa col-3'/>
+                        <span className='col-12 m-0'>
+                            <h1 className='tituloSeccaoPagina mt-3 mb-2'>Membros do grupo <span className='obrigatorio'>*</span></h1>
+                            <input type="text" placeholder="Pesquisa" className='barraPesquisa px-3 col-3'/>
+                        </span>
                         <span className='row m-0'>
                             <UserCards pagina="criaGrupo"/>
                         </span>
-                        <span className='row m-0 mt-2 p-0 justify-content-end'>
-                            <p className='col-2 p-0 indicaObrigatorio'>*Obrigatório</p>
+                        <span className='row m-0 mt-2 justify-content-end'>
+                            <p className='col-2 indicaObrigatorio'>*Obrigatório</p>
                         </span>
                         <SubmitButton params={this.state} openModal={this.onOpen} tipoForm="Grupo"/>
                     </div>

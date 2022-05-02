@@ -10,7 +10,7 @@ class UserCards extends React.Component {
         return(            
             <div className='container m-0 p-0'>
                 <div className='row cartasMainBody'>
-                    <Accordion defaultActiveKey="0" className='col-4'>
+                    <Accordion defaultActiveKey="0" className='col-4 pb-3'>
                         <Accordion.Item eventKey="1">
                             <Accordion.Header className='m-0'>
                                 <span>
@@ -37,7 +37,7 @@ class UserCards extends React.Component {
                             }
                         </Accordion.Item>
                     </Accordion>
-                    <Accordion defaultActiveKey="0" className='col-4 pt-0 pb-0'>
+                    <Accordion defaultActiveKey="0" className='col-4'>
                         <Accordion.Item eventKey="1">
                             <Accordion.Header className='m-0'>
                                 <span>
@@ -64,7 +64,7 @@ class UserCards extends React.Component {
                             }
                         </Accordion.Item>
                     </Accordion>
-                    <Accordion defaultActiveKey="0" className='col-4 pt-0 pb-0'>
+                    <Accordion defaultActiveKey="0" className='col-4'>
                         <Accordion.Item eventKey="1">
                             <Accordion.Header className='m-0'>
                                 <span>
@@ -76,6 +76,33 @@ class UserCards extends React.Component {
                                     </p>
                                     <p className='mb-0'>
                                         Amadora, Lisboa
+                                    </p>
+                                </span>
+                            </Accordion.Header>
+                            {this.props.pagina === "criaGrupo" ?
+                            <Accordion.Body className='footerUser row mx-0 justify-content-center'>
+                                <Button className='textoBtnUser col-5 mx-2' variant='flat'>Eliminar</Button>
+                            </Accordion.Body>
+                            :
+                            <Accordion.Body className='footerUser row mx-0 justify-content-center'>
+                                <Button as={Link} to="/users/user" className='textoBtnUser col-5 mx-2' variant='flat'>Ver mais informação</Button>
+                                <Button as={Link} to="/notifications/create" className='textoBtnUser col-5 mx-2' variant='flat'>Enviar notificação</Button>
+                            </Accordion.Body>
+                            }
+                        </Accordion.Item>
+                    </Accordion>
+                    <Accordion defaultActiveKey="0" className='col-4'>
+                        <Accordion.Item eventKey="1">
+                            <Accordion.Header className='m-0'>
+                                <span>
+                                    <p className='tituloUserCarta mb-2'>
+                                        Bruno Alves
+                                    </p>
+                                    <p className='mb-0'>
+                                        33 anos
+                                    </p>
+                                    <p className='mb-0'>
+                                        Maia, Porto
                                     </p>
                                 </span>
                             </Accordion.Header>

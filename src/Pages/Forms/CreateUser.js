@@ -194,52 +194,55 @@ class CreateUser extends React.Component {
                 <div className='mainBody container'>
                     <Header nome="Criar Utilizador" detalhe="sim" apagaMuda="nao" criaUser="sim"/>
                     <div className='row m-0'>
-                        <h1 className='tituloSeccaoPagina p-0'>Informação Geral</h1>
-                        <p className='subtituloSeccaoPagina p-0'>Nome do Utilizador <span className='obrigatorio'>*</span></p>
-                        <input type="text" className='inputsForms' value={this.state.infoUser.nomeUser} id='nomeUser' onChange={this.atualizaInfo}/>
-
-                        <div className='row col-12 p-0 m-0'>
+                        <h1 className='tituloSeccaoPagina'>Informação Geral</h1>
+                        <span className='col-12 m-0'>
+                            <p className='subtituloSeccaoPagina'>Nome do Utilizador <span className='obrigatorio'>*</span></p>
+                            <input type="text" className='inputsForms w-100' value={this.state.infoUser.nomeUser} id='nomeUser' onChange={this.atualizaInfo}/>
+                        </span>
+                        <div className='row col-12 m-0'>
                             <span className='col-3 ps-0 mt-3'>
-                                <p className='subtituloSeccaoPagina p-0'>Idade <span className='obrigatorio'>*</span></p>
+                                <p className='subtituloSeccaoPagina'>Idade <span className='obrigatorio'>*</span></p>
                                 <input type="number" min="1" value={this.state.infoUser.idade} id='idade' onChange={this.atualizaInfo} className='inputsForms w-100'/>
                             </span>
-                            <span className='col-4 p-0 mt-3'>
-                                <p className='subtituloSeccaoPagina p-0'>ID da box <span className='obrigatorio'>*</span></p>
+                            <span className='col-4 mt-3'>
+                                <p className='subtituloSeccaoPagina'>ID da box <span className='obrigatorio'>*</span></p>
                                 <input type="text" value={this.state.infoUser.idBox} id='idBox' onChange={this.atualizaInfo} className='inputsForms w-100'/>
                             </span>
                         </div>
 
-                        <div className='row col-12 p-0 m-0'>
+                        <div className='row col-12 m-0'>
                             <BuscaDistritosConcelhos valor={this.state.infoUser.distrito} atualiza={this.atualizaDistrito} valorConcelho={this.state.infoUser.concelho} atualizaConcelho={this.atualizaConcelho}/>
                         </div>
 
-                        <div className='row col-12 p-0 m-0'>
-                            <span className='col-6 row m-0 p-0 divMargem'>
-                                <p className='subtituloSeccaoPagina p-0 mt-3'>Notificações que o utilizador não quer receber</p>
+                        <div className='row col-12 m-0'>
+                            <span className='col-6 row m-0 divMargem'>
+                                <p className='subtituloSeccaoPagina mt-3 p-0'>Notificações que o utilizador não quer receber</p>
                                 <BuscaTipologias funcao={this.handleTipologia}/>
                             </span>
                         </div>
 
-                        <p className='tituloSeccaoPagina p-0 mt-3 mb-2'>Saúde</p>
+                        <span className='row col-12 m-0'>
+                        <p className='tituloSeccaoPagina mt-3 mb-2 p-0'>Saúde</p>
                         <span className='col-3 divMargem'>
                             <Button className='w-100' style={this.state.mostraSaude.length !== 0 ? {display: "none"} : {display: "block"}} variant="flat" onClick={() => this.adicionaSaude()}>Adicionar medicamento</Button>
                         </span>
+                        </span>
 
-                        <div className='row p-0 m-0' style={this.state.mostraSaude.length === 0 ? {display: "none"} : {display: "block"}}>
+                        <div className='row m-0' style={this.state.mostraSaude.length === 0 ? {display: "none"} : {display: "block"}}>
                             {this.state.mostraSaude.map((elemento, index) => {
                                 return(
                                 <>
-                                <span className='col-12 p-0'>
+                                <span className='col-12'>
                                     {index >= 1 ? 
-                                    <p className='subtituloSeccaoPagina p-0 mt-2'>Nome do medicamento</p>
+                                    <p className='subtituloSeccaoPagina mt-2'>Nome do medicamento</p>
                                     :
-                                    <p className='subtituloSeccaoPagina p-0'>Nome do medicamento</p>
+                                    <p className='subtituloSeccaoPagina'>Nome do medicamento</p>
                                     }
                                     <input type="text" className='inputsForms w-100' id={index} value={this.state.mostraSaude[index]["nome"]} onChange={this.atualizaNomeMedicamento}/>
                                 </span>
 
-                                <span className='col-12 p-0 mt-3'>
-                                    <p className='subtituloSeccaoPagina p-0 mt-3'>Dias da semana</p>
+                                <span className='col-12 mt-3'>
+                                    <p className='subtituloSeccaoPagina mt-3'>Dias da semana</p>
                                     <span className='row m-0 justify-content-center'>
                                         <span className='col-3'>
                                             <Button className='w-100' onClick={() => this.alteraCor(index, "segunda")} variant={this.state.mostraSaude[index]["segunda"] === false ? "flat2" : "flat3"}>Segunda-Feira</Button>
@@ -267,31 +270,31 @@ class CreateUser extends React.Component {
                                 {
                                     this.state.mostraSaude[index].horas.length === 0 ?
                                     <span className='row m-0 col-3 divMargem'>
-                                        <p className='subtituloSeccaoPagina p-0 mt-2'>Hora do dia</p>
-                                        <span className='col-6 p-0 me-3 h-100'>
+                                        <p className='subtituloSeccaoPagina mt-2'>Hora do dia</p>
+                                        <span className='col-6 me-3 h-100'>
                                             <input type="time" id={`horas${index}`} className='inputsForms without_ampm w-100' onChange={this.atualizaHorasMedicamento} style={{height: "37px"}}/>
                                         </span>
-                                        <span className='col-2 p-0'>
+                                        <span className='col-2'>
                                             <Button className='w-100' variant="flat">+</Button>
                                         </span>
                                     </span>
                                     :
                                     <>
                                     <span className='row m-0 col-3 divMargem'>
-                                        <p className='subtituloSeccaoPagina p-0 mt-2'>Hora do dia</p>
+                                        <p className='subtituloSeccaoPagina mt-2'>Hora do dia</p>
                                     {this.state.mostraSaude[index].horas.map((elem, i) => {
                                         return(
                                             <>
-                                                <span className={i === 0 ? 'col-6 p-0 me-3 h-100' : 'col-6 p-0 me-3 mt-2 h-100'}>
+                                                <span className={i === 0 ? 'col-6 me-3 h-100' : 'col-6 me-3 mt-2 h-100'}>
                                                     <input type="time" id={`horas${i}n${index}`} value={this.state.mostraSaude[index].horas[i]} className='inputsForms without_ampm w-100' onChange={this.atualizaHorasMedicamento} style={{height: "37px"}}/>
                                                 </span>
-                                                <span className={i === 0 ? 'col-2 p-0' : 'col-2 mt-2 p-0'}>
+                                                <span className={i === 0 ? 'col-2' : 'col-2 mt-2'}>
                                                     <Button className='w-100' variant="flat" onClick={() => this.adicionaHorasMedicamento(index)}>+</Button>
                                                 </span>
                                                 {i === 0 ? 
                                                 <></>
                                                 :
-                                                <span className='col-2 mt-2 ms-2 p-0'>
+                                                <span className='col-2 mt-2 ms-2'>
                                                     <Button className='w-100' variant="flat" onClick={() => this.removeHorasMedicamento(index)}>-</Button>
                                                 </span>
                                                 }
@@ -314,11 +317,12 @@ class CreateUser extends React.Component {
                                 </span>
                             </span>
                         </div>
-
-                        <p className='tituloSeccaoPagina p-0 mt-3'>Informações Adicionais</p>
-                        <textarea rows="4" className='inputsForms' value={this.state.infoUser.infoAdicional} id='infoAdicional' onChange={this.atualizaInfo}/>
-                        <span className='row m-0 mt-2 p-0 justify-content-end'>
-                            <p className='col-2 p-0 indicaObrigatorio'>*Obrigatório</p>
+                        <span className='col-12 m-0'>
+                            <p className='tituloSeccaoPagina mt-3'>Informações Adicionais</p>
+                            <textarea rows="4" className='inputsForms w-100' value={this.state.infoUser.infoAdicional} id='infoAdicional' onChange={this.atualizaInfo}/>
+                        </span>
+                        <span className='row m-0 mt-2 justify-content-end'>
+                            <p className='col-2 indicaObrigatorio'>*Obrigatório</p>
                         </span>
                         <SubmitButton params={this.state} openModal={this.onOpen} tipoForm="User"/>
                     </div>

@@ -34,7 +34,7 @@ class Header extends React.Component {
             <>
             {this.props.detalhe == "sim" ?
             <div className='m-0 p-0 row inicioPagina'>
-                <span className="col-2 d-flex align-items-center p-0">
+                <span className="col-2 d-flex align-items-center">
                     <BackArrow/>
                 </span>
                 <h1 className='tituloPagina col-8'>{this.props.nome}</h1>
