@@ -18,6 +18,7 @@ const Filters = (props) => {
                         to={props.tipo === "Notificação" || props.tipo === "Rotina" ? "/notifications/create" 
                         : props.tipo === "Grupo" ? "/groups/create" 
                         : props.tipo === "Utilizador" ? "/users/create" 
+                        : props.tipo === "Casa" ? "/houses/create" 
                         : "/templates/create"} className='col-2 offset-2' variant="flat">Criar {props.tipo}</Button>
                     }
                 </div>

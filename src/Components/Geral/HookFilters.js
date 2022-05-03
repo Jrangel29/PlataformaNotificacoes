@@ -23,6 +23,15 @@ const HookFilters = () => {
         dispatch(getDistritosList())
     }, []);
 
+    const concelhoSearch = (id) => {
+        dispatch(getConcelhos(id));
+        setDistritoVal(id);
+    }
+
+    const addConcelho = (id) => {
+        setConcelhoVal(id);
+    }
+
     if (isLoadingDistrito) {
         return (
             <span className='col-2 divMargem m-0 ps-2 pe-0'>
@@ -31,9 +40,11 @@ const HookFilters = () => {
         )
     }
 
-    if (isLoadingConcelhos || concelhoVal == '') {
-<>
-        <Dropdown className='col-2 divMargem m-0 ps-2 pe-0' value={distritoVal}>
+
+    if (isLoadingConcelhos || distritoVal == '') {
+    return(
+    <>
+        <Dropdown className='col-2 divMargem m-0 ps-2 pe-0' value={distritoVal} onSelect={concelhoSearch}>
             {distritoVal !== '' ?
                 <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
                     {distritosList.map(item => {
@@ -64,14 +75,17 @@ const HookFilters = () => {
         </Dropdown>
 
         <Dropdown disabled className='col-2 divMargem m-0 ps-2 pe-0'>
-            Concelho
+            <Dropdown.Toggle variant="flat" disabled className='dropdownFiltro'>
+                Concelho
+            </Dropdown.Toggle>
         </Dropdown>
-        </>
+    </>
+    )
     }
 
     return(
         <>
-        <Dropdown className='col-2 divMargem m-0 ps-2 pe-0' value={distritoVal}>
+        <Dropdown className='col-2 divMargem m-0 ps-2 pe-0' value={distritoVal} onSelect={concelhoSearch}>
             {distritoVal !== '' ?
                 <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
                     {distritosList.map(item => {
@@ -101,7 +115,7 @@ const HookFilters = () => {
             </Dropdown.Menu>
         </Dropdown>
 
-        <Dropdown className='col-2 divMargem m-0 ps-2 pe-0' value={concelhoVal}>
+        <Dropdown className='col-2 divMargem m-0 ps-2 pe-0' value={concelhoVal} onSelect={addConcelho}>
             {concelhoVal !== '' ?
                 <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
                     {concelhosList.map(item => {

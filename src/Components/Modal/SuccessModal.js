@@ -56,6 +56,9 @@ function DeleteUser (props) {
                     props.tiponotif === "Rotina" ?
                     <p className='textoSeccaoPagina p-0'>A rotina foi eliminada com sucesso!</p>
                     :
+                    props.tiponotif === "Casa" ?
+                    <p className='textoSeccaoPagina p-0'>A casa foi eliminada com sucesso!</p>
+                    :
                     props.tiponotif === "Template" ?
                     <p className='textoSeccaoPagina p-0'>O template foi eliminado com sucesso!</p>
                     :
@@ -107,6 +110,9 @@ function DeleteUser (props) {
                             :
                             props.tiponotif === "CriarTemplate" ?
                             '/templates'
+                            :
+                            props.tiponotif === "Casa" ?
+                            '/houses'
                             :
                             '/users'
                         }

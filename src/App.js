@@ -4,6 +4,8 @@ import Homepage from './Pages/Homepage.js';
 import Notifications from './Pages/Notifications.js';
 import Users from './Pages/Users.js';
 import User from './Pages/User.js';
+import Houses from './Pages/Houses.js';
+import House from './Pages/House.js';
 import Routines from './Pages/Routines.js';
 import Groups from './Pages/Groups.js';
 import History from './Pages/History';
@@ -11,6 +13,7 @@ import Templates from './Pages/Templates';
 import Group from './Pages/Group.js';
 import HistoryDetails from './Pages/HistoryDetails.js';
 import CreateUser from './Pages/Forms/CreateUser.js';
+import CreateHouse from './Pages/Forms/CreateHouse.js';
 import CreateGroup from './Pages/Forms/CreateGroup.js';
 import CreateNotification from './Pages/Forms/CreateNotification.js';
 import CreateTemplate from './Pages/Forms/CreateTemplate.js';
@@ -44,6 +47,9 @@ function App() {
           <Route exact path="/templates" element={<Templates/>}/>
           <Route exact path="/templates/create" element={<CreateTemplate/>}/>
           <Route exact path="/templates/edit" element={<EditTemplate/>}/>
+          <Route exact path="/houses" element={<Houses/>}/>
+          <Route exact path="/houses/house" element={<House/>}/>
+          <Route exact path="/houses/create" element={<CreateHouse/>}/>
           <Route path="*" element={<Error404/>}/>
         </Routes>
       </BrowserRouter>

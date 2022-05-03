@@ -13,8 +13,8 @@ class navbar extends React.Component {
                         <Nav.Link as={Link} to="/notifications">
                             Notificações
                         </Nav.Link>
-                        <Nav.Link as={Link} to="/groups">
-                            Grupos
+                        <Nav.Link as={Link} to="/routines">
+                            Rotinas
                         </Nav.Link>
                         <Nav.Link as={Link} to="/history">
                             Histórico
@@ -22,8 +22,11 @@ class navbar extends React.Component {
                         <Nav.Link as={Link} to="/users">
                             Utilizadores
                         </Nav.Link>
-                        <Nav.Link as={Link} to="/routines">
-                            Rotinas
+                        <Nav.Link as={Link} to="/houses">
+                            Casas
+                        </Nav.Link>
+                        <Nav.Link as={Link} to="/groups">
+                            Grupos
                         </Nav.Link>
                         <Nav.Link as={Link} to="/templates">
                             Templates

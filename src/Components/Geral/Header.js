@@ -5,6 +5,7 @@ import Lixo from '../../Images/LixoPreto.svg';
 import Editar from '../../Images/EditarPreto.svg';
 import DeleteUser from '../Modal/DeleteUser';
 import DeleteGroup from '../Modal/DeleteGroup';
+import DeleteHouse from '../Modal/DeleteHouse';
 import SuccessModal from '../Modal/SuccessModal';
 import {Link} from 'react-router-dom';
 
@@ -52,6 +53,9 @@ class Header extends React.Component {
                         <img className="topIcons" style={{cursor: "pointer"}} onClick={() => this.onOpen()} src={Lixo}/>
                         {this.props.nome === "Utilizadores" ?
                         <DeleteUser show={this.state.showDelete} onHide={this.onClose}/>
+                        :
+                        this.props.nome === "Casas" ?
+                        <DeleteHouse show={this.state.showDelete} onHide={this.onClose}/>
                         :
                         <DeleteGroup show={this.state.showDelete} onHide={this.onClose}/>
                         }
