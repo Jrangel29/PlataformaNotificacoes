@@ -204,10 +204,6 @@ class CreateUser extends React.Component {
                                 <p className='subtituloSeccaoPagina'>Idade <span className='obrigatorio'>*</span></p>
                                 <input type="number" min="1" value={this.state.infoUser.idade} id='idade' onChange={this.atualizaInfo} className='inputsForms w-100'/>
                             </span>
-                            <span className='col-4 mt-3'>
-                                <p className='subtituloSeccaoPagina'>ID da box <span className='obrigatorio'>*</span></p>
-                                <input type="text" value={this.state.infoUser.idBox} id='idBox' onChange={this.atualizaInfo} className='inputsForms w-100'/>
-                            </span>
                         </div>
 
                         <div className='row col-12 m-0'>

@@ -45,10 +45,6 @@ class EditUser extends React.Component {
                                 <p className='subtituloSeccaoPagina p-0'>Idade <span className='obrigatorio'>*</span></p>
                                 <input type="number" className='inputsForms'/>
                             </span>
-                            <span className='col-4 p-0 mt-3'>
-                                <p className='subtituloSeccaoPagina p-0'>ID da box <span className='obrigatorio'>*</span></p>
-                                <input type="text" className='inputsForms w-100'/>
-                            </span>
                         </div>
 
                         <div className='row col-12 p-0 m-0'>

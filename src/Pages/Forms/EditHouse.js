@@ -13,10 +13,12 @@ class CreateHouse extends React.Component {
         this.state={
             mostraModal: false,
             infoUser: {
-                nomeCasa: "",
+                nomeUser: "",
+                idade: "",
                 idBox: "",
                 distrito: "",
-                concelho: ""
+                concelho: "",
+                infoAdicional: ""
             }
         }
     }
@@ -69,7 +71,7 @@ class CreateHouse extends React.Component {
             <div>
                 <Navbar/>
                 <div className='mainBody container'>
-                    <Header nome="Criar Casa" detalhe="sim" apagaMuda="nao"/>
+                    <Header nome="Editar Casa" detalhe="sim" apagaMuda="nao"/>
                     <div className='row m-0'>
                         <h1 className='tituloSeccaoPagina'>Informação Geral</h1>
                         <span className='col-12 m-0'>

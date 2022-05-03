@@ -43,6 +43,11 @@ function DeleteUser (props) {
                 Utilizador criado
                 </>
                 :
+                props.tiponotif === "CriarCasa" ?
+                <>
+                Casa criada
+                </>
+                :
                 <>
                 Eliminar {props.tiponotif}
                 </>
@@ -85,6 +90,9 @@ function DeleteUser (props) {
                     :
                     props.tiponotif === "CriarUtilizador"  ?
                     <p className='textoSeccaoPagina p-0'>O utilizador foi criado com sucesso!</p>
+                    :
+                    props.tiponotif === "CriarCasa"  ?
+                    <p className='textoSeccaoPagina p-0'>A casa foi criada com sucesso!</p>
                     :
                     <></>
                     }

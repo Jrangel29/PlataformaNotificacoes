@@ -93,6 +93,26 @@ const SubmitButton = (props) => {
             }
             </>
         )
+    } else if(props.tipoForm === "Casa"){
+        return(
+            <>
+                {props.params.infoUser.nomeCasa === "" || props.params.infoUser.idBox === "" || props.params.infoUser.distrito === "" || props.params.infoUser.concelho === "" ?
+                <span className='row m-0 justify-content-end'>
+                    <Button className='col-2' variant='custom' disabled>Criar Casa</Button>
+                </span>
+                :
+                <span className='row m-0 justify-content-end'>
+                    <Button 
+                        className='col-2' 
+                        variant='flat'
+                        onClick={
+                            () => props.openModal()
+                        } 
+                        >Criar Casa</Button>
+                </span>
+                }
+            </>
+        )
     }
 }
 
