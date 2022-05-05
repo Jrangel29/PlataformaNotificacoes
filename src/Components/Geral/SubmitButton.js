@@ -77,7 +77,7 @@ const SubmitButton = (props) => {
                         }>Criar Grupo</Button>
             </span>
             :
-            props.params.tipologia === "" || props.params.tituloNotif === "" || props.params.subtituloNotif === "" || props.params.descricaoNotif === "" || props.params.envioNotif.tipoNotif === "" ?
+            props.params.tipologia === "" || props.params.tituloNotif === "" || props.params.envioNotif.tipoNotif === "" ?
             <span className='row m-0 justify-content-end'>
                 <Button className='col-2' variant='custom' disabled>Criar Grupo</Button>
             </span>
