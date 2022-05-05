@@ -4,7 +4,7 @@ import Calendar from 'react-calendar';
 
 function NotificationTimeSelection(props) {
   return (
-    <div className="row m-0 mt-3">
+    <div className="row m-0 mt-4">
         <h1 className="tituloSeccaoPagina">Envio de notificação</h1>
         <p className="subtituloSeccaoPagina">
             Tipo de notificação <span className="obrigatorio">*</span>
@@ -22,7 +22,7 @@ function NotificationTimeSelection(props) {
                     <Dropdown.Item onClick={() => props.alterarEnvio("Semanal")}>
                         Semanal
                     </Dropdown.Item>
-                    <Dropdown.Item onClick={() => props.alterarEnvio("Rotina")}>
+                    <Dropdown.Item onClick={() => props.alterarEnvio("Mensal")}>
                         Mensal
                     </Dropdown.Item>
                 </Dropdown.Menu>
@@ -30,26 +30,32 @@ function NotificationTimeSelection(props) {
         </span>
         {props.parametros.envioNotif === "Envio Único" ? 
             <>
-                <h1 className='subtituloSeccaoPagina mt-2'>Momento do envio pontual</h1>
-                <span className="col-2">
-                    <Dropdown>
-                        <Dropdown.Toggle variant="flat" className="dropdownFiltro">
-                            {props.parametros.momentoUnico}
-                        </Dropdown.Toggle>
+                {props.parametros.tipologia === "Agenda" ?
+                <></>
+                :
+                <>
+                    <h1 className='subtituloSeccaoPagina mt-2'>Momento do envio pontual</h1>
+                    <span className="col-2">
+                        <Dropdown>
+                            <Dropdown.Toggle variant="flat" className="dropdownFiltro">
+                                {props.parametros.momentoUnico}
+                            </Dropdown.Toggle>
 
-                        <Dropdown.Menu className="dropdownFiltro">
-                            <Dropdown.Item onClick={() => props.mudaMomentoUnico("Imediato")}>
-                                Imediato
-                            </Dropdown.Item>
-                            <Dropdown.Item onClick={() => props.mudaMomentoUnico("Hora")}>
-                                Hora
-                            </Dropdown.Item>
-                            <Dropdown.Item onClick={() => props.mudaMomentoUnico("Dia e Hora")}>
-                                Dia e Hora
-                            </Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
-                </span>
+                            <Dropdown.Menu className="dropdownFiltro">
+                                <Dropdown.Item onClick={() => props.mudaMomentoUnico("Imediato")}>
+                                    Imediato
+                                </Dropdown.Item>
+                                <Dropdown.Item onClick={() => props.mudaMomentoUnico("Hora")}>
+                                    Hora
+                                </Dropdown.Item>
+                                <Dropdown.Item onClick={() => props.mudaMomentoUnico("Dia e Hora")}>
+                                    Dia e Hora
+                                </Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
+                    </span>
+                </>
+                }
             </>
          : 
             <div className='mt-3 px-2'>
@@ -137,10 +143,10 @@ function NotificationTimeSelection(props) {
             </div>
         }
 
-        {props.parametros.momentoUnico === "Imediato" ?
+        {props.parametros.momentoUnico === "Imediato" && props.parametros.tipologia !== "Agenda" ?
         <></>
         :
-        props.parametros.momentoUnico === "Hora" ? 
+        props.parametros.momentoUnico === "Hora" && props.parametros.tipologia !== "Agenda" ? 
         <>
             <p className="subtituloSeccaoPagina mt-2">Horário de envio</p>
             <span className="col-2">
@@ -171,46 +177,52 @@ function NotificationTimeSelection(props) {
             }
         </>
         :
-        <div className="row col-12">
-            <span className="col-6">
-                <p className="subtituloSeccaoPagina mt-2">Escolha de dia</p>
-                <Calendar 
-                    className="m-0 p-0 w-100" 
-                    onClickDay={props.mudaDiaUnico}
-                    minDate={new Date()}/>
-            </span>
-            <span className="col-4">
-                <p className="subtituloSeccaoPagina mt-2">Horário de envio</p>
-                <span className="row col-12">
+        <>
+            {props.parametros.envioNotif !== "Envio Único" ?
+            <></>
+            :
+            <div className="row col-12">
                 <span className="col-6">
-                    <Dropdown>
-                        <Dropdown.Toggle variant="flat" className="dropdownFiltro">
-                            {props.parametros.horario}
-                        </Dropdown.Toggle>
-
-                        <Dropdown.Menu className="dropdownFiltro">
-                            <Dropdown.Item onClick={() => props.mudaHorario("Bom Dia")}>
-                                Bom Dia
-                            </Dropdown.Item>
-                            <Dropdown.Item onClick={() => props.mudaHorario("Boa Noite")}>
-                                Boa Noite
-                            </Dropdown.Item>
-                            <Dropdown.Item onClick={() => props.mudaHorario("Hora específica")}>
-                                Hora específica
-                            </Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
+                    <p className="subtituloSeccaoPagina mt-2">Escolha de dia</p>
+                    <Calendar 
+                        className="m-0 p-0 w-100" 
+                        onClickDay={props.mudaDiaUnico}
+                        minDate={new Date()}/>
                 </span>
-                {props.parametros.horario === "Hora específica" ? 
+                <span className="col-4">
+                    <p className="subtituloSeccaoPagina mt-2">Horário de envio</p>
+                    <span className="row col-12">
                     <span className="col-6">
-                        <input type="time" className='inputsForms without_ampm w-50' onChange={props.mudaHora} style={{height: "37px"}}/>
+                        <Dropdown>
+                            <Dropdown.Toggle variant="flat" className="dropdownFiltro">
+                                {props.parametros.horario}
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu className="dropdownFiltro">
+                                <Dropdown.Item onClick={() => props.mudaHorario("Bom Dia")}>
+                                    Bom Dia
+                                </Dropdown.Item>
+                                <Dropdown.Item onClick={() => props.mudaHorario("Boa Noite")}>
+                                    Boa Noite
+                                </Dropdown.Item>
+                                <Dropdown.Item onClick={() => props.mudaHorario("Hora específica")}>
+                                    Hora específica
+                                </Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
                     </span>
-                    :
-                    <></>
-                }
+                    {props.parametros.horario === "Hora específica" ? 
+                        <span className="col-6">
+                            <input type="time" className='inputsForms without_ampm w-50' onChange={props.mudaHora} style={{height: "37px"}}/>
+                        </span>
+                        :
+                        <></>
+                    }
+                    </span>
                 </span>
-            </span>
-        </div>
+            </div>
+            }
+        </>
         }
             
         {/*

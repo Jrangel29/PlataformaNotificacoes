@@ -87,10 +87,6 @@ class CreateHouse extends React.Component {
                             <BuscaDistritosConcelhos valor={this.state.infoUser.distrito} atualiza={this.atualizaDistrito} valorConcelho={this.state.infoUser.concelho} atualizaConcelho={this.atualizaConcelho}/>
                         </div>
 
-                        <span className='col-12 m-0'>
-                            <p className='tituloSeccaoPagina mt-3'>Membros da casa</p>
-                            <textarea rows="4" className='inputsForms w-100' value={this.state.infoUser.infoAdicional} id='infoAdicional' onChange={this.atualizaInfo}/>
-                        </span>
                         <span className='row m-0 mt-2 justify-content-end'>
                             <p className='col-2 indicaObrigatorio'>*Obrigatório</p>
                         </span>

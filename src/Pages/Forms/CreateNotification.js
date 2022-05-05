@@ -5,7 +5,7 @@ import {Button, Dropdown} from 'react-bootstrap';
 import UserCards from '../../Components/Cards/UserCards';
 import GroupCards from '../../Components/Cards/GroupCards';
 import NotificationTimeSelection from '../../Components/Forms/NotificationTimeSelection';
-import NotificationTimeSelection2 from '../../Components/Forms/NotificationTimeSelection';
+import RespostasUser from '../../Components/Forms/RespostasUser';
 import SuccessModal from '../../Components/Modal/SuccessModal';
 import iconeAgenda from '../../Images/iconeAgenda.png';
 import iconeConteudo from '../../Images/iconeConteudo.png';
@@ -56,7 +56,13 @@ class CreateNotification extends React.Component {
                 tipologia: valor
             })
         }
-        if(subcategoria === "Bom Dia" || subcategoria === "Boa Noite" || subcategoria === "Genérica" || subcategoria === "Personalizada"){
+        if(subcategoria === "Dia e Hora"){
+            this.setState({
+                tipologia: valor,
+                momentoUnico: subcategoria
+            })
+        }
+        if(subcategoria === "Combustíveis" || subcategoria === "Greves" || subcategoria === "Farmácias de Serviço" || subcategoria === "Feriados"){
             this.setState({
                 tipologia: valor,
                 categoriaInfo: subcategoria
@@ -214,7 +220,7 @@ class CreateNotification extends React.Component {
                         </Dropdown>
                     </div>
                     */}
-                    <div className='row m-0 mt-3'>
+                    <div className='row m-0 mt-4'>
                         <h1 className='tituloSeccaoPagina'>Tipologia de notificação</h1>
                         <span className='col-3 me-3'>
                             <p className='subtituloSeccaoPagina'>Categoria principal <span className='obrigatorio'>*</span></p>
@@ -224,17 +230,17 @@ class CreateNotification extends React.Component {
                                 </Dropdown.Toggle>
 
                                 <Dropdown.Menu className='dropdownFiltro'>
-                                    <Dropdown.Item onClick={() => this.alteraFormulario("Agenda", "nao")}>Agenda</Dropdown.Item>
-                                    <Dropdown.Item onClick={() => this.alteraFormulario("Conteúdo", "nao")}>Conteúdo</Dropdown.Item>
-                                    <Dropdown.Item onClick={() => this.alteraFormulario("Informação", "Bom Dia")}>Informação</Dropdown.Item>
-                                    <Dropdown.Item onClick={() => this.alteraFormulario("Saúde", "Genérica", "Inatividade")}>Saúde</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => this.alteraFormulario("Agenda", "Dia e Hora")}>Agenda</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => this.alteraFormulario("Programas", "nao")}>Programas</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => this.alteraFormulario("Informação", "Combustíveis")}>Informação</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => this.alteraFormulario("Saúde", 'nao')}>Saúde</Dropdown.Item>
                                     <Dropdown.Item onClick={() => this.alteraFormulario("Serviços", "nao")}>Serviços</Dropdown.Item>
                                     <Dropdown.Item onClick={() => this.alteraFormulario("Personalizado", "nao")}>Personalizado</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
                         </span>
 
-                        <span className='col-2 p-0 me-3' style={this.state.tipologia === "Informação" || this.state.tipologia === "Saúde" ? {display: "block"} : {display: "none"}}>
+                        <span className='col-2 p-0 me-3' style={this.state.tipologia === "Informação" ? {display: "block"} : {display: "none"}}>
                             <p className='subtituloSeccaoPagina p-0'>Subcategoria</p>
                             {this.state.tipologia === "Informação" ?
                             <Dropdown>
@@ -243,26 +249,31 @@ class CreateNotification extends React.Component {
                                 </Dropdown.Toggle>
 
                                 <Dropdown.Menu className='dropdownFiltro'>
-                                    <Dropdown.Item onClick={() => this.alteraFormulario("Informação", "Bom Dia")}>Bom Dia</Dropdown.Item>
-                                    <Dropdown.Item onClick={() => this.alteraFormulario("Informação", "Boa Noite")}>Boa Noite</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => this.alteraFormulario("Informação", "Combustíveis")}>Combustíveis</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => this.alteraFormulario("Informação", "Farmácias de Serviço")}>Farmácias de Serviço</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => this.alteraFormulario("Informação", "Feriados")}>Feriados</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => this.alteraFormulario("Informação", "Greves")}>Greves</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
                             :
-                            <Dropdown>
-                                <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
-                                    {this.state.categoriaInfo}
-                                </Dropdown.Toggle>
-
-                                <Dropdown.Menu className='dropdownFiltro'>
-                                    <Dropdown.Item onClick={() => this.alteraFormulario("Saúde", "Genérica")}>Genérica</Dropdown.Item>
-                                    <Dropdown.Item onClick={() => this.alteraFormulario("Saúde", "Personalizada")}>Personalizada</Dropdown.Item>
-                                </Dropdown.Menu>
-                            </Dropdown>
+                            <></>
                             }
                         </span>
                     </div>
 
-                    <div className='row m-0 mt-3'>
+                    {this.state.tipologia === "Informação" ?
+                    <div className='row m-0 mt-2'>
+                        <div className='col-12'>
+                            <p className='textoSeccaoPagina'>
+                                <b>Envio da Notificação: </b>As notificações do tipo "Informação" são enviadas nas rotinas de Boa Noite e Bom Dia.
+                            </p>
+                        </div>
+                    </div>
+                    :
+                    <></>
+                    }
+
+                    <div className='row m-0 mt-4'>
                         <h1 className='tituloSeccaoPagina'>Conteúdo da notificação</h1>
                         <span className='row m-0 col-12'>
                             <p className='subtituloSeccaoPagina p-0 m-0'>Título da notificação principal <span className='obrigatorio'>*</span></p>
@@ -293,6 +304,12 @@ class CreateNotification extends React.Component {
                         }
                     </div>
 
+                    {this.state.popupSecundario === true ?
+                        <RespostasUser valor={this.state.tipologia}/>
+                        :
+                        <></>
+                    }
+
                     <div className='row m-0 mt-2'>
                         {this.state.tipologia === "Personalizado" ?
                         <span className='col-2 me-2'>
@@ -321,7 +338,7 @@ class CreateNotification extends React.Component {
 
                                 <Dropdown.Menu className='dropdownFiltro'>
                                     <Dropdown.Item onClick={() => this.alteraIcone("icone", "Agenda")}>Agenda</Dropdown.Item>
-                                    <Dropdown.Item onClick={() => this.alteraIcone("icone", "Conteúdo")}>Conteúdo</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => this.alteraIcone("icone", "Programas")}>Programas</Dropdown.Item>
                                     <Dropdown.Item onClick={() => this.alteraIcone("icone", "Informação")}>Informação</Dropdown.Item>
                                     <Dropdown.Item onClick={() => this.alteraIcone("icone", "Saúde")}>Saúde</Dropdown.Item>
                                     <Dropdown.Item onClick={() => this.alteraIcone("icone", "Serviços")}>Serviços</Dropdown.Item>
@@ -333,35 +350,58 @@ class CreateNotification extends React.Component {
                         }
                     </div>
 
-                    <NotificationTimeSelection2 parametros={this.state} mudaDiaUnico={this.alteraDiaUnico} mudaMomentoUnico={this.alteraMomentoUnico} mudaHora={this.alteraHora} mudaHorario={this.alteraHorario} alterarEnvio={this.alteraEnvio} mudaDia={this.alteraDia} mudaMomento={this.alteraMomento}/>
-
-                    <div className='mt-3 px-2'>
-                        <h1 className='tituloSeccaoPagina'>Pré-visualização da notificação</h1>
-                        <div className='divPreview'>
-                            <span className='notiPreview'>
-                            <img src={
-                                this.state.tipologia === "Agenda" ?
-                                iconeAgenda
-                                :
-                                this.state.tipologia === "Conteúdo" ?
-                                iconeConteudo
-                                :
-                                this.state.tipologia === "Informação" ?
-                                iconeInfo
-                                :
-                                this.state.tipologia === "Saúde" ?
-                                iconeSaude
-                                :
-                                iconeServico
-                                } className="imgPreview"/>
-                            <p className='textPreview'>{this.state.tituloNotif}</p>
-                            </span>
+                    {this.state.tipologia !== "Informação" ?
+                    <NotificationTimeSelection parametros={this.state} mudaDiaUnico={this.alteraDiaUnico} mudaMomentoUnico={this.alteraMomentoUnico} mudaHora={this.alteraHora} mudaHorario={this.alteraHorario} alterarEnvio={this.alteraEnvio} mudaDia={this.alteraDia} mudaMomento={this.alteraMomento}/>
+                    :
+                    <></>
+                    }
+                    
+                    {this.state.tipologia === "Agenda" && this.state.envioNotif !== "Semanal" && this.state.momentoUnico === "Dia e Hora" ?
+                        <div className='row m-0 mt-2'>
+                            <div className='col-12'>
+                                <p className='textoSeccaoPagina'>
+                                    *Se possível, serão enviadas notificações uma semana antes da data definida, 3 dias antes, na rotina de Boa noite do dia anterior e na rotina de Bom Dia do próprio dia.
+                                </p>
+                                <p className='textoSeccaoPagina'>
+                                    *O utilizador pode escolher ser relembrado da notificação 15 minutos depois de a receber.
+                                </p>
+                            </div>
+                        </div>
+                    :
+                    <></>
+                    }
+                    
+                    <div className='row m-0'>
+                        <div className='mt-4'>
+                            <h1 className='tituloSeccaoPagina'>Pré-visualização da notificação</h1>
+                            <div className='divPreview'>
+                                <span className='notiPreview'>
+                                <img src={
+                                    this.state.tipologia === "Agenda" ?
+                                    iconeAgenda
+                                    :
+                                    this.state.tipologia === "Programas" ?
+                                    iconeConteudo
+                                    :
+                                    this.state.tipologia === "Informação" ?
+                                    iconeInfo
+                                    :
+                                    this.state.tipologia === "Saúde" ?
+                                    iconeSaude
+                                    :
+                                    iconeServico
+                                    } className="imgPreview"/>
+                                <p className='textPreview'>{this.state.tituloNotif}</p>
+                                </span>
+                            </div>
                         </div>
                     </div>
                     <span className='row m-0 mt-2 justify-content-end'>
                         <p className='col-2 indicaObrigatorio'>*Obrigatório</p>
                     </span>
-                    <SubmitButton params={this.state} openModal={this.onOpen} tipoForm="Notification"/>
+                    <div className='row m-0'>
+                        <SubmitButton params={this.state} openModal={this.onOpen} tipoForm="Notification"/>
+                    </div>
                 </div>
                 <SuccessModal show={this.state.mostraModal} onHide={this.onClose} tiponotif="CriarNotificação"/>
             </div>
