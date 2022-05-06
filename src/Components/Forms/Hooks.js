@@ -13,18 +13,11 @@ export const BuscaTipologias = (props) => {
     const tipologiaList = useSelector(({ tipologias }) => tipologias.data)
     const isLoadingTipologia = useSelector(({ tipologias }) => tipologias.isLoading)
     
-    const distritosList = useSelector(({ distritos }) => distritos.data)
-    const isLoadingDistrito = useSelector(({ distritos }) => distritos.isLoading)
-    
     useEffect(() => {
         dispatch(getTipologiasList())
     }, [])
 
-    useEffect(() => {
-        dispatch(getDistritosList())
-    }, [])
-
-    if (isLoadingTipologia || isLoadingDistrito) {
+    if (isLoadingTipologia) {
         return (
             <LoadingComponent />
         )
@@ -42,10 +35,54 @@ export const BuscaTipologias = (props) => {
                         key={item.id_tipologia} 
                         value={item.id_tipologia} 
                         label={item.nome}
-                        onChange={props.funcao}/>
+                        onChange={props.funcao}
+                        style={item.id_tipologia == 6 ? {display: "none"} : {display: "block"}}/>
                     )
                 })}
         </Form>
+        </>
+    );
+}
+
+export const BuscaTipologiasNotificacoes = (props) => {
+    const dispatch = useDispatch();
+    
+    const tipologiaList = useSelector(({ tipologias }) => tipologias.data)
+    const isLoadingTipologia = useSelector(({ tipologias }) => tipologias.isLoading)
+    
+    useEffect(() => {
+        dispatch(getTipologiasList())
+    }, [])
+
+    if (isLoadingTipologia) {
+        return (
+            <LoadingComponent />
+        )
+    }
+
+    return(
+        <>
+            <Dropdown>
+                <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
+                    {props.tipo}
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu className='dropdownFiltro'>
+                    {tipologiaList.map(item => {
+                        return(
+                            <Dropdown.Item onClick={
+                                item.nome === "Agenda" ?
+                                () => props.mudaForm(item.nome, item.id_tipologia, "Dia e Hora")
+                                :
+                                item.nome === "Informação" ?
+                                () => props.mudaForm(item.nome, item.id_tipologia, "Combustíveis")
+                                :
+                                () => props.mudaForm(item.nome, item.id_tipologia, "nao")
+                            }>{item.nome}</Dropdown.Item>
+                        )
+                    })}
+                </Dropdown.Menu>
+            </Dropdown>
         </>
     );
 }

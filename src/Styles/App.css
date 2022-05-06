@@ -23,6 +23,14 @@
     color: #3F72AF;
 }
 
+.tituloSeccaoPaginaNotifs{
+    font-size: 26px;
+    font-weight: 700;
+    color: #3F72AF;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
 .LoadingComponent{
     font-size: 16px;
     font-weight: 700;
@@ -172,3 +180,38 @@
     appearance: none;
     margin: -10px; 
   }
+
+.btnSeccao{
+    text-align: left!important;
+    border-bottom: solid 1px #000000!important;
+    width: 100%!important;
+    display: flex!important;
+    flex-direction: row!important;
+    justify-content: space-between!important;
+}
+
+.btnSeccao:hover{
+    text-align: left!important;
+    border-bottom: solid 1px #000000!important;
+    background-color: #eaeaea!important;
+    width: 100%!important;
+}
+
+.ArrowDown{
+    height: 15px;
+    margin-top: auto;
+    margin-bottom: auto;
+    -webkit-transition: -webkit-transform .3s ease-in-out;
+    -ms-transition: -ms-transform .3s ease-in-out;
+    transition: transform .3s ease-in-out;  
+}
+
+.ArrowDownRotated{
+    height: 15px;
+    margin-top: auto;
+    margin-bottom: auto;
+    transform: rotate(-180deg);
+    -webkit-transition: -webkit-transform .3s ease-in-out;
+    -ms-transition: -ms-transform .3s ease-in-out;
+    transition: transform .3s ease-in-out;  
+}

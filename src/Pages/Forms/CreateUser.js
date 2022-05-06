@@ -103,7 +103,7 @@ class CreateUser extends React.Component {
 
                         <div className='row col-12 m-0'>
                             <span className='col-6 row m-0 divMargem'>
-                                <p className='subtituloSeccaoPagina mt-3 p-0'>Casa - Terminar esta parte</p>
+                                <p className='subtituloSeccaoPagina mt-3 p-0'>Adicionar a casa</p>
                             </span>
                         </div>
                         
