@@ -2,6 +2,11 @@
     padding-top: 20px;
 }
 
+.cartasForm{
+    height: 233px;
+    overflow-y: scroll;
+}
+
 .headerCarta{
     background-color: #3F72AF!important;
     color: #F9F7F7!important;
@@ -56,10 +61,26 @@
     font-size: 20px;
 }
 
+.tituloUserCartaSmall{
+    color: #3F72AF;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.textoSmall{
+    font-size: 15px;
+}
+
 .tituloGrupoCarta{
     color: #3F72AF;
     font-weight: 700;
     font-size: 20px;
+}
+
+.tituloGrupoCartaSmall{
+    color: #3F72AF;
+    font-weight: 700;
+    font-size: 18px;
 }
 
 .iconeCard{
@@ -113,6 +134,15 @@
 
 .textCards{
     max-height: 60px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.textCardsSmall{
+    max-height: 60px;
+    font-size: 15px;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 3;

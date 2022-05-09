@@ -8,22 +8,22 @@ class GroupCards extends React.Component {
     render(){
         return(
             <div className='container m-0 p-0'>
-                <div className='row cartasMainBody'>
-                <Accordion defaultActiveKey="0" className='col-4'>
+                <div className={this.props.pagina === "criaGrupo" ? 'row cartasForm' : 'row cartasMainBody'}>
+                <Accordion defaultActiveKey="0" className={this.props.pagina === "criaGrupo" ? 'col-6 pb-3' : 'col-4 pb-3'}>
                         <Accordion.Item eventKey="1">
                             <Accordion.Header className='m-0'>
                                 <span>
-                                    <p className='tituloGrupoCarta mb-2'>
-                                        Nome do grupo
+                                    <p className={this.props.pagina === "criaGrupo" ? 'tituloGrupoCartaSmall mb-2' : 'tituloGrupoCarta mb-2'}>
+                                        Pessoas que assistem a "Simpsons"
                                     </p>
-                                    <p className='mb-0 textCards'>
-                                        Descrição do grupo bem extensa em lorem ipsum. Talvez apenas permitir 3 linhas, senão fica muito extenso. Colocar 3 pontinhos se passar disso.
+                                    <p className={this.props.pagina === "criaGrupo" ? 'mb-0 textCardsSmall' : 'mb-0 textCards'}>
+                                        Fãs de Simpsons que querem saber quando sai o próximo episódio.
                                     </p>
                                 </span>
                             </Accordion.Header>
                             {this.props.pagina === "criaGrupo" ?
                             <Accordion.Body className='footerUser row mx-0 justify-content-center'>
-                                <Button className='textoBtnUser col-5 mx-2' variant='flat'>Eliminar</Button>
+                                <Button className='textoBtnUser col-7 mx-2' variant='flat'>Eliminar</Button>
                             </Accordion.Body>
                             :
                             <Accordion.Body className='footerUser row mx-0 justify-content-center'>

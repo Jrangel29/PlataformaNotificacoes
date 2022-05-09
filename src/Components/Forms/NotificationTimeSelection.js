@@ -11,7 +11,7 @@ function NotificationTimeSelection(props) {
             <img src={DownArrow} className={props.collapseState !== 4 ? "ArrowDown" : "ArrowDownRotated"}/>
         </div>
         <Collapse in={props.collapseState === 4 ? true : false}>
-            <div className="row m-0">
+            <div className="row">
                 <p className="subtituloSeccaoPagina" style={{marginTop: "5px"}}>
                     Tipo de notificação <span className="obrigatorio">*</span>
                 </p>
@@ -58,7 +58,8 @@ function NotificationTimeSelection(props) {
                         </span>
                     </>
                 : 
-                    <div className='mt-3 px-2'>
+                    props.parametros.envioNotif === "Semanal" ?
+                    <div className='mt-3'>
                         <h1 className='subtituloSeccaoPagina'>Dias da semana</h1>
                         <Table striped bordered style={{textAlign: "center", width: "75%"}}>
                             <thead>
@@ -172,6 +173,80 @@ function NotificationTimeSelection(props) {
                             </span>
                         </span>
                         </div>
+                        :
+                        <>
+                            <p className="subtituloSeccaoPagina mt-2">Dia do mês</p>
+                            <span className="col-2">
+                                <Dropdown>
+                                    <Dropdown.Toggle variant="flat" className="dropdownFiltro">
+                                    Dia do mês
+                                    </Dropdown.Toggle>
+                                    <Dropdown.Menu className="dropdownFiltro">
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro">1</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro">2</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro">2</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro">3</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro">4</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro">5</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro">6</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro">7</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro">8</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro">9</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro">10</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro">11</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro">12</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro">13</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro">14</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro">15</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro">16</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro">17</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro">18</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro">19</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro">20</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro">21</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro">22</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro">23</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro">24</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro">25</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro">26</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro">27</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro">28</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro">29</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro">30</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro">31</Dropdown.Item>
+                                    </Dropdown.Menu>
+                                </Dropdown>
+                            </span>
+                            <p className="subtituloSeccaoPagina mt-2">Horário de envio</p>
+                            <span className="row col-12">
+                                <span className="col-2">
+                                    <Dropdown>
+                                        <Dropdown.Toggle variant="flat" className="dropdownFiltro">
+                                            {props.parametros.horario}
+                                        </Dropdown.Toggle>
+
+                                        <Dropdown.Menu className="dropdownFiltro">
+                                            <Dropdown.Item onClick={() => props.mudaHorario("Bom Dia")}>
+                                                Bom Dia
+                                            </Dropdown.Item>
+                                            <Dropdown.Item onClick={() => props.mudaHorario("Boa Noite")}>
+                                                Boa Noite
+                                            </Dropdown.Item>
+                                            <Dropdown.Item onClick={() => props.mudaHorario("Hora específica")}>
+                                                Hora específica
+                                            </Dropdown.Item>
+                                        </Dropdown.Menu>
+                                    </Dropdown>
+                                </span>
+                                {props.parametros.horario === "Hora específica" ? 
+                                    <span className="col-2">
+                                        <input type="time" className='inputsForms without_ampm w-50' onChange={props.mudaHora} style={{height: "37px"}}/>
+                                    </span>
+                                    :
+                                    <></>
+                                }
+                            </span>
+                        </>
                 }
 
                 {props.parametros.momentoUnico === "Imediato" ?

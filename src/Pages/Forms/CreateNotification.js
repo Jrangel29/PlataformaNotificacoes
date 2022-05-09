@@ -15,6 +15,7 @@ import iconeSaude from '../../Images/iconeSaude.png';
 import iconeServico from '../../Images/iconeServico.png';
 import SubmitButton from '../../Components/Geral/SubmitButton';
 import { BuscaTipologiasNotificacoes } from '../../Components/Forms/Hooks';
+import ListaUsersPesquisa from '../../Components/Forms/ListaUsersPesquisa';
 
 class CreateNotification extends React.Component {
 
@@ -203,7 +204,7 @@ class CreateNotification extends React.Component {
                             <img src={DownArrow} className={this.state.colapsado !== 1 ? "ArrowDown" : "ArrowDownRotated"}/>
                         </div>
                         <Collapse in={this.state.colapsado === 1 ? true : false}>
-                            <div>
+                            <div className='row m-0 p-0'>
                                 <p className='subtituloSeccaoPagina' style={{marginTop: "5px"}}>Tipo de recetor</p>
                                 <Dropdown className='col-3 m-0' onSelect={this.escolheRecetores}>
                                     <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
@@ -216,16 +217,25 @@ class CreateNotification extends React.Component {
                                     </Dropdown.Menu>
                                 </Dropdown>
 
-                                <h1 className='subtituloSeccaoPagina mt-3 mb-2'>Escolha de recetores <span className='obrigatorio'>*</span></h1>
-                                <span className='m-0 col-3'>
-                                    <input type="text" placeholder="Pesquisa" className='barraPesquisa py-1 px-3 w-100'/>
+                                <span className='row m-0'>
+                                    <div className='col-6 ms-0 ps-0'>
+                                        <h1 className='subtituloSeccaoPagina mt-3 mb-2'>Escolha de recetores <span className='obrigatorio'>*</span></h1>
+                                    </div>
+                                    <div className='col-6 ms-0 ps-0'>
+                                        <h1 className='subtituloSeccaoPagina mt-3 mb-2'>Recetores escolhidos</h1>
+                                    </div>
                                 </span>
                                 <span className='row m-0'>
+                                    <div className='col-6 ms-0 ps-0'>
+                                        <ListaUsersPesquisa tipo={this.state.recetores}/>
+                                    </div>
+                                    <div className='col-6 row m-0 p-0'>
                                     {this.state.recetores === "Individuais" ? 
                                     <UserCards pagina="criaGrupo"/>
                                     :
                                     <GroupCards pagina="criaGrupo"/>
                                     }
+                                    </div>
                                 </span>
                             </div>
                         </Collapse>
