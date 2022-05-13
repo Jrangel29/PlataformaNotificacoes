@@ -25,12 +25,12 @@ class navbar extends React.Component {
                         <Nav.Link as={Link} to="/houses">
                             Casas
                         </Nav.Link>
-                        <Nav.Link as={Link} to="/groups">
+                        {/*<Nav.Link as={Link} to="/groups">
                             Grupos
                         </Nav.Link>
                         <Nav.Link as={Link} to="/templates">
                             Templates
-                        </Nav.Link>
+                        </Nav.Link>*/}
                     </Nav>
                 </Container>
             </Navbar>

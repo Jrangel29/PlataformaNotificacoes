@@ -38,15 +38,15 @@ function App() {
           <Route exact path="/users/create" element={<CreateUser/>}/>
           <Route exact path="/users/edit" element={<EditUser/>}/>
           <Route exact path="/routines" element={<Routines/>}/>
-          <Route exact path="/groups" element={<Groups/>}/>
+          {/*<Route exact path="/groups" element={<Groups/>}/>
           <Route exact path="/groups/group" element={<Group/>}/>
           <Route exact path="/groups/create" element={<CreateGroup/>}/>
           <Route exact path="/groups/edit" element={<EditGroup/>}/>
-          <Route exact path="/history" element={<History/>}/>
-          <Route exact path="/history/details" element={<HistoryDetails/>}/>
           <Route exact path="/templates" element={<Templates/>}/>
           <Route exact path="/templates/create" element={<CreateTemplate/>}/>
-          <Route exact path="/templates/edit" element={<EditTemplate/>}/>
+          <Route exact path="/templates/edit" element={<EditTemplate/>}/>*/}
+          <Route exact path="/history" element={<History/>}/>
+          <Route exact path="/history/details" element={<HistoryDetails/>}/>
           <Route exact path="/houses" element={<Houses/>}/>
           <Route exact path="/houses/house" element={<House/>}/>
           <Route exact path="/houses/create" element={<CreateHouse/>}/>

@@ -74,7 +74,7 @@ class CreateHouse extends React.Component {
                         <h1 className='tituloSeccaoPagina'>Informação Geral</h1>
                         <span className='col-12 m-0'>
                             <p className='subtituloSeccaoPagina'>Nome da Casa <span className='obrigatorio'>*</span></p>
-                            <input type="text" className='inputsForms w-100' value={this.state.infoUser.nomeUser} id='nomeUser' onChange={this.atualizaInfo}/>
+                            <input type="text" className='inputsForms w-100' value={this.state.infoUser.nomeCasa} id='nomeCasa' onChange={this.atualizaInfo}/>
                         </span>
                         <div className='row col-12 m-0'>
                             <span className='col-4 p-0 mt-3'>

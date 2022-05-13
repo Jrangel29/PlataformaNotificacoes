@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { createNewGroup } from '../../Store/Groups/Actions';
 import { createNewUser } from '../../Store/Users/Actions';
 import { createNewNotification } from '../../Store/Notifications/Actions';
+import { createNewHouse } from '../../Store/Casas/Actions';
 
 const SubmitButton = (props) => {
     
@@ -23,6 +24,11 @@ const SubmitButton = (props) => {
     const criaNotification = (tipologia, subcategoria, categoriaSaude, envioNotif, dias, tituloNotif, subtituloNotif, descricaoNotif, paramsPersonalizado) => {
         props.openModal();
         dispatch(createNewNotification(tipologia, subcategoria, categoriaSaude, envioNotif, dias, tituloNotif, subtituloNotif, descricaoNotif, paramsPersonalizado));
+    };
+
+    const criaCasa = (nome, id, concelho) => {
+        props.openModal();
+        dispatch(createNewHouse(nome, id, concelho));
     };
 
     if(props.tipoForm === "User"){
@@ -106,7 +112,7 @@ const SubmitButton = (props) => {
                         className='col-2' 
                         variant='flat'
                         onClick={
-                            () => props.openModal()
+                            () => criaCasa(props.params.infoUser.nomeCasa, props.params.infoUser.idBox, props.params.infoUser.concelho)
                         } 
                         >Criar Casa</Button>
                 </span>

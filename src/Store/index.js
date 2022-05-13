@@ -5,13 +5,15 @@ import GroupsReducer from './Groups/Reducers';
 import TipologiasReducer from './Tipologias/Reducers';
 import DistritosReducer from './Distritos/Reducers';
 import ConcelhosReducer from './Concelhos/Reducers';
+import CasasReducer from './Casas/Reducers';
 
 const rootReducer = combineReducers({
     utilizadores: UsersReducer,
     grupos: GroupsReducer,
     tipologias: TipologiasReducer,
     distritos: DistritosReducer,
-    concelhos: ConcelhosReducer
+    concelhos: ConcelhosReducer,
+    casas: CasasReducer
 });
 
 const composeEnhancers =

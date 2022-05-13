@@ -1,0 +1,31 @@
+import {
+    CASAS_CREATE_SUCCESS,
+    CASAS_CREATE_START,
+    CASAS_GET_START,
+    CASAS_GET_SUCCESS
+} from '../Actions/Constants'
+
+const initialState = {
+    isLoadingCreate: true,
+    singleCasa: {},
+    isLoading: true
+}
+
+export default (state = initialState, { type, payload }) => {
+    let data;
+    
+    switch(type) {
+        case CASAS_CREATE_START:
+            return {...state, isLoadingCreate: true};
+            break;
+        case CASAS_CREATE_SUCCESS:
+            return {...state, isLoadingCreate: false};
+            break;
+        case CASAS_GET_START:
+            return { ...state, isLoading: true };
+        case CASAS_GET_SUCCESS:
+            return { ...state, data: payload, isLoading: false };
+        default:
+            return state;
+    }
+}

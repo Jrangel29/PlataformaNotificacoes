@@ -1,7 +1,7 @@
 //USERS
 
 export const createUser = (name, idade, idBox, distrito, concelho, saude, informacaoAdicional) => {
-    fetch(`http://geo-navsafety.ua.pt:443/overtv/utilizadores`, {
+    fetch(`https://geo-navsafety.ua.pt:443/overtv/utilizadores`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -10,11 +10,28 @@ export const createUser = (name, idade, idBox, distrito, concelho, saude, inform
     }).then(response => response.json())
 }
 
+//CASAS
+
+export const createHouse = (nome, idBox, concelho) => {
+    fetch(`http://geo-navsafety.ua.pt:443/overtv/casas/new`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({nome, idBox, concelho})
+    }).then(response => response.json())
+}
+
+export const fetchHouses = () =>
+  fetch(`http://geo-navsafety.ua.pt:443/overtv/casas`)
+    .then(response => response.json())
+
+
 
 //GROUPS
 
 export const createGroup = (name, descricao, idade, distrito, concelho) => {
-    fetch(`http://geo-navsafety.ua.pt:443/overtv/grupos`, {
+    fetch(`https://geo-navsafety.ua.pt:443/overtv/grupos`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -89,7 +106,7 @@ export const createNotification = (tipologia, subcategoria, categoriaSaude, envi
         }
     }
     
-    fetch(`http://geo-navsafety.ua.pt:443/overtv/notifications`, {
+    fetch(`https://geo-navsafety.ua.pt:443/overtv/notifications`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -101,7 +118,7 @@ export const createNotification = (tipologia, subcategoria, categoriaSaude, envi
 //Tipologias
 
 export const fetchTipologiaList = () =>
-  fetch(`http://geo-navsafety.ua.pt:443/overtv/tipologias`)
+  fetch(`https://geo-navsafety.ua.pt:443/overtv/tipologias`)
     .then(response => response.json())
 
 //Distritos
