@@ -71,11 +71,11 @@ export const BuscaTipologiasNotificacoes = (props) => {
                     {tipologiaList.map(item => {
                         return(
                             <Dropdown.Item onClick={
-                                item.nome === "Agenda" ?
-                                () => props.mudaForm(item.nome, item.id_tipologia, "Dia e Hora")
-                                :
                                 item.nome === "Informação" ?
                                 () => props.mudaForm(item.nome, item.id_tipologia, "Combustíveis")
+                                :
+                                item.nome === "Saúde" ?
+                                () => props.mudaForm(item.nome, item.id_tipologia, "Inatividade")
                                 :
                                 () => props.mudaForm(item.nome, item.id_tipologia, "nao")
                             }>{item.nome}</Dropdown.Item>

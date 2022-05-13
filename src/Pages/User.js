@@ -70,7 +70,7 @@ class User extends React.Component {
                         <div>
                             <h1 className='tituloSeccaoPagina'>Ricardo Lima</h1>
                             <p className='textoSeccaoPagina'>66 anos</p>
-                            <p className='textoSeccaoPagina'>Vila Nova de Gaia, Porto</p>
+                            <p className='textoSeccaoPagina'>Casa do Ricardo</p>
                         </div>
                         <div className='mt-4'>
                             <h1 className='tituloSeccaoPagina'>Saúde</h1>

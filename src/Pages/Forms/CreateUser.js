@@ -5,6 +5,7 @@ import {Button, Dropdown} from 'react-bootstrap';
 import SuccessModal from '../../Components/Modal/SuccessModal';
 import SubmitButton from '../../Components/Geral/SubmitButton';
 import { BuscaTipologias, BuscaDistritosConcelhos } from '../../Components/Forms/Hooks';
+import { ListaCasasPesquisa } from '../../Components/Forms/ListaPesquisa';
 
 class CreateUser extends React.Component {
 
@@ -101,11 +102,33 @@ class CreateUser extends React.Component {
                             <textarea rows="4" className='inputsForms w-100' value={this.state.infoUser.infoAdicional} id='infoAdicional' onChange={this.atualizaInfo}/>
                         </span>
 
-                        <div className='row col-12 m-0'>
-                            <span className='col-6 row m-0 divMargem'>
-                                <p className='subtituloSeccaoPagina mt-3 p-0'>Adicionar a casa</p>
-                            </span>
-                        </div>
+                        <span className='col-12 m-0'>
+                            <p className='tituloSeccaoPagina mt-3 mb-1'>Casa</p>
+                            <div className='row col-12 m-0'>
+                                <span className='col-6 row m-0 divMargem'>
+                                    <p className='subtituloSeccaoPagina p-0'>Adicionar a casa</p>
+                                </span>
+                                <span className='col-6 row m-0 divMargem'>
+                                    <p className='subtituloSeccaoPagina p-0'>Casa escolhida</p>
+                                </span>
+                            </div>
+
+                            <div className='row col-12 m-0'>
+                                <div className='col-6 ms-0 ps-0'>
+                                    <ListaCasasPesquisa/>
+                                </div>
+                                <div className='col-6 ms-0 ps-0'>
+                                    <p className='subtituloSeccaoCasa p-0'>Casa do Rui</p>
+                                    <p className='cidadeSeccaoCasa p-0'>Trofa, Porto</p>
+                                    <span>
+                                        <p>Membros:</p>
+                                        <p>Rui Monteiro</p>
+                                        <p>Luísa Monteiro</p>
+                                        <p>Tânia Monteiro</p>
+                                    </span>
+                                </div>
+                            </div>
+                        </span>
                         
                         <span className='row m-0 mt-2 justify-content-end'>
                             <p className='col-2 indicaObrigatorio'>*Obrigatório</p>

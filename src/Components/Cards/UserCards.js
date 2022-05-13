@@ -21,7 +21,7 @@ class UserCards extends React.Component {
                                         66 anos
                                     </p>
                                     <p className={this.props.pagina === "criaGrupo" ? 'textoSmall mb-0' : 'mb-0'}>
-                                        Vila Nova de Gaia, Porto
+                                        Casa do Ricardo
                                     </p>
                                 </span>
                             </Accordion.Header>
@@ -48,7 +48,7 @@ class UserCards extends React.Component {
                                         21 anos
                                     </p>
                                     <p className={this.props.pagina === "criaGrupo" ? 'textoSmall mb-0' : 'mb-0'}>
-                                        Espinho, Aveiro
+                                        Casa do Ricardo
                                     </p>
                                 </span>
                             </Accordion.Header>
@@ -75,7 +75,7 @@ class UserCards extends React.Component {
                                         42 anos
                                     </p>
                                     <p className={this.props.pagina === "criaGrupo" ? 'textoSmall mb-0' : 'mb-0'}>
-                                        Amadora, Lisboa
+                                        Casa Marco
                                     </p>
                                 </span>
                             </Accordion.Header>
@@ -102,7 +102,7 @@ class UserCards extends React.Component {
                                         33 anos
                                     </p>
                                     <p className={this.props.pagina === "criaGrupo" ? 'textoSmall mb-0' : 'mb-0'}>
-                                        Maia, Porto
+                                        Casa da Maria
                                     </p>
                                 </span>
                             </Accordion.Header>

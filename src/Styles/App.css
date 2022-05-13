@@ -2,8 +2,12 @@
     font-family: 'Roboto', sans-serif;
 }
 
+textarea:focus, input:focus{
+    outline: none;
+}
+
 .tituloPagina{
-    font-size: 48px;
+    font-size: 38px;
     font-weight: 700;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -24,11 +28,12 @@
 }
 
 .tituloSeccaoPaginaNotifs{
-    font-size: 26px;
-    font-weight: 700;
-    color: #3F72AF;
+    font-size: 22px;
+    font-weight: 500;
+    color: #F9F7F7;
     margin-top: 5px;
     margin-bottom: 5px;
+    padding-left: 40px;
 }
 
 .LoadingComponent{
@@ -39,21 +44,47 @@
 }
 
 .subtituloSeccaoPagina{
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
     color: #112D4E;
     margin-bottom: 4px;
 }
 
+.subtituloSeccaoSmol{
+    font-size: 15px;
+    font-weight: 700;
+    color: #112D4E;
+    margin-bottom: 4px;
+}
+
+.subtituloSeccaoPaginaBigger{
+    font-size: 22px;
+    font-weight: 700;
+    color: #112D4E;
+    margin-bottom: 0;
+}
+
+.subtituloSeccaoCasa{
+    font-size: 18px;
+    font-weight: 700;
+    color: #3F72AF;
+    margin-bottom: 0px;
+}
+
+.cidadeSeccaoCasa{
+    font-size: 15px;
+    font-weight: 700;
+}
+
 .obrigatorio{
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
     color: red;
 }
 
 .indicaObrigatorio{
     color: red;
-    font-size: 16px;
+    font-size: 14px;
     text-align: right;
     margin-bottom: 10px;
 }
@@ -77,6 +108,13 @@
     background-color: #F9F7F7;
     border: #112D4E solid 1px;
     border-radius: 5px;
+    font-size: 14px;
+    padding: 3px;
+    display: inline;
+}
+
+.inputsFormsDisabled{
+    display: none;
 }
 
 .userId{
@@ -130,6 +168,14 @@
     min-height: 100vh;
 }
 
+.mainBodyForm{
+    background-color: #FFFFFF;
+    padding-bottom: 30px!important;
+    margin-top: -60px!important;
+    padding-top: 60px!important;
+    min-height: 100vh;
+}
+
 .erro404{
     font-size: 90px;
     font-weight: 700;
@@ -137,13 +183,24 @@
 }
 
 .divPreview{
-    border: solid 1px #112D4E;
-    border-radius: 5px;
     text-align: center;
     min-height: 100px;
     display: flex;
     align-items:center;
     justify-content:center;
+}
+
+.stickyTop{
+    position: sticky!important;
+    top: 0!important;
+    position: -webkit-sticky!important;
+    background-color: #FFFFFF;
+    z-index: 1;
+    -webkit-box-shadow: 0px 8px 16px -9px rgba(0,0,0,0.67); 
+    box-shadow: 0px 8px 16px -9px rgba(0,0,0,0.67);
+    border-bottom: #c9c9c9 solid 2px;
+    transition: box-shadow 0.2s ease-in-out;
+    transition: border-bottom 0.2s ease-in-out;
 }
 
 .notiPreview{
@@ -183,37 +240,58 @@
 
 .btnSeccao{
     text-align: left!important;
-    border-bottom: solid 1px #000000!important;
+    background-color: #3F72AF!important;
     width: 100%!important;
     display: flex!important;
     flex-direction: row!important;
     justify-content: space-between!important;
+    border-radius: 0!important;
+}
+
+.prevSeccao{
+    text-align: left!important;
+    background-color: #3F72AF!important;
+    width: 100%!important;
+    display: flex!important;
+    flex-direction: row!important;
+    justify-content: space-between!important;
+    border-radius: 0!important;
+    padding: 6px 12px;
 }
 
 .btnSeccao:hover{
     text-align: left!important;
-    border-bottom: solid 1px #000000!important;
-    background-color: #eaeaea!important;
+    background-color: #2d507c!important;
+    font-weight: 700!important;
     width: 100%!important;
+    border-radius: 0;
+}
+
+.btnSeccao:active{
+    background-color: #2d507c!important;
+    width: 100%!important;
+    border-radius: 0;
 }
 
 .ArrowDown{
-    height: 15px;
+    height: 17px;
     margin-top: auto;
     margin-bottom: auto;
     -webkit-transition: -webkit-transform .3s ease-in-out;
     -ms-transition: -ms-transform .3s ease-in-out;
-    transition: transform .3s ease-in-out;  
+    transition: transform .3s ease-in-out;
+    margin-right: 40px!important;
 }
 
 .ArrowDownRotated{
-    height: 15px;
+    height: 17px;
     margin-top: auto;
     margin-bottom: auto;
     transform: rotate(-180deg);
     -webkit-transition: -webkit-transform .3s ease-in-out;
     -ms-transition: -ms-transform .3s ease-in-out;
-    transition: transform .3s ease-in-out;  
+    transition: transform .3s ease-in-out; 
+    margin-right: 40px!important; 
 }
 
 .ListaUsersForm{
@@ -221,9 +299,17 @@
     margin-right: 0px!important;
     height: 200px;
     overflow-y: scroll;
-    border-bottom: #000000 1px solid;
-    border-left: #000000 1px solid;
-    border-right: #000000 1px solid;
+    border-bottom: #c9c9c9 solid 2px;
+    border-left: #c9c9c9 solid 2px;
+    border-right: #c9c9c9 solid 2px;
+}
+
+.ListaUsersFormAdicionados{
+    margin-left: 0px!important;
+    margin-right: 0px!important;
+    height: 233px;
+    overflow-y: scroll;
+    border: #c9c9c9 solid 2px;
 }
 
 .itemListaUsersForm{
@@ -231,7 +317,7 @@
     height: 40px;
     background-color: #F9F7F7;
     padding: 0!important;
-    border-bottom: #000000 solid 1px;
+    border-bottom: #c9c9c9 solid 2px;
     display: flex!important;
     flex-direction: column!important;
     justify-content: center!important;
@@ -242,10 +328,11 @@
     height: 40px;
     background-color: #eaeaea;
     padding: 0!important;
-    border-bottom: #000000 solid 1px;
+    border-bottom: #c9c9c9 solid 2px;
     display: flex!important;
     flex-direction: column!important;
     justify-content: center!important;
+    margin: 0!important;
 }
 
 .infoCasaForm{
@@ -265,6 +352,23 @@
     flex-direction: column!important;
     justify-content: center!important;
     margin: auto;
+    background-color: #3F72AF!important;
+    border: none!important;
+    color: #F9F7F7!important;
+}
+
+.btnListaUser:hover{
+    width: 80%!important;
+    text-align: center!important;
+    height: 30px;
+    font-size: 14px!important;
+    display: flex!important;
+    flex-direction: column!important;
+    justify-content: center!important;
+    margin: auto;
+    background-color: #2d507c!important;
+    border: none!important;
+    color: #F9F7F7!important;
 }
 
 .disabledButton{
@@ -284,12 +388,52 @@
 
 .barraPesquisaForm{
     background-color: #DBE2EF;
-    border-top: #000000 1px solid;
-    border-left: #000000 1px solid;
-    border-right: #000000 1px solid;
+    border-top: #c9c9c9 solid 2px;
+    border-left: #c9c9c9 solid 2px;
+    border-right: #c9c9c9 solid 2px;
     border-bottom: none;
     border-radius: 5px 5px 0 0;
     padding: 7px;
     font-size: 16px;
     color: #112D4E;
+}
+
+.seccaoPrefsUser{
+    border: #c9c9c9 solid 2px;
+    padding: 15px 10px;
+    background-color: #e9e9e9;
+    max-height: 930px;
+    overflow-y: scroll;
+}
+
+.textoPrefsUser{
+    font-size: 14px;
+}
+
+.itensPreview{
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.BladeSection{
+    font-size: 14px;
+    margin-bottom: 0;
+    margin-top: 7px!important;  
+}
+
+.MessageSection{
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+.BladeSectionDisabled{
+    font-size: 14px;
+    margin-bottom: 0;
+    margin-top: 11px!important;
+    font-weight: 700;
+    display: none;
+}
+
+.tableRowEscolha{
+    width: 60%!important;
 }

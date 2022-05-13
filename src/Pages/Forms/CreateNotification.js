@@ -1,21 +1,18 @@
 import React from 'react';
 import Navbar from '../../Components/Geral/Navbar';
 import Header from '../../Components/Geral/Header';
-import {Button, Dropdown, Collapse} from 'react-bootstrap';
+import {Button, Dropdown, Collapse, Form} from 'react-bootstrap';
 import DownArrow from '../../Images/DownArrow.png';
 import UserCards from '../../Components/Cards/UserCards';
 import GroupCards from '../../Components/Cards/GroupCards';
 import NotificationTimeSelection from '../../Components/Forms/NotificationTimeSelection';
 import RespostasUser from '../../Components/Forms/RespostasUser';
 import SuccessModal from '../../Components/Modal/SuccessModal';
-import iconeAgenda from '../../Images/iconeAgenda.png';
-import iconeConteudo from '../../Images/iconeConteudo.png';
-import iconeInfo from '../../Images/iconeInfo.png';
-import iconeSaude from '../../Images/iconeSaude.png';
-import iconeServico from '../../Images/iconeServico.png';
 import SubmitButton from '../../Components/Geral/SubmitButton';
 import { BuscaTipologiasNotificacoes } from '../../Components/Forms/Hooks';
-import ListaUsersPesquisa from '../../Components/Forms/ListaUsersPesquisa';
+import { ListaUsersPesquisa, ListaUsersAdicionados } from '../../Components/Forms/ListaPesquisa';
+import { DeliveryOptions } from '../../Components/Forms/DeliveryOptions';
+import { PreviewNotif } from '../../Components/Forms/PreviewNotif';
 
 class CreateNotification extends React.Component {
 
@@ -27,11 +24,13 @@ class CreateNotification extends React.Component {
             tipologia: "Agenda",
             idTipologia: '',
             categoriaInfo: "",
+            nomeItem: "",
             tituloNotif: "",
             popupSecundario: false,
             subtituloNotif: "",
             descricaoNotif: "",
-            envioNotif: "Envio Único",
+            regularidade: '',
+            envioNotif: "Pontual",
             horario: 'Bom Dia',
             diaUnico: '',
             hora: '',
@@ -50,7 +49,46 @@ class CreateNotification extends React.Component {
                 icone: "Agenda",
                 momentoEnvio: "Agora"
             },
-            colapsado: 0
+            colapsado: {
+                collapse1: false,
+                collapse2: false,
+                collapse3: false
+            },
+            mensagens: {
+                semanaAntes: {
+                    active: false, 
+                    message: ''},
+                dias3: {
+                    active: false, 
+                    message: ''},
+                diaAnterior: {
+                    active: false, 
+                    message: ''},
+                diaProprio: {
+                    active: false, 
+                    message: ''},
+                horaEspecifica: {
+                    active: false, 
+                    message: ''},
+                imediato: {
+                    active: false, 
+                    message: ''},
+                intervaloHoras: {
+                    active: false, 
+                    message: ''},
+                horaAntes: {
+                    active: false, 
+                    message: ''},
+                meiaHora: {
+                    active: false, 
+                    message: ''},
+                quartoHora: {
+                    active: false, 
+                    message: ''},
+                minutos5: {
+                    active: false, 
+                    message: ''}
+            }
         }
     }
 
@@ -59,17 +97,11 @@ class CreateNotification extends React.Component {
         if(subcategoria === "nao"){
             this.setState({
                 tipologia: valor,
-                idTipologia: id
-            })
-        }
-        if(subcategoria === "Dia e Hora"){
-            this.setState({
-                tipologia: valor,
                 idTipologia: id,
-                momentoUnico: subcategoria
+                categoriaInfo: ''
             })
         }
-        if(subcategoria === "Combustíveis" || subcategoria === "Greves" || subcategoria === "Farmácias de Serviço" || subcategoria === "Feriados"){
+        if(subcategoria === "Combustíveis" || subcategoria === "Greves" || subcategoria === "Farmácias de Serviço" || subcategoria === "Feriados" || subcategoria === "Inatividade" || subcategoria === "Ingestão de Líquidos" || subcategoria === "Medicação"){
             this.setState({
                 tipologia: valor,
                 idTipologia: id,
@@ -104,6 +136,20 @@ class CreateNotification extends React.Component {
         })
     }
 
+    alteraRegularidade = (valor) => {
+        if(valor.target.value === "Pontual"){
+            this.setState({
+                regularidade: valor.target.value,
+                envioNotif: "Pontual"
+            })
+        } else{
+            this.setState({
+                regularidade: valor.target.value,
+                envioNotif: "Diária"
+            })
+        }
+    }
+
     alteraMomentoUnico = (valor) => {
         this.setState({
             momentoUnico: valor
@@ -128,9 +174,9 @@ class CreateNotification extends React.Component {
         })
     }
 
-    alteraPopup = () => {
+    alteraPopup = (valor) => {
         this.setState({
-            popupSecundario: !this.state.popupSecundario
+            popupSecundario: valor
         })
     }
 
@@ -181,31 +227,105 @@ class CreateNotification extends React.Component {
     }
 
     mudaCollapse = (val) => {
-        if(val !== this.state.colapsado) {
-            this.setState({
-                colapsado: val
-            })
-        } else {
-            this.setState({
-                colapsado: 0
-            })
-        }
+        let string = `collapse${val}`;
+
+        this.setState({
+            colapsado: {
+                ...this.state.colapsado,
+                [string]: !this.state.colapsado[string]
+            }
+        })
+        
+    }
+
+    updateMomentosEnvio = (val) => {
+        let escolhido = val.target.value;
+        this.setState({
+            mensagens:{
+                ...this.state.mensagens,
+                [escolhido]: {
+                    ...this.state.mensagens[escolhido],
+                    active: !this.state.mensagens[escolhido].active
+                }
+            }
+        })
+    }
+
+    updateMensagensEnvio = (val) => {
+        let escolhido = val.target.id;
+        let escrito = val.target.value
+        this.setState({
+            mensagens:{
+                ...this.state.mensagens,
+                [escolhido]: {
+                    ...this.state.mensagens[escolhido],
+                    message: escrito
+                }
+            }
+        })
     }
 
     render(){
         return(
             <div>
                 <Navbar/>
-                <div className='mainBody container'>
+                <div className='mainBodyForm container px-0'>
                     <Header nome="Criar Notificação" detalhe="sim" apagaMuda="nao"/>
-                    <div className='row m-0'>
-                        <div className='btn btnSeccao' onClick={() => this.mudaCollapse(1)}>
-                            <h1 className='tituloSeccaoPaginaNotifs'>Recetores da notificação</h1>
-                            <img src={DownArrow} className={this.state.colapsado !== 1 ? "ArrowDown" : "ArrowDownRotated"}/>
+                    <PreviewNotif tipo={this.state.tipologia} titulo={this.state.tituloNotif} sub={this.state.categoriaInfo}/>
+                    <div>
+                        <div className='btn btnSeccao ms-0' onClick={() => this.mudaCollapse(1)}>
+                            <h1 className='tituloSeccaoPaginaNotifs'>Tipologia</h1>
+                            <img src={DownArrow} className={this.state.colapsado.collapse1 !== true ? "ArrowDown" : "ArrowDownRotated"}/>
                         </div>
-                        <Collapse in={this.state.colapsado === 1 ? true : false}>
-                            <div className='row m-0 p-0'>
-                                <p className='subtituloSeccaoPagina' style={{marginTop: "5px"}}>Tipo de recetor</p>
+                        <Collapse in={this.state.colapsado.collapse1}>
+                            <div className='row m-0' style={{padding: "0 40px"}}>
+                                <span className='col-3 me-3' style={{marginTop: "5px"}}>
+                                    <p className='subtituloSeccaoPagina'>Categoria principal <span className='obrigatorio'>*</span></p>
+                                    <BuscaTipologiasNotificacoes tipo={this.state.tipologia} mudaForm={this.alteraFormulario} />
+                                </span>
+
+                                <span className='col-3 p-0 me-3'>
+                                    <p className='subtituloSeccaoPagina p-0' style={{ marginTop: "5px"}}>Subcategoria</p>
+                                    {this.state.tipologia === "Informação" || this.state.tipologia === "Saúde" ?
+                                    <Dropdown>
+                                        <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
+                                            {this.state.categoriaInfo}
+                                        </Dropdown.Toggle>
+                                        {this.state.tipologia === "Informação" ?
+                                        <Dropdown.Menu className='dropdownFiltro'>
+                                            <Dropdown.Item onClick={() => this.alteraFormulario(this.state.tipologia, this.state.idTipologia, "Combustíveis")}>Combustíveis</Dropdown.Item>
+                                            <Dropdown.Item onClick={() => this.alteraFormulario(this.state.tipologia, this.state.idTipologia, "Farmácias de Serviço")}>Farmácias de Serviço</Dropdown.Item>
+                                            <Dropdown.Item onClick={() => this.alteraFormulario(this.state.tipologia, this.state.idTipologia, "Feriados")}>Feriados</Dropdown.Item>
+                                            <Dropdown.Item onClick={() => this.alteraFormulario(this.state.tipologia, this.state.idTipologia, "Greves")}>Greves</Dropdown.Item>
+                                        </Dropdown.Menu>
+                                        :
+                                        <Dropdown.Menu className='dropdownFiltro'>
+                                            <Dropdown.Item onClick={() => this.alteraFormulario(this.state.tipologia, this.state.idTipologia, "Inatividade")}>Inatividade</Dropdown.Item>
+                                            <Dropdown.Item onClick={() => this.alteraFormulario(this.state.tipologia, this.state.idTipologia, "Ingestão de Líquidos")}>Ingestão de Líquidos</Dropdown.Item>
+                                            <Dropdown.Item onClick={() => this.alteraFormulario(this.state.tipologia, this.state.idTipologia, "Medicação")}>Medicação</Dropdown.Item>
+                                        </Dropdown.Menu>
+                                        }
+                                    </Dropdown>
+                                    :
+                                    <Dropdown>
+                                        <Dropdown.Toggle variant="custom" disabled className='dropdownFiltro'>
+                                            Não tem subcategoria
+                                        </Dropdown.Toggle>
+                                    </Dropdown>
+                                    }
+                                </span>
+                            </div>
+                        </Collapse>
+                    </div>
+
+                    <div className='row m-0 mt-2'>
+                        <div className='btn btnSeccao' onClick={() => this.mudaCollapse(2)}>
+                            <h1 className='tituloSeccaoPaginaNotifs'>Recetores</h1>
+                            <img src={DownArrow} className={this.state.colapsado.collapse2 !== true ? "ArrowDown" : "ArrowDownRotated"}/>
+                        </div>
+                        <Collapse in={this.state.colapsado.collapse2}>
+                            <div className='row m-0' style={{padding: "0 40px"}}>
+                                {/*<p className='subtituloSeccaoPagina' style={{marginTop: "5px"}}>Tipo de recetor</p>
                                 <Dropdown className='col-3 m-0' onSelect={this.escolheRecetores}>
                                     <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
                                         Recetores Individuais
@@ -215,7 +335,7 @@ class CreateNotification extends React.Component {
                                         <Dropdown.Item eventKey={"Individuais"}>Recetores Individuais</Dropdown.Item>
                                         <Dropdown.Item eventKey={"Grupos"}>Grupos</Dropdown.Item>
                                     </Dropdown.Menu>
-                                </Dropdown>
+                                </Dropdown>*/}
 
                                 <span className='row m-0'>
                                     <div className='col-6 ms-0 ps-0'>
@@ -229,120 +349,111 @@ class CreateNotification extends React.Component {
                                     <div className='col-6 ms-0 ps-0'>
                                         <ListaUsersPesquisa tipo={this.state.recetores}/>
                                     </div>
-                                    <div className='col-6 row m-0 p-0'>
-                                    {this.state.recetores === "Individuais" ? 
-                                    <UserCards pagina="criaGrupo"/>
-                                    :
-                                    <GroupCards pagina="criaGrupo"/>
-                                    }
+                                    <div className='col-6 m-0 p-0'>
+                                        <ListaUsersAdicionados/>
                                     </div>
                                 </span>
-                            </div>
-                        </Collapse>
-                    </div>
-                    {/*
-                    <div className='row m-0 mt-3'>
-                        <h1 className='tituloSeccaoPaginaNotifs p-0'>Escolha de template</h1>
-                        <Dropdown className='col-3 p-0 m-0'>
-                            <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
-                                Recetores Individuais
-                            </Dropdown.Toggle>
-
-                            <Dropdown.Menu className='dropdownFiltro'>
-                                <Dropdown.Item href="#/action-1">Recetores Individuais</Dropdown.Item>
-                                <Dropdown.Item href="#/action-2">Grupos</Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
-                    </div>
-                    */}
-                    <div className='mt-3'>
-                        <div className='btn btnSeccao' onClick={() => this.mudaCollapse(2)}>
-                            <h1 className='tituloSeccaoPaginaNotifs'>Tipologia de notificação</h1>
-                            <img src={DownArrow} className={this.state.colapsado !== 2 ? "ArrowDown" : "ArrowDownRotated"}/>
-                        </div>
-                        <Collapse in={this.state.colapsado === 2 ? true : false}>
-                            <div className='row m-0'>
-                                <span className='col-3 me-3' style={{marginTop: "5px"}}>
-                                    <p className='subtituloSeccaoPagina'>Categoria principal <span className='obrigatorio'>*</span></p>
-                                    <BuscaTipologiasNotificacoes tipo={this.state.tipologia} mudaForm={this.alteraFormulario} />
-                                </span>
-
-                                <span className='col-3 p-0 me-3' style={this.state.tipologia === "Informação" ? {display: "block", marginTop: "5px"} : {display: "none"}}>
-                                    <p className='subtituloSeccaoPagina p-0'>Subcategoria</p>
-                                    {this.state.tipologia === "Informação" ?
-                                    <Dropdown>
-                                        <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
-                                            {this.state.categoriaInfo}
-                                        </Dropdown.Toggle>
-
-                                        <Dropdown.Menu className='dropdownFiltro'>
-                                            <Dropdown.Item onClick={() => this.alteraFormulario("Informação", "Combustíveis")}>Combustíveis</Dropdown.Item>
-                                            <Dropdown.Item onClick={() => this.alteraFormulario("Informação", "Farmácias de Serviço")}>Farmácias de Serviço</Dropdown.Item>
-                                            <Dropdown.Item onClick={() => this.alteraFormulario("Informação", "Feriados")}>Feriados</Dropdown.Item>
-                                            <Dropdown.Item onClick={() => this.alteraFormulario("Informação", "Greves")}>Greves</Dropdown.Item>
-                                        </Dropdown.Menu>
-                                    </Dropdown>
-                                    :
-                                    <></>
-                                    }
-                                </span>
-                                {this.state.tipologia === "Informação" ?
-                                    <div className='col-12 mt-2'>
-                                        <p className='textoSeccaoPagina'>
-                                            <b>Envio da Notificação: </b>As notificações do tipo "Informação" são enviadas nas rotinas de Boa Noite e Bom Dia.
-                                        </p>
-                                    </div>
-                                :
-                                <></>
-                                }
-                            </div>
-                        </Collapse>
-                    </div>
-
-                    <div className='row m-0 mt-3'>
-                        <div className='btn btnSeccao' onClick={() => this.mudaCollapse(3)}>
-                            <h1 className='tituloSeccaoPaginaNotifs'>Conteúdo da notificação</h1>
-                            <img src={DownArrow} className={this.state.colapsado !== 3 ? "ArrowDown" : "ArrowDownRotated"}/>
-                        </div>
-                        <Collapse in={this.state.colapsado === 3 ? true : false}>
-                            <div className='row m-0 p-0'>
-                                <span className='row m-0 col-12'>
-                                    <p className='subtituloSeccaoPagina p-0' style={{marginTop: "5px"}}>Título da notificação principal <span className='obrigatorio'>*</span></p>
-                                    <input type="text" className='inputsForms' id='tituloNotif' value={this.state.tituloNotif} onChange={this.alteraTexto} maxLength="50"/>
-                                </span>
-                                <span className='col-3 mt-2'>
-                                    <p className='subtituloSeccaoPagina'>Permite resposta?</p>
-                                    <Dropdown>
-                                        <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
-                                            {this.state.popupSecundario === true ? <>Com resposta</> : <>Sem resposta</>}
-                                        </Dropdown.Toggle>
-
-                                        <Dropdown.Menu className='dropdownFiltro'>
-                                            <Dropdown.Item onClick={() => this.alteraPopup()}>Com resposta</Dropdown.Item>
-                                            <Dropdown.Item onClick={() => this.alteraPopup()}>Sem resposta</Dropdown.Item>
-                                        </Dropdown.Menu>
-                                    </Dropdown>
-                                </span>
-                                {this.state.popupSecundario === true ?
-                                <span className='row col-12 mx-0 mt-2'>
-                                    <p className='subtituloSeccaoPagina p-0'>Título do pop-up secundário</p>
-                                    <input type="text" className='inputsForms' id='subtituloNotif' value={this.state.subtituloNotif} onChange={this.alteraTexto} maxLength="50"/>
-                                    <p className='subtituloSeccaoPagina mt-2 p-0'>Mensagem informativa do pop-up secundário</p>
-                                    <textarea rows="4" className='inputsForms' id='descricaoNotif' value={this.state.descricaoNotif} onChange={this.alteraTexto} maxLength="100"/>
-                                </span>
-                                :
-                                <></>
-                                }
-                                {this.state.popupSecundario === true ?
-                                    <RespostasUser valor={this.state.tipologia}/>
-                                    :
-                                    <></>
-                                }
                             </div>
                         </Collapse>
                     </div>
 
                     <div className='row m-0 mt-2'>
+                        <div className='btn btnSeccao' onClick={() => this.mudaCollapse(3)}>
+                            <h1 className='tituloSeccaoPaginaNotifs'>Conteúdo e Momento de envio</h1>
+                            <img src={DownArrow} className={this.state.colapsado.collapse3 !== true ? "ArrowDown" : "ArrowDownRotated"}/>
+                        </div>
+                        <Collapse in={this.state.colapsado.collapse3}>
+                            <span className='row m-0' style={{padding: "0 40px"}}>
+                                <div className='row col-8'>
+                                    <span className='col-12'>
+                                        <p className='subtituloSeccaoPaginaBigger p-0' style={{marginTop: "5px"}}>Dados do item a notificar</p>
+                                    </span>
+                                    
+                                    <span className='row m-0 col-12'>
+                                        <p className='subtituloSeccaoPagina p-0' style={{marginTop: "5px"}}>Nome do item <span className='obrigatorio'>*</span></p>
+                                        <input type="text" className='inputsForms' id='nomeItem' value={this.state.nomeItem} onChange={this.alteraTexto} maxLength="50"/>
+                                    </span>
+                                    {/* 
+                                    <span className='row m-0 col-12'>
+                                        <p className='subtituloSeccaoPagina p-0' style={{marginTop: "5px"}}>Título da notificação principal <span className='obrigatorio'>*</span></p>
+                                        <input type="text" className='inputsForms' id='tituloNotif' value={this.state.tituloNotif} onChange={this.alteraTexto} maxLength="50"/>
+                                    </span>
+
+                                    <span className='col-4 mt-2'>
+                                        <p className='subtituloSeccaoPagina'>Permite resposta?</p>
+                                        <Dropdown>
+                                            <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
+                                                {this.state.popupSecundario === true ? <>Com resposta</> : <>Sem resposta</>}
+                                            </Dropdown.Toggle>
+
+                                            <Dropdown.Menu className='dropdownFiltro'>
+                                                <Dropdown.Item onClick={() => this.alteraPopup(true)}>Com resposta</Dropdown.Item>
+                                                <Dropdown.Item onClick={() => this.alteraPopup(false)}>Sem resposta</Dropdown.Item>
+                                            </Dropdown.Menu>
+                                        </Dropdown>
+                                    </span>
+                                    {this.state.popupSecundario === true ?
+                                    <span className='row col-12 mx-0 mt-2'>
+                                        <p className='subtituloSeccaoPagina'>Título do pop-up secundário</p>
+                                        <input type="text" className='inputsForms' id='subtituloNotif' value={this.state.subtituloNotif} onChange={this.alteraTexto} maxLength="50"/>
+                                        <p className='subtituloSeccaoPagina mt-2'>Mensagem informativa do pop-up secundário</p>
+                                        <textarea rows="4" className='inputsForms' id='descricaoNotif' value={this.state.descricaoNotif} onChange={this.alteraTexto} maxLength="100"/>
+                                    </span>
+                                    :
+                                    <></>
+                                    }
+                                    {this.state.popupSecundario === true ?
+                                        <RespostasUser valor={this.state.tipologia}/>
+                                        :
+                                        <></>
+                                    }
+                                    */}
+                                    <span className='row m-0 col-12'>
+                                        <p className='subtituloSeccaoPagina p-0' style={{marginTop: "5px"}}>Regularidade de envio <span className='obrigatorio'>*</span></p>
+                                        <Form.Check 
+                                            type="radio" 
+                                            inline 
+                                            name="radios"
+                                            id="Pontual" 
+                                            key="Pontual" 
+                                            value="Pontual"
+                                            label='Pontual'
+                                            onChange={this.alteraRegularidade}
+                                            />
+                                        <Form.Check 
+                                            type="radio" 
+                                            inline
+                                            name="radios" 
+                                            id="Regular" 
+                                            key="Regular" 
+                                            value="Regular"
+                                            label='Regular'
+                                            onChange={this.alteraRegularidade}
+                                            />
+                                    </span>
+                                    <NotificationTimeSelection collapseState={this.state.colapsado} parametros={this.state} mudaDiaUnico={this.alteraDiaUnico} mudaMomentoUnico={this.alteraMomentoUnico} mudaHora={this.alteraHora} mudaHorario={this.alteraHorario} alterarEnvio={this.alteraEnvio} mudaDia={this.alteraDia} mudaMomento={this.alteraMomento}/>                    
+                                
+                                    <span className='col-12 mt-2'>
+                                        <p className='subtituloSeccaoPaginaBigger p-0 mt-2' style={{marginTop: "5px"}}>Mensagens das notificações</p>
+                                    </span>
+                                    <DeliveryOptions changeMomento={this.updateMomentosEnvio} changeMensagem={this.updateMensagensEnvio} momentos={this.state.mensagens}/>
+                                </div>
+
+                                <div className='col-4 mt-3'>
+                                    <div className='seccaoPrefsUser'>
+                                        <span className='col-12'>
+                                            <p className='subtituloSeccaoPagina p-0' style={{marginTop: "5px"}}>Preferências do utilizador</p>
+                                        </span>
+                                        <span className='col-12 textoPrefsUser'>
+                                            <p>bué texto aqui filho bué texto aqui filho bué texto aqui filho bué texto aqui filho</p>
+                                        </span>
+                                    </div>
+                                </div>
+                            </span>
+                        </Collapse>
+                    </div>
+
+                    {/*<div className='row m-0 mt-2'>
                         {this.state.tipologia === "Personalizado" ?
                         <span className='col-2 me-2'>
                             <p className='subtituloSeccaoPagina'>Usar ícone?</p>
@@ -380,50 +491,8 @@ class CreateNotification extends React.Component {
                         :
                         <></>
                         }
-                    </div>
+                    </div>*/}
 
-                    <NotificationTimeSelection collapseState={this.state.colapsado} mudaColapsado={this.mudaCollapse} parametros={this.state} mudaDiaUnico={this.alteraDiaUnico} mudaMomentoUnico={this.alteraMomentoUnico} mudaHora={this.alteraHora} mudaHorario={this.alteraHorario} alterarEnvio={this.alteraEnvio} mudaDia={this.alteraDia} mudaMomento={this.alteraMomento}/>                    
-                    
-                    {this.state.tipologia === "Agenda" && this.state.envioNotif !== "Semanal" && this.state.momentoUnico === "Dia e Hora" ?
-                        <div className='row m-0 mt-2'>
-                            <div className='col-12'>
-                                <p className='textoSeccaoPagina'>
-                                    *Se possível, serão enviadas notificações uma semana antes da data definida, 3 dias antes, na rotina de Boa noite do dia anterior e na rotina de Bom Dia do próprio dia.
-                                </p>
-                                <p className='textoSeccaoPagina'>
-                                    *O utilizador pode escolher ser relembrado da notificação 15 minutos depois de a receber.
-                                </p>
-                            </div>
-                        </div>
-                    :
-                    <></>
-                    }
-                    
-                    <div className='row m-0'>
-                        <div className='mt-4'>
-                            <h1 className='tituloSeccaoPaginaNotifs'>Pré-visualização da notificação</h1>
-                            <div className='divPreview'>
-                                <span className='notiPreview'>
-                                <img src={
-                                    this.state.tipologia === "Agenda" ?
-                                    iconeAgenda
-                                    :
-                                    this.state.tipologia === "Programas" ?
-                                    iconeConteudo
-                                    :
-                                    this.state.tipologia === "Informação" ?
-                                    iconeInfo
-                                    :
-                                    this.state.tipologia === "Saúde" ?
-                                    iconeSaude
-                                    :
-                                    iconeServico
-                                    } className="imgPreview"/>
-                                <p className='textPreview'>{this.state.tituloNotif}</p>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
                     <span className='row m-0 mt-2 justify-content-end'>
                         <p className='col-2 indicaObrigatorio'>*Obrigatório</p>
                     </span>

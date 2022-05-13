@@ -57,4 +57,5 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     right: auto;
     max-height: 250px!important;
     overflow-y: auto;
+    font-size: 16px!important;
 }
