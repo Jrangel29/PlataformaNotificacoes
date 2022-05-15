@@ -5,3 +5,7 @@ export const CASAS_CREATE_ERROR = 'casas/create:error';
 export const CASAS_GET_START = 'casas/get:start';
 export const CASAS_GET_SUCCESS = 'casas/get:success';
 export const CASAS_GET_ERROR = 'casas/get:error';
+
+export const CASAS_PESSOAS_GET_START = 'casasPessoas/get:start';
+export const CASAS_PESSOAS_GET_SUCCESS = 'casasPessoas/get:success';
+export const CASAS_PESSOAS_GET_ERROR = 'casasPessoas/get:error';

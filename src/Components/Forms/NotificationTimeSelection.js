@@ -138,7 +138,7 @@ function NotificationTimeSelection(props) {
                             </tr>
                         </tbody>
                     </Table>
-                    <span className="col-4">
+                    {/*<span className="col-4">
                         <p className="subtituloSeccaoPagina mt-2">Horário de envio</p>
                         <span className="row col-12">
                             <span className="col-4">
@@ -168,7 +168,7 @@ function NotificationTimeSelection(props) {
                                 <></>
                             }
                         </span>
-                    </span>
+                    </span>*/}
                     </div>
                     :
                     <>
@@ -214,7 +214,7 @@ function NotificationTimeSelection(props) {
                                 </Dropdown.Menu>
                             </Dropdown>
                         </span>
-                        <p className="subtituloSeccaoPagina mt-2">Horário de envio</p>
+                        {/*<p className="subtituloSeccaoPagina mt-2">Horário de envio</p>
                         <span className="row col-12">
                             <span className="col-4">
                                 <Dropdown>
@@ -242,7 +242,7 @@ function NotificationTimeSelection(props) {
                                 :
                                 <></>
                             }
-                        </span>
+                        </span>*/}
                     </>
             }
             </>

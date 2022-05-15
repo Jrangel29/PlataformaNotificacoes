@@ -205,7 +205,7 @@ textarea:focus, input:focus{
 
 .notiPreview{
     min-height: 64px!important;
-    min-width: 400px!important;
+    width: 400px!important;
     background-color: #181818;
     color: white;
     display: flex;
@@ -213,6 +213,7 @@ textarea:focus, input:focus{
     align-items:center;
     border-radius: 10px;
     font-size: 20px;
+    margin: auto;
 }
 
 .imgPreview{

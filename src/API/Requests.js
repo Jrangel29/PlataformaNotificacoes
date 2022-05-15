@@ -26,6 +26,10 @@ export const fetchHouses = () =>
   fetch(`http://geo-navsafety.ua.pt:443/overtv/casas`)
     .then(response => response.json())
 
+export const fetchHousePeople = (id) =>
+    fetch(`http://geo-navsafety.ua.pt:443/overtv/casas/${id}`)
+      .then(response => response.json())
+
 
 
 //GROUPS

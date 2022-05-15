@@ -1,17 +1,20 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getHousesList } from '../../Store/Casas/Actions';
+import { getHousesList, getHousePeopleList } from '../../Store/Casas/Actions';
 import '../../Styles/Cards.css';
 import '../../Styles/Filters.css';
 import {Accordion, Button} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import LoadingComponent from '../../Components/Geral/LoadingComponent';
+import PeopleHouseCards from './PeopleHouseCards';
 
 const HouseCards = () => {
     const dispatch = useDispatch();
 
     const casasList = useSelector(({ casas }) => casas.data)
     const isLoadingCasas = useSelector(({ casas }) => casas.isLoading)
+    const peopleList = useSelector(({ casas }) => casas.singleCasa)
+    const isLoadingPeople = useSelector(({ casas }) => casas.isLoading)
 
     useEffect(() => {
         dispatch(getHousesList())
@@ -38,9 +41,7 @@ const HouseCards = () => {
                                     <p className='mb-0'>
                                         {item.localidade}
                                     </p>
-                                    <p className='mb-0 textHouseCards'>
-                                        José Lima, Maria Lima
-                                    </p>
+                                    <PeopleHouseCards idCasa={item.id_box}/>
                                     <p className='mb-0 textHouseCards'>
                                         <span className={item.ativa.data[0] === 0 ? 'redDot' : 'greenDot'}></span>
                                         {item.ativa.data[0] === 0 ? ' Desligada' : ' Ligada'}

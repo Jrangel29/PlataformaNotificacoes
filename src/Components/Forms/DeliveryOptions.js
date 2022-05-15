@@ -150,11 +150,11 @@ export const DeliveryOptions = (props) => {
                             onChange={props.changeMomento}/>
                     </td>
                     <td>
-                        <p className={props.momentos.meiaHora === true ? 'p-0 MessageSection' : 'p-0 BladeSectionDisabled'}>Mensagem do pop-up</p>
-                        <input type="text" placeholder='Mensagem do pop-up (Max. 50 caracteres)' className={props.momentos.meiaHora.active === true ? 'inputsForms w-100 pt-1' : 'inputsFormsDisabled'} id='meiaHora' maxLength="50"/>
-                        <p className={props.momentos.meiaHora === true ? 'p-0 BladeSection' : 'p-0 BladeSectionDisabled'}>Blade horizontal</p>
-                        <input type="text" placeholder='Título do blade (Max. 50 caracteres)' className={props.momentos.meiaHora.active === true ? 'inputsForms w-100' : 'inputsFormsDisabled'} id='meiaHora' maxLength="50"/>
-                        <textarea rows={3} placeholder='Descrição do blade (Max. 150 caracteres)' className={props.momentos.meiaHora.active === true ? 'inputsForms mt-2 w-100 pb-1' : 'inputsFormsDisabled mt-2'} id='meiaHora' maxLength="150"/>
+                        <p className={props.momentos.meiaHora.active === true ? 'p-0 MessageSection' : 'p-0 BladeSectionDisabled'}>Mensagem do pop-up</p>
+                        <input type="text" placeholder='Mensagem do pop-up (Max. 50 caracteres)' onChange={props.changeMensagem} className={props.momentos.meiaHora.active === true ? 'inputsForms w-100 pt-1' : 'inputsFormsDisabled'} id='meiaHora' maxLength="50"/>
+                        <p className={props.momentos.meiaHora.active === true ? 'p-0 BladeSection' : 'p-0 BladeSectionDisabled'}>Blade horizontal</p>
+                        <input type="text" placeholder='Título do blade (Max. 50 caracteres)' onChange={props.blade} className={props.momentos.meiaHora.active === true ? 'inputsForms w-100' : 'inputsFormsDisabled'} id='meiaHoraTituloBlade' maxLength="50"/>
+                        <textarea rows={3} placeholder='Descrição do blade (Max. 150 caracteres)' onChange={props.blade} className={props.momentos.meiaHora.active === true ? 'inputsForms mt-2 w-100 pb-1' : 'inputsFormsDisabled mt-2'} id='meiaHoraDescricaoBlade' maxLength="150"/>
                     </td>
                 </tr>
 

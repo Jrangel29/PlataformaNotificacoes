@@ -81,7 +81,9 @@ class CreateNotification extends React.Component {
                     message: ''},
                 meiaHora: {
                     active: false, 
-                    message: ''},
+                    message: '',
+                    tituloBlade: '',
+                    descricao: ''},
                 quartoHora: {
                     active: false, 
                     message: ''},
@@ -265,13 +267,39 @@ class CreateNotification extends React.Component {
         })
     }
 
+    updateBlade = (val) => {
+        let escolhido = val.target.id;
+        let escrito = val.target.value;
+        if(escolhido === 'meiaHoraTituloBlade'){
+            this.setState({
+                mensagens:{
+                    ...this.state.mensagens,
+                    meiaHora: {
+                        ...this.state.mensagens.meiaHora,
+                        tituloBlade: escrito
+                    }
+                }
+            })
+        } else{
+            this.setState({
+                mensagens:{
+                    ...this.state.mensagens,
+                    meiaHora: {
+                        ...this.state.mensagens.meiaHora,
+                        descricao: escrito
+                    }
+                }
+            })
+        }
+    }
+
     render(){
         return(
             <div>
                 <Navbar/>
                 <div className='mainBodyForm container px-0'>
                     <Header nome="Criar Notificação" detalhe="sim" apagaMuda="nao"/>
-                    <PreviewNotif tipo={this.state.tipologia} titulo={this.state.tituloNotif} sub={this.state.categoriaInfo}/>
+                    <PreviewNotif tipo={this.state.tipologia} mensagens={this.state.mensagens} titulo={this.state.nomeItem} sub={this.state.categoriaInfo}/>
                     <div>
                         <div className='btn btnSeccao ms-0' onClick={() => this.mudaCollapse(1)}>
                             <h1 className='tituloSeccaoPaginaNotifs'>Tipologia</h1>
@@ -436,7 +464,7 @@ class CreateNotification extends React.Component {
                                     <span className='col-12 mt-2'>
                                         <p className='subtituloSeccaoPaginaBigger p-0 mt-2' style={{marginTop: "5px"}}>Mensagens das notificações</p>
                                     </span>
-                                    <DeliveryOptions changeMomento={this.updateMomentosEnvio} changeMensagem={this.updateMensagensEnvio} momentos={this.state.mensagens}/>
+                                    <DeliveryOptions changeMomento={this.updateMomentosEnvio} blade={this.updateBlade} changeMensagem={this.updateMensagensEnvio} momentos={this.state.mensagens}/>
                                 </div>
 
                                 <div className='col-4 mt-3'>
