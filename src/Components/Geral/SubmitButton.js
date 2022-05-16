@@ -80,12 +80,12 @@ const SubmitButton = (props) => {
                     variant='flat' 
                     onClick={
                         () => criaNotification(props.params.tipologia, props.params.categoriaInfo, props.params.terceiraCategoriaSaude, props.params.envioNotif, props.params.dias, props.params.tituloNotif, props.params.subtituloNotif, props.params.descricaoNotif, props.params.paramsPersonalizado)
-                        }>Criar Grupo</Button>
+                        }>Criar Notificação</Button>
             </span>
             :
             props.params.tipologia === "" || props.params.tituloNotif === "" || props.params.envioNotif.tipoNotif === "" ?
             <span className='row m-0 justify-content-end'>
-                <Button className='col-2' variant='custom' disabled>Criar Grupo</Button>
+                <Button className='col-2' variant='custom' disabled>Criar Notificação</Button>
             </span>
             :
             <span className='row m-0 justify-content-end'>

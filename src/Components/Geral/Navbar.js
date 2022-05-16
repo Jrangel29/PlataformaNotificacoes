@@ -11,14 +11,17 @@ const navbar = () => {
         <Navbar className='barraNavegacao p-0 sticky-nav'>
             <Container className='containerNavBar'>
                 <Nav activeKey={lugar} className='containerNavBar'>
+                    <Nav.Link as={Link} to="/notifications/create">
+                        Criar Notificação
+                    </Nav.Link>
                     <Nav.Link as={Link} to="/notifications">
-                        Notificações
+                        Agendadas
                     </Nav.Link>
-                    <Nav.Link as={Link} to="/routines">
+                    {/*<Nav.Link as={Link} to="/routines">
                         Rotinas
-                    </Nav.Link>
+                    </Nav.Link>*/}
                     <Nav.Link as={Link} to="/history">
-                        Histórico
+                        Enviadas
                     </Nav.Link>
                     <Nav.Link as={Link} to="/users">
                         Utilizadores

@@ -36,7 +36,7 @@ class Notifications extends React.Component {
             <div>
                 <Navbar/>
                 <div className='mainBody container'>
-                    <Header nome="Notificações" apagaMuda="nao"/>
+                    <Header nome="Notificações agendadas" apagaMuda="nao"/>
                     <div>
                         <Filters tipo="Notificação"/>
                     </div>

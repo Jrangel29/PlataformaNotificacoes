@@ -7,7 +7,7 @@ function NotificationTimeSelection(props) {
   return (
     <>
         <p className="subtituloSeccaoPagina" style={{marginTop: "5px"}}>
-            Regularidade <span className="obrigatorio">*</span>
+            Intervalo de tempo <span className="obrigatorio">*</span>
         </p>
         <span className="col-4">
             <Dropdown>
@@ -33,7 +33,7 @@ function NotificationTimeSelection(props) {
             <>
             {props.parametros.envioNotif === "Pontual" ?
                 <>
-                    <h1 className='subtituloSeccaoPagina mt-2'>Momento do envio</h1>
+                    <h1 className='subtituloSeccaoPagina mt-2'>Momento de acontecimento do item</h1>
                     <span className="col-4">
                         <Dropdown>
                             <Dropdown.Toggle variant="flat" className="dropdownFiltro">
@@ -138,37 +138,26 @@ function NotificationTimeSelection(props) {
                             </tr>
                         </tbody>
                     </Table>
-                    {/*<span className="col-4">
-                        <p className="subtituloSeccaoPagina mt-2">Horário de envio</p>
+                    <span className="col-4">
+                        <p className="subtituloSeccaoPagina mt-2">Hora</p>
                         <span className="row col-12">
                             <span className="col-4">
-                                <Dropdown>
-                                    <Dropdown.Toggle variant="flat" className="dropdownFiltro">
-                                        {props.parametros.horario}
-                                    </Dropdown.Toggle>
-
-                                    <Dropdown.Menu className="dropdownFiltro">
-                                        <Dropdown.Item onClick={() => props.mudaHorario("Bom Dia")}>
-                                            Bom Dia
-                                        </Dropdown.Item>
-                                        <Dropdown.Item onClick={() => props.mudaHorario("Boa Noite")}>
-                                            Boa Noite
-                                        </Dropdown.Item>
-                                        <Dropdown.Item onClick={() => props.mudaHorario("Hora específica")}>
-                                            Hora específica
-                                        </Dropdown.Item>
-                                    </Dropdown.Menu>
-                                </Dropdown>
+                                <input type="time" className='inputsForms without_ampm w-50' onChange={props.mudaHora} style={{height: "37px"}}/>
                             </span>
-                            {props.parametros.horario === "Hora específica" ? 
+                        </span>
+                    </span>
+                    </div>
+                    : 
+                    props.parametros.envioNotif === "Diária" ?
+                    <div className='mt-3'>
+                        <span className="col-4">
+                            <p className="subtituloSeccaoPagina">Hora</p>
+                            <span className="row col-12">
                                 <span className="col-4">
                                     <input type="time" className='inputsForms without_ampm w-50' onChange={props.mudaHora} style={{height: "37px"}}/>
                                 </span>
-                                :
-                                <></>
-                            }
+                            </span>
                         </span>
-                    </span>*/}
                     </div>
                     :
                     <>
@@ -255,33 +244,11 @@ function NotificationTimeSelection(props) {
         :
         props.parametros.momentoUnico === "Hora" ? 
         <>
-            <p className="subtituloSeccaoPagina mt-2">Horário de envio</p>
+            <p className="subtituloSeccaoPagina mt-2">Hora</p>
             <span className="col-4">
-                <Dropdown>
-                    <Dropdown.Toggle variant="flat" className="dropdownFiltro">
-                        {props.parametros.horario}
-                    </Dropdown.Toggle>
-
-                    <Dropdown.Menu className="dropdownFiltro">
-                        <Dropdown.Item onClick={() => props.mudaHorario("Bom Dia")}>
-                            Bom Dia
-                        </Dropdown.Item>
-                        <Dropdown.Item onClick={() => props.mudaHorario("Boa Noite")}>
-                            Boa Noite
-                        </Dropdown.Item>
-                        <Dropdown.Item onClick={() => props.mudaHorario("Hora específica")}>
-                            Hora específica
-                        </Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
+                <input type="time" className='inputsForms without_ampm w-50' onChange={props.mudaHora} style={{height: "37px"}}/>
             </span>
-            {props.parametros.horario === "Hora específica" ? 
-                <span className="col-4">
-                    <input type="time" className='inputsForms without_ampm w-50' onChange={props.mudaHora} style={{height: "37px"}}/>
-                </span>
-                :
-                <></>
-            }
+                
         </>
         :
         <>
@@ -297,34 +264,11 @@ function NotificationTimeSelection(props) {
                         minDate={new Date()}/>
                 </span>
                 <span className="col-12">
-                    <p className="subtituloSeccaoPagina mt-2">Horário de envio</p>
+                    <p className="subtituloSeccaoPagina mt-2">Hora</p>
                     <span className="row col-12">
                         <span className="col-4">
-                            <Dropdown>
-                                <Dropdown.Toggle variant="flat" className="dropdownFiltro">
-                                    {props.parametros.horario}
-                                </Dropdown.Toggle>
-
-                                <Dropdown.Menu className="dropdownFiltro">
-                                    <Dropdown.Item onClick={() => props.mudaHorario("Bom Dia")}>
-                                        Bom Dia
-                                    </Dropdown.Item>
-                                    <Dropdown.Item onClick={() => props.mudaHorario("Boa Noite")}>
-                                        Boa Noite
-                                    </Dropdown.Item>
-                                    <Dropdown.Item onClick={() => props.mudaHorario("Hora específica")}>
-                                        Hora específica
-                                    </Dropdown.Item>
-                                </Dropdown.Menu>
-                            </Dropdown>
-                        </span>
-                        {props.parametros.horario === "Hora específica" ? 
-                            <span className="col-4">
-                                <input type="time" className='inputsForms without_ampm w-50' onChange={props.mudaHora} style={{height: "37px"}}/>
-                            </span>
-                            :
-                            <></>
-                        }
+                            <input type="time" className='inputsForms without_ampm w-50' onChange={props.mudaHora} style={{height: "37px"}}/>
+                        </span> 
                     </span>
                 </span>
             </div>

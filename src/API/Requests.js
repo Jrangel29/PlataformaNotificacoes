@@ -122,7 +122,7 @@ export const createNotification = (tipologia, subcategoria, categoriaSaude, envi
 //Tipologias
 
 export const fetchTipologiaList = () =>
-  fetch(`https://geo-navsafety.ua.pt:443/overtv/tipologias`)
+  fetch(`http://geo-navsafety.ua.pt:443/overtv/tipologias`)
     .then(response => response.json())
 
 //Distritos

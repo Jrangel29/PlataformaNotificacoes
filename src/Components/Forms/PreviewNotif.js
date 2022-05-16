@@ -28,10 +28,10 @@ export const PreviewNotif = (props) => {
             if(props.mensagens[item].active === true && carrocas === true){
                 contagem++;
             }
-            if(contagem === 0 && carrocas === true){
-                setCarrocas(false)
-            }
         })
+        if(contagem === 0 && carrocas === true){
+            setCarrocas(false)
+        }
     }, [props.mensagens])
 
     const [index, setIndex] = useState(0);
@@ -52,7 +52,6 @@ export const PreviewNotif = (props) => {
                     onSelect={handleSelect} className='divPreview col-5'>
                     {Object.keys(props.mensagens).map((item, index) => {
                         if(props.mensagens[item].active === true){
-                            contagem++;
                             return(
                                 <Carousel.Item>
                                     <span className='notiPreview'>
@@ -112,13 +111,81 @@ export const PreviewNotif = (props) => {
                         <span className='itensPreview'>Subcategoria: </span>{props.sub !== '' ? props.sub : 'Sem subcategoria'}
                     </p>
                     <p className='textoPrefsUser m-0 mb-2'>
-                        <span className='itensPreview'>Momento de envio: </span>Por definir
+                        <span className='itensPreview'>Momento de envio: </span>
+                        {carrocas === true ? 
+                        Object.keys(props.mensagens).map((item, index) => {
+                            if(props.mensagens[item].active === true){
+                                if(item === 'semanaAntes'){
+                                    return(
+                                        <>1 semana antes, </>
+                                    )
+                                }
+                                if(item === 'dias3'){
+                                    return(
+                                        <>3 dias antes, </>
+                                    )
+                                }
+                                if(item === 'diaAnterior'){
+                                    return(
+                                        <>Rotina de boa noite, </>
+                                    )
+                                }
+                                if(item === 'diaProprio'){
+                                    return(
+                                        <>Rotina de bom dia, </>
+                                    )
+                                }
+                                if(item === 'horaEspecifica'){
+                                    return(
+                                        <>Hora específica, </>
+                                    )
+                                }
+                                if(item === 'imediato'){
+                                    return(
+                                        <>Imediatamente, </>
+                                    )
+                                }
+                                if(item === 'intervaloHoras'){
+                                    return(
+                                        <>Intervalo de horas, </>
+                                    )
+                                }
+                                if(item === 'horaAntes'){
+                                    return(
+                                        <>1 hora antes, </>
+                                    )
+                                }
+                                if(item === 'meiaHora'){
+                                    return(
+                                        <>30 minutos antes, </>
+                                    )
+                                }
+                                if(item === 'quartoHora'){
+                                    return(
+                                        <>15 minutos antes, </>
+                                    )
+                                }
+                                if(item === 'minutos5'){
+                                    return(
+                                        <>5 minutos antes, </>
+                                    )
+                                }
+                                if(item === 'momentoAcontecimento'){
+                                    return(
+                                        <>No momento do acontecimento do item</>
+                                    )
+                                }
+                            }
+                        })
+                        :
+                        <>Por definir</>
+                        }
                     </p>
                 </div>
                 <div className='col-3'>
                     <p className='subtituloSeccaoPagina mb-0 mt-2'>Recetores</p>
-                    <span className='m-0 mb-2' style={{maxHeight: '200px'}}>
-                        <p className='textoPrefsUser m-0'>Recetores</p>
+                    <span className='m-0 mb-2'>
+                        <p className='textoPrefsUser m-0' style={{maxHeight: '80px', overflowY: 'scroll'}}>Ricardo Lima, Patrícia Silva, Marco Costa, Bruno Costa, Maria Costa </p>
                     </span>
                 </div>
             </div>

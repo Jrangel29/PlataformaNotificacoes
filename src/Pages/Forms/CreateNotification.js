@@ -13,6 +13,7 @@ import { BuscaTipologiasNotificacoes } from '../../Components/Forms/Hooks';
 import { ListaUsersPesquisa, ListaUsersAdicionados } from '../../Components/Forms/ListaPesquisa';
 import { DeliveryOptions } from '../../Components/Forms/DeliveryOptions';
 import { PreviewNotif } from '../../Components/Forms/PreviewNotif';
+import { UserPreferences } from '../../Components/Forms/UserPreferences';
 
 class CreateNotification extends React.Component {
 
@@ -88,6 +89,9 @@ class CreateNotification extends React.Component {
                     active: false, 
                     message: ''},
                 minutos5: {
+                    active: false, 
+                    message: ''},
+                momentoAcontecimento: {
                     active: false, 
                     message: ''}
             }
@@ -437,7 +441,7 @@ class CreateNotification extends React.Component {
                                     }
                                     */}
                                     <span className='row m-0 col-12'>
-                                        <p className='subtituloSeccaoPagina p-0' style={{marginTop: "5px"}}>Regularidade de envio <span className='obrigatorio'>*</span></p>
+                                        <p className='subtituloSeccaoPagina p-0' style={{marginTop: "5px"}}>Regularidade do item <span className='obrigatorio'>*</span></p>
                                         <Form.Check 
                                             type="radio" 
                                             inline 
@@ -464,18 +468,11 @@ class CreateNotification extends React.Component {
                                     <span className='col-12 mt-2'>
                                         <p className='subtituloSeccaoPaginaBigger p-0 mt-2' style={{marginTop: "5px"}}>Mensagens das notificações</p>
                                     </span>
-                                    <DeliveryOptions changeMomento={this.updateMomentosEnvio} blade={this.updateBlade} changeMensagem={this.updateMensagensEnvio} momentos={this.state.mensagens}/>
+                                    <DeliveryOptions subSaude={this.state.categoriaInfo} changeMomento={this.updateMomentosEnvio} blade={this.updateBlade} changeMensagem={this.updateMensagensEnvio} momentos={this.state.mensagens} tipo={this.state.tipologia}/>
                                 </div>
 
-                                <div className='col-4 mt-3'>
-                                    <div className='seccaoPrefsUser'>
-                                        <span className='col-12'>
-                                            <p className='subtituloSeccaoPagina p-0' style={{marginTop: "5px"}}>Preferências do utilizador</p>
-                                        </span>
-                                        <span className='col-12 textoPrefsUser'>
-                                            <p>bué texto aqui filho bué texto aqui filho bué texto aqui filho bué texto aqui filho</p>
-                                        </span>
-                                    </div>
+                                <div className='col-4 mt-3 pe-0'>
+                                    <UserPreferences/>
                                 </div>
                             </span>
                         </Collapse>

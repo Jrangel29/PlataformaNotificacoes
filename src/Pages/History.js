@@ -11,7 +11,7 @@ class History extends React.Component {
             <div>
                 <Navbar/>
                 <div className='mainBody container'>
-                    <Header nome="Histórico" apagaMuda="nao"/>
+                    <Header nome="Notificações enviadas" apagaMuda="nao"/>
                     <div>
                         <Filters tipo="Histórico"/>
                     </div>
