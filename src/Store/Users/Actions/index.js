@@ -5,11 +5,11 @@ import {
 } from './Constants';
 import {createUser} from '../../../API/Requests';
 
-export const createNewUser = ( nome = '', idade = '', idBox = '', distrito = '', concelho = '', saude = '', informacaoAdicional = '') => {
+export const createNewUser = ( nome = '', idade = '', idCasa = '', informacaoAdicional = '', blackList = '') => {
     
     return(dispatch) => {
         dispatch({ type: USER_CREATE_START });
-        createUser(nome, idade, idBox, distrito, concelho, saude, informacaoAdicional)
+        createUser(nome, idade, idCasa, informacaoAdicional, blackList)
         .then(Info => {
             dispatch({type: USER_CREATE_SUCCESS, payload: Info})
         })

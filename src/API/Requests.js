@@ -1,12 +1,12 @@
 //USERS
 
-export const createUser = (name, idade, idBox, distrito, concelho, saude, informacaoAdicional) => {
-    fetch(`https://geo-navsafety.ua.pt:443/overtv/utilizadores`, {
+export const createUser = (nome, idade, ref_id_casa, informacoes, blacklist) => {
+    fetch(`http://geo-navsafety.ua.pt:443/overtv/users/new`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({name, idade, idBox, distrito, concelho, saude, informacaoAdicional})
+        body: JSON.stringify({nome, idade, ref_id_casa, informacoes, blacklist})
     }).then(response => response.json())
 }
 

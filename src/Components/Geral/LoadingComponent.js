@@ -6,13 +6,8 @@ import {Spinner} from 'react-bootstrap';
 const LoadingComponent = (props) => {
 
     return(
-        <div>
-            <Spinner style={props.comp === "filters" ? {height: "25px", width: "25px", color: "#112D4E", marginLeft: "23px", marginTop: "7px"} : {height: "25px", width: "25px", color: "#112D4E", marginTop: "20px", marginLeft: "23px"}} animation='border'/>
-            {props.comp === "filters" ?
-            <></>
-            :
-            <p className='LoadingComponent mt-2'>A carregar</p>
-            }
+        <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+            <span className='LoadingComponent mt-2'>A carregar</span><div className="dot-typing"></div>
         </div>
     )
 }

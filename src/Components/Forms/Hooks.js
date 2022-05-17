@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getTipologiasList } from '../../Store/Tipologias/Actions';
 import { getDistritosList } from '../../Store/Distritos/Actions';
 import { getConcelhos } from '../../Store/Concelhos/Actions';
-import { Form, Dropdown } from 'react-bootstrap';
+import { Form, Dropdown, Table } from 'react-bootstrap';
 import Loading from '../../Pages/Loading';
 import LoadingComponent from '../../Components/Geral/LoadingComponent';
 
@@ -24,23 +24,39 @@ export const BuscaTipologias = (props) => {
     }
 
     return(
-        <>
-        <Form className='col-6 m-0 ps-0'>
-            {tipologiaList.map((item) => {
-                    return(
-                        <Form.Check 
-                        type="checkbox" 
-                        inline 
-                        id={`check${item.id_tipologia}`} 
-                        key={item.id_tipologia} 
-                        value={item.id_tipologia} 
-                        label={item.nome}
-                        onChange={props.funcao}
-                        style={item.id_tipologia == 6 ? {display: "none"} : {display: "block"}}/>
-                    )
+        <Table striped bordered style={{textAlign: "center", width: "50%"}}>
+            <thead>
+                <tr>
+                {tipologiaList.map((item) => {
+                    if(item.id_tipologia !== 6){
+                        return(
+                            <th>{item.nome}</th>
+                        )
+                    }
                 })}
-        </Form>
-        </>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                {tipologiaList.map((item) => {
+                    if(item.id_tipologia !== 6){
+                        return(
+                            <td style={{textAlign: 'center'}}>
+                                <Form.Check 
+                                    type="checkbox" 
+                                    inline 
+                                    id={`check${item.id_tipologia}`} 
+                                    key={item.id_tipologia} 
+                                    value={item.id_tipologia} 
+                                    onChange={props.funcao}
+                                    style={item.id_tipologia == 6 ? {display: "none"} : {display: "block", margin: 'auto'}}/>
+                            </td>
+                        )
+                    }
+                    })}
+                </tr>
+            </tbody>
+        </Table>
     );
 }
 

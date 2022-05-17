@@ -6,6 +6,7 @@ import '../../Styles/Filters.css';
 import {Accordion, Button} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import LoadingComponent from '../../Components/Geral/LoadingComponent';
+import Loading from '../../Pages/Loading';
 import PeopleHouseCards from './PeopleHouseCards';
 
 const HouseCards = () => {
@@ -13,8 +14,6 @@ const HouseCards = () => {
 
     const casasList = useSelector(({ casas }) => casas.data)
     const isLoadingCasas = useSelector(({ casas }) => casas.isLoading)
-    const peopleList = useSelector(({ casas }) => casas.singleCasa)
-    const isLoadingPeople = useSelector(({ casas }) => casas.isLoading)
 
     useEffect(() => {
         dispatch(getHousesList())
@@ -22,7 +21,7 @@ const HouseCards = () => {
 
     if (isLoadingCasas) {
         return (
-            <LoadingComponent />
+            <Loading />
         )
     }
 

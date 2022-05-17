@@ -14,16 +14,20 @@ const PeopleHouseCards = (props) => {
         dispatch(getHousePeopleList(props.idCasa))
     }, [])
 
-    if (isLoadingPeople) {
+    if (isLoadingPeople || !props.idCasa) {
         return (
             <p className='mb-0 textHouseCards'>
-                A carregar pessoas
+                {console.log(peopleList)}
+                A carregar pessoas...
             </p>
         )
     }
 
     return(
         <p className='mb-0 textHouseCards'>
+            {peopleList.map((item) => {
+                console.log(item.nome)
+            })}
             {console.log(peopleList)}José Lima, Maria Lima
         </p>
     )

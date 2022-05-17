@@ -6,6 +6,82 @@ textarea:focus, input:focus{
     outline: none;
 }
 
+.dot-typing {
+    position: relative;
+    left: -9999px;
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    background-color: #3F72AF;
+    color: #3F72AF;
+    box-shadow: 9984px 0 0 0 #3F72AF, 9999px 0 0 0 #3F72AF, 10014px 0 0 0 #3F72AF;
+    animation: dotTyping 1.5s infinite linear;
+    margin-left: 25px;
+    margin-top: 7px;
+  }
+  
+  @keyframes dotTyping {
+    0% {
+      box-shadow: 9984px 0 0 0 #3F72AF, 9999px 0 0 0 #3F72AF, 10014px 0 0 0 #3F72AF;
+    }
+    16.667% {
+      box-shadow: 9984px -10px 0 0 #3F72AF, 9999px 0 0 0 #3F72AF, 10014px 0 0 0 #3F72AF;
+    }
+    33.333% {
+      box-shadow: 9984px 0 0 0 #3F72AF, 9999px 0 0 0 #3F72AF, 10014px 0 0 0 #3F72AF;
+    }
+    50% {
+      box-shadow: 9984px 0 0 0 #3F72AF, 9999px -10px 0 0 #3F72AF, 10014px 0 0 0 #3F72AF;
+    }
+    66.667% {
+      box-shadow: 9984px 0 0 0 #3F72AF, 9999px 0 0 0 #3F72AF, 10014px 0 0 0 #3F72AF;
+    }
+    83.333% {
+      box-shadow: 9984px 0 0 0 #3F72AF, 9999px 0 0 0 #3F72AF, 10014px -10px 0 0 #3F72AF;
+    }
+    100% {
+      box-shadow: 9984px 0 0 0 #3F72AF, 9999px 0 0 0 #3F72AF, 10014px 0 0 0 #3F72AF;
+    }
+  }
+
+  .dot-typing2 {
+    position: relative;
+    left: -9999px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #3F72AF;
+    color: #3F72AF;
+    box-shadow: 9984px 0 0 0 #3F72AF, 9999px 0 0 0 #3F72AF, 10014px 0 0 0 #3F72AF;
+    animation: dotTyping 1.5s infinite linear;
+    margin-left: 25px;
+    margin-top: 7px;
+  }
+  
+  @keyframes dotTyping {
+    0% {
+      box-shadow: 9984px 0 0 0 #3F72AF, 9999px 0 0 0 #3F72AF, 10014px 0 0 0 #3F72AF;
+    }
+    16.667% {
+      box-shadow: 9984px -10px 0 0 #3F72AF, 9999px 0 0 0 #3F72AF, 10014px 0 0 0 #3F72AF;
+    }
+    33.333% {
+      box-shadow: 9984px 0 0 0 #3F72AF, 9999px 0 0 0 #3F72AF, 10014px 0 0 0 #3F72AF;
+    }
+    50% {
+      box-shadow: 9984px 0 0 0 #3F72AF, 9999px -10px 0 0 #3F72AF, 10014px 0 0 0 #3F72AF;
+    }
+    66.667% {
+      box-shadow: 9984px 0 0 0 #3F72AF, 9999px 0 0 0 #3F72AF, 10014px 0 0 0 #3F72AF;
+    }
+    83.333% {
+      box-shadow: 9984px 0 0 0 #3F72AF, 9999px 0 0 0 #3F72AF, 10014px -10px 0 0 #3F72AF;
+    }
+    100% {
+      box-shadow: 9984px 0 0 0 #3F72AF, 9999px 0 0 0 #3F72AF, 10014px 0 0 0 #3F72AF;
+    }
+  }
+
 .tituloPagina{
     font-size: 35px;
     font-weight: 700;
@@ -37,10 +113,21 @@ textarea:focus, input:focus{
 }
 
 .LoadingComponent{
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 700;
     color: #3F72AF;
     margin-top: 5px!important;
+    margin-left: 0!important;
+    padding-left: 0!important;
+}
+
+.LoadingPage{
+    font-size: 22px;
+    font-weight: 700;
+    color: #3F72AF;
+    margin-top: 5px!important;
+    margin-left: 0!important;
+    padding-left: 0!important;
 }
 
 .subtituloSeccaoPagina{
@@ -127,10 +214,6 @@ textarea:focus, input:focus{
     font-weight: 700;
     text-align: center;
     padding: 0;
-}
-
-.divMargem{
-    padding-left: 0!important;
 }
 
 .btn-flat2{
@@ -307,6 +390,23 @@ textarea:focus, input:focus{
     border-right: #c9c9c9 solid 2px;
 }
 
+.ListaUsersFormCasa{
+    margin-left: 0px!important;
+    margin-right: 0px!important;
+    max-height: 200px;
+    overflow-y: scroll;
+    border-bottom: #c9c9c9 solid 2px;
+    border-left: #c9c9c9 solid 2px;
+    border-right: #c9c9c9 solid 2px;
+}
+.ListaCasaInfo{
+    margin-left: 0px!important;
+    margin-right: 0px!important;
+    max-height: 234px;
+    overflow-y: auto;
+    border: #c9c9c9 solid 2px;
+}
+
 .ListaUsersFormAdicionados{
     margin-left: 0px!important;
     margin-right: 0px!important;
@@ -338,11 +438,25 @@ textarea:focus, input:focus{
     margin: 0!important;
 }
 
+.itemListaCasaInfoTitle{
+    width: 100%;
+    height: auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #eaeaea;
+    border-bottom: #c9c9c9 solid 2px;
+    display: flex!important;
+    flex-direction: row!important;
+    justify-content: left!important;
+}
+
 .infoCasaForm{
     margin-bottom: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    font-size: 14px;
+}
+
+.infoCasaFormNome{
+    margin-bottom: 0;
     font-size: 15px;
 }
 
@@ -411,6 +525,12 @@ textarea:focus, input:focus{
 
 .textoPrefsUser{
     font-size: 14px;
+}
+
+.textoPrefsUserWarning{
+    font-size: 14px;
+    color: red;
+    margin-top: -5px!important;
 }
 
 .itensPreview{

@@ -11,9 +11,9 @@ const SubmitButton = (props) => {
     
     const dispatch = useDispatch();
 
-    const criaUser = (nome, idade, idBox, distrito, concelho, saude, informacaoAdicional) => {
+    const criaUser = (nome, idade, idCasa, informacaoAdicional, blackList) => {
         props.openModal();
-        dispatch(createNewUser(nome, idade, idBox, distrito, concelho, saude, informacaoAdicional));
+        dispatch(createNewUser(nome, idade, idCasa, informacaoAdicional, blackList));
     };
 
     const criaGrupo = (nome, descricao, idade, distrito, concelho) => {
@@ -34,7 +34,7 @@ const SubmitButton = (props) => {
     if(props.tipoForm === "User"){
         return(
             <>
-                {props.params.infoUser.nomeUser === "" || props.params.infoUser.idade === "" || props.params.infoUser.idBox === "" || props.params.infoUser.distrito === "" || props.params.infoUser.concelho === "" ?
+                {props.params.infoUser.nomeUser === "" || props.params.infoUser.idade === "" || props.params.infoUser.idCasa === "" || props.params.infoUser.infoAdicional === "" ?
                 <span className='row m-0 justify-content-end'>
                     <Button className='col-2' variant='custom' disabled>Criar Utilizador</Button>
                 </span>
@@ -44,7 +44,7 @@ const SubmitButton = (props) => {
                         className='col-2' 
                         variant='flat' 
                         onClick={
-                            () => criaUser(props.params.infoUser.nomeUser, props.params.infoUser.idade, props.params.infoUser.idBox, props.params.infoUser.distrito, props.params.infoUser.concelho, props.params.mostraSaude, props.params.infoUser.infoAdicional)
+                            () => criaUser(props.params.infoUser.nomeUser, props.params.infoUser.idade, props.params.infoUser.idCasa, props.params.infoUser.infoAdicional, props.params.tipologias)
                             }>Criar Utilizador</Button>
                 </span>
                 }
