@@ -33,6 +33,8 @@ function NotificationTimeSelection(props) {
             <>
             {props.parametros.envioNotif === "Pontual" ?
                 <>
+                    {props.parametros.tipologia !== 'Informação' ? 
+                    <>
                     <h1 className='subtituloSeccaoPagina mt-2'>Momento de acontecimento do item</h1>
                     <span className="col-4">
                         <Dropdown>
@@ -53,6 +55,10 @@ function NotificationTimeSelection(props) {
                             </Dropdown.Menu>
                         </Dropdown>
                     </span>
+                    </>
+                    :
+                    <></>
+                    }
                 </>
             : 
                 props.parametros.envioNotif === "Semanal" ?
@@ -252,9 +258,7 @@ function NotificationTimeSelection(props) {
         </>
         :
         <>
-            {props.parametros.envioNotif !== "Pontual" ?
-            <></>
-            :
+            {props.parametros.envioNotif === "Pontual" ?
             <div className="row col-12">
                 <span className="col-12">
                     <p className="subtituloSeccaoPagina mt-2">Escolha de dia</p>
@@ -272,6 +276,8 @@ function NotificationTimeSelection(props) {
                     </span>
                 </span>
             </div>
+            :
+            <></>
             }
         </>
         }

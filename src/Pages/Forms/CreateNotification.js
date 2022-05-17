@@ -32,10 +32,9 @@ class CreateNotification extends React.Component {
             descricaoNotif: "",
             regularidade: '',
             envioNotif: "Pontual",
-            horario: 'Bom Dia',
             diaUnico: '',
             hora: '',
-            momentoUnico: 'Imediato',
+            momentoUnico: '',
             dias: {
                 segunda: false,
                 terca: false,
@@ -104,7 +103,47 @@ class CreateNotification extends React.Component {
             this.setState({
                 tipologia: valor,
                 idTipologia: id,
-                categoriaInfo: ''
+                categoriaInfo: '',
+                mensagens: {
+                    semanaAntes: {
+                        active: false, 
+                        message: ''},
+                    dias3: {
+                        active: false, 
+                        message: ''},
+                    diaAnterior: {
+                        active: false, 
+                        message: ''},
+                    diaProprio: {
+                        active: false, 
+                        message: ''},
+                    horaEspecifica: {
+                        active: false, 
+                        message: ''},
+                    imediato: {
+                        active: false, 
+                        message: ''},
+                    intervaloHoras: {
+                        active: false, 
+                        message: ''},
+                    horaAntes: {
+                        active: false, 
+                        message: ''},
+                    meiaHora: {
+                        active: false, 
+                        message: '',
+                        tituloBlade: '',
+                        descricao: ''},
+                    quartoHora: {
+                        active: false, 
+                        message: ''},
+                    minutos5: {
+                        active: false, 
+                        message: ''},
+                    momentoAcontecimento: {
+                        active: false, 
+                        message: ''}
+                }
             })
         }
         if(subcategoria === "Combustíveis" || subcategoria === "Greves" || subcategoria === "Farmácias de Serviço" || subcategoria === "Feriados" || subcategoria === "Inatividade" || subcategoria === "Ingestão de Líquidos" || subcategoria === "Medicação"){
@@ -143,10 +182,17 @@ class CreateNotification extends React.Component {
     }
 
     alteraRegularidade = (valor) => {
-        if(valor.target.value === "Pontual"){
+        if(valor.target.value === "Pontual" && this.state.tipologia !== 'Informação'){
             this.setState({
                 regularidade: valor.target.value,
-                envioNotif: "Pontual"
+                envioNotif: "Pontual",
+                momentoUnico: 'Imediato'
+            })
+        } else if(valor.target.value === "Pontual" && this.state.tipologia === 'Informação') {
+            this.setState({
+                regularidade: valor.target.value,
+                envioNotif: "Pontual",
+                momentoUnico: ''
             })
         } else{
             this.setState({

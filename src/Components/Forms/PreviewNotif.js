@@ -102,7 +102,7 @@ export const PreviewNotif = (props) => {
                 <div className='col-4'>
                     <p className='subtituloSeccaoPagina mb-0 mt-2'>Definições</p>
                     <p className='textoPrefsUser m-0'>
-                        <span className='itensPreview'>Titulo do Item: </span>{props.titulo === '' ? 'Por definir' : props.titulo}
+                        <span className='itensPreview'>Titulo do Evento: </span>{props.titulo === '' ? 'Por definir' : props.titulo}
                     </p>
                     <p className='textoPrefsUser m-0'>
                         <span className='itensPreview'>Categoria: </span>{props.tipo}
@@ -110,8 +110,34 @@ export const PreviewNotif = (props) => {
                     <p className='textoPrefsUser m-0'>
                         <span className='itensPreview'>Subcategoria: </span>{props.sub !== '' ? props.sub : 'Sem subcategoria'}
                     </p>
+                    <p className='textoPrefsUser m-0'>
+                        <span className='itensPreview'>Notificações geradas: </span>
+                        {
+                            Object.keys(props.mensagens).map((item, index) => {
+                                if(props.mensagens[item].active === true){
+                                    contagem++;
+                                }
+                                if(index+1 === Object.keys(props.mensagens).length){
+                                    if(contagem === 0){
+                                        return(
+                                            'Este evento não gera mensagens'
+                                        )
+                                    }
+                                    if(contagem === 1){
+                                        return(
+                                            'Este evento gera 1 mensagem'
+                                        )
+                                    } else {
+                                        return(
+                                            `Este evento gera ${contagem} mensagens`
+                                        )
+                                    }
+                                }
+                            })
+                        }
+                    </p>
                     <p className='textoPrefsUser m-0 mb-2'>
-                        <span className='itensPreview'>Momento de envio: </span>
+                        <span className='itensPreview'>Momentos de envio: </span>
                         {carrocas === true ? 
                         Object.keys(props.mensagens).map((item, index) => {
                             if(props.mensagens[item].active === true){

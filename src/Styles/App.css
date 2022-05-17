@@ -7,10 +7,10 @@ textarea:focus, input:focus{
 }
 
 .tituloPagina{
-    font-size: 38px;
+    font-size: 35px;
     font-weight: 700;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     color: #112D4E;
     margin-bottom: 0;
 }
@@ -58,7 +58,7 @@ textarea:focus, input:focus{
 }
 
 .subtituloSeccaoPaginaBigger{
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 700;
     color: #112D4E;
     margin-bottom: 0;
@@ -185,7 +185,9 @@ textarea:focus, input:focus{
 .divPreview{
     text-align: center;
     min-height: 100px;
+    max-height: 150px;
     display: flex;
+    flex-direction: column;
     align-items:center;
     justify-content:center;
 }
