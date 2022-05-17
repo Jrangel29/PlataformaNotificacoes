@@ -302,7 +302,7 @@ class CreateNotification extends React.Component {
             <div>
                 <Navbar/>
                 <div className='mainBodyForm container px-0'>
-                    <Header nome="Criar Notificação" detalhe="sim" apagaMuda="nao"/>
+                    <Header nome="Criar Evento" detalhe="sim" apagaMuda="nao"/>
                     <PreviewNotif tipo={this.state.tipologia} mensagens={this.state.mensagens} titulo={this.state.nomeItem} sub={this.state.categoriaInfo}/>
                     <div>
                         <div className='btn btnSeccao ms-0' onClick={() => this.mudaCollapse(1)}>
@@ -398,11 +398,11 @@ class CreateNotification extends React.Component {
                             <span className='row m-0' style={{padding: "0 40px"}}>
                                 <div className='row col-8'>
                                     <span className='col-12'>
-                                        <p className='subtituloSeccaoPaginaBigger p-0' style={{marginTop: "5px"}}>Dados do item a notificar</p>
+                                        <p className='subtituloSeccaoPaginaBigger p-0' style={{marginTop: "5px"}}>Dados do evento a notificar</p>
                                     </span>
                                     
                                     <span className='row m-0 col-12'>
-                                        <p className='subtituloSeccaoPagina p-0' style={{marginTop: "5px"}}>Nome do item <span className='obrigatorio'>*</span></p>
+                                        <p className='subtituloSeccaoPagina p-0' style={{marginTop: "5px"}}>Nome do evento <span className='obrigatorio'>*</span></p>
                                         <input type="text" className='inputsForms' id='nomeItem' value={this.state.nomeItem} onChange={this.alteraTexto} maxLength="50"/>
                                     </span>
                                     {/* 
@@ -441,7 +441,7 @@ class CreateNotification extends React.Component {
                                     }
                                     */}
                                     <span className='row m-0 col-12'>
-                                        <p className='subtituloSeccaoPagina p-0' style={{marginTop: "5px"}}>Regularidade do item <span className='obrigatorio'>*</span></p>
+                                        <p className='subtituloSeccaoPagina p-0' style={{marginTop: "5px"}}>Regularidade do evento <span className='obrigatorio'>*</span></p>
                                         <Form.Check 
                                             type="radio" 
                                             inline 

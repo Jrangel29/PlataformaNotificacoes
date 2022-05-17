@@ -43,7 +43,7 @@ export const PreviewNotif = (props) => {
     return(
         <>
             <div className='prevSeccao ms-0'>
-                <h1 className='tituloSeccaoPaginaNotifs'>Pré-visualização da notificação</h1>
+                <h1 className='tituloSeccaoPaginaNotifs'>Pré-visualização das notificações</h1>
             </div>
             <div style={{padding: "0 40px"}} className={offset >= 175 ? 'stickyTop row m-0' : 'row m-0'}>
                 {carrocas === true ? 

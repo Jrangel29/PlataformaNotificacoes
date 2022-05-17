@@ -233,7 +233,7 @@ export const DeliveryOptions = (props) => {
                             value="momentoAcontecimento"
                             className='py-1'
                             disabled={
-                                props.tipo === 'Informação' || props.tipo === 'Serviços' || props.tipo === 'Agenda' || props.subSaude === 'Inatividade' || props.subSaude === 'Ingestão de Líquidos' || props.subSaude === 'Medicação' ? true : false
+                                props.tipo === 'Informação' || props.tipo === 'Serviços' || props.tipo === 'Agenda' || props.subSaude === 'Inatividade' || props.subSaude === 'Ingestão de Líquidos' ? true : false
                             }
                             onChange={props.changeMomento}/>
                     </td>

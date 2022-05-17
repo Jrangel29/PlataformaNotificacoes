@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../Styles/Navbar.css';
-import {Navbar, Nav, Container} from 'react-bootstrap';
+import {Navbar, Nav, Container, Tab} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 
 const navbar = () => {
@@ -12,7 +12,7 @@ const navbar = () => {
             <Container className='containerNavBar'>
                 <Nav activeKey={lugar} className='containerNavBar'>
                     <Nav.Link as={Link} to="/notifications/create">
-                        Criar Notificação
+                        Criar Evento
                     </Nav.Link>
                     <Nav.Link as={Link} to="/notifications">
                         Agendadas

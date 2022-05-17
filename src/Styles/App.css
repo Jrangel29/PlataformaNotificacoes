@@ -241,7 +241,7 @@ textarea:focus, input:focus{
 
 .btnSeccao{
     text-align: left!important;
-    background-color: #3F72AF!important;
+    background-color: #2d507c!important;
     width: 100%!important;
     display: flex!important;
     flex-direction: row!important;
@@ -251,7 +251,7 @@ textarea:focus, input:focus{
 
 .prevSeccao{
     text-align: left!important;
-    background-color: #3F72AF!important;
+    background-color: #2d507c!important;
     width: 100%!important;
     display: flex!important;
     flex-direction: row!important;
@@ -262,14 +262,14 @@ textarea:focus, input:focus{
 
 .btnSeccao:hover{
     text-align: left!important;
-    background-color: #2d507c!important;
+    background-color: #3F72AF!important;
     font-weight: 700!important;
     width: 100%!important;
     border-radius: 0;
 }
 
 .btnSeccao:active{
-    background-color: #2d507c!important;
+    background-color: #3F72AF!important;
     width: 100%!important;
     border-radius: 0;
 }

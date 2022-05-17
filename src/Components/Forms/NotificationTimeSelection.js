@@ -7,7 +7,7 @@ function NotificationTimeSelection(props) {
   return (
     <>
         <p className="subtituloSeccaoPagina" style={{marginTop: "5px"}}>
-            Intervalo de tempo <span className="obrigatorio">*</span>
+            Peridicidade <span className="obrigatorio">*</span>
         </p>
         <span className="col-4">
             <Dropdown>
