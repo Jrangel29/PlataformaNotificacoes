@@ -13,7 +13,7 @@ import { BuscaTipologiasNotificacoes } from '../../Components/Forms/Hooks';
 import { ListaUsersPesquisa, ListaUsersAdicionados } from '../../Components/Forms/ListaPesquisa';
 import { DeliveryOptions } from '../../Components/Forms/DeliveryOptions';
 import { PreviewNotif } from '../../Components/Forms/PreviewNotif';
-import { UserPreferences } from '../../Components/Forms/UserPreferences';
+import UserPreferencesModal from '../../Components/Modal/UserPreferencesModal';
 
 class CreateNotification extends React.Component {
 
@@ -21,6 +21,7 @@ class CreateNotification extends React.Component {
         super(props);
         this.state = {
             mostraModal: false,
+            mostraModalInfo: false,
             recetores: "Individuais",
             tipologia: "Agenda",
             idTipologia: '',
@@ -210,6 +211,9 @@ class CreateNotification extends React.Component {
 
     onOpen = () => this.setState({mostraModal: true});
     onClose = () => this.setState({mostraModal: false});
+    onOpenInfo = () => this.setState({mostraModalInfo: true});
+    onCloseInfo = () => this.setState({mostraModalInfo: false});
+
 
     alteraDia = (dia) => {
         this.setState({
@@ -442,15 +446,16 @@ class CreateNotification extends React.Component {
                         </div>
                         <Collapse in={this.state.colapsado.collapse3}>
                             <span className='row m-0' style={{padding: "0 40px"}}>
-                                <div className='row col-8'>
+                                <div className='row col-12'>
                                     <span className='col-12'>
                                         <p className='subtituloSeccaoPaginaBigger p-0' style={{marginTop: "5px"}}>Dados do evento a notificar</p>
                                     </span>
                                     
-                                    <span className='row m-0 col-12'>
+                                    <span className='row m-0 col-12 pe-0'>
                                         <p className='subtituloSeccaoPagina p-0' style={{marginTop: "5px"}}>Nome do evento <span className='obrigatorio'>*</span></p>
                                         <input type="text" className='inputsForms' id='nomeItem' value={this.state.nomeItem} onChange={this.alteraTexto} maxLength="50"/>
                                     </span>
+                                
                                     {/* 
                                     <span className='row m-0 col-12'>
                                         <p className='subtituloSeccaoPagina p-0' style={{marginTop: "5px"}}>Título da notificação principal <span className='obrigatorio'>*</span></p>
@@ -486,7 +491,8 @@ class CreateNotification extends React.Component {
                                         <></>
                                     }
                                     */}
-                                    <span className='row m-0 col-12'>
+
+                                    <span className='row m-0 col-12 mt-1'>
                                         <p className='subtituloSeccaoPagina p-0' style={{marginTop: "5px"}}>Regularidade do evento <span className='obrigatorio'>*</span></p>
                                         <Form.Check 
                                             type="radio" 
@@ -510,15 +516,25 @@ class CreateNotification extends React.Component {
                                             />
                                     </span>
                                     <NotificationTimeSelection collapseState={this.state.colapsado} parametros={this.state} mudaDiaUnico={this.alteraDiaUnico} mudaMomentoUnico={this.alteraMomentoUnico} mudaHora={this.alteraHora} mudaHorario={this.alteraHorario} alterarEnvio={this.alteraEnvio} mudaDia={this.alteraDia} mudaMomento={this.alteraMomento}/>                    
+                                </div>
                                 
-                                    <span className='col-12 mt-2'>
-                                        <p className='subtituloSeccaoPaginaBigger p-0 mt-2' style={{marginTop: "5px"}}>Mensagens das notificações</p>
-                                    </span>
+                                
+                                <p className='subtituloSeccaoPaginaBigger mt-3' style={{marginTop: "5px"}}>Mensagens das notificações</p>
+                                
+                                <div className='row col-9'>
                                     <DeliveryOptions subSaude={this.state.categoriaInfo} changeMomento={this.updateMomentosEnvio} blade={this.updateBlade} changeMensagem={this.updateMensagensEnvio} momentos={this.state.mensagens} tipo={this.state.tipologia}/>
                                 </div>
 
-                                <div className='col-4 mt-3 pe-0'>
-                                    <UserPreferences/>
+                                <div className='col-3 pe-0' style={{display: 'flex', flexDirection: 'column'}}>
+                                    <Button  
+                                        variant='flat' 
+                                        onClick={() => this.onOpenInfo()}>Ver preferências dos utilizadores</Button>
+                                    <span style={{marginTop: '10px'}}>
+                                        <p className='m-0 p-0' style={{fontSize: '14px', color: '#CC5500'}}><b>Avisos</b></p>
+                                        <p className='m-0 mt-1 p-0' style={{fontSize: '13px', textJustify: 'inter-word'}}><b style={{color: '#CC5500'}}>-</b> Seleciona os momentos em que queres mandar notifições. Podes criar mensagens de acordo com os momentos que escolheste.</p>
+                                        <p className='m-0 mt-1 p-0' style={{fontSize: '13px', textJustify: 'inter-word'}}><b style={{color: '#CC5500'}}>-</b> Algumas dos momentos têm um 'Blade horizontal'. Estes permitem o envio de mais informação e que o utilizador possa responder à notificação. (Por exemplo: 'Relembrar daqui a 15 minutos')</p>
+                                        <p className='m-0 mt-1 p-0' style={{fontSize: '13px', textJustify: 'inter-word'}}><b style={{color: '#CC5500'}}>-</b> Dependendo da tipologia e periodicidade escolhidas, alguns momentos podem estar indisponíveis. Para teres acesso a tudo, usa a tipologia 'Personalizado'.</p>
+                                    </span>
                                 </div>
                             </span>
                         </Collapse>
@@ -564,13 +580,14 @@ class CreateNotification extends React.Component {
                         }
                     </div>*/}
 
-                    <span className='row m-0 mt-2 justify-content-end'>
+                    <span className='row m-0 mt-2 justify-content-end' style={{padding: "0 40px"}}>
                         <p className='col-2 indicaObrigatorio'>*Obrigatório</p>
                     </span>
-                    <div className='row m-0'>
+                    <div className='row m-0' style={{padding: "0 40px"}}>
                         <SubmitButton params={this.state} openModal={this.onOpen} tipoForm="Notification"/>
                     </div>
                 </div>
+                <UserPreferencesModal show={this.state.mostraModalInfo} onHide={this.onCloseInfo}/>
                 <SuccessModal show={this.state.mostraModal} onHide={this.onClose} tiponotif="CriarNotificação"/>
             </div>
         )

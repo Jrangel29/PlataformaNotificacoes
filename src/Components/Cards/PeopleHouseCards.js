@@ -7,17 +7,17 @@ import '../../Styles/Filters.css';
 const PeopleHouseCards = (props) => {
     const dispatch = useDispatch();
 
-    const peopleList = useSelector(({ casas }) => casas.singleCasa)
-    const isLoadingPeople = useSelector(({ casas }) => casas.isLoadingPeople)
+    const casaInfo = useSelector(({ casas }) => casas.singleCasa)
+    const isLoadingCasaInfo = useSelector(({ casas }) => casas.isLoadingPeople)
 
     useEffect(() => {
         dispatch(getHousePeopleList(props.idCasa))
-    }, [])
+    }, [props.idCasa])
 
-    if (isLoadingPeople || !props.idCasa) {
+    if (isLoadingCasaInfo || !props.idCasa) {
         return (
             <p className='mb-0 textHouseCards'>
-                {console.log(peopleList)}
+                {console.log(casaInfo)}
                 A carregar pessoas...
             </p>
         )
@@ -25,10 +25,10 @@ const PeopleHouseCards = (props) => {
 
     return(
         <p className='mb-0 textHouseCards'>
-            {peopleList.map((item) => {
+            {casaInfo.map((item) => {
                 console.log(item.nome)
             })}
-            {console.log(peopleList)}José Lima, Maria Lima
+            {console.log(casaInfo)}José Lima, Maria Lima
         </p>
     )
     

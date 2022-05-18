@@ -9,7 +9,7 @@ function NotificationTimeSelection(props) {
         <p className="subtituloSeccaoPagina" style={{marginTop: "5px"}}>
             Peridicidade <span className="obrigatorio">*</span>
         </p>
-        <span className="col-4">
+        <span className="col-3">
             <Dropdown>
                 <Dropdown.Toggle variant={props.parametros.regularidade !== "Regular" ? "custom" : "flat"} disabled={props.parametros.regularidade !== "Regular" ? true : false} className="dropdownFiltro">
                     {props.parametros.regularidade === '' ? "Seleciona uma regularidade" : props.parametros.envioNotif}
@@ -36,7 +36,7 @@ function NotificationTimeSelection(props) {
                     {props.parametros.tipologia !== 'Informação' ? 
                     <>
                     <h1 className='subtituloSeccaoPagina mt-2'>Momento de acontecimento do item</h1>
-                    <span className="col-4">
+                    <span className="col-3">
                         <Dropdown>
                             <Dropdown.Toggle variant="flat" className="dropdownFiltro">
                                 {props.parametros.momentoUnico}
@@ -64,7 +64,7 @@ function NotificationTimeSelection(props) {
                 props.parametros.envioNotif === "Semanal" ?
                 <div className='mt-3'>
                     <h1 className='subtituloSeccaoPagina'>Dias da semana</h1>
-                    <Table striped bordered style={{textAlign: "center", width: "100%"}}>
+                    <Table striped bordered style={{textAlign: "center", width: "100%", marginBottom: '0'}}>
                         <thead>
                             <tr>
                                 <th>Segunda-Feira</th>
@@ -144,10 +144,10 @@ function NotificationTimeSelection(props) {
                             </tr>
                         </tbody>
                     </Table>
-                    <span className="col-4">
+                    <span className="col-3">
                         <p className="subtituloSeccaoPagina mt-2">Hora</p>
                         <span className="row col-12">
-                            <span className="col-4">
+                            <span className="col-3">
                                 <input type="time" className='inputsForms without_ampm w-50' onChange={props.mudaHora} style={{height: "37px"}}/>
                             </span>
                         </span>
@@ -155,11 +155,11 @@ function NotificationTimeSelection(props) {
                     </div>
                     : 
                     props.parametros.envioNotif === "Diária" ?
-                    <div className='mt-3'>
-                        <span className="col-4">
+                    <div className='mt-2'>
+                        <span className="col-3">
                             <p className="subtituloSeccaoPagina">Hora</p>
                             <span className="row col-12">
-                                <span className="col-4">
+                                <span className="col-3">
                                     <input type="time" className='inputsForms without_ampm w-50' onChange={props.mudaHora} style={{height: "37px"}}/>
                                 </span>
                             </span>
@@ -168,7 +168,7 @@ function NotificationTimeSelection(props) {
                     :
                     <>
                         <p className="subtituloSeccaoPagina mt-2">Dia do mês</p>
-                        <span className="col-4">
+                        <span className="col-3">
                             <Dropdown>
                                 <Dropdown.Toggle variant="flat" className="dropdownFiltro">
                                 Dia do mês
@@ -251,33 +251,39 @@ function NotificationTimeSelection(props) {
         props.parametros.momentoUnico === "Hora" ? 
         <>
             <p className="subtituloSeccaoPagina mt-2">Hora</p>
-            <span className="col-4">
+            <span className="col-3">
                 <input type="time" className='inputsForms without_ampm w-50' onChange={props.mudaHora} style={{height: "37px"}}/>
             </span>
                 
         </>
         :
         <>
-            {props.parametros.envioNotif === "Pontual" ?
-            <div className="row col-12">
-                <span className="col-12">
-                    <p className="subtituloSeccaoPagina mt-2">Escolha de dia</p>
-                    <Calendar 
-                        className="m-0 p-0 w-100" 
-                        onClickDay={props.mudaDiaUnico}
-                        minDate={new Date()}/>
-                </span>
-                <span className="col-12">
-                    <p className="subtituloSeccaoPagina mt-2">Hora</p>
-                    <span className="row col-12">
-                        <span className="col-4">
-                            <input type="time" className='inputsForms without_ampm w-50' onChange={props.mudaHora} style={{height: "37px"}}/>
-                        </span> 
-                    </span>
-                </span>
-            </div>
-            :
+            {props.parametros.envioNotif !== "Pontual" ?
             <></>
+            :
+            <>
+                {props.parametros.momentoUnico !== '' ?
+                <div className="row col-12">
+                    <span className="col-9">
+                        <p className="subtituloSeccaoPagina mt-2">Escolha de dia</p>
+                        <Calendar 
+                            className="m-0 p-0 w-100" 
+                            onClickDay={props.mudaDiaUnico}
+                            minDate={new Date()}/>
+                    </span>
+                    <span className="col-12">
+                        <p className="subtituloSeccaoPagina mt-1">Hora</p>
+                        <span className="row col-12">
+                            <span className="col-3">
+                                <input type="time" className='inputsForms without_ampm w-50' onChange={props.mudaHora} style={{height: "37px"}}/>
+                            </span> 
+                        </span>
+                    </span>
+                </div>
+                :
+                <></>
+                }
+            </>
             }
         </>
         }

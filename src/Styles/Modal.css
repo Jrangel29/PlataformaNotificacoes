@@ -56,3 +56,8 @@
 .idadeUserModal{
     color: #3F72AF;
 }
+
+.modalPrefsUser{
+    max-height: 300px;
+    overflow-y: scroll;
+}
