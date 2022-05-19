@@ -7,7 +7,7 @@ const LoadingComponent = (props) => {
 
     return(
         <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-            <span className='LoadingComponent mt-2'>A carregar</span><div className="dot-typing"></div>
+            <span className='LoadingComponent'>A carregar</span><div className="dot-typing"></div>
         </div>
     )
 }

@@ -52,7 +52,7 @@ class CreateNotification extends React.Component {
             },
             colapsado: {
                 collapse1: false,
-                collapse2: false,
+                collapse2: true,
                 collapse3: false
             },
             mensagens: {
@@ -396,6 +396,13 @@ class CreateNotification extends React.Component {
                                     </Dropdown>
                                     }
                                 </span>
+
+                                <div className='col-4 pe-0 mt-2'>
+                                    <span>
+                                        <p className='m-0 p-0' style={{fontSize: '14px', color: '#CC5500'}}><b>Aviso</b></p>
+                                        <p className='m-0 mt-1 p-0' style={{fontSize: '13px', textJustify: 'inter-word'}}><b style={{color: '#CC5500'}}>-</b> Dependendo da categoria escolhida, alguns recetores podem não aparecer. Alguns dos momentos podem também estar indisponíveis.</p>
+                                    </span>
+                                </div>
                             </div>
                         </Collapse>
                     </div>
@@ -522,7 +529,7 @@ class CreateNotification extends React.Component {
                                 <p className='subtituloSeccaoPaginaBigger mt-3' style={{marginTop: "5px"}}>Mensagens das notificações</p>
                                 
                                 <div className='row col-9'>
-                                    <DeliveryOptions subSaude={this.state.categoriaInfo} changeMomento={this.updateMomentosEnvio} blade={this.updateBlade} changeMensagem={this.updateMensagensEnvio} momentos={this.state.mensagens} tipo={this.state.tipologia}/>
+                                    <DeliveryOptions subSaude={this.state.categoriaInfo} changeMomento={this.updateMomentosEnvio} blade={this.updateBlade} changeMensagem={this.updateMensagensEnvio} momentos={this.state.mensagens} tipo={this.state.tipologia} verificaMomento={this.state.momentoUnico} periodicidade={this.state.envioNotif}/>
                                 </div>
 
                                 <div className='col-3 pe-0' style={{display: 'flex', flexDirection: 'column'}}>

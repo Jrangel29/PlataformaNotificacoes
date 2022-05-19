@@ -383,7 +383,7 @@ textarea:focus, input:focus{
 .ListaUsersForm{
     margin-left: 0px!important;
     margin-right: 0px!important;
-    height: 200px;
+    max-height: 200px;
     overflow-y: scroll;
     border-bottom: #c9c9c9 solid 2px;
     border-left: #c9c9c9 solid 2px;
@@ -410,7 +410,7 @@ textarea:focus, input:focus{
 .ListaUsersFormAdicionados{
     margin-left: 0px!important;
     margin-right: 0px!important;
-    height: 233px;
+    max-height: 233px;
     overflow-y: scroll;
     border: #c9c9c9 solid 2px;
 }

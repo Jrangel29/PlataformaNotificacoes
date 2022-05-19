@@ -46,8 +46,8 @@ function NotificationTimeSelection(props) {
                                 <Dropdown.Item onClick={() => props.mudaMomentoUnico("Imediato")}>
                                     Imediato
                                 </Dropdown.Item>
-                                <Dropdown.Item onClick={() => props.mudaMomentoUnico("Hora")}>
-                                    Hora
+                                <Dropdown.Item onClick={() => props.mudaMomentoUnico("Hora do dia atual")}>
+                                    Hora do dia atual
                                 </Dropdown.Item>
                                 <Dropdown.Item onClick={() => props.mudaMomentoUnico("Dia e Hora")}>
                                     Dia e Hora
@@ -248,7 +248,7 @@ function NotificationTimeSelection(props) {
         {props.parametros.momentoUnico === "Imediato" ?
         <></>
         :
-        props.parametros.momentoUnico === "Hora" ? 
+        props.parametros.momentoUnico === "Hora do dia atual" ? 
         <>
             <p className="subtituloSeccaoPagina mt-2">Hora</p>
             <span className="col-3">

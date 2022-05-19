@@ -25,9 +25,7 @@ const PeopleHouseCards = (props) => {
 
     return(
         <p className='mb-0 textHouseCards'>
-            {casaInfo.map((item) => {
-                console.log(item.nome)
-            })}
+            
             {console.log(casaInfo)}José Lima, Maria Lima
         </p>
     )

@@ -6,8 +6,10 @@ export const DeliveryOptions = (props) => {
       <span className='m-0'>
         <Table className='w-100 m-0' striped bordered hover>
             <thead>
-                <th style={{textAlign: 'center'}}>Momento</th>
-                <th style={{textAlign: 'center'}}>Mensagem</th>
+                <tr>
+                    <th style={{textAlign: 'center'}}>Momento</th>
+                    <th style={{textAlign: 'center'}}>Mensagem</th>
+                </tr>
             </thead>
             <tbody>
                 <tr>
@@ -20,7 +22,16 @@ export const DeliveryOptions = (props) => {
                             value="semanaAntes"
                             className='py-1'
                             disabled={
-                                props.tipo === 'Informação' || props.tipo === 'Programas' || props.tipo === 'Serviços' || props.subSaude === 'Inatividade' || props.subSaude === 'Ingestão de Líquidos' || props.subSaude === 'Medicação' ? true : false
+                                props.tipo === 'Informação' 
+                                || props.tipo === 'Programas' 
+                                || props.tipo === 'Serviços' 
+                                || props.subSaude === 'Inatividade' 
+                                || props.subSaude === 'Ingestão de Líquidos' 
+                                || props.subSaude === 'Medicação' 
+                                || props.verificaMomento === 'Imediato'
+                                || props.verificaMomento === 'Hora do dia atual' 
+                                || props.periodicidade === 'Diária'
+                                || props.periodicidade === 'Semanal' ? true : false
                             }
                             onChange={props.changeMomento}/>
                     </td>
@@ -39,7 +50,15 @@ export const DeliveryOptions = (props) => {
                             value="dias3"
                             className='py-1'
                             disabled={
-                                props.tipo === 'Informação' || props.tipo === 'Programas' || props.tipo === 'Serviços' || props.subSaude === 'Inatividade' || props.subSaude === 'Ingestão de Líquidos' || props.subSaude === 'Medicação' ? true : false
+                                props.tipo === 'Informação' 
+                                || props.tipo === 'Programas' 
+                                || props.tipo === 'Serviços' 
+                                || props.subSaude === 'Inatividade' 
+                                || props.subSaude === 'Ingestão de Líquidos' 
+                                || props.subSaude === 'Medicação' 
+                                || props.verificaMomento === 'Imediato' 
+                                || props.verificaMomento === 'Hora do dia atual'
+                                || props.periodicidade === 'Diária' ? true : false
                             }
                             onChange={props.changeMomento}/>
                     </td>
@@ -58,7 +77,13 @@ export const DeliveryOptions = (props) => {
                             value="diaAnterior"
                             className='py-1'
                             disabled={
-                                props.tipo === 'Programas' || props.tipo === 'Serviços' || props.subSaude === 'Inatividade' || props.subSaude === 'Ingestão de Líquidos' || props.subSaude === 'Medicação' ? true : false
+                                props.tipo === 'Programas' 
+                                || props.tipo === 'Serviços' 
+                                || props.subSaude === 'Inatividade' 
+                                || props.subSaude === 'Ingestão de Líquidos'
+                                || props.subSaude === 'Medicação' 
+                                || props.verificaMomento === 'Hora do dia atual'
+                                || props.verificaMomento === 'Imediato' ? true : false
                             }
                             onChange={props.changeMomento}/>
                     </td>
@@ -77,7 +102,13 @@ export const DeliveryOptions = (props) => {
                             value="diaProprio"
                             className='py-1'
                             disabled={
-                                props.tipo === 'Programas' || props.tipo === 'Serviços' || props.subSaude === 'Inatividade' || props.subSaude === 'Ingestão de Líquidos' || props.subSaude === 'Medicação' ? true : false
+                                props.tipo === 'Programas' 
+                                || props.tipo === 'Serviços' 
+                                || props.subSaude === 'Inatividade' 
+                                || props.subSaude === 'Ingestão de Líquidos' 
+                                || props.subSaude === 'Medicação' 
+                                || props.verificaMomento === 'Hora do dia atual'
+                                || props.verificaMomento === 'Imediato' ? true : false
                             }
                             onChange={props.changeMomento}/>
                     </td>
@@ -96,7 +127,13 @@ export const DeliveryOptions = (props) => {
                             value="horaEspecifica"
                             className='py-1'
                             disabled={
-                                props.tipo === 'Informação' || props.tipo === 'Programas' || props.tipo === 'Agenda' || props.subSaude === 'Inatividade' || props.subSaude === 'Ingestão de Líquidos' || props.subSaude === 'Medicação' ? true : false
+                                props.tipo === 'Informação' 
+                                || props.tipo === 'Programas' 
+                                || props.tipo === 'Agenda' 
+                                || props.subSaude === 'Inatividade' 
+                                || props.subSaude === 'Ingestão de Líquidos' 
+                                || props.subSaude === 'Medicação' 
+                                || props.verificaMomento === 'Imediato' ? true : false
                             }
                             onChange={props.changeMomento}/>
                     </td>
@@ -115,7 +152,13 @@ export const DeliveryOptions = (props) => {
                             value="imediato"
                             className='py-1'
                             disabled={
-                                props.tipo === 'Informação' || props.tipo === 'Programas' || props.tipo === 'Serviços' || props.tipo === 'Agenda' || props.subSaude === 'Inatividade' || props.subSaude === 'Ingestão de Líquidos' || props.subSaude === 'Medicação' ? true : false
+                                props.tipo === 'Informação' && props.verificaMomento !== 'Imediato'
+                                || props.tipo === 'Programas' && props.verificaMomento !== 'Imediato'
+                                || props.tipo === 'Serviços' && props.verificaMomento !== 'Imediato'
+                                || props.tipo === 'Agenda' && props.verificaMomento !== 'Imediato'
+                                || props.subSaude === 'Inatividade' && props.verificaMomento !== 'Imediato'
+                                || props.subSaude === 'Ingestão de Líquidos' && props.verificaMomento !== 'Imediato'
+                                || props.subSaude === 'Medicação' && props.verificaMomento !== 'Imediato' ? true : false
                             }
                             onChange={props.changeMomento}/>
                     </td>
@@ -134,7 +177,13 @@ export const DeliveryOptions = (props) => {
                             value="intervaloHoras"
                             className='py-1'
                             disabled={
-                                props.tipo === 'Informação' || props.tipo === 'Programas' || props.tipo === 'Serviços' || props.tipo === 'Agenda' || props.subSaude === 'Medicação' ? true : false
+                                props.tipo === 'Informação' 
+                                || props.tipo === 'Programas' 
+                                || props.tipo === 'Serviços' 
+                                || props.tipo === 'Agenda' 
+                                || props.subSaude === 'Medicação' 
+                                || props.verificaMomento === 'Imediato'
+                                || props.periodicidade === 'Diária' ? true : false
                             }
                             onChange={props.changeMomento}/>
                     </td>
@@ -153,7 +202,13 @@ export const DeliveryOptions = (props) => {
                             value="horaAntes"
                             className='py-1'
                             disabled={
-                                props.tipo === 'Informação' || props.tipo === 'Programas' || props.tipo === 'Serviços' || props.subSaude === 'Inatividade' || props.subSaude === 'Ingestão de Líquidos' || props.subSaude === 'Medicação' ? true : false
+                                props.tipo === 'Informação' 
+                                || props.tipo === 'Programas' 
+                                || props.tipo === 'Serviços' 
+                                || props.subSaude === 'Inatividade' 
+                                || props.subSaude === 'Ingestão de Líquidos' 
+                                || props.subSaude === 'Medicação' 
+                                || props.verificaMomento === 'Imediato' ? true : false
                             }
                             onChange={props.changeMomento}/>
                     </td>
@@ -172,7 +227,13 @@ export const DeliveryOptions = (props) => {
                             value="meiaHora"
                             className='py-1'
                             disabled={
-                                props.tipo === 'Informação' || props.tipo === 'Programas' || props.tipo === 'Serviços' || props.subSaude === 'Inatividade' || props.subSaude === 'Ingestão de Líquidos' || props.subSaude === 'Medicação' ? true : false
+                                props.tipo === 'Informação' 
+                                || props.tipo === 'Programas' 
+                                || props.tipo === 'Serviços' 
+                                || props.subSaude === 'Inatividade' 
+                                || props.subSaude === 'Ingestão de Líquidos' 
+                                || props.subSaude === 'Medicação' 
+                                || props.verificaMomento === 'Imediato' ? true : false
                             }
                             onChange={props.changeMomento}/>
                     </td>
@@ -195,7 +256,12 @@ export const DeliveryOptions = (props) => {
                             value="quartoHora"
                             className='py-1'
                             disabled={
-                                props.tipo === 'Informação' || props.tipo === 'Programas' || props.tipo === 'Serviços' || props.subSaude === 'Inatividade' || props.subSaude === 'Ingestão de Líquidos' ? true : false
+                                props.tipo === 'Informação' 
+                                || props.tipo === 'Programas' 
+                                || props.tipo === 'Serviços' 
+                                || props.subSaude === 'Inatividade' 
+                                || props.subSaude === 'Ingestão de Líquidos' 
+                                || props.verificaMomento === 'Imediato' ? true : false
                             }
                             onChange={props.changeMomento}/>
                     </td>
@@ -214,7 +280,13 @@ export const DeliveryOptions = (props) => {
                             value="minutos5"
                             className='py-1'
                             disabled={
-                                props.tipo === 'Informação' || props.tipo === 'Serviços' || props.tipo === 'Agenda' || props.subSaude === 'Inatividade' || props.subSaude === 'Ingestão de Líquidos' || props.subSaude === 'Medicação' ? true : false
+                                props.tipo === 'Informação' 
+                                || props.tipo === 'Serviços' 
+                                || props.tipo === 'Agenda' 
+                                || props.subSaude === 'Inatividade' 
+                                || props.subSaude === 'Ingestão de Líquidos' 
+                                || props.subSaude === 'Medicação' 
+                                || props.verificaMomento === 'Imediato' ? true : false
                             }
                             onChange={props.changeMomento}/>
                     </td>
@@ -233,7 +305,12 @@ export const DeliveryOptions = (props) => {
                             value="momentoAcontecimento"
                             className='py-1'
                             disabled={
-                                props.tipo === 'Informação' || props.tipo === 'Serviços' || props.tipo === 'Agenda' || props.subSaude === 'Inatividade' || props.subSaude === 'Ingestão de Líquidos' ? true : false
+                                props.tipo === 'Informação' 
+                                || props.tipo === 'Serviços' 
+                                || props.tipo === 'Agenda' 
+                                || props.subSaude === 'Inatividade' 
+                                || props.subSaude === 'Ingestão de Líquidos' 
+                                || props.verificaMomento === 'Imediato' ? true : false
                             }
                             onChange={props.changeMomento}/>
                     </td>

@@ -84,9 +84,9 @@ export const BuscaTipologiasNotificacoes = (props) => {
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu className='dropdownFiltro'>
-                    {tipologiaList.map(item => {
+                    {tipologiaList.map((item, index) => {
                         return(
-                            <Dropdown.Item onClick={
+                            <Dropdown.Item key={index} onClick={
                                 item.nome === "Informação" ?
                                 () => props.mudaForm(item.nome, item.id_tipologia, "Combustíveis")
                                 :
