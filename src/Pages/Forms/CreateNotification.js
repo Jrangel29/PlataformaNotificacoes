@@ -10,7 +10,7 @@ import RespostasUser from '../../Components/Forms/RespostasUser';
 import SuccessModal from '../../Components/Modal/SuccessModal';
 import SubmitButton from '../../Components/Geral/SubmitButton';
 import { BuscaTipologiasNotificacoes } from '../../Components/Forms/Hooks';
-import { ListaUsersPesquisa, ListaUsersAdicionados } from '../../Components/Forms/ListaPesquisa';
+import { ListaUsersPesquisa, ListaUsersAdicionados, CasasPesquisa, CasasEscolhidas } from '../../Components/Forms/ListaPesquisa';
 import { DeliveryOptions } from '../../Components/Forms/DeliveryOptions';
 import { PreviewNotif } from '../../Components/Forms/PreviewNotif';
 import UserPreferencesModal from '../../Components/Modal/UserPreferencesModal';
@@ -36,6 +36,8 @@ class CreateNotification extends React.Component {
             diaUnico: '',
             hora: '',
             momentoUnico: '',
+            usersEscolhidos: [],
+            casasEscolhidas: [],
             dias: {
                 segunda: false,
                 terca: false,
@@ -347,6 +349,34 @@ class CreateNotification extends React.Component {
         }
     }
 
+    addUser = (val) => {
+        this.setState({
+            usersEscolhidos: [...this.state.usersEscolhidos, val]
+        })
+    }
+
+    removeUser = (val) => {
+        let array = [...this.state.usersEscolhidos];
+        array.splice(val, 1)
+        this.setState({
+            usersEscolhidos: array
+        })
+    }
+
+    addCasa = (val) => {
+        this.setState({
+            casasEscolhidas: [...this.state.casasEscolhidas, val]
+        })
+    }
+
+    removeCasa = (val) => {
+        let array = [...this.state.casasEscolhidas];
+        array.splice(val, 1)
+        this.setState({
+            casasEscolhidas: array
+        })
+    }
+
     render(){
         return(
             <div>
@@ -435,12 +465,26 @@ class CreateNotification extends React.Component {
                                     </div>
                                 </span>
                                 <span className='row m-0'>
-                                    <div className='col-6 ms-0 ps-0'>
-                                        <ListaUsersPesquisa tipo={this.state.recetores}/>
-                                    </div>
-                                    <div className='col-6 m-0 p-0'>
-                                        <ListaUsersAdicionados/>
-                                    </div>
+                                    {this.state.tipologia === 'Agenda' || this.state.tipologia === 'Programas' || this.state.tipologia === 'Saúde'?
+                                    <>
+                                        <div className='col-6 ms-0 ps-0'>
+                                            <ListaUsersPesquisa tipo={this.state.recetores} adiciona={this.addUser} adicionados={this.state.usersEscolhidos}/>
+                                        </div>
+                                        <div className='col-6 m-0 p-0'>
+                                            <ListaUsersAdicionados adicionados={this.state.usersEscolhidos} remove={this.removeUser}/>
+                                        </div>
+                                    </>
+                                    :
+                                    <>
+                                        <div className='col-6 ms-0 ps-0'>
+                                            <CasasPesquisa adiciona={this.addCasa} casasEscolhidas={this.state.casasEscolhidas}/>
+                                        </div>
+                                        <div className='col-6 m-0 p-0'>
+                                            <CasasEscolhidas casas={this.state.casasEscolhidas} remove={this.removeCasa}/>
+                                        </div>
+                                    </>
+                                    }
+                                    
                                 </span>
                             </div>
                         </Collapse>
