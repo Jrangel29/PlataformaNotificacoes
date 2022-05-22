@@ -54,7 +54,8 @@ export const PreviewNotif = (props) => {
                         if(props.mensagens[item].active === true){
                             return(
                                 <Carousel.Item>
-                                    <span className='notiPreview'>
+                                    <span key={index} className='notiPreview'>
+                                        {props.tipo !== 'Personalizada' ?
                                         <img src={
                                             props.tipo === "Agenda" ?
                                             iconeAgenda
@@ -70,6 +71,26 @@ export const PreviewNotif = (props) => {
                                             :
                                             iconeServico
                                             } className="imgPreview"/>
+                                        :
+                                        props.tipo === 'Personalizada' && props.personalizado.usaIcone === 'Sim' ?
+                                        <img src={
+                                            props.personalizado.icone === "Agenda" ?
+                                            iconeAgenda
+                                            :
+                                            props.personalizado.icone === "Programas" ?
+                                            iconeConteudo
+                                            :
+                                            props.personalizado.icone === "Informação" ?
+                                            iconeInfo
+                                            :
+                                            props.personalizado.icone === "Saúde" ?
+                                            iconeSaude
+                                            :
+                                            iconeServico
+                                            } className="imgPreview"/>
+                                            :
+                                            <></>
+                                        }
                                         <p className='textPreview'>{props.mensagens[item].message !== '' ? props.mensagens[item].message : "Esta é uma mensagem de exemplo."}</p>
                                     </span>
                                 </Carousel.Item>
@@ -80,21 +101,42 @@ export const PreviewNotif = (props) => {
                 :
                 <div className='divPreview col-5'>
                     <span className='notiPreview'>
-                        <img src={
-                            props.tipo === "Agenda" ?
-                            iconeAgenda
+                        {props.tipo !== 'Personalizada' ?
+                            <img src={
+                                props.tipo === "Agenda" ?
+                                iconeAgenda
+                                :
+                                props.tipo === "Programas" ?
+                                iconeConteudo
+                                :
+                                props.tipo === "Informação" ?
+                                iconeInfo
+                                :
+                                props.tipo === "Saúde" ?
+                                iconeSaude
+                                :
+                                iconeServico
+                                } className="imgPreview"/>
                             :
-                            props.tipo === "Programas" ?
-                            iconeConteudo
-                            :
-                            props.tipo === "Informação" ?
-                            iconeInfo
-                            :
-                            props.tipo === "Saúde" ?
-                            iconeSaude
-                            :
-                            iconeServico
-                            } className="imgPreview"/>
+                            props.tipo === 'Personalizada' && props.personalizado.usaIcone === 'Sim' ?
+                            <img src={
+                                props.personalizado.icone === "Agenda" ?
+                                iconeAgenda
+                                :
+                                props.personalizado.icone === "Programas" ?
+                                iconeConteudo
+                                :
+                                props.personalizado.icone === "Informação" ?
+                                iconeInfo
+                                :
+                                props.personalizado.icone === "Saúde" ?
+                                iconeSaude
+                                :
+                                iconeServico
+                                } className="imgPreview"/>
+                                :
+                                <></>
+                            }
                         <p className='textPreview'>Esta é uma mensagem de exemplo.</p>
                     </span>
                 </div>

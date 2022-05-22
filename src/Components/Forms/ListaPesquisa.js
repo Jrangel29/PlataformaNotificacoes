@@ -313,7 +313,6 @@ export const CasasPesquisa = (props) => {
 }
 
 export const CasasEscolhidas = (props) => {
-    console.log(props.casas)
     return(
         <>
         {props.casas.length > 0 ?
