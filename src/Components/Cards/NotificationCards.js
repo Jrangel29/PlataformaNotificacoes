@@ -22,7 +22,7 @@ class NotificationCards extends React.Component {
 
     render(){
         return(
-            <div className={this.props.tipo == "RotinaUser" ? 'container' : 'container m-0'}>
+            <div className={this.props.tipo == "RotinaUser" ? 'container' : 'container m-0'} style={this.props.pagina === 'users' ? {padding: "0 40px"} : null}>
                 <div className='row cartasMainBody'>
                     <span className='col-4 ps-0'>
                         <Card style={{cursor: "pointer", minHeight: "100%"}}>
@@ -132,20 +132,12 @@ class NotificationCards extends React.Component {
                             :
                             this.props.tipo === "historico" ?
                             <Card.Body as={Link} to="/history/details" style={{textDecoration: "none", color: "black"}} className='bodyCarta m-0'>
-                                <Card.Text className='p-0'>O Benfica defronta o Liverpool em casa, para a Champions League, amanhã.</Card.Text>
+                                <Card.Text className='p-0' style={{fontSize: '14px'}}>O Benfica defronta o Liverpool em casa, para a Champions League, amanhã.</Card.Text>
                             </Card.Body>
                             :
                             <Card.Body onClick={() => this.clicou(this.props.tipo)} className='bodyCarta m-0'>
-                                <Card.Text className='p-0'>A final da champions é amanhã. Não percas o jogo do ano!</Card.Text>
+                                <Card.Text className='p-0' style={{fontSize: '14px'}}>A final da champions é amanhã. Não percas o jogo do ano!</Card.Text>
                             </Card.Body>
-                            }
-                            {
-                            this.props.tipo == "RotinaUser" ?
-                            <Card.Footer onClick={() => this.clicou("AddInfo")} className='adicionarConteudoNotif m-0'>
-                                Adicionar informação de notificações pontuais
-                            </Card.Footer>
-                            :
-                            <></>
                             }
                         </Card>
                     </span>
@@ -257,20 +249,12 @@ class NotificationCards extends React.Component {
                             :
                             this.props.tipo === "historico" ?
                             <Card.Body as={Link} to="/history/details" style={{textDecoration: "none", color: "black"}} className='bodyCarta m-0'>
-                                <Card.Text className='p-0'>Olá Ricardo, amanhã tem que ir fazer análises ao sangue.</Card.Text>
+                                <Card.Text className='p-0' style={{fontSize: '14px'}}>Olá Ricardo, amanhã tem que ir fazer análises ao sangue.</Card.Text>
                             </Card.Body>
                             :
                             <Card.Body onClick={() => this.clicou(this.props.tipo)} className='bodyCarta m-0'>
-                                <Card.Text className='p-0'>A nova temporada de "Os Simpsons" estreia esta quarta-Feira, às 18h, na FOX Comedy.</Card.Text>
+                                <Card.Text className='p-0' style={{fontSize: '14px'}}>A nova temporada de "Os Simpsons" estreia esta quarta-Feira, às 18h, na FOX Comedy.</Card.Text>
                             </Card.Body>
-                            }
-                            {
-                            this.props.tipo == "RotinaUser" ?
-                            <Card.Footer onClick={() => this.clicou("AddInfo")} className='adicionarConteudoNotif m-0'>
-                                Adicionar informação de notificações pontuais
-                            </Card.Footer>
-                            :
-                            <></>
                             }
                         </Card>
                     </span>
@@ -382,20 +366,12 @@ class NotificationCards extends React.Component {
                             :
                             this.props.tipo === "historico" ?
                             <Card.Body as={Link} to="/history/details" style={{textDecoration: "none", color: "black"}} className='bodyCarta m-0'>
-                                <Card.Text className='p-0'>Olá Júlia, o aniversário da sua neta é daqui a dois dias.</Card.Text>
+                                <Card.Text className='p-0' style={{fontSize: '14px'}}>Olá Júlia, o aniversário da sua neta é daqui a dois dias.</Card.Text>
                             </Card.Body>
                             :
                             <Card.Body onClick={() => this.clicou(this.props.tipo)} className='bodyCarta m-0'>
-                                <Card.Text className='p-0'>Olá José, não se esqueça da sua consulta anual de rotina no hospital S. João.</Card.Text>
+                                <Card.Text className='p-0' style={{fontSize: '14px'}}>Olá José, não se esqueça da sua consulta anual de rotina no hospital S. João.</Card.Text>
                             </Card.Body>
-                            }
-                            {
-                            this.props.tipo == "RotinaUser" ?
-                            <Card.Footer onClick={() => this.clicou("AddInfo")} className='adicionarConteudoNotif m-0'>
-                                Adicionar informação de notificações pontuais
-                            </Card.Footer>
-                            :
-                            <></>
                             }
                         </Card>
                     </span>

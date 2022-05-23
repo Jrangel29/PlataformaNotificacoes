@@ -130,7 +130,7 @@ export const BuscaDistritosConcelhos = (props) => {
     if (isLoadingConcelhos || props.concelho == '') {
         return (
             <>
-            <span className='col-3 divMargem'>
+            <span className='col-3 ps-0'>
                 <p className='subtituloSeccaoPagina p-0 mt-3'>Distrito <span className='obrigatorio'>*</span></p>
                 <Dropdown value={props.valor} onSelect={concelhoSearch}>
                     {props.valor !== '' ?
@@ -163,7 +163,7 @@ export const BuscaDistritosConcelhos = (props) => {
                 </Dropdown>  
             </span>
 
-            <span className='col-3 divMargem'>
+            <span className='col-3 ps-0'>
                 <p className='subtituloSeccaoPagina p-0 mt-3'>Concelho <span className='obrigatorio'>*</span></p>
                 <Dropdown>
                     <Dropdown.Toggle variant="flat" disabled className='dropdownFiltro'>

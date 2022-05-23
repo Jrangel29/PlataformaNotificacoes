@@ -16,7 +16,7 @@
     transition: background-color .3s cubic-bezier(0.55, 0, 0.55, 0.2);
 }
 
-.nav-link:active {
+.navSelected {
     background-color: #2d507c!important;
 }
 

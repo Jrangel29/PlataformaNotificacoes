@@ -94,7 +94,7 @@ class CreateUser extends React.Component {
                 <div className='mainBodyForm container px-0'>
                     <Header nome="Criar Utilizador" detalhe="sim" apagaMuda="nao" criaUser="sim"/>
                     <div>
-                        <div className='btn btnSeccao ms-0'>
+                        <div className='prevSeccao ms-0'>
                             <h1 className='tituloSeccaoPaginaNotifs'>Informação Geral</h1>
                         </div>
                         <div className='row m-0' style={{padding: "0 40px"}}>
@@ -119,7 +119,7 @@ class CreateUser extends React.Component {
                             </span>
                         </div>
 
-                        <div className='btn btnSeccao ms-0 mt-2'>
+                        <div className='prevSeccao ms-0 mt-2'>
                             <p className='tituloSeccaoPaginaNotifs'>Informações Adicionais</p>
                         </div>
                         <div className='row col-12 m-0' style={{padding: "0 40px"}}>
@@ -127,7 +127,7 @@ class CreateUser extends React.Component {
                             <textarea rows="4" className='inputsForms w-100 mx-2' value={this.state.infoUser.infoAdicional} id='infoAdicional' onChange={this.atualizaInfo}/>
                         </div>
 
-                        <div className='btn btnSeccao ms-0 mt-3'>
+                        <div className='prevSeccao ms-0 mt-3'>
                             <p className='tituloSeccaoPaginaNotifs'>Casa</p>
                         </div>
                         <span className='col-12 m-0'>

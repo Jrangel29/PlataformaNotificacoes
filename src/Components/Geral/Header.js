@@ -50,7 +50,7 @@ class Header extends React.Component {
                             <img className="topIcons px-4" src={Editar}/>    
                         </Link>
                         }
-                        <img className="topIcons" style={{cursor: "pointer"}} onClick={() => this.onOpen()} src={Lixo}/>
+                        <img className="topIcons" style={{marginRight: "40px", cursor: "pointer"}} onClick={() => this.onOpen()} src={Lixo}/>
                         {this.props.nome === "Utilizadores" ?
                         <DeleteUser show={this.state.showDelete} onHide={this.onClose}/>
                         :

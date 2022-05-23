@@ -8,17 +8,17 @@ class GroupDetailsCards extends React.Component {
     render(){
         return(            
             <div className='container'>
-                <div className='row mt-2'>
-                    <Card className='col-4 p-0'>
+                <div className='row mt-1'>
+                    <Card className='col-3 p-0'>
                         <Card.Body className='m-0 cartaGrupos'>
                             <span>
-                                <p className='tituloUserCarta mb-2'>
+                                <p className='tituloUserCarta mb-1'>
                                     Ricardo Lima
                                 </p>
-                                <p className='mb-0'>
+                                <p className='mb-0' style={{fontSize: '14px'}}>
                                     66 anos
                                 </p>
-                                <p className='mb-0'>
+                                <p className='mb-0' style={{fontSize: '14px'}}>
                                     Vila Nova de Gaia, Porto
                                 </p>
                             </span>

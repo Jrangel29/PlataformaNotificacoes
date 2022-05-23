@@ -16,15 +16,14 @@ const PeopleHouseCards = (props) => {
 
     if (isLoadingCasaInfo || !props.idCasa) {
         return (
-            <p className='mb-0 textHouseCards'>
-                {console.log(casaInfo)}
+            <p className='mb-1 textHouseCards'>
                 A carregar pessoas...
             </p>
         )
     }
 
     return(
-        <p className='mb-0 textHouseCards'>
+        <p className='mb-1 textHouseCards'>
             
             {console.log(casaInfo)}José Lima, Maria Lima
         </p>

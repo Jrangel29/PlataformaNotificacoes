@@ -64,44 +64,33 @@ class User extends React.Component {
         return(
             <div>
                 <Navbar/>
-                <div className='mainBody container'>
+                <div className='mainBodyForm container px-0'>
                     <Header nome="Utilizadores" detalhe="sim" apagaMuda="sim"/>
-                    <div className='px-2'>
-                        <div>
-                            <h1 className='tituloSeccaoPagina'>Ricardo Lima</h1>
-                            <p className='textoSeccaoPagina'>66 anos</p>
-                            <p className='textoSeccaoPagina'>Casa do Ricardo</p>
+                    <div>
+                        <div className='prevSeccao ms-0'>
+                            <h1 className='tituloSeccaoPaginaNotifs'>Informação geral</h1>
                         </div>
-                        <div className='mt-4'>
-                            <h1 className='tituloSeccaoPagina'>Saúde</h1>
-                            <Table striped bordered hover className='w-50'>
-                                <thead>
-                                    <tr>
-                                        <th>Nome do medicamento</th>
-                                        <th>Dias da Semana</th>
-                                        <th>Horas</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Diabetes</td>
-                                        <td>Segunda-feira, Quarta-feira, Sábado</td>
-                                        <td>16:00</td>
-                                    </tr>
-                                </tbody>
-                            </Table>
+                        <div className='mx-3' style={{padding: "10px 40px"}}>
+                            <h1 className='textoSeccaoPagina'><b>Nome:</b> Ricardo Lima</h1>
+                            <p className='textoSeccaoPagina'><b>Idade:</b> 66 anos</p>
+                            <p className='textoSeccaoPagina'><b>Casa:</b> Casa do Ricardo</p>
                         </div>
-                        <div className='mt-4'>
-                            <h1 className='tituloSeccaoPagina'>Informações adicionais</h1>
-                            <p className='textoSeccaoPagina'>Os eventos da sua terra acontecem no final de Junho. Não esquecer de avisar!</p>
+                        <div className='mt-2'>
+                            <div className='prevSeccao ms-0'>
+                                <h1 className='tituloSeccaoPaginaNotifs'>Informações adicionais</h1>
+                            </div>
+                            <p className='textoSeccaoPagina mx-3' style={{padding: "10px 40px"}}>Os eventos da sua terra acontecem no final de Junho. Não esquecer de avisar!</p>
                         </div>
-                        <div className='mt-4'>
-                            <div className='row offset-1 col-10 justify-content-center'>
+                        <div className='mt-2'>
+                            <div className='prevSeccao ms-0'>
+                                <h1 className='tituloSeccaoPaginaNotifs'>Notificações</h1>
+                            </div>
+                            <div className='row offset-1 mt-4 col-10 justify-content-center'>
                                 <Button onClick={() => this.mudaSeccao("notificacoes")} className='seccaoBtn col-3 mx-2' variant={this.state.seccao == "notificacoes" ? 'flat' : 'custom'}>Notificações por enviar</Button>
                                 <Button onClick={() => this.mudaSeccao("rotina")} className='seccaoBtn col-3 mx-2' variant={this.state.seccao == "rotina" ? 'flat' : 'custom'}>Rotinas do utilizador</Button>
                                 <Button onClick={() => this.mudaSeccao("historico")} className='seccaoBtn col-3 mx-2' variant={this.state.seccao == "historico" ? 'flat' : 'custom'}>Histórico de notificações</Button>
                             </div>
-                            <NotificationCards tipo={this.state.seccao == "notificacoes" ? "notificacoes" : this.state.seccao == "rotina" ? "RotinaUser" : "historico"} abreModal={this.onOpen} abreModalInfo={this.onOpenAddInfo} abreModalDelete={this.onOpenDelete} abreModalDeleteRotina={this.onOpenDeleteRoutine}/>
+                            <NotificationCards tipo={this.state.seccao == "notificacoes" ? "notificacoes" : this.state.seccao == "rotina" ? "RotinaUser" : "historico"} pagina={'users'} abreModal={this.onOpen} abreModalInfo={this.onOpenAddInfo} abreModalDelete={this.onOpenDelete} abreModalDeleteRotina={this.onOpenDeleteRoutine}/>
                         </div>
                     </div>
                 </div>

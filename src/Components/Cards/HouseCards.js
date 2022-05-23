@@ -37,13 +37,13 @@ const HouseCards = () => {
                                     <p className='tituloGrupoCarta mb-2'>
                                         {item.nome}
                                     </p>
-                                    <p className='mb-0'>
+                                    <p className='mb-1' style={{fontSize: '14px'}}>
                                         {item.localidade}
                                     </p>
                                     <PeopleHouseCards idCasa={item.id_box}/>
                                     <p className='mb-0 textHouseCards'>
                                         <span className={item.ativa.data[0] === 0 ? 'redDot' : 'greenDot'}></span>
-                                        {item.ativa.data[0] === 0 ? ' Desligada' : ' Ligada'}
+                                        {item.ativa.data[0] === 0 ? ' Box Desligada' : ' Box Ligada'}
                                     </p>
                                 </span>
                             </Accordion.Header>

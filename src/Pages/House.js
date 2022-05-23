@@ -10,18 +10,27 @@ class House extends React.Component {
         return(
             <div>
                 <Navbar/>
-                <div className='mainBody container'>
+                <div className='mainBodyForm container px-0'>
                     <Header nome="Casas" detalhe="sim" apagaMuda="sim"/>
-                    <div className='px-2'>
-                        <div>
-                            <h1 className='tituloSeccaoPagina'>Casa dos Limas</h1>
-                            <p className='textoSeccaoPagina'>Vila Nova de Gaia, Porto</p>
+                    <div>
+                        <div className='prevSeccao ms-0'>
+                            <h1 className='tituloSeccaoPaginaNotifs'>Informação geral</h1>
+                        </div>
+                        <div className='mx-3' style={{padding: "10px 40px"}}>
+                            <p className='textoSeccaoPagina'><b>Nome:</b> Casa dos Limas</p>
+                            <p className='textoSeccaoPagina'><b>Localidade:</b> Vila Nova de Gaia, Porto</p>
                             <p className='textoSeccaoPagina'><b>ID da box:</b> 997b0ec3-81df-4263-84c6-e5c67b9cc407</p>
                         </div>
-                        <div className='mt-4'>
+                        <div className='mt-1 mx-3' style={{padding: "0 40px"}}>
                             <p className='subtituloSeccaoPagina'>Membros da casa</p>
                             <GroupDetailCards/>
                         </div>
+                    </div>
+                    <div className='p-0 m-0 mt-3'>
+                        <div className='prevSeccao ms-0'>
+                            <h1 className='tituloSeccaoPaginaNotifs'>Notificações</h1>
+                        </div>
+                        
                     </div>
                 </div>
             </div>

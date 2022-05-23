@@ -14,13 +14,13 @@ class UserCards extends React.Component {
                         <Accordion.Item eventKey="1">
                             <Accordion.Header className='m-0'>
                                 <span>
-                                    <p className={this.props.pagina === "criaGrupo" ? 'tituloUserCartaSmall mb-2' : 'tituloUserCarta mb-2'}>
+                                    <p className='tituloUserCartaSmall mb-2'>
                                         Ricardo Lima
                                     </p>
-                                    <p className={this.props.pagina === "criaGrupo" ? 'textoSmall mb-0' : 'mb-0'}>
+                                    <p className='textoSmall mb-0'>
                                         66 anos
                                     </p>
-                                    <p className={this.props.pagina === "criaGrupo" ? 'textoSmall mb-0' : 'mb-0'}>
+                                    <p className='textoSmall mb-0'>
                                         Casa do Ricardo
                                     </p>
                                 </span>
@@ -31,23 +31,23 @@ class UserCards extends React.Component {
                             </Accordion.Body>
                             :
                             <Accordion.Body className='footerUser row mx-0 justify-content-center'>
-                                <Button as={Link} to="/users/user" className='textoBtnUser col-5 mx-2' variant='flat'>Ver mais informação</Button>
-                                <Button as={Link} to="/notifications/create" className='textoBtnUser col-5 mx-2' variant='flat'>Enviar notificação</Button>
+                                <Button as={Link} to="/users/user" className='textoBtnUser col-5 mx-2' variant='flat'>Mais informação</Button>
+                                <Button as={Link} to="/notifications/create" className='textoBtnUser col-5 mx-2' variant='flat'>Criar evento</Button>
                             </Accordion.Body>
                             }
                         </Accordion.Item>
                     </Accordion>
-                    <Accordion defaultActiveKey="0" className={this.props.pagina === "criaGrupo" ? 'col-6' : 'col-4'}>
+                    <Accordion defaultActiveKey="0" className={this.props.pagina === "criaGrupo" ? 'col-6' : 'col-4 pb-3'}>
                         <Accordion.Item eventKey="1">
                             <Accordion.Header className='m-0'>
                                 <span>
-                                    <p className={this.props.pagina === "criaGrupo" ? 'tituloUserCartaSmall mb-2' : 'tituloUserCarta mb-2'}>
+                                    <p className='tituloUserCartaSmall mb-2'>
                                         Patrícia Silva
                                     </p>
-                                    <p className={this.props.pagina === "criaGrupo" ? 'textoSmall mb-0' : 'mb-0'}>
+                                    <p className='textoSmall mb-0'>
                                         21 anos
                                     </p>
-                                    <p className={this.props.pagina === "criaGrupo" ? 'textoSmall mb-0' : 'mb-0'}>
+                                    <p className='textoSmall mb-0'>
                                         Casa do Ricardo
                                     </p>
                                 </span>
@@ -58,23 +58,23 @@ class UserCards extends React.Component {
                             </Accordion.Body>
                             :
                             <Accordion.Body className='footerUser row mx-0 justify-content-center'>
-                                <Button as={Link} to="/users/user" className='textoBtnUser col-5 mx-2' variant='flat'>Ver mais informação</Button>
-                                <Button as={Link} to="/notifications/create" className='textoBtnUser col-5 mx-2' variant='flat'>Enviar notificação</Button>
+                                <Button as={Link} to="/users/user" className='textoBtnUser col-5 mx-2' variant='flat'>Mais informação</Button>
+                                <Button as={Link} to="/notifications/create" className='textoBtnUser col-5 mx-2' variant='flat'>Criar evento</Button>
                             </Accordion.Body>
                             }
                         </Accordion.Item>
                     </Accordion>
-                    <Accordion defaultActiveKey="0" className={this.props.pagina === "criaGrupo" ? 'col-6' : 'col-4'}>
+                    <Accordion defaultActiveKey="0" className={this.props.pagina === "criaGrupo" ? 'col-6' : 'col-4 pb-3'}>
                         <Accordion.Item eventKey="1">
                             <Accordion.Header className='m-0'>
                                 <span>
-                                    <p className={this.props.pagina === "criaGrupo" ? 'tituloUserCartaSmall mb-2' : 'tituloUserCarta mb-2'}>
+                                    <p className='tituloUserCartaSmall mb-2'>
                                         Marco Costa
                                     </p>
-                                    <p className={this.props.pagina === "criaGrupo" ? 'textoSmall mb-0' : 'mb-0'}>
+                                    <p className='textoSmall mb-0'>
                                         42 anos
                                     </p>
-                                    <p className={this.props.pagina === "criaGrupo" ? 'textoSmall mb-0' : 'mb-0'}>
+                                    <p className='textoSmall mb-0'>
                                         Casa Marco
                                     </p>
                                 </span>
@@ -85,8 +85,8 @@ class UserCards extends React.Component {
                             </Accordion.Body>
                             :
                             <Accordion.Body className='footerUser row mx-0 justify-content-center'>
-                                <Button as={Link} to="/users/user" className='textoBtnUser col-5 mx-2' variant='flat'>Ver mais informação</Button>
-                                <Button as={Link} to="/notifications/create" className='textoBtnUser col-5 mx-2' variant='flat'>Enviar notificação</Button>
+                                <Button as={Link} to="/users/user" className='textoBtnUser col-5 mx-2' variant='flat'>Mais informação</Button>
+                                <Button as={Link} to="/notifications/create" className='textoBtnUser col-5 mx-2' variant='flat'>Criar Evento</Button>
                             </Accordion.Body>
                             }
                         </Accordion.Item>
@@ -95,13 +95,13 @@ class UserCards extends React.Component {
                         <Accordion.Item eventKey="1">
                             <Accordion.Header className='m-0'>
                                 <span>
-                                    <p className={this.props.pagina === "criaGrupo" ? 'tituloUserCartaSmall mb-2' : 'tituloUserCarta mb-2'}>
+                                    <p className='tituloUserCartaSmall mb-2'>
                                         Bruno Alves
                                     </p>
-                                    <p className={this.props.pagina === "criaGrupo" ? 'textoSmall mb-0' : 'mb-0'}>
+                                    <p className='textoSmall mb-0'>
                                         33 anos
                                     </p>
-                                    <p className={this.props.pagina === "criaGrupo" ? 'textoSmall mb-0' : 'mb-0'}>
+                                    <p className='textoSmall mb-0'>
                                         Casa da Maria
                                     </p>
                                 </span>
@@ -112,8 +112,8 @@ class UserCards extends React.Component {
                             </Accordion.Body>
                             :
                             <Accordion.Body className='footerUser row mx-0 justify-content-center'>
-                                <Button as={Link} to="/users/user" className='textoBtnUser col-5 mx-2' variant='flat'>Ver mais informação</Button>
-                                <Button as={Link} to="/notifications/create" className='textoBtnUser col-5 mx-2' variant='flat'>Enviar notificação</Button>
+                                <Button as={Link} to="/users/user" className='textoBtnUser col-5 mx-2' variant='flat'>Mais informação</Button>
+                                <Button as={Link} to="/notifications/create" className='textoBtnUser col-5 mx-2' variant='flat'>Criar evento</Button>
                             </Accordion.Body>
                             }
                         </Accordion.Item>

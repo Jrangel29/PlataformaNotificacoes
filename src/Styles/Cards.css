@@ -47,18 +47,18 @@
 }
 
 .dataFooterUserTitle{
-    font-size: 15px!important;
+    font-size: 14px!important;
     margin-bottom: 2px!important;
 }
 
 .textoBtnUser{
-    font-size: 13px!important;
+    font-size: 14px!important;
 }
 
 .tituloUserCarta{
     color: #3F72AF;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .tituloUserCartaSmall{
@@ -68,13 +68,13 @@
 }
 
 .textoSmall{
-    font-size: 15px;
+    font-size: 14px;
 }
 
 .tituloGrupoCarta{
     color: #3F72AF;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .tituloGrupoCartaSmall{
@@ -88,24 +88,25 @@
 }
 
 .tituloNotificacao{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    display: flex!important;
+    flex-direction: column!important;
+    justify-content: center!important;
     max-height: 30px;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
+    font-size: 15px;
 }
 
 .dataNotifs{
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 500;
     color: #3F72AF;
 }
 
 .dataNotifsTitle{
-    font-size: 16px!important;
+    font-size: 15px!important;
     margin-bottom: 3px!important;
 }
 
@@ -119,7 +120,7 @@
 
 .adicionarConteudoNotif{
     background-color: #B7F9B6!important;
-    color: #0EC00C!important;
+    color: #0d980a!important;
     font-size: 14px;
     text-align: center;
 }
@@ -155,6 +156,7 @@
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+    font-size: 14px;
 }
 
 .accordion-button {

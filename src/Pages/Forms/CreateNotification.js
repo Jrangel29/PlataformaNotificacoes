@@ -190,26 +190,186 @@ class CreateNotification extends React.Component {
             this.setState({
                 regularidade: valor.target.value,
                 envioNotif: "Pontual",
-                momentoUnico: 'Imediato'
+                momentoUnico: 'Imediato',
+                mensagens: {
+                    semanaAntes: {
+                        active: false, 
+                        message: ''},
+                    dias3: {
+                        active: false, 
+                        message: ''},
+                    diaAnterior: {
+                        active: false, 
+                        message: ''},
+                    diaProprio: {
+                        active: false, 
+                        message: ''},
+                    horaEspecifica: {
+                        active: false, 
+                        message: ''},
+                    imediato: {
+                        active: false, 
+                        message: ''},
+                    intervaloHoras: {
+                        active: false, 
+                        message: ''},
+                    horaAntes: {
+                        active: false, 
+                        message: ''},
+                    meiaHora: {
+                        active: false, 
+                        message: '',
+                        tituloBlade: '',
+                        descricao: ''},
+                    quartoHora: {
+                        active: false, 
+                        message: ''},
+                    minutos5: {
+                        active: false, 
+                        message: ''},
+                    momentoAcontecimento: {
+                        active: false, 
+                        message: ''}
+                }
             })
         } else if(valor.target.value === "Pontual" && this.state.tipologia === 'Informação') {
             this.setState({
                 regularidade: valor.target.value,
                 envioNotif: "Pontual",
-                momentoUnico: ''
+                momentoUnico: '',
+                mensagens: {
+                    semanaAntes: {
+                        active: false, 
+                        message: ''},
+                    dias3: {
+                        active: false, 
+                        message: ''},
+                    diaAnterior: {
+                        active: false, 
+                        message: ''},
+                    diaProprio: {
+                        active: false, 
+                        message: ''},
+                    horaEspecifica: {
+                        active: false, 
+                        message: ''},
+                    imediato: {
+                        active: false, 
+                        message: ''},
+                    intervaloHoras: {
+                        active: false, 
+                        message: ''},
+                    horaAntes: {
+                        active: false, 
+                        message: ''},
+                    meiaHora: {
+                        active: false, 
+                        message: '',
+                        tituloBlade: '',
+                        descricao: ''},
+                    quartoHora: {
+                        active: false, 
+                        message: ''},
+                    minutos5: {
+                        active: false, 
+                        message: ''},
+                    momentoAcontecimento: {
+                        active: false, 
+                        message: ''}
+                }
             })
         } else{
             this.setState({
                 regularidade: valor.target.value,
                 envioNotif: "Diária",
-                momentoUnico: ""
+                momentoUnico: "",
+                mensagens: {
+                    semanaAntes: {
+                        active: false, 
+                        message: ''},
+                    dias3: {
+                        active: false, 
+                        message: ''},
+                    diaAnterior: {
+                        active: false, 
+                        message: ''},
+                    diaProprio: {
+                        active: false, 
+                        message: ''},
+                    horaEspecifica: {
+                        active: false, 
+                        message: ''},
+                    imediato: {
+                        active: false, 
+                        message: ''},
+                    intervaloHoras: {
+                        active: false, 
+                        message: ''},
+                    horaAntes: {
+                        active: false, 
+                        message: ''},
+                    meiaHora: {
+                        active: false, 
+                        message: '',
+                        tituloBlade: '',
+                        descricao: ''},
+                    quartoHora: {
+                        active: false, 
+                        message: ''},
+                    minutos5: {
+                        active: false, 
+                        message: ''},
+                    momentoAcontecimento: {
+                        active: false, 
+                        message: ''}
+                }
             })
         }
     }
 
     alteraMomentoUnico = (valor) => {
         this.setState({
-            momentoUnico: valor
+            momentoUnico: valor,
+            mensagens: {
+                semanaAntes: {
+                    active: false, 
+                    message: ''},
+                dias3: {
+                    active: false, 
+                    message: ''},
+                diaAnterior: {
+                    active: false, 
+                    message: ''},
+                diaProprio: {
+                    active: false, 
+                    message: ''},
+                horaEspecifica: {
+                    active: false, 
+                    message: ''},
+                imediato: {
+                    active: false, 
+                    message: ''},
+                intervaloHoras: {
+                    active: false, 
+                    message: ''},
+                horaAntes: {
+                    active: false, 
+                    message: ''},
+                meiaHora: {
+                    active: false, 
+                    message: '',
+                    tituloBlade: '',
+                    descricao: ''},
+                quartoHora: {
+                    active: false, 
+                    message: ''},
+                minutos5: {
+                    active: false, 
+                    message: ''},
+                momentoAcontecimento: {
+                    active: false, 
+                    message: ''}
+            }
         })
     }
 
@@ -566,7 +726,7 @@ class CreateNotification extends React.Component {
                             <span className='row m-0' style={{padding: "0 40px"}}>
                                 <div className='row col-12'>
                                     <span className='col-12'>
-                                        <p className='subtituloSeccaoPaginaBigger p-0' style={{marginTop: "5px"}}>Dados do evento a notificar</p>
+                                        <p className='subtituloSeccaoPaginaBigger p-0' style={{marginTop: "5px"}}>Dados do evento</p>
                                     </span>
                                     
                                     <span className='row m-0 col-12 pe-0'>
@@ -605,7 +765,7 @@ class CreateNotification extends React.Component {
 
                     <div className='row m-0 mt-2'>
                         <div className='btn btnSeccao' onClick={() => this.mudaCollapse(4)}>
-                            <h1 className='tituloSeccaoPaginaNotifs'>Escolha de momentos e conteúdo das notificações a enviar</h1>
+                            <h1 className='tituloSeccaoPaginaNotifs'>Momentos e conteúdo das notificações</h1>
                             <img src={DownArrow} className={this.state.colapsado.collapse4 !== true ? "ArrowDown" : "ArrowDownRotated"}/>
                         </div>
                         <Collapse in={this.state.colapsado.collapse4}>

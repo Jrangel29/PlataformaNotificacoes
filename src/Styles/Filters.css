@@ -3,7 +3,7 @@
     border: none;
     border-radius: 5px;
     padding: 7px;
-    font-size: 16px;
+    font-size: 14px;
     color: #112D4E;
 }
 
@@ -12,7 +12,7 @@
     border: none;
     border-radius: 5px;
     padding: 7px;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 input[type="date"]::-webkit-inner-spin-button,
@@ -24,11 +24,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .btn-flat{
     background-color: #3F72AF!important;
     color: #F9F7F7!important;
+    font-size: 14px!important;
 }
 
 .btn-flat:hover{
     background-color: #2d507c!important;
     transition: background-color .3s cubic-bezier(0.55, 0, 0.55, 0.2)!important;
+    font-size: 14px!important;
 }
 
 .segundaLinhaFiltro{
@@ -38,17 +40,20 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .dropdown-flat{
     background-color: #3F72AF!important;
     color: #F9F7F7!important;
+    font-size: 14px!important;
 }
 
 .dropdown-flat:hover{
     background-color: #2d507c!important;
     transition: background-color .3s cubic-bezier(0.55, 0, 0.55, 0.2)!important;
+    font-size: 14px!important;
 }
 
 .FiltrarPor{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    font-size: 15px;
 }
 
 .dropdownFiltro{
@@ -57,5 +62,5 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     right: auto;
     max-height: 250px!important;
     overflow-y: auto;
-    font-size: 16px!important;
+    font-size: 14px!important;
 }

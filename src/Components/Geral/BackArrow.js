@@ -6,7 +6,7 @@ import {useNavigate} from 'react-router-dom';
 const BackArrow = (props) => {
     const navigate = useNavigate();
     return(
-        <img style={props.nome === "Criar Evento" || props.nome === "Criar Utilizador"  ? {marginLeft: "40px", cursor: "pointer"} : {cursor: "pointer"}} onClick={() => navigate(-1)} className="backArrow" src={BackArrowImg}/>
+        <img style={{marginLeft: "40px", cursor: "pointer"}} onClick={() => navigate(-1)} className="backArrow" src={BackArrowImg}/>
     )
 }
 
