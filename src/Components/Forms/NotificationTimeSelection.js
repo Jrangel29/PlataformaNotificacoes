@@ -7,7 +7,7 @@ function NotificationTimeSelection(props) {
   return (
     <>
         <p className="subtituloSeccaoPagina" style={{marginTop: "5px"}}>
-            Peridicidade <span className="obrigatorio">*</span>
+            Periodicidade <span className="obrigatorio">*</span>
         </p>
         <span className="col-3">
             <Dropdown>
@@ -35,7 +35,7 @@ function NotificationTimeSelection(props) {
                 <>
                     {props.parametros.tipologia !== 'Informação' ? 
                     <>
-                    <h1 className='subtituloSeccaoPagina mt-2'>Momento de acontecimento do item</h1>
+                    <h1 className='subtituloSeccaoPagina mt-2'>Horário do evento</h1>
                     <span className="col-3">
                         <Dropdown>
                             <Dropdown.Toggle variant="flat" className="dropdownFiltro">
@@ -45,9 +45,6 @@ function NotificationTimeSelection(props) {
                             <Dropdown.Menu className="dropdownFiltro">
                                 <Dropdown.Item onClick={() => props.mudaMomentoUnico("Imediato")}>
                                     Imediato
-                                </Dropdown.Item>
-                                <Dropdown.Item onClick={() => props.mudaMomentoUnico("Hora do dia atual")}>
-                                    Hora do dia atual
                                 </Dropdown.Item>
                                 <Dropdown.Item onClick={() => props.mudaMomentoUnico("Dia e Hora")}>
                                     Dia e Hora

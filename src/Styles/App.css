@@ -254,9 +254,8 @@ textarea:focus, input:focus{
 .mainBodyForm{
     background-color: #FFFFFF;
     padding-bottom: 30px!important;
-    margin-top: -60px!important;
-    padding-top: 60px!important;
     min-height: 100vh;
+    width: 100vw!important;
 }
 
 .erro404{
@@ -280,7 +279,7 @@ textarea:focus, input:focus{
     top: 0!important;
     position: -webkit-sticky!important;
     background-color: #FFFFFF;
-    z-index: 1;
+    z-index: 3;
     -webkit-box-shadow: 0px 8px 16px -9px rgba(0,0,0,0.67); 
     box-shadow: 0px 8px 16px -9px rgba(0,0,0,0.67);
     border-bottom: #c9c9c9 solid 2px;

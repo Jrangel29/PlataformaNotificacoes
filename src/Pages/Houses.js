@@ -9,13 +9,13 @@ class Houses extends React.Component {
     render(){
         return(
             <div>
-                <Navbar/>
-                <div className='mainBody container'>
+                <div className='mainBodyForm container p-0'>
+                    <Navbar/>
                     <Header nome="Casas" apagaMuda="nao"/>
-                    <div>
+                    <div style={{padding: "0 40px"}}>
                         <Filters tipo="Casa"/>
                     </div>
-                    <div>
+                    <div style={{padding: "0 40px"}}>
                         <HouseCards pagina="UserList"/>
                     </div>
                 </div>

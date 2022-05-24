@@ -9,13 +9,13 @@ class History extends React.Component {
     render(){
         return(
             <div>
-                <Navbar/>
-                <div className='mainBody container'>
+                <div className='mainBodyForm container p-0'>
+                    <Navbar/>
                     <Header nome="Notificações enviadas" apagaMuda="nao"/>
-                    <div>
+                    <div style={{padding: "0 40px"}}>
                         <Filters tipo="Histórico"/>
                     </div>
-                    <div>
+                    <div style={{padding: "0 40px"}}>
                         <NotificationCards tipo={"historico"}/>
                     </div>
                 </div>

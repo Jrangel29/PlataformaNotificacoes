@@ -45,7 +45,7 @@ export const PreviewNotif = (props) => {
             <div className='prevSeccao ms-0'>
                 <h1 className='tituloSeccaoPaginaNotifs'>Pré-visualização das notificações</h1>
             </div>
-            <div style={{padding: "0 40px"}} className={offset >= 175 ? 'stickyTop row m-0' : 'row m-0'}>
+            <div style={{padding: "0 40px"}} className={offset >= 130 ? 'stickyTop row m-0' : 'row m-0'}>
                 {carrocas === true ? 
                     <Carousel 
                     interval={null} activeIndex={index} variant='dark'
@@ -162,16 +162,16 @@ export const PreviewNotif = (props) => {
                                 if(index+1 === Object.keys(props.mensagens).length){
                                     if(contagem === 0){
                                         return(
-                                            'Este evento não gera mensagens'
+                                            'Este evento não gera notificações'
                                         )
                                     }
                                     if(contagem === 1){
                                         return(
-                                            'Este evento gera 1 mensagem'
+                                            'Este evento gera 1 notificações'
                                         )
                                     } else {
                                         return(
-                                            `Este evento gera ${contagem} mensagens`
+                                            `Este evento gera ${contagem} notificações`
                                         )
                                     }
                                 }

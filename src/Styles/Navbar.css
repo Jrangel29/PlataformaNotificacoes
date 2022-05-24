@@ -1,6 +1,18 @@
 .barraNavegacao{
     background-color: #3F72AF;
-    height: 60px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    z-index: 2!important;
+}
+
+.pt1{
+    align-items: flex-start;
+}
+
+.pt2{
+    align-items: flex-end;
 }
 
 .nav-link {
@@ -8,7 +20,65 @@
     font-weight: 400;
     height: 100%;
     padding: 0 20px!important;
-    line-height: 58px;
+    line-height: 48px;
+}
+
+.escolheHalf {
+    position: relative;
+    color: #F9F7F7!important;
+    font-size: 18px!important;
+    font-weight: 400!important;
+    height: 97%!important;
+    width: 50%!important;
+    padding: 0 20px!important;
+    line-height: 45px!important;
+    background-color: #3F72AF!important;
+    cursor: pointer!important;
+    z-index: 0!important;
+}
+
+.H1{
+    border-radius: 3px 20px 0 0!important;
+}
+
+.H2{
+    border-radius: 20px 3px 0 0!important;
+}
+
+.escolheHalfNot {
+    color: #F9F7F7!important;
+    font-weight: 400!important;
+    font-size: 18px!important;
+    height: 97%!important;
+    width: 50%!important;
+    padding: 0 20px!important;
+    line-height: 45px!important;
+    background-color: #626262!important;
+    cursor: pointer!important;
+    z-index: 0!important;
+}
+
+.btnNav{
+    all: unset;
+}
+
+.topBar{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+}
+
+.topPart{
+    background-color: #F9F7F7;
+    width: 100%!important;
+    text-align: center;
+}
+
+.escolheHalfNot:hover {
+    background-color: #2d507c!important;
+    transition: background-color .3s cubic-bezier(0.55, 0, 0.55, 0.2);
+    cursor: pointer!important;
 }
 
 .nav-link:hover {
@@ -21,7 +91,6 @@
 }
 
 .containerNavBar{
-    margin: 0 auto;
     height: 100%;
 }
 

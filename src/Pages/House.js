@@ -9,8 +9,8 @@ class House extends React.Component {
     render(){
         return(
             <div>
-                <Navbar/>
                 <div className='mainBodyForm container px-0'>
+                    <Navbar/>
                     <Header nome="Casas" detalhe="sim" apagaMuda="sim"/>
                     <div>
                         <div className='prevSeccao ms-0'>

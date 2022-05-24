@@ -9,13 +9,13 @@ class Users extends React.Component {
     render(){
         return(
             <div>
-                <Navbar/>
-                <div className='mainBody container'>
+                <div className='mainBodyForm container p-0'>
+                    <Navbar/>
                     <Header nome="Utilizadores" apagaMuda="nao"/>
-                    <div>
+                    <div style={{padding: "0 40px"}}>
                         <Filters tipo="Utilizador"/>
                     </div>
-                    <div>
+                    <div style={{padding: "0 40px"}}>
                         <UserCards pagina="UserList"/>
                     </div>
                 </div>

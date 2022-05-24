@@ -560,8 +560,8 @@ class CreateNotification extends React.Component {
     render(){
         return(
             <div>
-                <Navbar/>
                 <div className='mainBodyForm container px-0'>
+                    <Navbar/>
                     <Header nome="Criar Evento" detalhe="sim" apagaMuda="nao"/>
                     <PreviewNotif tipo={this.state.tipologia} personalizado={this.state.paramsPersonalizado} mensagens={this.state.mensagens} titulo={this.state.nomeItem} sub={this.state.categoriaInfo}/>
                     <div>
@@ -725,9 +725,6 @@ class CreateNotification extends React.Component {
                         <Collapse in={this.state.colapsado.collapse3}>
                             <span className='row m-0' style={{padding: "0 40px"}}>
                                 <div className='row col-12'>
-                                    <span className='col-12'>
-                                        <p className='subtituloSeccaoPaginaBigger p-0' style={{marginTop: "5px"}}>Dados do evento</p>
-                                    </span>
                                     
                                     <span className='row m-0 col-12 pe-0'>
                                         <p className='subtituloSeccaoPagina p-0' style={{marginTop: "5px"}}>Nome do evento <span className='obrigatorio'>*</span></p>

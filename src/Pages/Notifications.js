@@ -34,13 +34,13 @@ class Notifications extends React.Component {
     render(){
         return(
             <div>
-                <Navbar/>
-                <div className='mainBody container'>
+                <div className='mainBodyForm container p-0'>
+                    <Navbar/>
                     <Header nome="Notificações agendadas" apagaMuda="nao"/>
-                    <div>
+                    <div style={{padding: "0 40px"}}>
                         <Filters tipo="Notificação"/>
                     </div>
-                    <div>
+                    <div style={{padding: "0 40px"}}>
                         <NotificationCards tipo={"notificacoes"} abreModal={this.onOpen} abreModalDelete={this.onOpenDelete}/>
                     </div>
                 </div>

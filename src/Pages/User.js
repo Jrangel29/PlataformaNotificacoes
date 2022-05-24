@@ -63,23 +63,23 @@ class User extends React.Component {
     render(){
         return(
             <div>
-                <Navbar/>
                 <div className='mainBodyForm container px-0'>
+                    <Navbar/>
                     <Header nome="Utilizadores" detalhe="sim" apagaMuda="sim"/>
                     <div>
                         <div className='prevSeccao ms-0'>
                             <h1 className='tituloSeccaoPaginaNotifs'>Informação geral</h1>
                         </div>
-                        <div className='mx-3' style={{padding: "10px 40px"}}>
-                            <h1 className='textoSeccaoPagina'><b>Nome:</b> Ricardo Lima</h1>
-                            <p className='textoSeccaoPagina'><b>Idade:</b> 66 anos</p>
-                            <p className='textoSeccaoPagina'><b>Casa:</b> Casa do Ricardo</p>
-                        </div>
-                        <div className='mt-2'>
-                            <div className='prevSeccao ms-0'>
-                                <h1 className='tituloSeccaoPaginaNotifs'>Informações adicionais</h1>
+                        <div className='row m-0' style={{padding: "10px 40px"}}>
+                            <div className='col-4'>
+                                <h1 className='textoSeccaoPagina'><b>Nome:</b> Ricardo Lima</h1>
+                                <p className='textoSeccaoPagina'><b>Idade:</b> 66 anos</p>
+                                <p className='textoSeccaoPagina'><b>Casa:</b> Casa do Ricardo</p>
                             </div>
-                            <p className='textoSeccaoPagina mx-3' style={{padding: "10px 40px"}}>Os eventos da sua terra acontecem no final de Junho. Não esquecer de avisar!</p>
+                            <div className='col-6'>
+                                <p className='textoSeccaoPagina'><b>Informações adicionais:</b></p>
+                                <p className='textoSeccaoPagina'>Os eventos da sua terra acontecem no final de Junho. Não esquecer de avisar!</p>
+                            </div>
                         </div>
                         <div className='mt-2'>
                             <div className='prevSeccao ms-0'>
