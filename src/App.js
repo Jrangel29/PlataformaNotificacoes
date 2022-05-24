@@ -48,7 +48,7 @@ function App() {
           <Route exact path="/history" element={<History/>}/>
           <Route exact path="/history/details" element={<HistoryDetails/>}/>
           <Route exact path="/houses" element={<Houses/>}/>
-          <Route exact path="/houses/house" element={<House/>}/>
+          <Route exact path="/houses/:id" element={<House/>}/>
           <Route exact path="/houses/create" element={<CreateHouse/>}/>
           <Route path="*" element={<Error404/>}/>
         </Routes>

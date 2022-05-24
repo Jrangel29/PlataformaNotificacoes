@@ -48,7 +48,7 @@ const HouseCards = () => {
                                 </span>
                             </Accordion.Header>
                             <Accordion.Body className='footerUser row mx-0 justify-content-center'>
-                                <Button as={Link} to="/houses/house" className='textoBtnUser col-5 mx-2' variant='flat'>Mais informação</Button>
+                                <Button as={Link} to={`/houses/${item.id_casa}`} className='textoBtnUser col-5 mx-2' variant='flat'>Mais informação</Button>
                                 <Button as={Link} to="/notifications/create" className='textoBtnUser col-5 mx-2' variant='flat'>Criar evento</Button>
                             </Accordion.Body>
                         </Accordion.Item>

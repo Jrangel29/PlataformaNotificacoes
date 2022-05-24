@@ -3,38 +3,41 @@ import '../../Styles/Cards.css';
 import '../../Styles/Filters.css';
 import {Card} from 'react-bootstrap';
 
-class GroupDetailsCards extends React.Component {
+const GroupDetailsCards = (props) => {
 
-    render(){
-        return(            
-            <div className='container'>
-                <div className='row mt-1'>
-                    <Card className='col-3 p-0'>
-                        <Card.Body className='m-0 cartaGrupos'>
-                            <span>
-                                <p className='tituloUserCarta mb-1'>
-                                    Ricardo Lima
-                                </p>
-                                <p className='mb-0' style={{fontSize: '14px'}}>
-                                    66 anos
-                                </p>
-                                <p className='mb-0' style={{fontSize: '14px'}}>
-                                    Vila Nova de Gaia, Porto
-                                </p>
-                            </span>
-                        </Card.Body>
-                        {this.props.historico === "sim" ?
-                        <Card.Footer className='adicionarConteudoNotif m-0'>
-                            Relembrar daqui a 15 minutos
-                        </Card.Footer>
-                        :
-                        <></>
-                        }
-                    </Card>
-                </div>
-            </div>    
-        )
-    } 
+    console.log(props.users)
+
+    return(            
+        <div className='container'>
+            <div className='row mt-1 seccaoCards'>
+                {props.users.map((item, index) => {
+                    return(
+                        <span key={index} className='col-3 mb-2'>
+                            <Card>
+                                <Card.Body className='m-0 cartaGrupos'>
+                                    <span>
+                                        <p className='tituloUserCarta mb-1'>
+                                            {item.nome}
+                                        </p>
+                                        <p className='mb-0' style={{fontSize: '14px'}}>
+                                            Idade: {item.idade} anos
+                                        </p>
+                                    </span>
+                                </Card.Body>
+                                {props.historico === "sim" ?
+                                <Card.Footer className='adicionarConteudoNotif m-0'>
+                                    Relembrar daqui a 15 minutos
+                                </Card.Footer>
+                                :
+                                <></>
+                                }
+                            </Card>
+                        </span>
+                    )
+                })}
+            </div>
+        </div>    
+    )
 }
 
 export default GroupDetailsCards;

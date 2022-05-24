@@ -2,6 +2,13 @@
     padding-top: 20px;
 }
 
+.seccaoCards{
+    max-height: 200px;
+    overflow-y: scroll;
+    border: #c9c9c9 solid 2px;
+    padding: 10px 10px 3px 10px;
+}
+
 .cartasForm{
     height: 233px;
     overflow-y: scroll;
