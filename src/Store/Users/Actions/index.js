@@ -7,9 +7,12 @@ import {
     USERS_GET_ERROR,
     SINGLE_USER_GET_START,
     SINGLE_USER_GET_ERROR,
-    SINGLE_USER_GET_SUCCESS
+    SINGLE_USER_GET_SUCCESS,
+    TIPOLOGIA_USERS_GET_ERROR,
+    TIPOLOGIA_USERS_GET_START,
+    TIPOLOGIA_USERS_GET_SUCCESS
 } from './Constants';
-import {createUser, fetchUsers, fetchSingleUser} from '../../../API/Requests';
+import {createUser, fetchUsers, fetchSingleUser, fetchTipologiaUsers} from '../../../API/Requests';
 
 export const createNewUser = ( nome = '', idade = '', idCasa = '', informacaoAdicional = '', blackList = '') => {  
   return(dispatch) => {
@@ -43,5 +46,17 @@ export const getSingleUser = (id) => {
         dispatch({ type: SINGLE_USER_GET_SUCCESS, payload: User })
       })
       .catch(() => dispatch({ type: SINGLE_USER_GET_ERROR }))
+  }
+}
+
+export const getTipologiaUsersList = (id) => {
+  return (dispatch) => {
+    dispatch({ type: TIPOLOGIA_USERS_GET_START });
+
+    fetchTipologiaUsers(id)
+      .then(Users => {
+        dispatch({ type: TIPOLOGIA_USERS_GET_SUCCESS, payload: Users })
+      })
+      .catch(() => dispatch({ type: TIPOLOGIA_USERS_GET_ERROR }))
   }
 }

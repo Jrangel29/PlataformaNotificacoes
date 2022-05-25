@@ -1,72 +1,60 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getHousesList, getHousePeopleList } from '../../Store/Casas/Actions';
+import { getTipologiaUsersList } from '../../Store/Users/Actions';
 import LoadingComponent from '../../Components/Geral/LoadingComponent';
 
 const GetUsers = (props) => {
     
-    const dispatch = useDispatch();
-
-    const casaInfo = useSelector(({ casas }) => casas.singleCasa)
-    const isLoadingCasaInfo = useSelector(({ casas }) => casas.isLoadingPeople)
     let contagem = 0;
-
-    useEffect(() => {
-        dispatch(getHousePeopleList(props.id))
-    }, [props.id])
-
-    useEffect(() => {
-        props.funcao(casaInfo)
-
-    }, [casaInfo])
-
-    if (isLoadingCasaInfo || props.users.length === 0) {
-        return (
-            <LoadingComponent />
-        )
-    }
 
     return(
         <>
-        <span className='col-12 row itemListaUsersFormCasa m-0'>
-            <p className='col-6 infoCasaForm'><b>{props.nome}</b></p>
-        </span>
         {
-
-            props.users.map((value, index) => {
+            props.allUsers.map((item, index) => {
+                if(item.id_casa === props.id && contagem === 0){
+                    contagem++;
+                    return(
+                        <span className='col-12 row itemListaUsersFormCasa m-0'>
+                            <p className='col-6 infoCasaForm'><b>{props.nome}</b></p>
+                        </span>
+                    )
+                }
+            })
+        }
+        {
+            props.allUsers.map((value, index) => {
+                contagem = 0;
                 return(
                     <span key={index} className='m-0 p-0'>
                     {value.id_casa === props.id ?
-                    value.utilizadores.map((item, index) => {
-                        contagem = 0;
-                        return(
-                            <span key={index} className='col-12 row itemListaUsersForm m-0'>
-                                <p className='col-8 infoCasaFormUser'>{item.nome}</p>
-                                {props.added.length !== 0 ?
-                                    <>
-                                    {props.added.map((val) => {
-                                        if(val.idUser === item.id_utilizador){
-                                            contagem++;
-                                        }
-                                    })}
-                                    {contagem !== 0 ?
-                                        <span key={index} className='col-4'>
-                                            <p className='btn btnListaUser disabled disabledButton'>Escolhido</p>
-                                        </span>
-                                        :
-                                        <span key={index} className='col-4'>
-                                            <p className='btn btnListaUser' onClick={() => props.add({idCasa: value.id_casa, nomeCasa: value.nome, idUser: item.id_utilizador, nome: item.nome})}>Adicionar</p>
-                                        </span>
+                    <span key={index} className='m-0 p-0'>
+                        <span className='col-12 row itemListaUsersForm m-0'>
+                            <p className='col-8 infoCasaFormUser'>{value.utilizador}</p>
+                            {props.added.length !== 0 ?
+                                <>
+                                {props.added.map((val) => {
+                                    if(val.idUser === value.id_utilizador){
+                                        contagem++;
                                     }
-                                    </>
-                                :
-                                <span className='col-4'>
-                                    <p className='btn btnListaUser' onClick={() => props.add({idCasa: value.id_casa, nomeCasa: value.nome, idUser: item.id_utilizador, nome: item.nome})}>Adicionar</p>
-                                </span>
+                                })}
+                                {contagem !== 0 ?
+                                    <span key={index} className='col-4'>
+                                        <p className='btn btnListaUser disabled disabledButton'>Escolhido</p>
+                                    </span>
+                                    :
+                                    <span key={index} className='col-4'>
+                                        <p className='btn btnListaUser' onClick={() => props.add({idCasa: value.id_casa, nomeCasa: value.casa, idUser: value.id_utilizador, nome: value.utilizador})}>Adicionar</p>
+                                    </span>
                                 }
+                                </>
+                            :
+                            <span className='col-4'>
+                                <p className='btn btnListaUser' onClick={() => props.add({idCasa: value.id_casa, nomeCasa: value.casa, idUser: value.id_utilizador, nome: value.utilizador})}>Adicionar</p>
                             </span>
-                        )
-                    })
+                            }
+                        </span>
+                    </span>
                     :
                     <></>
                     }
@@ -88,20 +76,10 @@ export const ListaUsersPesquisa = (props) => {
 
     const casasList = useSelector(({ casas }) => casas.data)
     const isLoadingCasas = useSelector(({ casas }) => casas.isLoading)
+    const usersList = useSelector(({ utilizadores }) => utilizadores.data)
+    const isLoadingTipologiaUsers = useSelector(({ utilizadores }) => utilizadores.isLoadingTipologiaUsers)
 
-    const [array, setArray] = useState([]);
-    let contagem = 0;
-
-    const showUsers = (info) => {
-        array.map(item => {
-            if(info.id_casa === item.id_casa){
-                contagem++
-            }
-        })
-        if(contagem === 0){
-            setArray([...array, info])
-        }
-    }
+    
 
     useEffect(() => {
         if(!casasList){
@@ -109,7 +87,11 @@ export const ListaUsersPesquisa = (props) => {
         }
     }, [])
 
-    if (isLoadingCasas) {
+    useEffect(() => {
+        dispatch(getTipologiaUsersList(props.idTipologia))
+    }, [props.idTipologia])
+
+    if (isLoadingCasas || isLoadingTipologiaUsers) {
         return (
             <LoadingComponent />
         )
@@ -122,7 +104,7 @@ export const ListaUsersPesquisa = (props) => {
             <span className='row ListaUsersForm'>
                 {casasList.map((item, index) => {
                     return(
-                        <GetUsers key={index} id={item.id_casa} nome={item.nome} funcao={showUsers} users={array} add={props.adiciona} added={props.adicionados}></GetUsers>
+                        <GetUsers key={index} id={item.id_casa} allUsers={usersList} nome={item.nome} add={props.adiciona} added={props.adicionados}></GetUsers>
                     )
                 })}
                 

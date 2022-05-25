@@ -9,3 +9,7 @@ export const USERS_GET_ERROR = 'users/get:error';
 export const SINGLE_USER_GET_START = 'singleUser/get:start';
 export const SINGLE_USER_GET_SUCCESS = 'singleUser/get:success';
 export const SINGLE_USER_GET_ERROR = 'singleUser/get:error';
+
+export const TIPOLOGIA_USERS_GET_START = 'tipologiaUsers/get:start';
+export const TIPOLOGIA_USERS_GET_SUCCESS = 'tipologiaUsers/get:success';
+export const TIPOLOGIA_USERS_GET_ERROR = 'tipologiaUsers/get:error';

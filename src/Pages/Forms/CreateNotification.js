@@ -26,7 +26,7 @@ class CreateNotification extends React.Component {
             mostraModalInfo: false,
             recetores: "Individuais",
             tipologia: "Agenda",
-            idTipologia: '',
+            idTipologia: '1',
             categoriaInfo: "",
             nomeItem: "",
             tituloNotif: "",
@@ -690,7 +690,7 @@ class CreateNotification extends React.Component {
                                     {this.state.tipologia === 'Agenda' || this.state.tipologia === 'Programas' || this.state.tipologia === 'Saúde' || this.state.tipologia === 'Personalizada' && this.state.paramsPersonalizado.tipoRecetor === 'Recetores Individuais' ?
                                     <>
                                         <div className='col-6 ms-0 ps-0'>
-                                            <ListaUsersPesquisa tipo={this.state.recetores} adiciona={this.addUser} adicionados={this.state.usersEscolhidos}/>
+                                            <ListaUsersPesquisa tipo={this.state.recetores} idTipologia={this.state.idTipologia} adiciona={this.addUser} adicionados={this.state.usersEscolhidos}/>
                                         </div>
                                         <div className='col-6 m-0 p-0'>
                                             <ListaUsersAdicionados adicionados={this.state.usersEscolhidos} remove={this.removeUser}/>

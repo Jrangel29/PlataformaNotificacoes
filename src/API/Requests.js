@@ -14,6 +14,10 @@ export const fetchUsers = () =>
   fetch(`http://geo-navsafety.ua.pt:443/overtv/users`)
     .then(response => response.json())
 
+export const fetchTipologiaUsers = (id) =>
+  fetch(`http://geo-navsafety.ua.pt:443/overtv/users/?tipologia=${id}`)
+    .then(response => response.json())
+
 export const fetchSingleUser = (id) =>
   fetch(`http://geo-navsafety.ua.pt:443/overtv/users/${id}`)
     .then(response => response.json())
