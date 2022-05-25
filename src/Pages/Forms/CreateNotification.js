@@ -749,6 +749,7 @@ class CreateNotification extends React.Component {
                                             onChange={this.alteraRegularidade}
                                             />
                                     </span>
+                                    {console.log(this.state.hora)}
                                     <NotificationTimeSelection collapseState={this.state.colapsado} parametros={this.state} mudaDiaUnico={this.alteraDiaUnico} mudaMomentoUnico={this.alteraMomentoUnico} mudaHora={this.alteraHora} mudaHorario={this.alteraHorario} alterarEnvio={this.alteraEnvio} mudaDia={this.alteraDia} mudaMomento={this.alteraMomento}/>                    
                                 </div>
                             </span>

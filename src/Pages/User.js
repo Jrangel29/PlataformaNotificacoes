@@ -9,6 +9,7 @@ import AddInfoModal from '../Components/Modal/AddInfoModal';
 import DeleteNotificationAll from '../Components/Modal/DeleteNotification';
 import DeleteRoutine from '../Components/Modal/DeleteRoutine';
 import SuccessModal from '../Components/Modal/SuccessModal';
+import InfoSection from '../Components/Users/InfoSection';
 
 class User extends React.Component {
 
@@ -70,17 +71,9 @@ class User extends React.Component {
                         <div className='prevSeccao ms-0'>
                             <h1 className='tituloSeccaoPaginaNotifs'>Informação geral</h1>
                         </div>
-                        <div className='row m-0' style={{padding: "10px 40px"}}>
-                            <div className='col-4'>
-                                <h1 className='textoSeccaoPagina'><b>Nome:</b> Ricardo Lima</h1>
-                                <p className='textoSeccaoPagina'><b>Idade:</b> 66 anos</p>
-                                <p className='textoSeccaoPagina'><b>Casa:</b> Casa do Ricardo</p>
-                            </div>
-                            <div className='col-6'>
-                                <p className='textoSeccaoPagina'><b>Informações adicionais:</b></p>
-                                <p className='textoSeccaoPagina'>Os eventos da sua terra acontecem no final de Junho. Não esquecer de avisar!</p>
-                            </div>
-                        </div>
+
+                        <InfoSection/>
+
                         <div className='mt-2'>
                             <div className='prevSeccao ms-0'>
                                 <h1 className='tituloSeccaoPaginaNotifs'>Notificações</h1>

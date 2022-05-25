@@ -1,7 +1,7 @@
 //USERS
 
 export const createUser = (nome, idade, ref_id_casa, informacoes, blacklist) => {
-    fetch(`http://geo-navsafety.ua.pt:443/overtv/users/new`, {
+    fetch(`http://geo-navsafety.ua.pt:443/overtv/users`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -11,7 +11,11 @@ export const createUser = (nome, idade, ref_id_casa, informacoes, blacklist) => 
 }
 
 export const fetchUsers = () =>
-  fetch(`http://geo-navsafety.ua.pt:443/overtv/users/list`)
+  fetch(`http://geo-navsafety.ua.pt:443/overtv/users`)
+    .then(response => response.json())
+
+export const fetchSingleUser = (id) =>
+  fetch(`http://geo-navsafety.ua.pt:443/overtv/users/${id}`)
     .then(response => response.json())
 
 //CASAS

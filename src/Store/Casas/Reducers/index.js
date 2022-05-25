@@ -32,9 +32,6 @@ export default (state = initialState, { type, payload }) => {
         case CASAS_PESSOAS_GET_START:
             return { ...state, isLoadingPeople: true };
         case CASAS_PESSOAS_GET_SUCCESS:
-            /*batata = [...state.singleCasa];
-            batata.push(payload);
-            console.log(batata);*/
             return { ...state, singleCasa: payload, isLoadingPeople: false };
         default:
             return state;

@@ -1,5 +1,5 @@
 .barraNavegacao{
-    background-color: #3F72AF;
+    background-color: #3F72AF!important;
     height: 100px;
     display: flex;
     flex-direction: column;

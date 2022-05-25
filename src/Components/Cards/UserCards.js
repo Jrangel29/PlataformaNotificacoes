@@ -37,7 +37,7 @@ const UserCards = (props) => {
                                             {item.utilizador}
                                         </p>
                                         <p className='textoSmall mb-0'>
-                                            66 anos
+                                            {item.idade} anos
                                         </p>
                                         <p className='textoSmall mb-0'>
                                             {item.casa}
@@ -50,7 +50,7 @@ const UserCards = (props) => {
                                 </Accordion.Body>
                                 :
                                 <Accordion.Body className='footerUser row mx-0 justify-content-center'>
-                                    <Button as={Link} to="/users/user" className='textoBtnUser col-5 mx-2' variant='flat'>Mais informação</Button>
+                                    <Button as={Link} to={`/users/${item.id_utilizador}`} className='textoBtnUser col-5 mx-2' variant='flat'>Mais informação</Button>
                                     <Button as={Link} to="/notifications/create" className='textoBtnUser col-5 mx-2' variant='flat'>Criar evento</Button>
                                 </Accordion.Body>
                                 }

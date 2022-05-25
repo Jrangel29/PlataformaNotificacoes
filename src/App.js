@@ -34,7 +34,7 @@ function App() {
           <Route exact path="/notifications/create" element={<CreateNotification/>}/>
           <Route exact path="/notifications/edit" element={<EditNotification/>}/>
           <Route exact path="/users" element={<Users/>}/>
-          <Route exact path="/users/user" element={<User/>}/>
+          <Route exact path="/users/:id" element={<User/>}/>
           <Route exact path="/users/create" element={<CreateUser/>}/>
           <Route exact path="/users/edit" element={<EditUser/>}/>
           <Route exact path="/routines" element={<Routines/>}/>
