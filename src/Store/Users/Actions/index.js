@@ -1,9 +1,12 @@
 import {
     USER_CREATE_SUCCESS,
     USER_CREATE_ERROR,
-    USER_CREATE_START
+    USER_CREATE_START,
+    USERS_GET_START,
+    USERS_GET_SUCCESS,
+    USERS_GET_ERROR
 } from './Constants';
-import {createUser} from '../../../API/Requests';
+import {createUser, fetchUsers} from '../../../API/Requests';
 
 export const createNewUser = ( nome = '', idade = '', idCasa = '', informacaoAdicional = '', blackList = '') => {
     
@@ -16,3 +19,15 @@ export const createNewUser = ( nome = '', idade = '', idCasa = '', informacaoAdi
         .catch(() => dispatch({type: USER_CREATE_ERROR}))
     }
 }
+
+export const getUsersList = () => {
+    return (dispatch) => {
+      dispatch({ type: USERS_GET_START });
+  
+      fetchUsers()
+        .then(Users => {
+          dispatch({ type: USERS_GET_SUCCESS, payload: Users })
+        })
+        .catch(() => dispatch({ type: USERS_GET_ERROR }))
+    }
+  }

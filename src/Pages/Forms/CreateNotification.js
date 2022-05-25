@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from '../../Components/Geral/Navbar';
 import Header from '../../Components/Geral/Header';
-import {Button, Dropdown, Collapse, Form} from 'react-bootstrap';
+import {Button, Dropdown, Collapse, Form, OverlayTrigger} from 'react-bootstrap';
 import DownArrow from '../../Images/DownArrow.png';
 import UserCards from '../../Components/Cards/UserCards';
 import GroupCards from '../../Components/Cards/GroupCards';
@@ -14,6 +14,8 @@ import { ListaUsersPesquisa, ListaUsersAdicionados, CasasPesquisa, CasasEscolhid
 import { DeliveryOptions } from '../../Components/Forms/DeliveryOptions';
 import { PreviewNotif } from '../../Components/Forms/PreviewNotif';
 import UserPreferencesModal from '../../Components/Modal/UserPreferencesModal';
+import InformationIcon from '../../Images/information.png';
+import { MomentsTooltip, CategoryTooltip } from '../../Components/Forms/Tooltips';
 
 class CreateNotification extends React.Component {
 
@@ -563,7 +565,7 @@ class CreateNotification extends React.Component {
                 <div className='mainBodyForm container px-0'>
                     <Navbar/>
                     <Header nome="Criar Evento" detalhe="sim" apagaMuda="nao"/>
-                    <PreviewNotif tipo={this.state.tipologia} personalizado={this.state.paramsPersonalizado} mensagens={this.state.mensagens} titulo={this.state.nomeItem} sub={this.state.categoriaInfo}/>
+                    <PreviewNotif tipo={this.state.tipologia} tipoPers={this.state.paramsPersonalizado.tipoRecetor} users={this.state.usersEscolhidos} casas={this.state.casasEscolhidas} personalizado={this.state.paramsPersonalizado} mensagens={this.state.mensagens} titulo={this.state.nomeItem} sub={this.state.categoriaInfo}/>
                     <div>
                         <div className='btn btnSeccao ms-0' onClick={() => this.mudaCollapse(1)}>
                             <h1 className='tituloSeccaoPaginaNotifs'>Tipologia</h1>
@@ -572,7 +574,7 @@ class CreateNotification extends React.Component {
                         <Collapse in={this.state.colapsado.collapse1}>
                             <div className='row m-0' style={{padding: "0 40px"}}>
                                 <span className='col-3 me-3' style={{marginTop: "5px"}}>
-                                    <p className='subtituloSeccaoPagina'>Categoria principal <span className='obrigatorio'>*</span></p>
+                                    <p className='subtituloSeccaoPagina' style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>Categoria principal <span className='ms-1 obrigatorio'>*</span><OverlayTrigger placement='right' delay={{ show: 250, hide: 400}} overlay={CategoryTooltip}><img src={InformationIcon} style={{width: 'auto', height: '20px', margin: '0', marginLeft:'10px', padding: '0'}}/></OverlayTrigger></p>
                                     <BuscaTipologiasNotificacoes tipo={this.state.tipologia} mudaForm={this.alteraFormulario} />
                                 </span>
 
@@ -606,13 +608,6 @@ class CreateNotification extends React.Component {
                                     </Dropdown>
                                     }
                                 </span>
-
-                                <div className='col-5 pe-0 mt-2'>
-                                    <span>
-                                        <p className='m-0 p-0' style={{fontSize: '14px', color: '#CC5500'}}><b>Aviso</b></p>
-                                        <p className='m-0 mt-1 p-0' style={{fontSize: '13px', textJustify: 'inter-word'}}><b style={{color: '#CC5500'}}>-</b> Dependendo da categoria escolhida, alguns recetores podem não aparecer. Alguns dos momentos de envio podem também estar indisponíveis.</p>
-                                    </span>
-                                </div>
 
                                 {<div className='row m-0 mt-2 p-0'>
                                     {this.state.tipologia === "Personalizada" ?
@@ -767,22 +762,16 @@ class CreateNotification extends React.Component {
                         </div>
                         <Collapse in={this.state.colapsado.collapse4}>
                             <span className='row m-0' style={{padding: "0 40px"}}>
-                                <p className='subtituloSeccaoPaginaBigger mt-3' style={{marginTop: "5px"}}>Mensagens das notificações</p>
+                                <p className='subtituloSeccaoPaginaBigger mt-2 mb-1'>Criação das notificações <OverlayTrigger placement='right' delay={{ show: 250, hide: 400}} overlay={MomentsTooltip}><img src={InformationIcon} style={{width: 'auto', height: '22px', margin: '0', marginLeft:'10px', padding: '0'}}/></OverlayTrigger></p>
                                 
                                 <div className='row col-9'>
                                     <DeliveryOptions subSaude={this.state.categoriaInfo} changeMomento={this.updateMomentosEnvio} blade={this.updateBlade} changeMensagem={this.updateMensagensEnvio} momentos={this.state.mensagens} tipo={this.state.tipologia} verificaMomento={this.state.momentoUnico} periodicidade={this.state.envioNotif}/>
                                 </div>
 
-                                <div className='col-3 pe-0' style={{display: 'flex', flexDirection: 'column'}}>
+                                <div className='col-3 pe-0'>
                                     <Button  
                                         variant='flat' 
                                         onClick={() => this.onOpenInfo()}>Ver preferências dos utilizadores</Button>
-                                    <span style={{marginTop: '10px'}}>
-                                        <p className='m-0 p-0' style={{fontSize: '14px', color: '#CC5500'}}><b>Avisos</b></p>
-                                        <p className='m-0 mt-1 p-0' style={{fontSize: '13px', textJustify: 'inter-word'}}><b style={{color: '#CC5500'}}>-</b> Seleciona os momentos em que queres mandar notifições. Podes criar mensagens de acordo com os momentos que escolheste.</p>
-                                        <p className='m-0 mt-1 p-0' style={{fontSize: '13px', textJustify: 'inter-word'}}><b style={{color: '#CC5500'}}>-</b> Algumas dos momentos têm um 'Blade horizontal'. Estes permitem o envio de mais informação e que o utilizador possa responder à notificação. (Por exemplo: 'Relembrar daqui a 15 minutos')</p>
-                                        <p className='m-0 mt-1 p-0' style={{fontSize: '13px', textJustify: 'inter-word'}}><b style={{color: '#CC5500'}}>-</b> Dependendo da tipologia e periodicidade escolhidas, alguns momentos podem estar indisponíveis. Para teres acesso a tudo, usa a tipologia 'Personalizado'.</p>
-                                    </span>
                                 </div>
                             </span>
                         </Collapse>

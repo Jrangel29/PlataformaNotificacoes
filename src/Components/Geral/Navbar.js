@@ -17,7 +17,7 @@ const BarraNav = () => {
     }, [])
 
     return(
-        <div className={tipo === 'Notifs' ? 'barraNavegacao pt1 m-0 p-0 sticky-nav' : 'barraNavegacao pt2 m-0 p-0 sticky-nav'}>
+        <div className={tipo === 'Notifs' ? 'barraNavegacao pt1 m-0 p-0' : 'barraNavegacao pt2 m-0 p-0'}>
             <div className='containerNavBar topPart'>
                 <div className='topBar m-0 p-0 h-100'>
                     <div className={tipo === 'Notifs' ? 'btn btnNav escolheHalf H1' : 'btn btnNav escolheHalfNot H1'} onClick={() => setTipo('Notifs')}>Notificações</div>

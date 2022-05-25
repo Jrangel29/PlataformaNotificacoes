@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getHousePeopleList } from '../../Store/Casas/Actions';
 import '../../Styles/Cards.css';
@@ -14,7 +14,11 @@ const PeopleHouseCards = (props) => {
         dispatch(getHousePeopleList(props.idCasa))
     }, [props.idCasa])
 
-    if (isLoadingCasaInfo || !props.idCasa) {
+    useEffect(() => {
+        props.funcao(casaInfo)
+    }, [casaInfo]) 
+
+    if (isLoadingCasaInfo) {
         return (
             <p className='mb-1 textHouseCards'>
                 A carregar pessoas...
@@ -24,8 +28,21 @@ const PeopleHouseCards = (props) => {
 
     return(
         <p className='mb-1 textHouseCards'>
-            
-            {console.log(casaInfo)}José Lima, Maria Lima
+            {props.users.map((item, index) => {
+                return(
+                    <>
+                        {item.id_casa === props.idCasa ? 
+                            item.utilizadores.map((value, index) => {
+                                return(
+                                    <span key={index}>{value.nome}{index + 1 === item.utilizadores.length ? '' : ', ' }</span>
+                                )
+                            })
+                            :
+                            <></>
+                        }
+                    </>
+                )
+            })}
         </p>
     )
     

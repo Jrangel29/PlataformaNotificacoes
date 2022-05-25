@@ -10,6 +10,10 @@ export const createUser = (nome, idade, ref_id_casa, informacoes, blacklist) => 
     }).then(response => response.json())
 }
 
+export const fetchUsers = () =>
+  fetch(`http://geo-navsafety.ua.pt:443/overtv/users/list`)
+    .then(response => response.json())
+
 //CASAS
 
 export const createHouse = (nome, idBox, concelho) => {

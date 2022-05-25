@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getHousesList, getHousePeopleList } from '../../Store/Casas/Actions';
 import '../../Styles/Cards.css';
@@ -15,9 +15,24 @@ const HouseCards = () => {
     const casasList = useSelector(({ casas }) => casas.data)
     const isLoadingCasas = useSelector(({ casas }) => casas.isLoading)
 
+    const [array, setArray] = useState([]);
+    let contagem = 0;
+
     useEffect(() => {
         dispatch(getHousesList())
     }, [])
+
+    const showUsers = (info) => {
+        contagem = 0;
+        array.map(item => {
+            if(info.id_casa === item.id_casa){
+                contagem++
+            }
+        })
+        if(contagem === 0){
+            setArray([...array, info])
+        }
+    }
 
     if (isLoadingCasas) {
         return (
@@ -40,7 +55,7 @@ const HouseCards = () => {
                                     <p className='mb-1' style={{fontSize: '14px'}}>
                                         {item.localidade}
                                     </p>
-                                    <PeopleHouseCards idCasa={item.id_box}/>
+                                    <PeopleHouseCards idCasa={item.id_casa} funcao={showUsers} users={array}/>
                                     <p className='mb-0 textHouseCards'>
                                         <span className={item.ativa.data[0] === 0 ? 'redDot' : 'greenDot'}></span>
                                         {item.ativa.data[0] === 0 ? ' Box Desligada' : ' Box Ligada'}

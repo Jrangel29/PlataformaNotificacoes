@@ -253,7 +253,25 @@ export const PreviewNotif = (props) => {
                 <div className='col-3'>
                     <p className='subtituloSeccaoPagina mb-0 mt-2'>Recetores</p>
                     <span className='m-0 mb-2'>
-                        <p className='textoPrefsUser m-0' style={{maxHeight: '80px', overflowY: 'scroll'}}>Ricardo Lima, Patrícia Silva, Marco Costa, Bruno Costa, Maria Costa </p>
+                        <p className='textoPrefsUser m-0' style={{maxHeight: '80px', overflowY: 'auto'}}>
+                            {props.tipo === 'Agenda' || props.tipo === 'Programas' || props.tipo === 'Saúde' || props.tipo === 'Personalizada' && props.tipoPers === 'Recetores Individuais' ?
+                                props.users.length > 0 ? 
+                                    props.users.map((item, index) => {
+                                        return(
+                                            <>{item.nome}{index + 1 === props.users.length ? '' : ', '}</>
+                                        )
+                                    })
+                                    : 'Ainda não escolheu recetores'
+                            :
+                            props.casas.length > 0 ? 
+                                    props.casas.map((item, index) => {
+                                        return(
+                                            <>{item.nome}{index + 1 === props.casas.length ? '' : ', '}</>
+                                        )
+                                    })
+                                    : 'Ainda não escolheu casas'
+                            }
+                        </p>
                     </span>
                 </div>
             </div>
