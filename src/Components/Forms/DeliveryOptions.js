@@ -20,7 +20,7 @@ export const DeliveryOptions = (props) => {
                             type="checkbox" 
                             inline
                             label='1 semana antes'
-                            key="semanaAntes" 
+                            key='semanaAntes'
                             value="semanaAntes"
                             className='py-1'
                             disabled={

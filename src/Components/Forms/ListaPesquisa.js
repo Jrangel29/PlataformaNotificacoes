@@ -44,13 +44,13 @@ const GetUsers = (props) => {
                                     </span>
                                     :
                                     <span key={index} className='col-4'>
-                                        <p className='btn btnListaUser' onClick={() => props.add({idCasa: value.id_casa, nomeCasa: value.casa, idUser: value.id_utilizador, nome: value.utilizador})}>Adicionar</p>
+                                        <p className='btn btnListaUser' onClick={() => props.add({idCasa: value.id_casa, nomeCasa: value.casa, idUser: value.id_utilizador, nome: value.utilizador, informacao: value.info})}>Adicionar</p>
                                     </span>
                                 }
                                 </>
                             :
                             <span className='col-4'>
-                                <p className='btn btnListaUser' onClick={() => props.add({idCasa: value.id_casa, nomeCasa: value.casa, idUser: value.id_utilizador, nome: value.utilizador})}>Adicionar</p>
+                                <p className='btn btnListaUser' onClick={() => props.add({idCasa: value.id_casa, nomeCasa: value.casa, idUser: value.id_utilizador, nome: value.utilizador, informacao: value.info})}>Adicionar</p>
                             </span>
                             }
                         </span>

@@ -168,73 +168,49 @@ function NotificationTimeSelection(props) {
                         <span className="col-3">
                             <Dropdown>
                                 <Dropdown.Toggle variant="flat" className="dropdownFiltro">
-                                Dia do mês
+                                {props.parametros.diaMes === '' ? 'Dia do mês' : props.parametros.diaMes}
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu className="dropdownFiltro">
-                                    <Dropdown.Item variant="flat" className="dropdownFiltro">1</Dropdown.Item>
-                                    <Dropdown.Item variant="flat" className="dropdownFiltro">2</Dropdown.Item>
-                                    <Dropdown.Item variant="flat" className="dropdownFiltro">2</Dropdown.Item>
-                                    <Dropdown.Item variant="flat" className="dropdownFiltro">3</Dropdown.Item>
-                                    <Dropdown.Item variant="flat" className="dropdownFiltro">4</Dropdown.Item>
-                                    <Dropdown.Item variant="flat" className="dropdownFiltro">5</Dropdown.Item>
-                                    <Dropdown.Item variant="flat" className="dropdownFiltro">6</Dropdown.Item>
-                                    <Dropdown.Item variant="flat" className="dropdownFiltro">7</Dropdown.Item>
-                                    <Dropdown.Item variant="flat" className="dropdownFiltro">8</Dropdown.Item>
-                                    <Dropdown.Item variant="flat" className="dropdownFiltro">9</Dropdown.Item>
-                                    <Dropdown.Item variant="flat" className="dropdownFiltro">10</Dropdown.Item>
-                                    <Dropdown.Item variant="flat" className="dropdownFiltro">11</Dropdown.Item>
-                                    <Dropdown.Item variant="flat" className="dropdownFiltro">12</Dropdown.Item>
-                                    <Dropdown.Item variant="flat" className="dropdownFiltro">13</Dropdown.Item>
-                                    <Dropdown.Item variant="flat" className="dropdownFiltro">14</Dropdown.Item>
-                                    <Dropdown.Item variant="flat" className="dropdownFiltro">15</Dropdown.Item>
-                                    <Dropdown.Item variant="flat" className="dropdownFiltro">16</Dropdown.Item>
-                                    <Dropdown.Item variant="flat" className="dropdownFiltro">17</Dropdown.Item>
-                                    <Dropdown.Item variant="flat" className="dropdownFiltro">18</Dropdown.Item>
-                                    <Dropdown.Item variant="flat" className="dropdownFiltro">19</Dropdown.Item>
-                                    <Dropdown.Item variant="flat" className="dropdownFiltro">20</Dropdown.Item>
-                                    <Dropdown.Item variant="flat" className="dropdownFiltro">21</Dropdown.Item>
-                                    <Dropdown.Item variant="flat" className="dropdownFiltro">22</Dropdown.Item>
-                                    <Dropdown.Item variant="flat" className="dropdownFiltro">23</Dropdown.Item>
-                                    <Dropdown.Item variant="flat" className="dropdownFiltro">24</Dropdown.Item>
-                                    <Dropdown.Item variant="flat" className="dropdownFiltro">25</Dropdown.Item>
-                                    <Dropdown.Item variant="flat" className="dropdownFiltro">26</Dropdown.Item>
-                                    <Dropdown.Item variant="flat" className="dropdownFiltro">27</Dropdown.Item>
-                                    <Dropdown.Item variant="flat" className="dropdownFiltro">28</Dropdown.Item>
-                                    <Dropdown.Item variant="flat" className="dropdownFiltro">29</Dropdown.Item>
-                                    <Dropdown.Item variant="flat" className="dropdownFiltro">30</Dropdown.Item>
-                                    <Dropdown.Item variant="flat" className="dropdownFiltro">31</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro" onClick={() => props.alteraDiaMes(1)}>1</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro" onClick={() => props.alteraDiaMes(2)}>2</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro" onClick={() => props.alteraDiaMes(3)}>3</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro" onClick={() => props.alteraDiaMes(4)}>4</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro" onClick={() => props.alteraDiaMes(5)}>5</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro" onClick={() => props.alteraDiaMes(6)}>6</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro" onClick={() => props.alteraDiaMes(7)}>7</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro" onClick={() => props.alteraDiaMes(8)}>8</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro" onClick={() => props.alteraDiaMes(9)}>9</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro" onClick={() => props.alteraDiaMes(10)}>10</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro" onClick={() => props.alteraDiaMes(11)}>11</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro" onClick={() => props.alteraDiaMes(12)}>12</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro" onClick={() => props.alteraDiaMes(13)}>13</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro" onClick={() => props.alteraDiaMes(14)}>14</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro" onClick={() => props.alteraDiaMes(15)}>15</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro" onClick={() => props.alteraDiaMes(16)}>16</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro" onClick={() => props.alteraDiaMes(17)}>17</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro" onClick={() => props.alteraDiaMes(18)}>18</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro" onClick={() => props.alteraDiaMes(19)}>19</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro" onClick={() => props.alteraDiaMes(20)}>20</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro" onClick={() => props.alteraDiaMes(21)}>21</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro" onClick={() => props.alteraDiaMes(22)}>22</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro" onClick={() => props.alteraDiaMes(23)}>23</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro" onClick={() => props.alteraDiaMes(24)}>24</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro" onClick={() => props.alteraDiaMes(25)}>25</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro" onClick={() => props.alteraDiaMes(26)}>26</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro" onClick={() => props.alteraDiaMes(27)}>27</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro" onClick={() => props.alteraDiaMes(28)}>28</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro" onClick={() => props.alteraDiaMes(29)}>29</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro" onClick={() => props.alteraDiaMes(30)}>30</Dropdown.Item>
+                                    <Dropdown.Item variant="flat" className="dropdownFiltro" onClick={() => props.alteraDiaMes(31)}>31</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
                         </span>
-                        {/*<p className="subtituloSeccaoPagina mt-2">Horário de envio</p>
-                        <span className="row col-12">
-                            <span className="col-4">
-                                <Dropdown>
-                                    <Dropdown.Toggle variant="flat" className="dropdownFiltro">
-                                        {props.parametros.horario}
-                                    </Dropdown.Toggle>
-
-                                    <Dropdown.Menu className="dropdownFiltro">
-                                        <Dropdown.Item onClick={() => props.mudaHorario("Bom Dia")}>
-                                            Bom Dia
-                                        </Dropdown.Item>
-                                        <Dropdown.Item onClick={() => props.mudaHorario("Boa Noite")}>
-                                            Boa Noite
-                                        </Dropdown.Item>
-                                        <Dropdown.Item onClick={() => props.mudaHorario("Hora específica")}>
-                                            Hora específica
-                                        </Dropdown.Item>
-                                    </Dropdown.Menu>
-                                </Dropdown>
-                            </span>
-                            {props.parametros.horario === "Hora específica" ? 
-                                <span className="col-4">
-                                    <input type="time" className='inputsForms without_ampm w-50' onChange={props.mudaHora} style={{height: "37px"}}/>
+                        <p className="subtituloSeccaoPagina mt-2">Hora</p>
+                        <span className="col-3">
+                                <span className="col-3">
+                                    <input type="time" className='inputsForms without_ampm w-50' onInput={props.mudaHora} onChange={props.mudaHora} style={{height: "37px"}}/>
                                 </span>
-                                :
-                                <></>
-                            }
-                        </span>*/}
+                        </span>
                     </>
             }
             </>

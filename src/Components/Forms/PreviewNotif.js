@@ -45,7 +45,7 @@ export const PreviewNotif = (props) => {
             <div className='prevSeccao ms-0'>
                 <h1 className='tituloSeccaoPaginaNotifs'>Pré-visualização das notificações</h1>
             </div>
-            <div style={{padding: "0 40px"}} className={offset >= 130 ? 'stickyTop row m-0' : 'row m-0'}>
+            <div style={{padding: "0 40px"}} className={offset >= 230 ? 'stickyTop row m-0' : 'row m-0'}>
                 {carrocas === true ? 
                     <Carousel 
                     interval={null} activeIndex={index} variant='dark'

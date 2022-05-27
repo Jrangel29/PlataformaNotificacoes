@@ -24,22 +24,19 @@ class CreateNotification extends React.Component {
         this.state = {
             mostraModal: false,
             mostraModalInfo: false,
-            recetores: "Individuais",
             tipologia: "Agenda",
-            idTipologia: '1',
+            idTipologia: 1,
             categoriaInfo: "",
             nomeItem: "",
-            tituloNotif: "",
-            popupSecundario: false,
-            subtituloNotif: "",
-            descricaoNotif: "",
             regularidade: '',
             envioNotif: "Pontual",
+            idRegular: '',
             diaUnico: '',
             hora: '',
             momentoUnico: '',
-            usersEscolhidos: [],
+            usersEscolhidos: [{nome: 'aaa', idUser: 1}, {nome: 'aaa', idUser: 2}],
             casasEscolhidas: [],
+            diaMes: '',
             dias: {
                 segunda: false,
                 terca: false,
@@ -110,6 +107,8 @@ class CreateNotification extends React.Component {
                 tipologia: valor,
                 idTipologia: id,
                 categoriaInfo: '',
+                usersEscolhidos: [],
+                casasEscolhidas: [],
                 mensagens: {
                     semanaAntes: {
                         active: false, 
@@ -161,11 +160,31 @@ class CreateNotification extends React.Component {
         }
     }
 
-    alteraEnvio = (valor, periodo) => {
-        this.setState({
-            envioNotif: valor,
-            tipoNotif: periodo
-        })
+    alteraEnvio = (valor) => {
+        if(valor === 'Pontual'){
+            this.setState({
+                envioNotif: valor,
+                idRegular: 1
+            })
+        }
+        if(valor === 'Diária'){
+            this.setState({
+                envioNotif: valor,
+                idRegular: 2
+            })
+        }
+        if(valor === 'Semanal'){
+            this.setState({
+                envioNotif: valor,
+                idRegular: 3
+            })
+        }
+        if(valor === 'Mensal'){
+            this.setState({
+                envioNotif: valor,
+                idRegular: 4
+            })
+        }
     }
 
     alteraHorario = (valor) => {
@@ -396,12 +415,6 @@ class CreateNotification extends React.Component {
         })
     }
 
-    alteraPopup = (valor) => {
-        this.setState({
-            popupSecundario: valor
-        })
-    }
-
     alteraIcone = (valor, tipo) => {
         if(valor === "icone") {
             this.setState({
@@ -537,6 +550,12 @@ class CreateNotification extends React.Component {
         })
     }
 
+    alteraDia = (val) => {
+        this.setState({
+            diaMes: val
+        })
+    }
+
     removeUser = (val) => {
         let array = [...this.state.usersEscolhidos];
         array.splice(val, 1)
@@ -654,7 +673,7 @@ class CreateNotification extends React.Component {
 
                     <div className='row m-0 mt-2'>
                         <div className='btn btnSeccao' onClick={() => this.mudaCollapse(2)}>
-                            <h1 className='tituloSeccaoPaginaNotifs'>Recetores</h1>
+                            <h1 className='tituloSeccaoPaginaNotifs'>Destinarários</h1>
                             <img src={DownArrow} className={this.state.colapsado.collapse2 !== true ? "ArrowDown" : "ArrowDownRotated"}/>
                         </div>
                         <Collapse in={this.state.colapsado.collapse2}>
@@ -662,7 +681,7 @@ class CreateNotification extends React.Component {
                                 
                                 {this.state.tipologia === 'Personalizada' ?
                                 <span className='col-3 me-3' style={{marginTop: "5px"}}>
-                                    <p className='subtituloSeccaoPagina'>Tipo de recetor <span className='obrigatorio'>*</span></p>
+                                    <p className='subtituloSeccaoPagina'>Tipo de destinarário <span className='obrigatorio'>*</span></p>
                                     <Dropdown>
                                         <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
                                             {this.state.paramsPersonalizado.tipoRecetor}
@@ -680,10 +699,10 @@ class CreateNotification extends React.Component {
 
                                 <span className='row m-0'>
                                     <div className='col-6 ms-0 ps-0'>
-                                        <h1 className='subtituloSeccaoPagina mt-3 mb-2'>Escolha de recetores <span className='obrigatorio'>*</span></h1>
+                                        <h1 className='subtituloSeccaoPagina mt-3 mb-2'>Escolha de destinarários <span className='obrigatorio'>*</span></h1>
                                     </div>
                                     <div className='col-6 ms-0 ps-0'>
-                                        <h1 className='subtituloSeccaoPagina mt-3 mb-2'>Recetores escolhidos</h1>
+                                        <h1 className='subtituloSeccaoPagina mt-3 mb-2'>Destinarários escolhidos</h1>
                                     </div>
                                 </span>
                                 <span className='row m-0'>
@@ -750,7 +769,7 @@ class CreateNotification extends React.Component {
                                             />
                                     </span>
                                     {console.log(this.state.hora)}
-                                    <NotificationTimeSelection collapseState={this.state.colapsado} parametros={this.state} mudaDiaUnico={this.alteraDiaUnico} mudaMomentoUnico={this.alteraMomentoUnico} mudaHora={this.alteraHora} mudaHorario={this.alteraHorario} alterarEnvio={this.alteraEnvio} mudaDia={this.alteraDia} mudaMomento={this.alteraMomento}/>                    
+                                    <NotificationTimeSelection collapseState={this.state.colapsado} parametros={this.state} mudaDiaUnico={this.alteraDiaUnico} alteraDiaMes={this.alteraDia} mudaMomentoUnico={this.alteraMomentoUnico} mudaHora={this.alteraHora} mudaHorario={this.alteraHorario} alterarEnvio={this.alteraEnvio} mudaDia={this.alteraDia} mudaMomento={this.alteraMomento}/>                    
                                 </div>
                             </span>
                         </Collapse>
@@ -763,8 +782,8 @@ class CreateNotification extends React.Component {
                         </div>
                         <Collapse in={this.state.colapsado.collapse4}>
                             <span className='row m-0' style={{padding: "0 40px"}}>
-                                <p className='subtituloSeccaoPaginaBigger mt-2 mb-1'>Criação das notificações <OverlayTrigger placement='right' delay={{ show: 250, hide: 400}} overlay={MomentsTooltip}><img src={InformationIcon} style={{width: 'auto', height: '22px', margin: '0', marginLeft:'10px', padding: '0'}}/></OverlayTrigger></p>
-                                
+                                <p className='subtituloSeccaoPaginaBigger mt-2'>Criação das notificações <OverlayTrigger placement='right' delay={{ show: 250, hide: 400}} overlay={MomentsTooltip}><img src={InformationIcon} style={{width: 'auto', height: '22px', margin: '0', marginLeft:'10px', padding: '0'}}/></OverlayTrigger></p>
+                                <p className='bigSmall mb-1'>Selecione os momentos em que quer mandar notifições.</p>
                                 <div className='row col-9'>
                                     <DeliveryOptions subSaude={this.state.categoriaInfo} changeMomento={this.updateMomentosEnvio} blade={this.updateBlade} changeMensagem={this.updateMensagensEnvio} momentos={this.state.mensagens} tipo={this.state.tipologia} verificaMomento={this.state.momentoUnico} periodicidade={this.state.envioNotif}/>
                                 </div>
@@ -785,7 +804,7 @@ class CreateNotification extends React.Component {
                         <SubmitButton params={this.state} openModal={this.onOpen} tipoForm="Notification"/>
                     </div>
                 </div>
-                <UserPreferencesModal show={this.state.mostraModalInfo} onHide={this.onCloseInfo}/>
+                <UserPreferencesModal show={this.state.mostraModalInfo} users={this.state.usersEscolhidos} onHide={this.onCloseInfo}/>
                 <SuccessModal show={this.state.mostraModal} onHide={this.onClose} tiponotif="CriarNotificação"/>
             </div>
         )

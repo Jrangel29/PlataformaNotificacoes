@@ -184,6 +184,12 @@ textarea:focus, input:focus{
     font-size: 16px;
 }
 
+.bigSmall{
+    font-size: 13px;
+    margin-top: 0;
+    padding-top: 0;
+}
+
 .backArrow{
     height: 20px;
     width: auto;

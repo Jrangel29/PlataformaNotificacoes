@@ -8,7 +8,6 @@ export const MomentsTooltip = (props) => {
         <Tooltip className='tooltips' id="MomentsTooltip" {...props}>
             <span>
                 <p className='m-0 p-0' style={{fontSize: '14px'}}><b>Indicações</b></p>
-                <p className='m-0 mt-1 p-0' style={{fontSize: '13px', textJustify: 'inter-word', textAlign: 'left'}}><b>-</b> Selecione os momentos em que quer mandar notifições.</p>
                 <p className='m-0 mt-1 p-0' style={{fontSize: '13px', textJustify: 'inter-word', textAlign: 'left'}}><b>-</b> Algumas dos momentos têm um rodapé. Estes permitem resposta do utilizador.</p>
                 <p className='m-0 mt-1 p-0' style={{fontSize: '13px', textJustify: 'inter-word', textAlign: 'left'}}><b>-</b> Dependendo da tipologia e periodicidade escolhidas, alguns momentos podem estar indisponíveis.</p>
             </span>
