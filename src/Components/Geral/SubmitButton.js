@@ -24,9 +24,9 @@ const SubmitButton = (props) => {
         dispatch(createNewGroup(nome, descricao, idade, distrito, concelho));
     };
 
-    const criaNotification = (tipologia, regularidade, nomeItem, momentoUnico, mensagens, idTipologia, hora, envioNotif, idRegular, dias, diaUnico, diaMes, subcategoria, paramsPersonalizado, casasEscolhidas, usersEscolhidos) => {
+    const criaNotification = (tipologia, regularidade, nomeItem, momentoUnico, mensagens, idTipologia, hora, envioNotif, idRegular, dias, diaUnico, diaMes, subcategoria, paramsPersonalizado, casasEscolhidas, usersEscolhidos, dataFim) => {
         props.openModal();
-        dispatch(createNewNotification(tipologia, regularidade, nomeItem, momentoUnico, mensagens, idTipologia, hora, envioNotif, idRegular, dias, diaUnico, diaMes, subcategoria, paramsPersonalizado, casasEscolhidas, usersEscolhidos));
+        dispatch(createNewNotification(tipologia, regularidade, nomeItem, momentoUnico, mensagens, idTipologia, hora, envioNotif, idRegular, dias, diaUnico, diaMes, subcategoria, paramsPersonalizado, casasEscolhidas, usersEscolhidos, dataFim));
     };
 
     const criaCasa = (nome, id, concelho) => {
@@ -96,7 +96,7 @@ const SubmitButton = (props) => {
                                             className='col-2' 
                                             variant='flat' 
                                             onClick={
-                                                () => criaNotification(props.params.tipologia, props.params.regularidade, props.params.nomeItem, props.params.momentoUnico, props.params.mensagens, props.params.idTipologia, props.params.hora, props.params.envioNotif, props.params.dias, props.params.diaUnico, props.params.diaMes, props.params.categoriaInfo, props.params.paramsPersonalizado, props.params.casasEscolhidas, props.params.usersEscolhidos)
+                                                () => criaNotification(props.params.tipologia, props.params.regularidade, props.params.nomeItem, props.params.momentoUnico, props.params.mensagens, props.params.idTipologia, props.params.hora, props.params.envioNotif, props.params.idRegular, props.params.dias, props.params.diaUnico, props.params.diaMes, props.params.categoriaInfo, props.params.paramsPersonalizado, props.params.casasEscolhidas, props.params.usersEscolhidos, props.params.dataFim)
                                                 }>Criar Notificação</Button>
                                     </span>
                                 :
@@ -120,7 +120,7 @@ const SubmitButton = (props) => {
                                                 className='col-2' 
                                                 variant='flat' 
                                                 onClick={
-                                                    () => criaNotification(props.params.tipologia, props.params.regularidade, props.params.nomeItem, props.params.momentoUnico, props.params.mensagens, props.params.idTipologia, props.params.hora, props.params.envioNotif, props.params.idRegular, props.params.dias, props.params.diaUnico, props.params.diaMes, props.params.categoriaInfo, props.params.paramsPersonalizado, props.params.casasEscolhidas, props.params.usersEscolhidos)
+                                                    () => criaNotification(props.params.tipologia, props.params.regularidade, props.params.nomeItem, props.params.momentoUnico, props.params.mensagens, props.params.idTipologia, props.params.hora, props.params.envioNotif, props.params.idRegular, props.params.dias, props.params.diaUnico, props.params.diaMes, props.params.categoriaInfo, props.params.paramsPersonalizado, props.params.casasEscolhidas, props.params.usersEscolhidos, props.params.dataFim)
                                                     }>Criar Notificação</Button>
                                         </span>
                                         :
@@ -135,7 +135,7 @@ const SubmitButton = (props) => {
                                 </span>
                         :
                             props.params.envioNotif === 'Diária' ?
-                                props.params.hora !== '' ?
+                                props.params.hora !== '' && props.params.dataFim !== '' ?
                                 <>
                                     {Object.keys(props.params.mensagens).map(item => {
                                         if(item !== "meiaHora" && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== ''){
@@ -151,7 +151,7 @@ const SubmitButton = (props) => {
                                             className='col-2' 
                                             variant='flat' 
                                             onClick={
-                                                () => criaNotification(props.params.tipologia, props.params.regularidade, props.params.nomeItem, props.params.momentoUnico, props.params.mensagens, props.params.idTipologia, props.params.hora, props.params.envioNotif, props.params.idRegular, props.params.dias, props.params.diaUnico, props.params.diaMes, props.params.categoriaInfo, props.params.paramsPersonalizado, props.params.casasEscolhidas, props.params.usersEscolhidos)
+                                                () => criaNotification(props.params.tipologia, props.params.regularidade, props.params.nomeItem, props.params.momentoUnico, props.params.mensagens, props.params.idTipologia, props.params.hora, props.params.envioNotif, props.params.idRegular, props.params.dias, props.params.diaUnico, props.params.diaMes, props.params.categoriaInfo, props.params.paramsPersonalizado, props.params.casasEscolhidas, props.params.usersEscolhidos, props.params.dataFim)
                                                 }>Criar Notificação</Button>
                                     </span>
                                     :
@@ -168,17 +168,25 @@ const SubmitButton = (props) => {
                             props.params.envioNotif === 'Semanal' ?
                                 <>
                                     {Object.keys(props.params.dias).map(item => {
-                                        if(item === true){
+                                        if(props.params.dias[item] === true){
                                             contagemDias++;
                                         }
                                     })}
-                                    {contagemDias !== 0 && props.params.hora !== '' ?
+                                    {Object.keys(props.params.mensagens).map(item => {
+                                        if(item !== "meiaHora" && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== ''){
+                                            contagemMomentos++;
+                                        }
+                                        if(item === "meiaHora" && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                            contagemMomentos++;
+                                        }
+                                    })}
+                                    {contagemDias !== 0 && contagemMomentos !== 0 && props.params.hora !== '' && props.params.dataFim !== '' ?
                                     <span className='row m-0 justify-content-end'>
                                         <Button 
                                             className='col-2' 
                                             variant='flat' 
                                             onClick={
-                                                () => criaNotification(props.params.tipologia, props.params.regularidade, props.params.nomeItem, props.params.momentoUnico, props.params.mensagens, props.params.idTipologia, props.params.hora, props.params.envioNotif, props.params.idRegular, props.params.dias, props.params.diaUnico, props.params.diaMes, props.params.categoriaInfo, props.params.paramsPersonalizado, props.params.casasEscolhidas, props.params.usersEscolhidos)
+                                                () => criaNotification(props.params.tipologia, props.params.regularidade, props.params.nomeItem, props.params.momentoUnico, props.params.mensagens, props.params.idTipologia, props.params.hora, props.params.envioNotif, props.params.idRegular, props.params.dias, props.params.diaUnico, props.params.diaMes, props.params.categoriaInfo, props.params.paramsPersonalizado, props.params.casasEscolhidas, props.params.usersEscolhidos, props.params.dataFim)
                                                 }>Criar Notificação</Button>
                                     </span>
                                     :
@@ -188,13 +196,13 @@ const SubmitButton = (props) => {
                                     }
                                 </> 
                                 :
-                                props.params.diaMes !== '' && props.params.hora !== '' ?
+                                props.params.diaMes !== '' && props.params.hora !== '' && props.params.dataFim !== '' ?
                                     <span className='row m-0 justify-content-end'>
                                         <Button 
                                             className='col-2' 
                                             variant='flat' 
                                             onClick={
-                                                () => criaNotification(props.params.tipologia, props.params.regularidade, props.params.nomeItem, props.params.momentoUnico, props.params.mensagens, props.params.idTipologia, props.params.hora, props.params.envioNotif, props.params.idRegular, props.params.dias, props.params.diaUnico, props.params.diaMes, props.params.categoriaInfo, props.params.paramsPersonalizado, props.params.casasEscolhidas, props.params.usersEscolhidos)
+                                                () => criaNotification(props.params.tipologia, props.params.regularidade, props.params.nomeItem, props.params.momentoUnico, props.params.mensagens, props.params.idTipologia, props.params.hora, props.params.envioNotif, props.params.idRegular, props.params.dias, props.params.diaUnico, props.params.diaMes, props.params.categoriaInfo, props.params.paramsPersonalizado, props.params.casasEscolhidas, props.params.usersEscolhidos, props.params.dataFim)
                                                 }>Criar Notificação</Button>
                                     </span>
                                     :
@@ -212,7 +220,7 @@ const SubmitButton = (props) => {
                                             className='col-2' 
                                             variant='flat' 
                                             onClick={
-                                                () => criaNotification(props.params.tipologia, props.params.regularidade, props.params.nomeItem, props.params.momentoUnico, props.params.mensagens, props.params.idTipologia, props.params.hora, props.params.envioNotif, props.params.idRegular, props.params.dias, props.params.diaUnico, props.params.diaMes, props.params.categoriaInfo, props.params.paramsPersonalizado, props.params.casasEscolhidas, props.params.usersEscolhidos)
+                                                () => criaNotification(props.params.tipologia, props.params.regularidade, props.params.nomeItem, props.params.momentoUnico, props.params.mensagens, props.params.idTipologia, props.params.hora, props.params.envioNotif, props.params.idRegular, props.params.dias, props.params.diaUnico, props.params.diaMes, props.params.categoriaInfo, props.params.paramsPersonalizado, props.params.casasEscolhidas, props.params.usersEscolhidos, props.params.dataFim)
                                                 }>Criar Notificação</Button>
                                     </span>
                                 :
@@ -236,7 +244,7 @@ const SubmitButton = (props) => {
                                                 className='col-2' 
                                                 variant='flat' 
                                                 onClick={
-                                                    () => criaNotification(props.params.tipologia, props.params.regularidade, props.params.nomeItem, props.params.momentoUnico, props.params.mensagens, props.params.idTipologia, props.params.hora, props.params.envioNotif, props.params.idRegular, props.params.dias, props.params.diaUnico, props.params.diaMes, props.params.categoriaInfo, props.params.paramsPersonalizado, props.params.casasEscolhidas, props.params.usersEscolhidos)
+                                                    () => criaNotification(props.params.tipologia, props.params.regularidade, props.params.nomeItem, props.params.momentoUnico, props.params.mensagens, props.params.idTipologia, props.params.hora, props.params.envioNotif, props.params.idRegular, props.params.dias, props.params.diaUnico, props.params.diaMes, props.params.categoriaInfo, props.params.paramsPersonalizado, props.params.casasEscolhidas, props.params.usersEscolhidos, props.params.dataFim)
                                                     }>Criar Notificação</Button>
                                         </span>
                                         :
@@ -262,7 +270,7 @@ const SubmitButton = (props) => {
                                         className='col-2' 
                                         variant='flat' 
                                         onClick={
-                                            () => criaNotification(props.params.tipologia, props.params.regularidade, props.params.nomeItem, props.params.momentoUnico, props.params.mensagens, props.params.idTipologia, props.params.hora, props.params.envioNotif, props.params.idRegular, props.params.dias, props.params.diaUnico, props.params.diaMes, props.params.categoriaInfo, props.params.paramsPersonalizado, props.params.casasEscolhidas, props.params.usersEscolhidos)
+                                            () => criaNotification(props.params.tipologia, props.params.regularidade, props.params.nomeItem, props.params.momentoUnico, props.params.mensagens, props.params.idTipologia, props.params.hora, props.params.envioNotif, props.params.idRegular, props.params.dias, props.params.diaUnico, props.params.diaMes, props.params.categoriaInfo, props.params.paramsPersonalizado, props.params.casasEscolhidas, props.params.usersEscolhidos, props.params.dataFim)
                                             }>Criar Notificação</Button>
                                 </span>
                                 :
@@ -274,7 +282,7 @@ const SubmitButton = (props) => {
                     :
                         props.params.envioNotif === 'Diária' ?
                             props.params.tipologia === 'Serviços' ?
-                                props.params.hora !== '' ?
+                                props.params.hora !== '' && props.params.dataFim !== '' ?
                                 <>
                                     {Object.keys(props.params.mensagens).map(item => {
                                         if(item !== "meiaHora" && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== ''){
@@ -290,7 +298,7 @@ const SubmitButton = (props) => {
                                             className='col-2' 
                                             variant='flat' 
                                             onClick={
-                                                () => criaNotification(props.params.tipologia, props.params.regularidade, props.params.nomeItem, props.params.momentoUnico, props.params.mensagens, props.params.idTipologia, props.params.hora, props.params.envioNotif, props.params.idRegular, props.params.dias, props.params.diaUnico, props.params.diaMes, props.params.categoriaInfo, props.params.paramsPersonalizado, props.params.casasEscolhidas, props.params.usersEscolhidos)
+                                                () => criaNotification(props.params.tipologia, props.params.regularidade, props.params.nomeItem, props.params.momentoUnico, props.params.mensagens, props.params.idTipologia, props.params.hora, props.params.envioNotif, props.params.idRegular, props.params.dias, props.params.diaUnico, props.params.diaMes, props.params.categoriaInfo, props.params.paramsPersonalizado, props.params.casasEscolhidas, props.params.usersEscolhidos, props.params.dataFim)
                                                 }>Criar Notificação</Button>
                                     </span>
                                     :
@@ -319,7 +327,7 @@ const SubmitButton = (props) => {
                                             className='col-2' 
                                             variant='flat' 
                                             onClick={
-                                                () => criaNotification(props.params.tipologia, props.params.regularidade, props.params.nomeItem, props.params.momentoUnico, props.params.mensagens, props.params.idTipologia, props.params.hora, props.params.envioNotif, props.params.idRegular, props.params.dias, props.params.diaUnico, props.params.diaMes, props.params.categoriaInfo, props.params.paramsPersonalizado, props.params.casasEscolhidas, props.params.usersEscolhidos)
+                                                () => criaNotification(props.params.tipologia, props.params.regularidade, props.params.nomeItem, props.params.momentoUnico, props.params.mensagens, props.params.idTipologia, props.params.hora, props.params.envioNotif, props.params.idRegular, props.params.dias, props.params.diaUnico, props.params.diaMes, props.params.categoriaInfo, props.params.paramsPersonalizado, props.params.casasEscolhidas, props.params.usersEscolhidos, props.params.dataFim)
                                                 }>Criar Notificação</Button>
                                     </span>
                                     :
@@ -336,13 +344,13 @@ const SubmitButton = (props) => {
                                         contagemDias++;
                                     }
                                 })}
-                                {contagemDias !== 0 && props.params.hora !== '' && props.params.tipologia === 'Serviços' || contagemDias !== 0 && props.params.tipologia === 'Informação' ?
+                                {contagemDias !== 0 && props.params.hora !== '' && props.params.dataFim !== '' && props.params.tipologia === 'Serviços' || contagemDias !== 0 && props.params.tipologia === 'Informação' ?
                                 <span className='row m-0 justify-content-end'>
                                     <Button 
                                         className='col-2' 
                                         variant='flat' 
                                         onClick={
-                                            () => criaNotification(props.params.tipologia, props.params.regularidade, props.params.nomeItem, props.params.momentoUnico, props.params.mensagens, props.params.idTipologia, props.params.hora, props.params.envioNotif, props.params.idRegular, props.params.dias, props.params.diaUnico, props.params.diaMes, props.params.categoriaInfo, props.params.paramsPersonalizado, props.params.casasEscolhidas, props.params.usersEscolhidos)
+                                            () => criaNotification(props.params.tipologia, props.params.regularidade, props.params.nomeItem, props.params.momentoUnico, props.params.mensagens, props.params.idTipologia, props.params.hora, props.params.envioNotif, props.params.idRegular, props.params.dias, props.params.diaUnico, props.params.diaMes, props.params.categoriaInfo, props.params.paramsPersonalizado, props.params.casasEscolhidas, props.params.usersEscolhidos, props.params.dataFim)
                                             }>Criar Notificação</Button>
                                 </span>
                                 :
@@ -352,13 +360,13 @@ const SubmitButton = (props) => {
                                 }
                             </> 
                             :
-                            props.params.diaMes !== '' && props.params.hora !== '' ?
+                            props.params.diaMes !== '' && props.params.hora !== '' && props.params.dataFim !== '' ?
                                 <span className='row m-0 justify-content-end'>
                                     <Button 
                                         className='col-2' 
                                         variant='flat' 
                                         onClick={
-                                            () => criaNotification(props.params.tipologia, props.params.regularidade, props.params.nomeItem, props.params.momentoUnico, props.params.mensagens, props.params.idTipologia, props.params.hora, props.params.envioNotif, props.params.idRegular, props.params.dias, props.params.diaUnico, props.params.diaMes, props.params.categoriaInfo, props.params.paramsPersonalizado, props.params.casasEscolhidas, props.params.usersEscolhidos)
+                                            () => criaNotification(props.params.tipologia, props.params.regularidade, props.params.nomeItem, props.params.momentoUnico, props.params.mensagens, props.params.idTipologia, props.params.hora, props.params.envioNotif, props.params.idRegular, props.params.dias, props.params.diaUnico, props.params.diaMes, props.params.categoriaInfo, props.params.paramsPersonalizado, props.params.casasEscolhidas, props.params.usersEscolhidos, props.params.dataFim)
                                             }>Criar Notificação</Button>
                                 </span>
                                 :

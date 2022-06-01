@@ -1,3 +1,6 @@
+import { GetDiaSemana, GetMeses, GetEveryday, GetUnique, GetDiaMes, GetMesesDif } from "./Hooks";
+import { GeraNotificacoes } from './CreateNotifs';
+
 //USERS
 
 export const createUser = (nome, idade, ref_id_casa, informacoes, blacklist) => {
@@ -76,31 +79,47 @@ export const fetchConcelhos = (id) =>
 
 //NOTIFICATIONS
 
-const objectImagens = {
-    "Agenda": "https://firebasestorage.googleapis.com/v0/b/tdi-rangel.appspot.com/o/iconeAgenda.png?alt=media&token=db7c8498-6b3d-47f8-a9ef-175bc5d02dbd",
-    "Boa Noite": "https://firebasestorage.googleapis.com/v0/b/tdi-rangel.appspot.com/o/iconeBoaNoite.png?alt=media&token=c2b86cba-fedd-4c16-8363-61c4fd106ad2",
-    "Bom Dia": "https://firebasestorage.googleapis.com/v0/b/tdi-rangel.appspot.com/o/iconeBomDia.png?alt=media&token=d6551eb3-d7f3-4649-b7b9-668828fbfce8",
-    "Saúde": "https://firebasestorage.googleapis.com/v0/b/tdi-rangel.appspot.com/o/iconeSaude.png?alt=media&token=6d2ed984-0cf4-4650-ab7a-ad9843a736b3",
-    "Conteúdo": "https://firebasestorage.googleapis.com/v0/b/tdi-rangel.appspot.com/o/iconeConteudo.png?alt=media&token=07eb79dc-93b5-439b-87ca-083f71dfe971",
-    "Informação": "https://firebasestorage.googleapis.com/v0/b/tdi-rangel.appspot.com/o/iconeInfo.png?alt=media&token=15650b3a-70f0-4728-b846-73413afac8ba",
-    "Serviço": "https://firebasestorage.googleapis.com/v0/b/tdi-rangel.appspot.com/o/iconeServico.png?alt=media&token=970100b9-4a98-48f5-8038-6a9128026e79"
-}
 
-export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoUnico, mensagens, idTipologia, horaEvento, envioNotif, idRegular, dias, diaUnico, diaMes, subcategoria, paramsPersonalizado, casasEscolhidas, usersEscolhidos) => {
+
+export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoUnico, mensagens, idTipologia, horaEvento, envioNotif, idRegular, dias, diaUnico, diaMes, subcategoria, paramsPersonalizado, casasEscolhidas, usersEscolhidos, dataFim) => {
+    
+    const objectImagens = {
+        "Agenda": "https://firebasestorage.googleapis.com/v0/b/tdi-rangel.appspot.com/o/iconeAgenda.png?alt=media&token=db7c8498-6b3d-47f8-a9ef-175bc5d02dbd",
+        "Saúde": "https://firebasestorage.googleapis.com/v0/b/tdi-rangel.appspot.com/o/iconeSaude.png?alt=media&token=6d2ed984-0cf4-4650-ab7a-ad9843a736b3",
+        "Programas": "https://firebasestorage.googleapis.com/v0/b/tdi-rangel.appspot.com/o/iconeConteudo.png?alt=media&token=07eb79dc-93b5-439b-87ca-083f71dfe971",
+        "Informação": "https://firebasestorage.googleapis.com/v0/b/tdi-rangel.appspot.com/o/iconeInfo.png?alt=media&token=15650b3a-70f0-4728-b846-73413afac8ba",
+        "Serviços": "https://firebasestorage.googleapis.com/v0/b/tdi-rangel.appspot.com/o/iconeServico.png?alt=media&token=970100b9-4a98-48f5-8038-6a9128026e79"
+    }
+
 
     //DATAS
 
-    var diaInicio = new Date();
-    var diaString = diaInicio.getFullYear() + '-' + ((diaInicio.getMonth() > 8) ? (diaInicio.getMonth() + 1) : ('0' + (diaInicio.getMonth() + 1))) + '-' + ((diaInicio.getDate() > 9) ? diaInicio.getDate() : ('0' + diaInicio.getDate()));
-    var meio = diaInicio.setMonth(diaInicio.getMonth() + 3);
-    var diaFim = new Date(meio);
-    var diaFimString = diaFim.getFullYear() + '-' + ((diaFim.getMonth() > 8) ? (diaFim.getMonth() + 1) : ('0' + (diaFim.getMonth() + 1))) + '-' + ((diaFim.getDate() > 9) ? diaFim.getDate() : ('0' + diaFim.getDate()));
+    if(envioNotif === 'Pontual' && momentoUnico === 'Dia e Hora'){
+        var diaInicio = new Date(diaUnico);
+        var weekDay = diaInicio.getDay();
+    }
 
-    var diferenca = diaFim.getTime() - diaInicio.getTime();
-    let totalDias = Math.ceil(diferenca / (1000 * 3600 * 24));
+    if(envioNotif === 'Pontual' && momentoUnico === 'Imediato'){
+        var diaInicio = new Date();
+        var diaImediato = diaInicio.getFullYear() + '-' + ((diaInicio.getMonth() > 8) ? (diaInicio.getMonth() + 1) : ('0' + (diaInicio.getMonth() + 1))) + '-' + ((diaInicio.getDate() > 9) ? diaInicio.getDate() : ('0' + diaInicio.getDate()));
+        var horaImediato = `${diaInicio.getHours()}:${diaInicio.getMinutes()}`;
+    }
+
+    if(envioNotif === 'Diária' || envioNotif === 'Mensal'){
+        var diaInicio = new Date();
+    }
+
+    if(envioNotif === 'Semanal'){
+        var diaInicio = new Date();
+        var diasWeek = [];
+        Object.keys(dias).map(item => {
+            if(dias[item] === true){
+                let str = item.slice(item.length - 1);
+                diasWeek.push(str)
+            }
+        })
+    }
     
-    console.log(diaString);
-    console.log(diaFimString);
 
     //Tipologias
 
@@ -111,8 +130,8 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
         tipologia: idTipologia,
         regularidade: {
             tipo: idRegular,
-            data: diaUnico,
-            hora: horaEvento,
+            data: '', // diaUnico
+            hora: '', // horaEvento
             dias: []
         },
         destinatarios: [],
@@ -125,18 +144,89 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
         })
     }
     
-    if(tipologia === 'Informação' || tipologia === 'Serviços' || tipologia === 'Saúde'){
+    if(tipologia === 'Informação' || tipologia === 'Serviços'){
         casasEscolhidas.map(item => {
             ObjetoEnvio.destinatarios.push(item.idCasa)
         })
     }
 
+    if(envioNotif === 'Pontual' && momentoUnico === 'Dia e Hora'){
+        let diasEvento = GetUnique(diaInicio, mensagens);
+        let notificacao = GeraNotificacoes(mensagens, diasEvento, tipologia, horaEvento, momentoUnico, 'Unico', diaInicio);
+        ObjetoEnvio.regularidade.tipo = 1;
+        ObjetoEnvio.regularidade.data = diaUnico;
+        ObjetoEnvio.regularidade.hora = horaEvento;
+        if(weekDay !== 0){
+            ObjetoEnvio.regularidade.dias = [weekDay];
+        } else {
+            ObjetoEnvio.regularidade.dias = [7];
+        }
+        ObjetoEnvio.notificacoes = notificacao;
+    }
+
+    if(envioNotif === 'Pontual' && momentoUnico === 'Imediato'){
+        let notificacao = {
+            mensagem: mensagens.imediato.message,
+            url_icone: objectImagens[tipologia],
+            data: diaImediato,
+            hora: horaImediato,
+            rotina: null,
+            zapping: 0
+        }
+        ObjetoEnvio.regularidade.tipo = 1;
+        ObjetoEnvio.regularidade.data = diaImediato;
+        ObjetoEnvio.regularidade.hora = horaImediato;
+        ObjetoEnvio.regularidade.dias = [];
+        ObjetoEnvio.notificacoes.push(notificacao);
+    }
+
+    if(envioNotif === 'Diária'){
+        let meses = GetMesesDif(diaInicio, dataFim);
+        let diasEvento = GetEveryday(GetMeses(meses), dataFim);
+        let notificacao = GeraNotificacoes(mensagens, diasEvento, tipologia, horaEvento, momentoUnico, 'Diária', envioNotif);
+        ObjetoEnvio.regularidade.tipo = 2;
+        ObjetoEnvio.regularidade.data = null;
+        ObjetoEnvio.regularidade.hora = horaEvento;
+        ObjetoEnvio.regularidade.dias = [1, 2, 3, 4, 5, 6, 7];
+        ObjetoEnvio.notificacoes = notificacao;
+    }
+
+    if(envioNotif === 'Semanal'){
+        let meses = GetMesesDif(diaInicio, dataFim);
+        let diasEvento = GetDiaSemana(diasWeek, GetMeses(meses), mensagens, dataFim);
+        let notificacao = GeraNotificacoes(mensagens, diasEvento, tipologia, horaEvento, momentoUnico, 'Semanal', envioNotif);
+        ObjetoEnvio.regularidade.tipo = 3;
+        ObjetoEnvio.regularidade.data = null;
+        ObjetoEnvio.regularidade.data = diaUnico;
+        ObjetoEnvio.regularidade.hora = horaEvento;
+        diasWeek.map(item => {
+            if(item !== 0){
+                ObjetoEnvio.regularidade.dias.push(item)
+            } else {
+                ObjetoEnvio.regularidade.dias.push(7)
+            }
+        })
+        ObjetoEnvio.notificacoes = notificacao;
+    }
+
+    if(envioNotif === 'Mensal'){
+        let meses = GetMesesDif(diaInicio, dataFim);
+        let diasEvento = GetDiaMes(diaMes, GetMeses(meses), mensagens, dataFim);
+        let notificacao = GeraNotificacoes(mensagens, diasEvento, tipologia, horaEvento, momentoUnico, 'Mensal', envioNotif);
+        ObjetoEnvio.regularidade.tipo = 4;
+        ObjetoEnvio.regularidade.data = null;
+        ObjetoEnvio.regularidade.hora = horaEvento;
+        ObjetoEnvio.regularidade.dias = [];
+        ObjetoEnvio.notificacoes = notificacao;
+    }
+
     console.log(ObjetoEnvio)
-    /*fetch(`https://geo-navsafety.ua.pt:443/overtv/notifications`, {
+
+    /*fetch(`http://geo-navsafety.ua.pt:443/overtv/eventos/new`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({...objectEnvio})
+        body: JSON.stringify({...ObjetoEnvio})
     }).then(response => response.json())*/
 }

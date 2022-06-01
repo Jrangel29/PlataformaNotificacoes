@@ -142,7 +142,7 @@ export const PreviewNotif = (props) => {
                 </div>
                 }
                 <div className='col-4'>
-                    <p className='subtituloSeccaoPagina mb-0 mt-2'>Definições</p>
+                    <p className='subtituloSeccaoPagina mb-0 mt-2'>Settings</p>
                     <p className='textoPrefsUser m-0'>
                         <span className='itensPreview'>Titulo do Evento: </span>{props.titulo === '' ? 'Por definir' : props.titulo}
                     </p>
@@ -162,16 +162,16 @@ export const PreviewNotif = (props) => {
                                 if(index+1 === Object.keys(props.mensagens).length){
                                     if(contagem === 0){
                                         return(
-                                            'Este evento não gera notificações'
+                                            <span className='m-0 p-0' key={index}>Este evento não gera notificações</span>
                                         )
                                     }
                                     if(contagem === 1){
                                         return(
-                                            'Este evento gera 1 notificações'
+                                            <span className='m-0 p-0' key={index}>Este evento gera 1 notificações</span>
                                         )
                                     } else {
                                         return(
-                                            `Este evento gera ${contagem} notificações`
+                                            <span className='m-0 p-0' key={index}>{`Este evento gera ${contagem} notificações`}</span>
                                         )
                                     }
                                 }
@@ -185,62 +185,62 @@ export const PreviewNotif = (props) => {
                             if(props.mensagens[item].active === true){
                                 if(item === 'semanaAntes'){
                                     return(
-                                        <>1 semana antes, </>
+                                        <span className='m-0 p-0' key={index}>1 semana antes, </span>
                                     )
                                 }
                                 if(item === 'dias3'){
                                     return(
-                                        <>3 dias antes, </>
+                                        <span className='m-0 p-0' key={index}>3 dias antes, </span>
                                     )
                                 }
                                 if(item === 'diaAnterior'){
                                     return(
-                                        <>Rotina de boa noite, </>
+                                        <span className='m-0 p-0' key={index}>Rotina de boa noite, </span>
                                     )
                                 }
                                 if(item === 'diaProprio'){
                                     return(
-                                        <>Rotina de bom dia, </>
+                                        <span className='m-0 p-0' key={index}>Rotina de bom dia, </span>
                                     )
                                 }
                                 if(item === 'horaEspecifica'){
                                     return(
-                                        <>Hora específica, </>
+                                        <span className='m-0 p-0' key={index}>Hora específica, </span>
                                     )
                                 }
                                 if(item === 'imediato'){
                                     return(
-                                        <>Imediatamente, </>
+                                        <span className='m-0 p-0' key={index}>Imediatamente, </span>
                                     )
                                 }
                                 if(item === 'intervaloHoras'){
                                     return(
-                                        <>Intervalo de horas, </>
+                                        <span className='m-0 p-0' key={index}>Intervalo de horas, </span>
                                     )
                                 }
                                 if(item === 'horaAntes'){
                                     return(
-                                        <>1 hora antes, </>
+                                        <span className='m-0 p-0' key={index}>1 hora antes, </span>
                                     )
                                 }
                                 if(item === 'meiaHora'){
                                     return(
-                                        <>30 minutos antes, </>
+                                        <span className='m-0 p-0' key={index}>30 minutos antes, </span>
                                     )
                                 }
                                 if(item === 'quartoHora'){
                                     return(
-                                        <>15 minutos antes, </>
+                                        <span className='m-0 p-0' key={index}>15 minutos antes, </span>
                                     )
                                 }
                                 if(item === 'minutos5'){
                                     return(
-                                        <>5 minutos antes, </>
+                                        <span className='m-0 p-0' key={index}>5 minutos antes, </span>
                                     )
                                 }
                                 if(item === 'momentoAcontecimento'){
                                     return(
-                                        <>No momento do acontecimento do item</>
+                                        <span className='m-0 p-0' key={index}>No momento do acontecimento do item</span>
                                     )
                                 }
                             }
@@ -258,7 +258,7 @@ export const PreviewNotif = (props) => {
                                 props.users.length > 0 ? 
                                     props.users.map((item, index) => {
                                         return(
-                                            <>{item.nome}{index + 1 === props.users.length ? '' : ', '}</>
+                                            <span className='m-0 p-0' key={index}>{item.nome}{index + 1 === props.users.length ? '' : ', '}</span>
                                         )
                                     })
                                     : 'Ainda não escolheu recetores'
@@ -266,7 +266,7 @@ export const PreviewNotif = (props) => {
                             props.casas.length > 0 ? 
                                     props.casas.map((item, index) => {
                                         return(
-                                            <>{item.nome}{index + 1 === props.casas.length ? '' : ', '}</>
+                                            <span className='m-0 p-0' key={index}>{item.nome}{index + 1 === props.casas.length ? '' : ', '}</span>
                                         )
                                     })
                                     : 'Ainda não escolheu casas'

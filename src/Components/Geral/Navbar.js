@@ -20,8 +20,8 @@ const BarraNav = () => {
         <div className={tipo === 'Notifs' ? 'barraNavegacao pt1 m-0 p-0' : 'barraNavegacao pt2 m-0 p-0'}>
             <div className='containerNavBar topPart'>
                 <div className='topBar m-0 p-0 h-100'>
-                    <div className={tipo === 'Notifs' ? 'btn btnNav escolheHalf H1' : 'btn btnNav escolheHalfNot H1'} onClick={() => setTipo('Notifs')}>Notificações</div>
-                    <div className={tipo === 'Destino' ? 'btn btnNav escolheHalf H2' : 'btn btnNav escolheHalfNot H2'} onClick={() => setTipo('Destino')}>Destinatários</div>
+                    <div className={tipo === 'Notifs' ? 'btn btnNav escolheHalf' : 'btn btnNav escolheHalfNot H1'} onClick={() => setTipo('Notifs')}>Notificações</div>
+                    <div className={tipo === 'Destino' ? 'btn btnNav escolheHalf' : 'btn btnNav escolheHalfNot H2'} onClick={() => setTipo('Destino')}>Destinatários</div>
                 </div>
             </div>
             <div className='containerNavBar w-50'>
@@ -30,7 +30,7 @@ const BarraNav = () => {
                         {tipo === 'Notifs' ? 
                         <>
                             <Nav.Link as={Link} className={lugar === "/notifications/create" ? 'navSelected' : '' } to="/notifications/create">
-                                Criar Evento
+                                Criar
                             </Nav.Link>
                             <Nav.Link as={Link} className={lugar === "/notifications" ? 'navSelected' : '' } to="/notifications">
                                 Agendadas

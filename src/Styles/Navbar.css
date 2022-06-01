@@ -35,14 +35,15 @@
     background-color: #3F72AF!important;
     cursor: pointer!important;
     z-index: 0!important;
+    border-radius: 0!important;
 }
 
 .H1{
-    border-radius: 3px 20px 0 0!important;
+    box-shadow: inset 7px -6px 23px -1px rgba(0,0,0,0.1)!important;
 }
 
 .H2{
-    border-radius: 20px 3px 0 0!important;
+    box-shadow: inset 7px -6px 23px -1px rgba(0,0,0,0.1)!important;
 }
 
 .escolheHalfNot {
@@ -56,6 +57,7 @@
     background-color: #626262!important;
     cursor: pointer!important;
     z-index: 0!important;
+    border-radius: 0!important;
 }
 
 .btnNav{

@@ -40,7 +40,7 @@ const GetUsers = (props) => {
                                 })}
                                 {contagem !== 0 ?
                                     <span key={index} className='col-4'>
-                                        <p className='btn btnListaUser disabled disabledButton'>Escolhido</p>
+                                        <p className='btn btnListaUser disabled disabledButton'>Adicionado</p>
                                     </span>
                                     :
                                     <span key={index} className='col-4'>
@@ -167,7 +167,7 @@ export const ListaUsersAdicionados = (props) => {
                             }
                             if(val === item.idCasa && contagem !== 0){
                                 return(
-                                    <span className='col-12 row itemListaUsersForm m-0'>
+                                    <span className='col-12 row itemListaUsersForm m-0' key={index}>
                                         <p className='col-8 infoCasaFormUser'>{item.nome}</p>
                                         <span className='col-4'>
                                             <p className='btn btnListaUser' onClick={() => props.remove(index)}>Remover</p>

@@ -79,63 +79,63 @@ function NotificationTimeSelection(props) {
                                     <Form.Check 
                                         type="checkbox" 
                                         inline 
-                                        id="segunda" 
-                                        key="segunda" 
-                                        value="segunda"
+                                        id="segunda1" 
+                                        key="segunda1" 
+                                        value="segunda1"
                                         onChange={props.mudaDia}/>
                                 </td>
                                 <td>
                                     <Form.Check 
                                         type="checkbox" 
                                         inline 
-                                        id="terca" 
-                                        key="terca" 
-                                        value="terca"
+                                        id="terca2" 
+                                        key="terca2" 
+                                        value="terca2"
                                         onChange={props.mudaDia}/>
                                 </td>
                                 <td>
                                     <Form.Check 
                                         type="checkbox" 
                                         inline 
-                                        id="quarta" 
-                                        key="quarta" 
-                                        value="quarta"
+                                        id="quarta3" 
+                                        key="quarta3" 
+                                        value="quarta3"
                                         onChange={props.mudaDia}/>
                                 </td>
                                 <td>
                                     <Form.Check 
                                         type="checkbox" 
                                         inline 
-                                        id="quinta" 
-                                        key="quinta" 
-                                        value="quinta"
+                                        id="quinta4" 
+                                        key="quinta4" 
+                                        value="quinta4"
                                         onChange={props.mudaDia}/>
                                 </td>
                                 <td>
                                     <Form.Check 
                                         type="checkbox" 
                                         inline 
-                                        id="sexta" 
-                                        key="sexta" 
-                                        value="sexta"
+                                        id="sexta5" 
+                                        key="sexta5" 
+                                        value="sexta5"
                                         onChange={props.mudaDia}/>
                                 </td>
                                 <td>
                                     <Form.Check 
                                         type="checkbox" 
                                         inline 
-                                        id="sabado" 
-                                        key="sabado" 
-                                        value="sabado"
+                                        id="sabado6" 
+                                        key="sabado6" 
+                                        value="sabado6"
                                         onChange={props.mudaDia}/>
                                 </td>
                                 <td>
                                     <Form.Check 
                                         type="checkbox" 
                                         inline 
-                                        id="domingo" 
-                                        key="domingo" 
-                                        value="domingo"
+                                        id="domingo0" 
+                                        key="domingo0" 
+                                        value="domingo0"
                                         onChange={props.mudaDia}/>
                                 </td>
                             </tr>
@@ -149,6 +149,14 @@ function NotificationTimeSelection(props) {
                             </span>
                         </span>
                     </span>
+                    <span className="col-3">
+                        <p className="subtituloSeccaoPagina mt-2">Data de fim</p>
+                        <span className="row col-12">
+                            <span className="col-3">
+                                <input type="date" className='inputsForms w-50' onChange={props.mudaDataFim} style={{height: "37px"}}/>
+                            </span>
+                        </span>
+                    </span>
                     </div>
                     : 
                     props.parametros.envioNotif === "Diária" ?
@@ -158,6 +166,14 @@ function NotificationTimeSelection(props) {
                             <span className="row col-12">
                                 <span className="col-3">
                                     <input type="time" className='inputsForms without_ampm w-50' onInput={props.mudaHora} onChange={props.mudaHora} style={{height: "37px"}}/>
+                                </span>
+                            </span>
+                        </span>
+                        <span className="col-3">
+                            <p className="subtituloSeccaoPagina mt-2">Data de fim</p>
+                            <span className="row col-12">
+                                <span className="col-3">
+                                    <input type="date" className='inputsForms w-50' onChange={props.mudaDataFim} style={{height: "37px"}}/>
                                 </span>
                             </span>
                         </span>
@@ -210,6 +226,14 @@ function NotificationTimeSelection(props) {
                                 <span className="col-3">
                                     <input type="time" className='inputsForms without_ampm w-50' onInput={props.mudaHora} onChange={props.mudaHora} style={{height: "37px"}}/>
                                 </span>
+                                <span className="col-3">
+                                <p className="subtituloSeccaoPagina mt-2">Data de fim</p>
+                                <span className="row col-12 m-0">
+                                    <span className="col-12 m-0 p-0">
+                                        <input type="date" className='inputsForms w-50' onChange={props.mudaDataFim} style={{height: "37px"}}/>
+                                    </span>
+                                </span>
+                            </span>
                         </span>
                     </>
             }

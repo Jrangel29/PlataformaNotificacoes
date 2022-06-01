@@ -34,17 +34,18 @@ class CreateNotification extends React.Component {
             diaUnico: '',
             hora: '',
             momentoUnico: '',
-            usersEscolhidos: [{nome: 'aaa', idUser: 1}, {nome: 'aaa', idUser: 2}],
+            usersEscolhidos: [{nome: 'a', idUser: 1}],
             casasEscolhidas: [],
             diaMes: '',
+            dataFim: '',
             dias: {
-                segunda: false,
-                terca: false,
-                quarta: false,
-                quinta: false,
-                sexta: false,
-                sabado: false,
-                domingo: false
+                domingo0: false,
+                segunda1: false,
+                terca2: false,
+                quarta3: false,
+                quinta4: false,
+                sexta5: false,
+                sabado6: false
             },
             paramsPersonalizado: {
                 usaIcone: "Não",
@@ -203,6 +204,12 @@ class CreateNotification extends React.Component {
     alteraHora = (valor) => {
         this.setState({
             hora: valor.target.value
+        })
+    }
+
+    alteraDataFim = (valor) => {
+        this.setState({
+            dataFim: valor.target.value
         })
     }
 
@@ -551,6 +558,16 @@ class CreateNotification extends React.Component {
     }
 
     alteraDia = (val) => {
+        console.log(val.target.value)
+        this.setState({
+            dias: {
+                ...this.state.dias,
+                [val.target.value]: !this.state.dias[val.target.value]
+            }
+        })
+    }
+
+    alteraDiaMes = (val) => {
         this.setState({
             diaMes: val
         })
@@ -769,7 +786,7 @@ class CreateNotification extends React.Component {
                                             />
                                     </span>
                                     {console.log(this.state.hora)}
-                                    <NotificationTimeSelection collapseState={this.state.colapsado} parametros={this.state} mudaDiaUnico={this.alteraDiaUnico} alteraDiaMes={this.alteraDia} mudaMomentoUnico={this.alteraMomentoUnico} mudaHora={this.alteraHora} mudaHorario={this.alteraHorario} alterarEnvio={this.alteraEnvio} mudaDia={this.alteraDia} mudaMomento={this.alteraMomento}/>                    
+                                    <NotificationTimeSelection collapseState={this.state.colapsado} mudaDataFim={this.alteraDataFim} parametros={this.state} mudaDiaUnico={this.alteraDiaUnico} alteraDiaMes={this.alteraDiaMes} mudaMomentoUnico={this.alteraMomentoUnico} mudaHora={this.alteraHora} mudaHorario={this.alteraHorario} alterarEnvio={this.alteraEnvio} mudaDia={this.alteraDia} mudaMomento={this.alteraMomento}/>                    
                                 </div>
                             </span>
                         </Collapse>

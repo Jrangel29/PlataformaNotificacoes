@@ -302,7 +302,7 @@ export const DeliveryOptions = (props) => {
                         <Form.Check 
                             type="checkbox" 
                             inline 
-                            label='No momento de acontecimento do item' 
+                            label='No momento de acontecimento do evento' 
                             key="momentoAcontecimento" 
                             value="momentoAcontecimento"
                             className='py-1'
