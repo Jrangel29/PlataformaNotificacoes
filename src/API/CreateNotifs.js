@@ -47,7 +47,7 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                         titulo: null,
                         descricao: null,
                         url_icone: objectImagens[tipologia],
-                        data: item,
+                        data: item.data,
                         hora: horaEvento,
                         rotina: null,
                         zapping: 1
@@ -58,7 +58,7 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                         titulo: null,
                         descricao: null,
                         url_icone: objectImagens[tipologia],
-                        data: item,
+                        data: item.data,
                         hora: horaEvento,
                         rotina: null,
                         zapping: 0
@@ -78,7 +78,7 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                             titulo: null,
                             descricao: null,
                             url_icone: objectImagens[tipologia],
-                            data: item,
+                            data: item.data,
                             hora: horaEvento,
                             rotina: null,
                             zapping: 1
@@ -89,7 +89,7 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                             titulo: null,
                             descricao: null,
                             url_icone: objectImagens[tipologia],
-                            data: item,
+                            data: item.data,
                             hora: horaEvento,
                             rotina: null,
                             zapping: 0
@@ -105,7 +105,7 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                         titulo: null,
                         descricao: null,
                         url_icone: objectImagens[tipologia],
-                        data: item,
+                        data: item.data,
                         hora: horaEvento,
                         rotina: null,
                         zapping: 1
@@ -116,7 +116,7 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                         titulo: null,
                         descricao: null,
                         url_icone: objectImagens[tipologia],
-                        data: item,
+                        data: item.data,
                         hora: horaEvento,
                         rotina: null,
                         zapping: 0
@@ -189,7 +189,7 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                         titulo: null,
                         descricao: null,
                         url_icone: objectImagens[tipologia],
-                        data: item,
+                        data: item.data,
                         hora: horaEvento,
                         rotina: null,
                         zapping: 1
@@ -200,7 +200,7 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                         titulo: null,
                         descricao: null,
                         url_icone: objectImagens[tipologia],
-                        data: item,
+                        data: item.data,
                         hora: horaEvento,
                         rotina: null,
                         zapping: 0
