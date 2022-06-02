@@ -11,6 +11,8 @@ import Groups from './Pages/Groups.js';
 import History from './Pages/History';
 import Templates from './Pages/Templates';
 import Group from './Pages/Group.js';
+import Events from './Pages/Events.js';
+import Event from './Pages/Event.js';
 import HistoryDetails from './Pages/HistoryDetails.js';
 import CreateUser from './Pages/Forms/CreateUser.js';
 import CreateHouse from './Pages/Forms/CreateHouse.js';
@@ -50,6 +52,8 @@ function App() {
           <Route exact path="/houses" element={<Houses/>}/>
           <Route exact path="/houses/:id" element={<House/>}/>
           <Route exact path="/houses/create" element={<CreateHouse/>}/>
+          <Route exact path="/events" element={<Events/>}/>
+          <Route exact path="/events/:id" element={<Event/>}/>
           <Route path="*" element={<Error404/>}/>
         </Routes>
       </BrowserRouter>

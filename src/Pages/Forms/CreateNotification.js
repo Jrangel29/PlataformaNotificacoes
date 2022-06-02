@@ -34,7 +34,7 @@ class CreateNotification extends React.Component {
             diaUnico: '',
             hora: '',
             momentoUnico: '',
-            usersEscolhidos: [{nome: 'a', idUser: 1}],
+            usersEscolhidos: [],
             casasEscolhidas: [],
             diaMes: '',
             dataFim: '',

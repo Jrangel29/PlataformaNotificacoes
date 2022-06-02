@@ -9,7 +9,7 @@ const BarraNav = () => {
     const [tipo, setTipo] = useState('');
 
     useEffect(() => {
-        if(lugar === "/notifications/create" || lugar === "/notifications" || lugar === "/history" || lugar === "/history/details"){
+        if(lugar === "/notifications/create" || lugar === "/notifications" || lugar === "/history" || lugar === "/history/details" || lugar === "/events"){
             setTipo('Notifs')
         } else{
             setTipo('Destino')
@@ -31,6 +31,9 @@ const BarraNav = () => {
                         <>
                             <Nav.Link as={Link} className={lugar === "/notifications/create" ? 'navSelected' : '' } to="/notifications/create">
                                 Criar
+                            </Nav.Link>
+                            <Nav.Link as={Link} className={lugar === "/events" ? 'navSelected' : '' } to="/events">
+                                Eventos
                             </Nav.Link>
                             <Nav.Link as={Link} className={lugar === "/notifications" ? 'navSelected' : '' } to="/notifications">
                                 Agendadas

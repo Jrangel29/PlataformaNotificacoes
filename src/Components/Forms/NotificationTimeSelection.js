@@ -1,9 +1,9 @@
 import React from "react";
-import { Dropdown, Table, Form, Collapse } from "react-bootstrap";
+import { Dropdown, Table, Form} from "react-bootstrap";
 import Calendar from 'react-calendar';
-import DownArrow from '../../Images/DownArrow.png';
 
 function NotificationTimeSelection(props) {
+
   return (
     <>
         <p className="subtituloSeccaoPagina" style={{marginTop: "5px"}}>

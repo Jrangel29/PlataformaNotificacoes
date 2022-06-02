@@ -27,7 +27,6 @@ const UserCards = (props) => {
     return(            
         <div className='container m-0 p-0'>
             <div className={props.pagina === "criaGrupo" ? 'row cartasForm' : 'row cartasMainBody'}>
-                {console.log(usersList)}
                 {usersList.map((item, index) => {
                     return(
                         <Accordion key={index} defaultActiveKey="0" className={props.pagina === "criaGrupo" ? 'col-6 pb-1' : 'col-4 pb-3'}>

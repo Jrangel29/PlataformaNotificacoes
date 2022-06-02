@@ -72,6 +72,10 @@
     color: #3F72AF;
     font-weight: 700;
     font-size: 18px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
 
 .textoSmall{
@@ -95,9 +99,6 @@
 }
 
 .tituloNotificacao{
-    display: flex!important;
-    flex-direction: column!important;
-    justify-content: center!important;
     max-height: 30px;
     overflow: hidden;
     display: -webkit-box;

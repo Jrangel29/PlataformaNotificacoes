@@ -59,27 +59,40 @@ export const createGroup = (name, descricao, idade, distrito, concelho) => {
     }).then(response => response.json())
 }
 
-//Tipologias
+
+//TIPOLOGIAS
 
 export const fetchTipologiaList = () =>
   fetch(`http://geo-navsafety.ua.pt:443/overtv/tipologias`)
     .then(response => response.json())
 
-//Distritos
+
+//DISTRITOS
 
 export const fetchDistritosList = () =>
   fetch(`http://geo-navsafety.ua.pt:443/overtv/localidade/distritos`)
     .then(response => response.json())
 
-//Concelhos
+
+//CONCELHOS
 
 export const fetchConcelhos = (id) =>
   fetch(`http://geo-navsafety.ua.pt:443/overtv/localidade/concelhos/${id}`)
     .then(response => response.json())
 
+
+//EVENTOS
+
+export const fetchEventos = () =>
+    fetch(`http://geo-navsafety.ua.pt:443/overtv/eventos`)
+      .then(response => response.json())
+
+export const fetchSingleEvent = (id) =>
+    fetch(`http://geo-navsafety.ua.pt:443/overtv/eventos/${id}`)
+      .then(response => response.json())
+
+
 //NOTIFICATIONS
-
-
 
 export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoUnico, mensagens, idTipologia, horaEvento, envioNotif, idRegular, dias, diaUnico, diaMes, subcategoria, paramsPersonalizado, casasEscolhidas, usersEscolhidos, dataFim) => {
     
