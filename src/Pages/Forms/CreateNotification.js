@@ -165,25 +165,185 @@ class CreateNotification extends React.Component {
         if(valor === 'Pontual'){
             this.setState({
                 envioNotif: valor,
-                idRegular: 1
+                idRegular: 1,
+                mensagens: {
+                    semanaAntes: {
+                        active: false, 
+                        message: ''},
+                    dias3: {
+                        active: false, 
+                        message: ''},
+                    diaAnterior: {
+                        active: false, 
+                        message: ''},
+                    diaProprio: {
+                        active: false, 
+                        message: ''},
+                    horaEspecifica: {
+                        active: false, 
+                        message: ''},
+                    imediato: {
+                        active: false, 
+                        message: ''},
+                    intervaloHoras: {
+                        active: false, 
+                        message: ''},
+                    horaAntes: {
+                        active: false, 
+                        message: ''},
+                    meiaHora: {
+                        active: false, 
+                        message: '',
+                        tituloBlade: '',
+                        descricao: ''},
+                    quartoHora: {
+                        active: false, 
+                        message: ''},
+                    minutos5: {
+                        active: false, 
+                        message: ''},
+                    momentoAcontecimento: {
+                        active: false, 
+                        message: ''}
+                }
             })
         }
         if(valor === 'Diária'){
             this.setState({
                 envioNotif: valor,
-                idRegular: 2
+                idRegular: 2,
+                mensagens: {
+                    semanaAntes: {
+                        active: false, 
+                        message: ''},
+                    dias3: {
+                        active: false, 
+                        message: ''},
+                    diaAnterior: {
+                        active: false, 
+                        message: ''},
+                    diaProprio: {
+                        active: false, 
+                        message: ''},
+                    horaEspecifica: {
+                        active: false, 
+                        message: ''},
+                    imediato: {
+                        active: false, 
+                        message: ''},
+                    intervaloHoras: {
+                        active: false, 
+                        message: ''},
+                    horaAntes: {
+                        active: false, 
+                        message: ''},
+                    meiaHora: {
+                        active: false, 
+                        message: '',
+                        tituloBlade: '',
+                        descricao: ''},
+                    quartoHora: {
+                        active: false, 
+                        message: ''},
+                    minutos5: {
+                        active: false, 
+                        message: ''},
+                    momentoAcontecimento: {
+                        active: false, 
+                        message: ''}
+                }
             })
         }
         if(valor === 'Semanal'){
             this.setState({
                 envioNotif: valor,
-                idRegular: 3
+                idRegular: 3,
+                mensagens: {
+                    semanaAntes: {
+                        active: false, 
+                        message: ''},
+                    dias3: {
+                        active: false, 
+                        message: ''},
+                    diaAnterior: {
+                        active: false, 
+                        message: ''},
+                    diaProprio: {
+                        active: false, 
+                        message: ''},
+                    horaEspecifica: {
+                        active: false, 
+                        message: ''},
+                    imediato: {
+                        active: false, 
+                        message: ''},
+                    intervaloHoras: {
+                        active: false, 
+                        message: ''},
+                    horaAntes: {
+                        active: false, 
+                        message: ''},
+                    meiaHora: {
+                        active: false, 
+                        message: '',
+                        tituloBlade: '',
+                        descricao: ''},
+                    quartoHora: {
+                        active: false, 
+                        message: ''},
+                    minutos5: {
+                        active: false, 
+                        message: ''},
+                    momentoAcontecimento: {
+                        active: false, 
+                        message: ''}
+                }
             })
         }
         if(valor === 'Mensal'){
             this.setState({
                 envioNotif: valor,
-                idRegular: 4
+                idRegular: 4,
+                mensagens: {
+                    semanaAntes: {
+                        active: false, 
+                        message: ''},
+                    dias3: {
+                        active: false, 
+                        message: ''},
+                    diaAnterior: {
+                        active: false, 
+                        message: ''},
+                    diaProprio: {
+                        active: false, 
+                        message: ''},
+                    horaEspecifica: {
+                        active: false, 
+                        message: ''},
+                    imediato: {
+                        active: false, 
+                        message: ''},
+                    intervaloHoras: {
+                        active: false, 
+                        message: ''},
+                    horaAntes: {
+                        active: false, 
+                        message: ''},
+                    meiaHora: {
+                        active: false, 
+                        message: '',
+                        tituloBlade: '',
+                        descricao: ''},
+                    quartoHora: {
+                        active: false, 
+                        message: ''},
+                    minutos5: {
+                        active: false, 
+                        message: ''},
+                    momentoAcontecimento: {
+                        active: false, 
+                        message: ''}
+                }
             })
         }
     }

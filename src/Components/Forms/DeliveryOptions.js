@@ -21,6 +21,7 @@ export const DeliveryOptions = (props) => {
                             inline
                             label='1 semana antes'
                             key='semanaAntes'
+                            checked={props.momentos.semanaAntes.active}
                             value="semanaAntes"
                             className='py-1'
                             disabled={
@@ -49,6 +50,7 @@ export const DeliveryOptions = (props) => {
                             inline 
                             label='3 Dias antes'
                             key="dias3" 
+                            checked={props.momentos.dias3.active}
                             value="dias3"
                             className='py-1'
                             disabled={
@@ -76,6 +78,7 @@ export const DeliveryOptions = (props) => {
                             inline 
                             label='Dia anterior - Na rotina de Boa Noite' 
                             key="diaAnterior" 
+                            checked={props.momentos.diaAnterior.active}
                             value="diaAnterior"
                             className='py-1'
                             disabled={
@@ -102,6 +105,7 @@ export const DeliveryOptions = (props) => {
                             label='No próprio dia - Na rotina de Bom Dia'
                             key="diaProprio" 
                             value="diaProprio"
+                            checked={props.momentos.diaProprio.active}
                             className='py-1'
                             disabled={
                                 props.tipo === 'Programas' 
@@ -128,6 +132,7 @@ export const DeliveryOptions = (props) => {
                             key="horaEspecifica" 
                             value="horaEspecifica"
                             className='py-1'
+                            checked={props.momentos.horaEspecifica.active}
                             disabled={
                                 props.tipo === 'Informação' 
                                 || props.tipo === 'Programas' 
@@ -153,6 +158,7 @@ export const DeliveryOptions = (props) => {
                             key="imediato" 
                             value="imediato"
                             className='py-1'
+                            checked={props.momentos.imediato.active}
                             disabled={
                                 props.tipo === 'Informação' && props.verificaMomento !== 'Imediato'
                                 || props.tipo === 'Programas' && props.verificaMomento !== 'Imediato'
@@ -177,6 +183,7 @@ export const DeliveryOptions = (props) => {
                             label='De 2 em 2 horas'
                             key="intervaloHoras" 
                             value="intervaloHoras"
+                            checked={props.momentos.intervaloHoras.active}
                             className='py-1'
                             disabled={
                                 props.tipo === 'Informação' 
@@ -202,6 +209,7 @@ export const DeliveryOptions = (props) => {
                             label='1 hora antes'
                             key="horaAntes" 
                             value="horaAntes"
+                            checked={props.momentos.horaAntes.active}
                             className='py-1'
                             disabled={
                                 props.tipo === 'Informação' 
@@ -227,6 +235,7 @@ export const DeliveryOptions = (props) => {
                             label='30 minutos antes'
                             key="meiaHora" 
                             value="meiaHora"
+                            checked={props.momentos.meiaHora.active}
                             className='py-1'
                             disabled={
                                 props.tipo === 'Informação' 
@@ -256,6 +265,7 @@ export const DeliveryOptions = (props) => {
                             label='15 minutos antes'
                             key="quartoHora" 
                             value="quartoHora"
+                            checked={props.momentos.quartoHora.active}
                             className='py-1'
                             disabled={
                                 props.tipo === 'Informação' 
@@ -281,6 +291,7 @@ export const DeliveryOptions = (props) => {
                             key="minutos5" 
                             value="minutos5"
                             className='py-1'
+                            checked={props.momentos.minutos5.active}
                             disabled={
                                 props.tipo === 'Informação' 
                                 || props.tipo === 'Serviços' 
@@ -305,6 +316,7 @@ export const DeliveryOptions = (props) => {
                             label='No momento de acontecimento do evento' 
                             key="momentoAcontecimento" 
                             value="momentoAcontecimento"
+                            checked={props.momentos.momentoAcontecimento.active}
                             className='py-1'
                             disabled={
                                 props.tipo === 'Informação' 

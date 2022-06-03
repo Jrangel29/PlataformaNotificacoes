@@ -6,7 +6,7 @@ const objectImagens = {
     "Serviços": "https://firebasestorage.googleapis.com/v0/b/tdi-rangel.appspot.com/o/iconeServico.png?alt=media&token=970100b9-4a98-48f5-8038-6a9128026e79"
 }
 
-export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, regular, dia) => {
+export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, regular, dia, iconePersonalizado, usaIcone) => {
     
     let notificacoesFinal = [];
     
@@ -47,10 +47,32 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                         titulo: null,
                         descricao: null,
                         url_icone: objectImagens[tipologia],
-                        data: item.data,
+                        data: item,
                         hora: horaEvento,
                         rotina: null,
                         zapping: 1
+                    })
+                } else if(tipologia === 'Personalizado' && usaIcone === 'Sim') {
+                    notificacoesFinal.push({
+                        mensagem: mensagens.semanaAntes.message,
+                        titulo: null,
+                        descricao: null,
+                        url_icone: objectImagens[iconePersonalizado],
+                        data: item,
+                        hora: horaEvento,
+                        rotina: null,
+                        zapping: 0
+                    })
+                } else if(tipologia === 'Personalizado' && usaIcone === 'Não') {
+                    notificacoesFinal.push({
+                        mensagem: mensagens.semanaAntes.message,
+                        titulo: null,
+                        descricao: null,
+                        url_icone: null,
+                        data: item,
+                        hora: horaEvento,
+                        rotina: null,
+                        zapping: 0
                     })
                 } else {
                     notificacoesFinal.push({
@@ -58,7 +80,7 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                         titulo: null,
                         descricao: null,
                         url_icone: objectImagens[tipologia],
-                        data: item.data,
+                        data: item,
                         hora: horaEvento,
                         rotina: null,
                         zapping: 0
@@ -78,10 +100,54 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                             titulo: null,
                             descricao: null,
                             url_icone: objectImagens[tipologia],
-                            data: item.data,
+                            data: item,
                             hora: horaEvento,
                             rotina: null,
                             zapping: 1
+                        })
+                    } else if(tipologia === 'Personalizado' && usaIcone === 'Sim') {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.semanaAntes.message,
+                            titulo: null,
+                            descricao: null,
+                            url_icone: objectImagens[iconePersonalizado],
+                            data: item,
+                            hora: horaEvento,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    } else if(tipologia === 'Personalizado' && usaIcone === 'Não') {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.semanaAntes.message,
+                            titulo: null,
+                            descricao: null,
+                            url_icone: null,
+                            data: item,
+                            hora: horaEvento,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    }else if(tipologia === 'Personalizado' && usaIcone === 'Sim') {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.semanaAntes.message,
+                            titulo: null,
+                            descricao: null,
+                            url_icone: objectImagens[iconePersonalizado],
+                            data: item,
+                            hora: horaEvento,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    } else if(tipologia === 'Personalizado' && usaIcone === 'Não') {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.semanaAntes.message,
+                            titulo: null,
+                            descricao: null,
+                            url_icone: null,
+                            data: item,
+                            hora: horaEvento,
+                            rotina: null,
+                            zapping: 0
                         })
                     } else {
                         notificacoesFinal.push({
@@ -89,7 +155,7 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                             titulo: null,
                             descricao: null,
                             url_icone: objectImagens[tipologia],
-                            data: item.data,
+                            data: item,
                             hora: horaEvento,
                             rotina: null,
                             zapping: 0
@@ -105,10 +171,32 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                         titulo: null,
                         descricao: null,
                         url_icone: objectImagens[tipologia],
-                        data: item.data,
+                        data: item,
                         hora: horaEvento,
                         rotina: null,
                         zapping: 1
+                    })
+                } else if(tipologia === 'Personalizado' && usaIcone === 'Sim') {
+                    notificacoesFinal.push({
+                        mensagem: mensagens.semanaAntes.message,
+                        titulo: null,
+                        descricao: null,
+                        url_icone: objectImagens[iconePersonalizado],
+                        data: item,
+                        hora: horaEvento,
+                        rotina: null,
+                        zapping: 0
+                    })
+                } else if(tipologia === 'Personalizado' && usaIcone === 'Não') {
+                    notificacoesFinal.push({
+                        mensagem: mensagens.semanaAntes.message,
+                        titulo: null,
+                        descricao: null,
+                        url_icone: null,
+                        data: item,
+                        hora: horaEvento,
+                        rotina: null,
+                        zapping: 0
                     })
                 } else {
                     notificacoesFinal.push({
@@ -116,7 +204,7 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                         titulo: null,
                         descricao: null,
                         url_icone: objectImagens[tipologia],
-                        data: item.data,
+                        data: item,
                         hora: horaEvento,
                         rotina: null,
                         zapping: 0
@@ -140,6 +228,28 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                             hora: horaEvento,
                             rotina: 2,
                             zapping: 1
+                        })
+                    } else if(tipologia === 'Personalizado' && usaIcone === 'Sim') {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.semanaAntes.message,
+                            titulo: null,
+                            descricao: null,
+                            url_icone: objectImagens[iconePersonalizado],
+                            data: item,
+                            hora: horaEvento,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    } else if(tipologia === 'Personalizado' && usaIcone === 'Não') {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.semanaAntes.message,
+                            titulo: null,
+                            descricao: null,
+                            url_icone: null,
+                            data: item,
+                            hora: horaEvento,
+                            rotina: null,
+                            zapping: 0
                         })
                     } else {
                         notificacoesFinal.push({
@@ -168,6 +278,28 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                         rotina: 2,
                         zapping: 1
                     })
+                } else if(tipologia === 'Personalizado' && usaIcone === 'Sim') {
+                    notificacoesFinal.push({
+                        mensagem: mensagens.semanaAntes.message,
+                        titulo: null,
+                        descricao: null,
+                        url_icone: objectImagens[iconePersonalizado],
+                        data: item,
+                        hora: horaEvento,
+                        rotina: null,
+                        zapping: 0
+                    })
+                } else if(tipologia === 'Personalizado' && usaIcone === 'Não') {
+                    notificacoesFinal.push({
+                        mensagem: mensagens.semanaAntes.message,
+                        titulo: null,
+                        descricao: null,
+                        url_icone: null,
+                        data: item,
+                        hora: horaEvento,
+                        rotina: null,
+                        zapping: 0
+                    })
                 } else {
                     notificacoesFinal.push({
                         mensagem: mensagens.diaAnterior.message,
@@ -189,10 +321,32 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                         titulo: null,
                         descricao: null,
                         url_icone: objectImagens[tipologia],
-                        data: item.data,
+                        data: item,
                         hora: horaEvento,
                         rotina: null,
                         zapping: 1
+                    })
+                } else if(tipologia === 'Personalizado' && usaIcone === 'Sim') {
+                    notificacoesFinal.push({
+                        mensagem: mensagens.semanaAntes.message,
+                        titulo: null,
+                        descricao: null,
+                        url_icone: objectImagens[iconePersonalizado],
+                        data: item,
+                        hora: horaEvento,
+                        rotina: null,
+                        zapping: 0
+                    })
+                } else if(tipologia === 'Personalizado' && usaIcone === 'Não') {
+                    notificacoesFinal.push({
+                        mensagem: mensagens.semanaAntes.message,
+                        titulo: null,
+                        descricao: null,
+                        url_icone: null,
+                        data: item,
+                        hora: horaEvento,
+                        rotina: null,
+                        zapping: 0
                     })
                 } else {
                     notificacoesFinal.push({
@@ -200,7 +354,7 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                         titulo: null,
                         descricao: null,
                         url_icone: objectImagens[tipologia],
-                        data: item.data,
+                        data: item,
                         hora: horaEvento,
                         rotina: null,
                         zapping: 0
@@ -212,16 +366,39 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
 
     if(mensagens.diaProprio.active === true){
         if(regular === 'Unico') {
+            let diaFormated = dia.getFullYear() + '-' + ((dia.getMonth() > 8) ? (dia.getMonth() + 1) : ('0' + (dia.getMonth() + 1))) + '-' + ((dia.getDate() > 9) ? dia.getDate() : ('0' + dia.getDate()));
             if(tipologia === 'Agenda'){
                 notificacoesFinal.push({
                     mensagem: mensagens.diaProprio.message,
                     titulo: null,
                     descricao: null,
                     url_icone: objectImagens[tipologia],
-                    data: dia,
+                    data: diaFormated,
                     hora: horaEvento,
                     rotina: 1,
                     zapping: 1
+                })
+            } else if(tipologia === 'Personalizado' && usaIcone === 'Sim') {
+                notificacoesFinal.push({
+                    mensagem: mensagens.semanaAntes.message,
+                    titulo: null,
+                    descricao: null,
+                    url_icone: objectImagens[iconePersonalizado],
+                    data: diaFormated,
+                    hora: horaEvento,
+                    rotina: null,
+                    zapping: 0
+                })
+            } else if(tipologia === 'Personalizado' && usaIcone === 'Não') {
+                notificacoesFinal.push({
+                    mensagem: mensagens.semanaAntes.message,
+                    titulo: null,
+                    descricao: null,
+                    url_icone: null,
+                    data: diaFormated,
+                    hora: horaEvento,
+                    rotina: null,
+                    zapping: 0
                 })
             } else {
                 notificacoesFinal.push({
@@ -229,7 +406,7 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                     titulo: null,
                     descricao: null,
                     url_icone: objectImagens[tipologia],
-                    data: dia,
+                    data: diaFormated,
                     hora: horaEvento,
                     rotina: 1,
                     zapping: 0
@@ -247,6 +424,28 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                         hora: horaEvento,
                         rotina: 1,
                         zapping: 1
+                    })
+                } else if(tipologia === 'Personalizado' && usaIcone === 'Sim') {
+                    notificacoesFinal.push({
+                        mensagem: mensagens.semanaAntes.message,
+                        titulo: null,
+                        descricao: null,
+                        url_icone: objectImagens[iconePersonalizado],
+                        data: item,
+                        hora: horaEvento,
+                        rotina: null,
+                        zapping: 0
+                    })
+                } else if(tipologia === 'Personalizado' && usaIcone === 'Não') {
+                    notificacoesFinal.push({
+                        mensagem: mensagens.semanaAntes.message,
+                        titulo: null,
+                        descricao: null,
+                        url_icone: null,
+                        data: item,
+                        hora: horaEvento,
+                        rotina: null,
+                        zapping: 0
                     })
                 } else {
                     notificacoesFinal.push({
@@ -271,19 +470,43 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
         novaData.setHours(hora, minutos);
         novaData.setHours(novaData.getHours() - 1);
 
-        let horaFinal = `${novaData.getHours()}:${novaData.getMinutes()}`
+        let horaFinal = `${novaData.getHours()}:${novaData.getMinutes() < 10 ? '0' + novaData.getMinutes() : novaData.getMinutes()}`
+        
 
         if(regular === 'Unico') {
+            let diaFormated = dia.getFullYear() + '-' + ((dia.getMonth() > 8) ? (dia.getMonth() + 1) : ('0' + (dia.getMonth() + 1))) + '-' + ((dia.getDate() > 9) ? dia.getDate() : ('0' + dia.getDate()));
             if(tipologia === 'Agenda'){
                 notificacoesFinal.push({
                     mensagem: mensagens.horaAntes.message,
                     titulo: null,
                     descricao: null,
                     url_icone: objectImagens[tipologia],
-                    data: dia,
+                    data: diaFormated,
                     hora: horaFinal,
                     rotina: null,
                     zapping: 1
+                })
+            } else if(tipologia === 'Personalizado' && usaIcone === 'Sim') {
+                notificacoesFinal.push({
+                    mensagem: mensagens.semanaAntes.message,
+                    titulo: null,
+                    descricao: null,
+                    url_icone: objectImagens[iconePersonalizado],
+                    data: diaFormated,
+                    hora: horaFinal,
+                    rotina: null,
+                    zapping: 0
+                })
+            } else if(tipologia === 'Personalizado' && usaIcone === 'Não') {
+                notificacoesFinal.push({
+                    mensagem: mensagens.semanaAntes.message,
+                    titulo: null,
+                    descricao: null,
+                    url_icone: null,
+                    data: diaFormated,
+                    hora: horaFinal,
+                    rotina: null,
+                    zapping: 0
                 })
             } else {
                 notificacoesFinal.push({
@@ -291,7 +514,7 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                     titulo: null,
                     descricao: null,
                     url_icone: objectImagens[tipologia],
-                    data: dia,
+                    data: diaFormated,
                     hora: horaFinal,
                     rotina: null,
                     zapping: 0
@@ -309,6 +532,28 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                         hora: horaFinal,
                         rotina: null,
                         zapping: 1
+                    })
+                } else if(tipologia === 'Personalizado' && usaIcone === 'Sim') {
+                    notificacoesFinal.push({
+                        mensagem: mensagens.semanaAntes.message,
+                        titulo: null,
+                        descricao: null,
+                        url_icone: objectImagens[iconePersonalizado],
+                        data: item,
+                        hora: horaFinal,
+                        rotina: null,
+                        zapping: 0
+                    })
+                } else if(tipologia === 'Personalizado' && usaIcone === 'Não') {
+                    notificacoesFinal.push({
+                        mensagem: mensagens.semanaAntes.message,
+                        titulo: null,
+                        descricao: null,
+                        url_icone: null,
+                        data: item,
+                        hora: horaFinal,
+                        rotina: null,
+                        zapping: 0
                     })
                 } else {
                     notificacoesFinal.push({
@@ -336,16 +581,39 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
         let horaFinal = `${dataFlex.getHours()}:${(dataFlex.getMinutes() < 10) ? `0${dataFlex.getMinutes()}` : dataFlex.getMinutes()}`;
 
         if(regular === 'Unico') {
+            let diaFormated = dia.getFullYear() + '-' + ((dia.getMonth() > 8) ? (dia.getMonth() + 1) : ('0' + (dia.getMonth() + 1))) + '-' + ((dia.getDate() > 9) ? dia.getDate() : ('0' + dia.getDate()));
             if(tipologia === 'Agenda'){
                 notificacoesFinal.push({
                     mensagem: mensagens.meiaHora.message,
                     titulo: mensagens.meiaHora.tituloBlade,
                     descricao: mensagens.meiaHora.descricao,
                     url_icone: objectImagens[tipologia],
-                    data: dia,
+                    data: diaFormated,
                     hora: horaFinal,
                     rotina: null,
                     zapping: 1
+                })
+            } else if(tipologia === 'Personalizado' && usaIcone === 'Sim') {
+                notificacoesFinal.push({
+                    mensagem: mensagens.semanaAntes.message,
+                    titulo: null,
+                    descricao: null,
+                    url_icone: objectImagens[iconePersonalizado],
+                    data: diaFormated,
+                    hora: horaFinal,
+                    rotina: null,
+                    zapping: 0
+                })
+            } else if(tipologia === 'Personalizado' && usaIcone === 'Não') {
+                notificacoesFinal.push({
+                    mensagem: mensagens.semanaAntes.message,
+                    titulo: null,
+                    descricao: null,
+                    url_icone: null,
+                    data: diaFormated,
+                    hora: horaFinal,
+                    rotina: null,
+                    zapping: 0
                 })
             } else {
                 notificacoesFinal.push({
@@ -353,7 +621,7 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                     titulo: mensagens.meiaHora.tituloBlade,
                     descricao: mensagens.meiaHora.descricao,
                     url_icone: objectImagens[tipologia],
-                    data: dia,
+                    data: diaFormated,
                     hora: horaFinal,
                     rotina: null,
                     zapping: 0
@@ -371,6 +639,28 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                         hora: horaFinal,
                         rotina: null,
                         zapping: 1
+                    })
+                } else if(tipologia === 'Personalizado' && usaIcone === 'Sim') {
+                    notificacoesFinal.push({
+                        mensagem: mensagens.semanaAntes.message,
+                        titulo: mensagens.meiaHora.tituloBlade,
+                        descricao: mensagens.meiaHora.descricao,
+                        url_icone: objectImagens[iconePersonalizado],
+                        data: item,
+                        hora: horaFinal,
+                        rotina: null,
+                        zapping: 0
+                    })
+                } else if(tipologia === 'Personalizado' && usaIcone === 'Não') {
+                    notificacoesFinal.push({
+                        mensagem: mensagens.semanaAntes.message,
+                        titulo: mensagens.meiaHora.tituloBlade,
+                        descricao: mensagens.meiaHora.descricao,
+                        url_icone: null,
+                        data: item,
+                        hora: horaFinal,
+                        rotina: null,
+                        zapping: 0
                     })
                 } else {
                     notificacoesFinal.push({
@@ -396,26 +686,50 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
         let dataFlex = new Date(novaData - 15 * 60000);
 
         let horaFinal = `${dataFlex.getHours()}:${(dataFlex.getMinutes() < 10) ? `0${dataFlex.getMinutes()}` : dataFlex.getMinutes()}`;
-
+         
+        
         if(regular === 'Unico') {
+            let diaFormated = dia.getFullYear() + '-' + ((dia.getMonth() > 8) ? (dia.getMonth() + 1) : ('0' + (dia.getMonth() + 1))) + '-' + ((dia.getDate() > 9) ? dia.getDate() : ('0' + dia.getDate()));
             if(tipologia === 'Agenda'){
                 notificacoesFinal.push({
                     mensagem: mensagens.quartoHora.message,
                     titulo: null,
                     descricao: null,
                     url_icone: objectImagens[tipologia],
-                    data: dia,
+                    data: diaFormated,
                     hora: horaFinal,
                     rotina: null,
                     zapping: 1
                 })
-            } else {
+            } else if(tipologia === 'Personalizado' && usaIcone === 'Sim') {
+                notificacoesFinal.push({
+                    mensagem: mensagens.semanaAntes.message,
+                    titulo: null,
+                    descricao: null,
+                    url_icone: objectImagens[iconePersonalizado],
+                    data: diaFormated,
+                    hora: horaFinal,
+                    rotina: null,
+                    zapping: 0
+                })
+            } else if(tipologia === 'Personalizado' && usaIcone === 'Não') {
+                notificacoesFinal.push({
+                    mensagem: mensagens.semanaAntes.message,
+                    titulo: null,
+                    descricao: null,
+                    url_icone: null,
+                    data: diaFormated,
+                    hora: horaFinal,
+                    rotina: null,
+                    zapping: 0
+                })
+            }  else {
                 notificacoesFinal.push({
                     mensagem: mensagens.quartoHora.message,
                     titulo: null,
                     descricao: null,
                     url_icone: objectImagens[tipologia],
-                    data: dia,
+                    data: diaFormated,
                     hora: horaFinal,
                     rotina: null,
                     zapping: 0
@@ -433,6 +747,28 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                         hora: horaFinal,
                         rotina: null,
                         zapping: 1
+                    })
+                } else if(tipologia === 'Personalizado' && usaIcone === 'Sim') {
+                    notificacoesFinal.push({
+                        mensagem: mensagens.semanaAntes.message,
+                        titulo: null,
+                        descricao: null,
+                        url_icone: objectImagens[iconePersonalizado],
+                        data: item,
+                        hora: horaFinal,
+                        rotina: null,
+                        zapping: 0
+                    })
+                } else if(tipologia === 'Personalizado' && usaIcone === 'Não') {
+                    notificacoesFinal.push({
+                        mensagem: mensagens.semanaAntes.message,
+                        titulo: null,
+                        descricao: null,
+                        url_icone: null,
+                        data: item,
+                        hora: horaFinal,
+                        rotina: null,
+                        zapping: 0
                     })
                 } else {
                     notificacoesFinal.push({
@@ -460,15 +796,38 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
         let horaFinal = `${dataFlex.getHours()}:${(dataFlex.getMinutes() < 10) ? `0${dataFlex.getMinutes()}` : dataFlex.getMinutes()}`;
 
         if(regular === 'Unico') {
+            let diaFormated = dia.getFullYear() + '-' + ((dia.getMonth() > 8) ? (dia.getMonth() + 1) : ('0' + (dia.getMonth() + 1))) + '-' + ((dia.getDate() > 9) ? dia.getDate() : ('0' + dia.getDate()));
             if(tipologia === 'Agenda'){
                 notificacoesFinal.push({
                     mensagem: mensagens.minutos5.message,
                     titulo: null,
                     descricao: null,
                     url_icone: objectImagens[tipologia],
-                    data: dia,
+                    data: diaFormated,
                     hora: horaFinal,
                     zapping: 1
+                })
+            } else if(tipologia === 'Personalizado' && usaIcone === 'Sim') {
+                notificacoesFinal.push({
+                    mensagem: mensagens.semanaAntes.message,
+                    titulo: null,
+                    descricao: null,
+                    url_icone: objectImagens[iconePersonalizado],
+                    data: diaFormated,
+                    hora: horaFinal,
+                    rotina: null,
+                    zapping: 0
+                })
+            } else if(tipologia === 'Personalizado' && usaIcone === 'Não') {
+                notificacoesFinal.push({
+                    mensagem: mensagens.semanaAntes.message,
+                    titulo: null,
+                    descricao: null,
+                    url_icone: null,
+                    data: diaFormated,
+                    hora: horaFinal,
+                    rotina: null,
+                    zapping: 0
                 })
             } else {
                 notificacoesFinal.push({
@@ -476,7 +835,7 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                     titulo: null,
                     descricao: null,
                     url_icone: objectImagens[tipologia],
-                    data: dia,
+                    data: diaFormated,
                     hora: horaFinal,
                     zapping: 0
                 })
@@ -493,6 +852,28 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                         hora: horaFinal,
                         rotina: null,
                         zapping: 1
+                    })
+                } else if(tipologia === 'Personalizado' && usaIcone === 'Sim') {
+                    notificacoesFinal.push({
+                        mensagem: mensagens.semanaAntes.message,
+                        titulo: null,
+                        descricao: null,
+                        url_icone: objectImagens[iconePersonalizado],
+                        data: item,
+                        hora: horaFinal,
+                        rotina: null,
+                        zapping: 0
+                    })
+                } else if(tipologia === 'Personalizado' && usaIcone === 'Não') {
+                    notificacoesFinal.push({
+                        mensagem: mensagens.semanaAntes.message,
+                        titulo: null,
+                        descricao: null,
+                        url_icone: null,
+                        data: item,
+                        hora: horaFinal,
+                        rotina: null,
+                        zapping: 0
                     })
                 } else {
                     notificacoesFinal.push({
@@ -512,15 +893,38 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
 
     if(mensagens.momentoAcontecimento.active === true){
         if(regular === 'Unico') {
+            let diaFormated = dia.getFullYear() + '-' + ((dia.getMonth() > 8) ? (dia.getMonth() + 1) : ('0' + (dia.getMonth() + 1))) + '-' + ((dia.getDate() > 9) ? dia.getDate() : ('0' + dia.getDate()));
             if(tipologia === 'Agenda'){
                 notificacoesFinal.push({
                     mensagem: mensagens.momentoAcontecimento.message,
                     titulo: null,
                     descricao: null,
                     url_icone: objectImagens[tipologia],
-                    data: dia,
+                    data: diaFormated,
                     hora: horaEvento,
                     zapping: 1
+                })
+            } else if(tipologia === 'Personalizado' && usaIcone === 'Sim') {
+                notificacoesFinal.push({
+                    mensagem: mensagens.semanaAntes.message,
+                    titulo: null,
+                    descricao: null,
+                    url_icone: objectImagens[iconePersonalizado],
+                    data: diaFormated,
+                    hora: horaEvento,
+                    rotina: null,
+                    zapping: 0
+                })
+            } else if(tipologia === 'Personalizado' && usaIcone === 'Não') {
+                notificacoesFinal.push({
+                    mensagem: mensagens.semanaAntes.message,
+                    titulo: null,
+                    descricao: null,
+                    url_icone: null,
+                    data: diaFormated,
+                    hora: horaEvento,
+                    rotina: null,
+                    zapping: 0
                 })
             } else {
                 notificacoesFinal.push({
@@ -528,7 +932,7 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                     titulo: null,
                     descricao: null,
                     url_icone: objectImagens[tipologia],
-                    data: dia,
+                    data: diaFormated,
                     hora: horaEvento,
                     zapping: 0
                 })
@@ -546,7 +950,29 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                         rotina: null,
                         zapping: 1
                     })
-                } else {
+                } else if(tipologia === 'Personalizado' && usaIcone === 'Sim') {
+                    notificacoesFinal.push({
+                        mensagem: mensagens.semanaAntes.message,
+                        titulo: null,
+                        descricao: null,
+                        url_icone: objectImagens[iconePersonalizado],
+                        data: item,
+                        hora: horaEvento,
+                        rotina: null,
+                        zapping: 0
+                    })
+                } else if(tipologia === 'Personalizado' && usaIcone === 'Não') {
+                    notificacoesFinal.push({
+                        mensagem: mensagens.semanaAntes.message,
+                        titulo: null,
+                        descricao: null,
+                        url_icone: null,
+                        data: item,
+                        hora: horaEvento,
+                        rotina: null,
+                        zapping: 0
+                    })
+                }  else {
                     notificacoesFinal.push({
                         mensagem: mensagens.momentoAcontecimento.message,
                         titulo: null,

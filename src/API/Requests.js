@@ -151,13 +151,13 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
         notificacoes:[]
     }
 
-    if(tipologia === 'Agenda' || tipologia === 'Programas' || tipologia === 'Saúde'){
+    if(tipologia === 'Agenda' || tipologia === 'Programas' || tipologia === 'Saúde' || tipologia === 'Personalizada' && paramsPersonalizado.tipoRecetor === 'Recetores Individuais'){
         usersEscolhidos.map(item => {
             ObjetoEnvio.destinatarios.push(item.idUser)
         })
     }
     
-    if(tipologia === 'Informação' || tipologia === 'Serviços'){
+    if(tipologia === 'Informação' || tipologia === 'Serviços' || tipologia === 'Personalizada' && paramsPersonalizado.tipoRecetor === 'Casas'){
         casasEscolhidas.map(item => {
             ObjetoEnvio.destinatarios.push(item.idCasa)
         })
@@ -165,9 +165,13 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
 
     if(envioNotif === 'Pontual' && momentoUnico === 'Dia e Hora'){
         let diasEvento = GetUnique(diaInicio, mensagens);
-        let notificacao = GeraNotificacoes(mensagens, diasEvento, tipologia, horaEvento, momentoUnico, 'Unico', diaInicio);
+        let notificacao = GeraNotificacoes(mensagens, diasEvento, tipologia, horaEvento, momentoUnico, 'Unico', diaInicio, paramsPersonalizado.icone, paramsPersonalizado.usaIcone);
+        
+        let dataNew = new Date(diaInicio);
+        let diaFormated = dataNew.getFullYear() + '-' + ((dataNew.getMonth() > 8) ? (dataNew.getMonth() + 1) : ('0' + (dataNew.getMonth() + 1))) + '-' + ((dataNew.getDate() > 9) ? dataNew.getDate() : ('0' + dataNew.getDate()));
+        
         ObjetoEnvio.regularidade.tipo = 1;
-        ObjetoEnvio.regularidade.data = diaUnico;
+        ObjetoEnvio.regularidade.data = diaFormated;
         ObjetoEnvio.regularidade.hora = horaEvento;
         if(weekDay !== 0){
             ObjetoEnvio.regularidade.dias = [weekDay];
@@ -196,7 +200,7 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
     if(envioNotif === 'Diária'){
         let meses = GetMesesDif(diaInicio, dataFim);
         let diasEvento = GetEveryday(GetMeses(meses), dataFim);
-        let notificacao = GeraNotificacoes(mensagens, diasEvento, tipologia, horaEvento, momentoUnico, 'Diária', envioNotif);
+        let notificacao = GeraNotificacoes(mensagens, diasEvento, tipologia, horaEvento, momentoUnico, 'Diária', envioNotif, paramsPersonalizado.icone, paramsPersonalizado.usaIcone);
         ObjetoEnvio.regularidade.tipo = 2;
         ObjetoEnvio.regularidade.data = null;
         ObjetoEnvio.regularidade.hora = horaEvento;
@@ -207,7 +211,7 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
     if(envioNotif === 'Semanal'){
         let meses = GetMesesDif(diaInicio, dataFim);
         let diasEvento = GetDiaSemana(diasWeek, GetMeses(meses), mensagens, dataFim);
-        let notificacao = GeraNotificacoes(mensagens, diasEvento, tipologia, horaEvento, momentoUnico, 'Semanal', envioNotif);
+        let notificacao = GeraNotificacoes(mensagens, diasEvento, tipologia, horaEvento, momentoUnico, 'Semanal', envioNotif, paramsPersonalizado.icone, paramsPersonalizado.usaIcone);
         ObjetoEnvio.regularidade.tipo = 3;
         ObjetoEnvio.regularidade.data = null;
         ObjetoEnvio.regularidade.data = diaUnico;
@@ -225,7 +229,7 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
     if(envioNotif === 'Mensal'){
         let meses = GetMesesDif(diaInicio, dataFim);
         let diasEvento = GetDiaMes(diaMes, GetMeses(meses), mensagens, dataFim);
-        let notificacao = GeraNotificacoes(mensagens, diasEvento, tipologia, horaEvento, momentoUnico, 'Mensal', envioNotif);
+        let notificacao = GeraNotificacoes(mensagens, diasEvento, tipologia, horaEvento, momentoUnico, 'Mensal', envioNotif, paramsPersonalizado.icone, paramsPersonalizado.usaIcone);
         ObjetoEnvio.regularidade.tipo = 4;
         ObjetoEnvio.regularidade.data = null;
         ObjetoEnvio.regularidade.hora = horaEvento;
@@ -233,13 +237,11 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
         ObjetoEnvio.notificacoes = notificacao;
     }
 
-    console.log(ObjetoEnvio)
-
-    /*fetch(`http://geo-navsafety.ua.pt:443/overtv/eventos/new`, {
+    fetch(`http://geo-navsafety.ua.pt:443/overtv/eventos/new`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({...ObjetoEnvio})
-    }).then(response => response.json())*/
+    }).then(response => response.json())
 }

@@ -14,7 +14,6 @@ export const GetMeses = (nrMeses) => {
 
         meses.push(next);
     }
-    console.log(meses)
 
     return(meses);
 
@@ -210,6 +209,7 @@ export const GetDiaMes = (dia, dates, msg, dataFim) => {
             }
         }
     }
+
     return {diasEvento: days, diasMensagens: messageDays};
 }
 
