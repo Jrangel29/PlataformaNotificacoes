@@ -10,13 +10,14 @@ import DeleteNotificationAll from '../Components/Modal/DeleteNotification';
 import DeleteRoutine from '../Components/Modal/DeleteRoutine';
 import SuccessModal from '../Components/Modal/SuccessModal';
 import InfoSection from '../Components/Users/InfoSection';
+import UserNotifications from '../Components/Cards/UserNotifications';
 
 class User extends React.Component {
 
     constructor (props) {
         super(props);
         this.state = {
-            seccao: "notificacoes",
+            seccao: "Por Enviar",
             showModal: false,
             showModalInfo: false,
             showDeleteModal: false,
@@ -74,16 +75,17 @@ class User extends React.Component {
 
                         <InfoSection/>
 
-                        <div className='mt-2'>
-                            <div className='prevSeccao ms-0'>
+                        <div className='prevSeccao ms-0'>
                                 <h1 className='tituloSeccaoPaginaNotifs'>Notificações</h1>
                             </div>
+
+                        <div className='mx-3' style={{padding: "10px 40px"}}>
                             <div className='row offset-1 mt-4 col-10 justify-content-center'>
-                                <Button onClick={() => this.mudaSeccao("notificacoes")} className='seccaoBtn col-3 mx-2' variant={this.state.seccao == "notificacoes" ? 'flat' : 'custom'}>Notificações por enviar</Button>
-                                <Button onClick={() => this.mudaSeccao("rotina")} className='seccaoBtn col-3 mx-2' variant={this.state.seccao == "rotina" ? 'flat' : 'custom'}>Rotinas do utilizador</Button>
-                                <Button onClick={() => this.mudaSeccao("historico")} className='seccaoBtn col-3 mx-2' variant={this.state.seccao == "historico" ? 'flat' : 'custom'}>Histórico de notificações</Button>
+                                <Button onClick={() => this.mudaSeccao("Por Enviar")} className='seccaoBtn col-3 mx-2' variant={this.state.seccao == "Por Enviar" ? 'flat' : 'custom'}>Por Enviar</Button>
+                                <Button onClick={() => this.mudaSeccao("Enviadas")} className='seccaoBtn col-3 mx-2' variant={this.state.seccao == "Enviadas" ? 'flat' : 'custom'}>Enviadas</Button>
                             </div>
-                            <NotificationCards tipo={this.state.seccao == "notificacoes" ? "notificacoes" : this.state.seccao == "rotina" ? "RotinaUser" : "historico"} pagina={'users'} abreModal={this.onOpen} abreModalInfo={this.onOpenAddInfo} abreModalDelete={this.onOpenDelete} abreModalDeleteRotina={this.onOpenDeleteRoutine}/>
+                            {/*<NotificationCards tipo={this.state.seccao == "notificacoes" ? "notificacoes" : this.state.seccao == "rotina" ? "RotinaUser" : "historico"} pagina={'users'} abreModal={this.onOpen} abreModalInfo={this.onOpenAddInfo} abreModalDelete={this.onOpenDelete} abreModalDeleteRotina={this.onOpenDeleteRoutine}/>*/}
+                            <UserNotifications seccao={this.state.seccao}/>
                         </div>
                     </div>
                 </div>

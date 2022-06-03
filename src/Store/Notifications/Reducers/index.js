@@ -1,11 +1,14 @@
 import {
     NOTIFICATION_CREATE_SUCCESS,
-    NOTIFICATION_CREATE_START
+    NOTIFICATION_CREATE_START,
+    NOTIFICATION_GET_SUCCESS,
+    NOTIFICATION_GET_START
 } from '../Actions/Constants'
 
 const initialState = {
     isLoadingCreate: true,
-    singleNotification: {}
+    singleNotification: {},
+    isLoading: true
 }
 
 export default (state = initialState, { type, payload }) => {
@@ -20,5 +23,9 @@ export default (state = initialState, { type, payload }) => {
             break;
         default:
             return state;
+        case NOTIFICATION_GET_START:
+            return { ...state, isLoading: true };
+        case NOTIFICATION_GET_SUCCESS:
+            return { ...state, data: payload, isLoading: false };
     }
 }

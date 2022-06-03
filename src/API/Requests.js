@@ -94,6 +94,10 @@ export const fetchSingleEvent = (id) =>
 
 //NOTIFICATIONS
 
+export const fetchNotifications = (id) =>
+    fetch(`http://geo-navsafety.ua.pt:443/overtv/eventos/notifications/${id}`)
+      .then(response => response.json())
+
 export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoUnico, mensagens, idTipologia, horaEvento, envioNotif, idRegular, dias, diaUnico, diaMes, subcategoria, paramsPersonalizado, casasEscolhidas, usersEscolhidos, dataFim) => {
     
     const objectImagens = {

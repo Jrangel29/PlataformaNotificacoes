@@ -32,7 +32,6 @@ function Event(props) {
 
     return(
         <div>
-            {console.log(event)}
             <div className='mainBodyForm container px-0'>
                 <Navbar/>
                 <Header nome="Eventos" detalhe="sim" apagaMuda="sim"/>
@@ -43,7 +42,7 @@ function Event(props) {
                     <div className='mx-3' style={{padding: "10px 40px"}}>
                         <p className='textoSeccaoPagina'><b>Nome:</b> {event.nome}</p>
                         <p className='textoSeccaoPagina'><b>Tipologia do evento:</b> {event.tipologia}</p>
-                        <p className='textoSeccaoPagina'><b>Regularidade:</b> </p>
+                        <p className='textoSeccaoPagina'><b>Regularidade:</b> {event.regularidade}</p>
                     </div>
                 </div>
                 <div className='p-0 m-0 mt-3'>

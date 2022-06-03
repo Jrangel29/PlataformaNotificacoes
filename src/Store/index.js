@@ -7,6 +7,7 @@ import DistritosReducer from './Distritos/Reducers';
 import ConcelhosReducer from './Concelhos/Reducers';
 import CasasReducer from './Casas/Reducers';
 import EventosReducer from './Eventos/Reducers';
+import NotificationsReducer from './Notifications/Reducers'
 
 const rootReducer = combineReducers({
     utilizadores: UsersReducer,
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
     distritos: DistritosReducer,
     concelhos: ConcelhosReducer,
     casas: CasasReducer,
-    eventos: EventosReducer
+    eventos: EventosReducer,
+    notificacoes: NotificationsReducer
 });
 
 const composeEnhancers =
