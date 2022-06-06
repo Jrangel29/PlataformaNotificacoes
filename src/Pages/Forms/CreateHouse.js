@@ -67,8 +67,8 @@ class CreateHouse extends React.Component {
     render(){
         return(
             <div>
-                <Navbar/>
                 <div className='mainBodyForm container px-0'>
+                    <Navbar/>
                     <Header nome="Criar Casa" detalhe="sim" apagaMuda="nao"/>
                     <div className='row m-0 p-0'>
                         <div className='prevSeccao ms-0'>

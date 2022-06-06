@@ -61,13 +61,6 @@ class Header extends React.Component {
                         }
                     </span>
                 :
-                this.props.criaUser === "sim" ?
-                <span className="col-2 d-flex align-items-center justify-content-end">
-                    <span className='userId d-flex align-items-center justify-content-center'>
-                        3
-                    </span>
-                </span>
-                :
                 <></>
                 }
             <SuccessModal show={this.state.showSuccessModal} onHide={this.onCloseSuccess} tiponotif={this.state.tipoNoti}/>

@@ -90,8 +90,8 @@ class CreateUser extends React.Component {
     render(){
         return(
             <div>
-                <Navbar/>
                 <div className='mainBodyForm container px-0'>
+                    <Navbar/>
                     <Header nome="Criar Utilizador" detalhe="sim" apagaMuda="nao" criaUser="sim"/>
                     <div>
                         <div className='prevSeccao ms-0'>
@@ -113,8 +113,8 @@ class CreateUser extends React.Component {
 
                         <div className='row col-12 m-0' style={{padding: "0 40px"}}>
                             <span className='col-6 row m-0 divMargem'>
-                                <p className='subtituloSeccaoPagina mt-3 p-0'>Notificações que o utilizador não quer receber</p>
-                                <p className='textoPrefsUserWarning p-0 mb-1'>Seleciona as notificações que o utilizador não quer receber</p>
+                                <p className='subtituloSeccaoPagina mt-3 p-0 mb-0'>Notificações que o utilizador não quer receber</p>
+                                <p className='bigSmall p-0 mb-1'>Seleciona os tipos de notificações que o utilizador não quer receber</p>
                                 <BuscaTipologias funcao={this.handleTipologia}/>
                             </span>
                         </div>

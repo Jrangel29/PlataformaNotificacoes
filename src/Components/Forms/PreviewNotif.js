@@ -142,7 +142,7 @@ export const PreviewNotif = (props) => {
                 </div>
                 }
                 <div className='col-4'>
-                    <p className='subtituloSeccaoPagina mb-0 mt-2'>Settings</p>
+                    <p className='subtituloSeccaoPagina mb-0 mt-2'>Definições</p>
                     <p className='textoPrefsUser m-0'>
                         <span className='itensPreview'>Titulo do Evento: </span>{props.titulo === '' ? 'Por definir' : props.titulo}
                     </p>
@@ -167,7 +167,7 @@ export const PreviewNotif = (props) => {
                                     }
                                     if(contagem === 1){
                                         return(
-                                            <span className='m-0 p-0' key={index}>Este evento gera 1 notificações</span>
+                                            <span className='m-0 p-0' key={index}>Este evento gera 1 notificação</span>
                                         )
                                     } else {
                                         return(
