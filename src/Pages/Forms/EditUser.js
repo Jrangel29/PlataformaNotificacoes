@@ -24,6 +24,7 @@ const EditUser = () => {
             idade: "",
             infoAdicional: "",
             idCasa: '',
+            userId: ''
         },
         tipologias: []
     })
@@ -116,7 +117,7 @@ const EditUser = () => {
         <div>
             <div className='mainBodyForm container px-0'>
                 <Navbar/>
-                <Header nome="Criar Utilizador" detalhe="sim" apagaMuda="nao" criaUser="sim"/>
+                <Header nome="Editar Utilizador" detalhe="sim" apagaMuda="nao" criaUser="sim"/>
                 <div>
                     <div className='prevSeccao ms-0'>
                         <h1 className='tituloSeccaoPaginaNotifs'>Informação Geral</h1>

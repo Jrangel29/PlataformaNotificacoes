@@ -41,8 +41,8 @@ class Header extends React.Component {
                 <h1 className='tituloPagina col-8'>{this.props.nome}</h1>
                 {this.props.apagaMuda !== "nao" ?
                     <span className="col-2 d-flex align-items-center justify-content-end">
-                        {this.props.nome === "Grupos" ?
-                        <Link to="/groups/edit">
+                        {this.props.nome === "Casas" ?
+                        <Link to={`/houses/edit/${this.props.id}`}>
                             <img className="topIcons px-4" src={Editar}/>    
                         </Link>
                         :

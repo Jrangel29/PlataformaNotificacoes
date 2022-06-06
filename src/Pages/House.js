@@ -30,7 +30,7 @@ function House(props) {
         <div>
             <div className='mainBodyForm container px-0'>
                 <Navbar/>
-                <Header nome="Casas" detalhe="sim" apagaMuda="sim"/>
+                <Header nome="Casas" detalhe="sim" apagaMuda="sim" id={id}/>
                 <div>
                     <div className='prevSeccao ms-0'>
                         <h1 className='tituloSeccaoPaginaNotifs'>Informação geral</h1>

@@ -42,9 +42,6 @@ const BarraNav = () => {
                             <Nav.Link as={Link} className={lugar === "/notifications" ? 'navSelected' : '' } to="/notifications">
                                 Agendadas
                             </Nav.Link>
-                            {/*<Nav.Link as={Link} to="/routines">
-                                Rotinas
-                            </Nav.Link>*/}
                             <Nav.Link as={Link} className={lugar === "/history" || lugar === "/history/details" ? 'navSelected' : '' } to="/history">
                                 Enviadas
                             </Nav.Link>

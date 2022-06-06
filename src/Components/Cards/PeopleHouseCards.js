@@ -32,11 +32,14 @@ const PeopleHouseCards = (props) => {
                 return(
                     <>
                         {item.id_casa === props.idCasa ? 
-                            item.utilizadores.map((value, index) => {
-                                return(
-                                    <span key={index}>{value.nome}{index + 1 === item.utilizadores.length ? '' : ', ' }</span>
-                                )
-                            })
+                            item.utilizadores.length !== 0 ?
+                                item.utilizadores.map((value, index) => {
+                                    return(
+                                        <span key={index}>{value.nome}{index + 1 === item.utilizadores.length ? '' : ', ' }</span>
+                                    )
+                                })
+                                :
+                                <span>Esta casa ainda não tem utilizadores.</span>
                             :
                             <></>
                         }

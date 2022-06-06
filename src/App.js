@@ -23,6 +23,7 @@ import EditUser from './Pages/Forms/EditUser.js';
 import EditGroup from './Pages/Forms/EditGroup.js';
 import EditNotification from './Pages/Forms/EditNotification.js';
 import EditTemplate from './Pages/Forms/EditTemplate.js';
+import EditHouse from './Pages/Forms/EditHouse.js';
 import Error404 from './Pages/404.js';
 import './Styles/App.css';
 
@@ -52,6 +53,7 @@ function App() {
           <Route exact path="/houses" element={<Houses/>}/>
           <Route exact path="/houses/:id" element={<House/>}/>
           <Route exact path="/houses/create" element={<CreateHouse/>}/>
+          <Route exact path="/houses/edit/:id" element={<EditHouse/>}/>
           <Route exact path="/events" element={<Events/>}/>
           <Route exact path="/events/:id" element={<Event/>}/>
           <Route path="*" element={<Error404/>}/>

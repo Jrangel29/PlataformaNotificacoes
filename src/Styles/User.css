@@ -15,12 +15,14 @@
 .btn-custom{
     background-color: #999999!important;
     color: #000000!important;
+    font-size: 14px!important;
 }
 
 .btn-custom:hover{
     background-color: #3F72AF!important;
     color: #F9F7F7!important;
     transition: background-color .3s cubic-bezier(0.55, 0, 0.55, 0.2)!important;
+    font-size: 14px!important;
 }
 
 .tabelaHistorico{
