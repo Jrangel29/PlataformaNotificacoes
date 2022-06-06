@@ -718,7 +718,6 @@ class CreateNotification extends React.Component {
     }
 
     alteraDia = (val) => {
-        console.log(val.target.value)
         this.setState({
             dias: {
                 ...this.state.dias,
@@ -945,7 +944,6 @@ class CreateNotification extends React.Component {
                                             onChange={this.alteraRegularidade}
                                             />
                                     </span>
-                                    {console.log(this.state.hora)}
                                     <NotificationTimeSelection collapseState={this.state.colapsado} mudaDataFim={this.alteraDataFim} parametros={this.state} mudaDiaUnico={this.alteraDiaUnico} alteraDiaMes={this.alteraDiaMes} mudaMomentoUnico={this.alteraMomentoUnico} mudaHora={this.alteraHora} mudaHorario={this.alteraHorario} alterarEnvio={this.alteraEnvio} mudaDia={this.alteraDia} mudaMomento={this.alteraMomento}/>                    
                                 </div>
                             </span>

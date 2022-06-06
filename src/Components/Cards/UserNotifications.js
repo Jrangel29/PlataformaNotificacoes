@@ -32,7 +32,6 @@ const EventCards = (props) => {
     return(            
         <div className='container m-0'>
             <div className='row cartasMainBody'>
-                {console.log(notificationList)}
                 
                 {notificationList.length !== 0 && notificationList.map((item, index) => {
 

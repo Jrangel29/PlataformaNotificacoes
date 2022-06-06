@@ -34,7 +34,6 @@ function Event(props) {
     return(
         <div>
             <div className='mainBodyForm container px-0'>
-                {console.log(event)}
                 <Navbar/>
                 <Header nome="Eventos" detalhe="sim" apagaMuda="sim"/>
                 <div>

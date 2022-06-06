@@ -21,7 +21,6 @@ const SubmitButton = (props) => {
 
     const editaUser = (idUser, nome, idade, idCasa, informacaoAdicional, blackList) => {
         props.openModal();
-        console.log(idUser, nome, idade, idCasa, informacaoAdicional, blackList)
         dispatch(updateUserInfo(idUser, nome, idade, idCasa, informacaoAdicional, blackList));
     };
 
