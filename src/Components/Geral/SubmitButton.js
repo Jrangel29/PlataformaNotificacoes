@@ -3,7 +3,7 @@ import '../../Styles/App.css';
 import {Button} from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { createNewGroup } from '../../Store/Groups/Actions';
-import { createNewUser } from '../../Store/Users/Actions';
+import { updateUserInfo, createNewUser } from '../../Store/Users/Actions';
 import { createNewNotification } from '../../Store/Notifications/Actions';
 import { createNewHouse, getHousePeopleList } from '../../Store/Casas/Actions';
 
@@ -17,6 +17,12 @@ const SubmitButton = (props) => {
     const criaUser = (nome, idade, idCasa, informacaoAdicional, blackList) => {
         props.openModal();
         dispatch(createNewUser(nome, idade, idCasa, informacaoAdicional, blackList));
+    };
+
+    const editaUser = (idUser, nome, idade, idCasa, informacaoAdicional, blackList) => {
+        props.openModal();
+        console.log(idUser, nome, idade, idCasa, informacaoAdicional, blackList)
+        dispatch(updateUserInfo(idUser, nome, idade, idCasa, informacaoAdicional, blackList));
     };
 
     const criaGrupo = (nome, descricao, idade, distrito, concelho) => {
@@ -49,6 +55,25 @@ const SubmitButton = (props) => {
                         onClick={
                             () => criaUser(props.params.infoUser.nomeUser, props.params.infoUser.idade, props.params.infoUser.idCasa, props.params.infoUser.infoAdicional, props.params.tipologias)
                             }>Criar Utilizador</Button>
+                </span>
+                }
+            </>
+        )
+    } else if(props.tipoForm === "UserEdit"){
+        return(
+            <>
+                {props.params.infoUser.nomeUser === "" || props.params.infoUser.idade === "" || props.params.infoUser.idCasa === "" || props.params.infoUser.infoAdicional === "" ?
+                <span className='row m-0 justify-content-end'>
+                    <Button className='col-2' variant='custom' disabled>Confirmar Alterações</Button>
+                </span>
+                :
+                <span className='row m-0 justify-content-end'>
+                    <Button 
+                        className='col-2' 
+                        variant='flat' 
+                        onClick={
+                            () => editaUser(props.params.infoUser.userId, props.params.infoUser.nomeUser, props.params.infoUser.idade, props.params.infoUser.idCasa, props.params.infoUser.infoAdicional, props.params.tipologias)
+                            }>Confirmar Alterações</Button>
                 </span>
                 }
             </>

@@ -8,8 +8,12 @@ const BarraNav = () => {
     const lugar = window.location.pathname;
     const [tipo, setTipo] = useState('');
 
+    const stringEvent = lugar.substring(0, 7);
+    const stringUser = lugar.substring(0, 6);
+    const stringHouse = lugar.substring(0, 7);
+
     useEffect(() => {
-        if(lugar === "/notifications/create" || lugar === "/notifications" || lugar === "/history" || lugar === "/history/details" || lugar === "/events"){
+        if(lugar === "/notifications/create" || lugar === "/notifications" || lugar === "/history" || lugar === "/history/details" || lugar === "/events" || stringEvent === '/events'){
             setTipo('Notifs')
         } else{
             setTipo('Destino')
@@ -47,10 +51,10 @@ const BarraNav = () => {
                         </>
                         :
                         <>
-                            <Nav.Link as={Link} className={lugar === "/users" || lugar === "/users/user" || lugar === "/users/create" ? 'navSelected' : '' } to="/users">
+                            <Nav.Link as={Link} className={lugar === "/users" || stringUser === "/users" || lugar === "/users/create" ? 'navSelected' : '' } to="/users">
                                 Utilizadores
                             </Nav.Link>
-                            <Nav.Link as={Link} className={lugar === "/houses" || lugar === "/houses/house" || lugar === "/houses/create" ? 'navSelected' : '' } to="/houses">
+                            <Nav.Link as={Link} className={lugar === "/houses" || stringHouse === "/houses" || lugar === "/houses/create" ? 'navSelected' : '' } to="/houses">
                                 Casas
                             </Nav.Link>
                         </>

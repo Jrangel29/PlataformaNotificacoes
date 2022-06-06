@@ -1,160 +1,188 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Navbar from '../../Components/Geral/Navbar';
 import Header from '../../Components/Geral/Header';
 import {Button, Dropdown} from 'react-bootstrap';
+import { useParams } from 'react-router';
 import SuccessModal from '../../Components/Modal/SuccessModal';
+import SubmitButton from '../../Components/Geral/SubmitButton';
+import { BuscaTipologias, BuscaDistritosConcelhos } from '../../Components/Forms/Hooks';
+import { ListaCasasPesquisa, MostraCasaEscolhida } from '../../Components/Forms/ListaPesquisa';
+import { useSelector, useDispatch } from 'react-redux';
+import { getSingleUser } from '../../Store/Users/Actions';
+import Loading from '../../Pages/Loading';
 
-class EditUser extends React.Component {
+const EditUser = () => {
 
-    constructor(props){
-        super(props);
-        this.state={
-            mostraSaude: 0,
-            mostraModal: false
+    const {id} = useParams();
+
+    const dispatch = useDispatch();
+
+    const [mostraModal, setMostraModal] = useState(false)
+    const [info, setInfo] = useState({
+        infoUser: {
+            nomeUser: '',
+            idade: "",
+            infoAdicional: "",
+            idCasa: '',
+        },
+        tipologias: []
+    })
+
+    const user = useSelector(({ utilizadores }) => utilizadores.userUnique)
+    const isLoadingUser = useSelector(({ utilizadores }) => utilizadores.isLoadingUser)
+
+    useEffect(() => {
+        dispatch(getSingleUser(id))
+    }, [])
+
+    useEffect(() => {
+        if(!isLoadingUser){
+            setInfo({
+                infoUser: {
+                    nomeUser: user.nome,
+                    idade: user.idade,
+                    infoAdicional: user.info,
+                    idCasa: user.id_casa,
+                    userId: id
+                },
+                tipologias: user.blacklist
+            })
+        }
+    }, [isLoadingUser])
+    
+    const onOpen = () => setMostraModal(true);
+    const onClose = () => setMostraModal(false);
+
+    const atualizaInfo = (e) => {
+        setInfo({
+            infoUser: {
+                ...info.infoUser,
+                [e.currentTarget.id]: e.currentTarget.value,
+            },
+            tipologias: info.tipologias
+        })
+    }
+
+    const mudaCasa = (val, tipo) => {
+        if(tipo === 'adiciona'){
+            setInfo({
+                infoUser: {
+                    ...info.infoUser,
+                    idCasa: val
+                },
+                tipologias: info.tipologias
+            })
+        } else{
+            setInfo({
+                infoUser: {
+                    ...info.infoUser,
+                    idCasa: ''
+                },
+                tipologias: info.tipologias
+            })
         }
     }
 
-    adicionaSaude = () => {
-        this.setState({
-            mostraSaude: this.state.mostraSaude + 1
+    const handleTipologia = (valor) => {
+        let contagem = 0;
+        info.tipologias.map((nr, index) => {
+            if(nr === valor.target.value){
+                contagem++;
+                let arrayMuda = [...info.tipologias];
+                arrayMuda.splice(index);
+                setInfo({
+                    ...info,
+                    tipologias: arrayMuda
+                })
+            }
         })
+        if(contagem === 0){
+            let arrayAnterior = [...info.tipologias];
+            arrayAnterior.push(valor.target.value);
+            setInfo({
+                ...info,
+                tipologias: arrayAnterior
+            })
+        }
     }
 
-    retiraSaude = () => {
-        this.setState({
-            mostraSaude: this.state.mostraSaude - 1
-        })
+    if (isLoadingUser) {
+        return (
+            <Loading />
+        )
     }
 
-    onOpen = () => this.setState({mostraModal: true});
-    onClose = () => this.setState({mostraModal: false});
-
-    render(){
-        return(
-            <div>
+    return(
+        <div>
+            <div className='mainBodyForm container px-0'>
                 <Navbar/>
-                <div className='mainBody container'>
-                    <Header nome="Editar Utilizador" detalhe="sim" apagaMuda="nao"/>
-                    <div className='row m-0'>
-                        <h1 className='tituloSeccaoPagina p-0'>Informação Geral</h1>
-                        <p className='subtituloSeccaoPagina p-0'>Nome do utilizador <span className='obrigatorio'>*</span></p>
-                        <input type="text" className='inputsForms'/>
-
-                        <div className='row col-12 p-0 m-0'>
-                            <span className='col-3 p-0 mt-3'>
-                                <p className='subtituloSeccaoPagina p-0'>Idade <span className='obrigatorio'>*</span></p>
-                                <input type="number" className='inputsForms'/>
-                            </span>
-                        </div>
-
-                        <div className='row col-12 p-0 m-0'>
-                            <span className='col-3 divMargem'>
-                                <p className='subtituloSeccaoPagina p-0 mt-3'>Distrito <span className='obrigatorio'>*</span></p>
-                                <Dropdown>
-                                    <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
-                                        Distrito
-                                    </Dropdown.Toggle>
-
-                                    <Dropdown.Menu className='dropdownFiltro'>
-                                        <Dropdown.Item href="#/action-1">10</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-2">20</Dropdown.Item>
-                                    </Dropdown.Menu>
-                                </Dropdown>
-                            </span>
-                            <span className='col-3 divMargem'>
-                                <p className='subtituloSeccaoPagina p-0 mt-3'>Concelho <span className='obrigatorio'>*</span></p>
-                                <Dropdown>
-                                    <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
-                                        Concelho
-                                    </Dropdown.Toggle>
-
-                                    <Dropdown.Menu className='dropdownFiltro'>
-                                        <Dropdown.Item href="#/action-1">10</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-2">20</Dropdown.Item>
-                                    </Dropdown.Menu>
-                                </Dropdown>
-                            </span>
-                        </div>
-
-                        <p className='tituloSeccaoPagina p-0 mt-3 mb-2'>Saúde</p>
-                        <span className='col-3 divMargem'>
-                            <Button className='w-100' style={this.state.mostraSaude === 1 ? {display: "none"} : {display: "block"}} variant="flat" onClick={() => this.adicionaSaude()}>Adicionar medicamento</Button>
-                        </span>
-
-                        <div className='row p-0 m-0' style={this.state.mostraSaude === 0 ? {display: "none"} : {display: "block"}}>
-                            <span className='col-12 p-0'>
-                                <p className='subtituloSeccaoPagina p-0'>Nome do medicamento</p>
-                                <input type="text" className='inputsForms w-100'/>
-                            </span>
-
-                            <span className='col-12 p-0 mt-3'>
-                                <p className='subtituloSeccaoPagina p-0 mt-3'>Dias da semana</p>
-                                <span className='row m-0 justify-content-center'>
-                                    <span className='col-3'>
-                                        <Button className='w-100' variant="flat2">Segunda-Feira</Button>
-                                    </span>
-                                    <span className='col-3'>
-                                        <Button className='w-100' variant="flat2">Terça-Feira</Button>
-                                    </span>
-                                    <span className='col-3'>
-                                        <Button className='w-100' variant="flat2">Quarta-Feira</Button>
-                                    </span>
-                                    <span className='col-3'>
-                                        <Button className='w-100' variant="flat2">Quinta-Feira</Button>
-                                    </span>
-                                    <span className='col-3 my-2'>
-                                        <Button className='w-100' variant="flat2">Sexta-Feira</Button>
-                                    </span>
-                                    <span className='col-3 my-2'>
-                                        <Button className='w-100' variant="flat2">Sábado</Button>
-                                    </span>
-                                    <span className='col-3 my-2'>
-                                        <Button className='w-100' variant="flat2">Domingo</Button>
-                                    </span>
-                                </span>
-                            </span>
-
-                            <span className='row m-0 col-3 divMargem'>
-                                <p className='subtituloSeccaoPagina p-0 mt-3'>Hora do dia</p>
-                                <Dropdown className='col-10 divMargem'>
-                                    <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
-                                        18:30
-                                    </Dropdown.Toggle>
-
-                                    <Dropdown.Menu className='dropdownFiltro'>
-                                        <Dropdown.Item href="#/action-1">10</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-2">20</Dropdown.Item>
-                                    </Dropdown.Menu>
-                                </Dropdown>
-                                <span className='col-2 p-0'>
-                                    <Button className='w-100' variant="flat">+</Button>
-                                </span>
-                            </span>
-
-                            <span className='row m-0 divMargem mt-3'>
-                                <span className='col-2 divMargem deleteBtn'>
-                                    <Button className='w-100' variant="danger" onClick={() => this.retiraSaude()}>Eliminar</Button>
-                                </span>
-                                <span className='col-3 divMargem'>
-                                    <Button className='w-100' variant="flat">Adicionar medicamento</Button>
-                                </span>
-                            </span>
-                        </div>
-
-                        <p className='tituloSeccaoPagina p-0 mt-3'>Informações Adicionais</p>
-                        <textarea rows="4" className='inputsForms'/>
-                        <span className='row m-0 mt-2 p-0 justify-content-end'>
-                            <p className='col-2 p-0 indicaObrigatorio'>*Obrigatório</p>
-                        </span>
-                        <span className='row m-0 p-0 justify-content-end'>
-                            <Button className='col-2' variant='flat' onClick={() => this.onOpen()}>Confirmar Alterações</Button>
+                <Header nome="Criar Utilizador" detalhe="sim" apagaMuda="nao" criaUser="sim"/>
+                <div>
+                    <div className='prevSeccao ms-0'>
+                        <h1 className='tituloSeccaoPaginaNotifs'>Informação Geral</h1>
+                    </div>
+                    <div className='row m-0' style={{padding: "0 40px"}}>
+                        <span className='col-12 m-0 mt-2'>
+                            <p className='subtituloSeccaoPagina'>Nome do Utilizador <span className='obrigatorio'>*</span></p>
+                            <input type="text" className='inputsForms w-100' value={info.infoUser.nomeUser} id='nomeUser' onChange={atualizaInfo}/>
                         </span>
                     </div>
+                    <div className='row col-12 m-0' style={{padding: "0 40px"}}>
+                        <span className='col-3 mt-3'>
+                            <p className='subtituloSeccaoPagina'>Idade <span className='obrigatorio'>*</span></p>
+                            <input type="number" min="1" value={info.infoUser.idade} id='idade' onChange={atualizaInfo} className='inputsForms w-100'/>
+                        </span>
+                    </div>
+
+
+                    <div className='row col-12 m-0' style={{padding: "0 40px"}}>
+                        <span className='col-6 row m-0 divMargem'>
+                            <p className='subtituloSeccaoPagina mt-3 p-0 mb-0'>Notificações que o utilizador não quer receber</p>
+                            <p className='bigSmall p-0 mb-1'>Seleciona os tipos de notificações que o utilizador não quer receber</p>
+                            <BuscaTipologias funcao={handleTipologia}/>
+                        </span>
+                    </div>
+
+                    <div className='prevSeccao ms-0 mt-2'>
+                        <p className='tituloSeccaoPaginaNotifs'>Informações Adicionais</p>
+                    </div>
+                    <div className='row col-12 m-0' style={{padding: "0 40px"}}>
+                        <p className='subtituloSeccaoPagina mt-2'>Informações que possam ser úteis na criação de eventos/notificações</p>
+                        <textarea rows="4" className='inputsForms w-100 mx-2' value={info.infoUser.infoAdicional} id='infoAdicional' onChange={atualizaInfo}/>
+                    </div>
+
+                    <div className='prevSeccao ms-0 mt-3'>
+                        <p className='tituloSeccaoPaginaNotifs'>Casa</p>
+                    </div>
+                    <span className='col-12 m-0'>
+                        <div className='row col-12 m-0 mt-2' style={{padding: "0 40px"}}>
+                            <span className='col-6 row m-0'>
+                                <p className='subtituloSeccaoPagina p-0'>Adicionar a casa</p>
+                            </span>
+                            <span className='col-6 row m-0'>
+                                <p className='subtituloSeccaoPagina p-0'>Casa escolhida</p>
+                            </span>
+                        </div>
+
+                        <div className='row col-12 m-0' style={{padding: "0 40px"}}>
+                            <div className='col-6 ms-0'>
+                                <ListaCasasPesquisa casa={info.infoUser.idCasa} muda={mudaCasa}/>
+                            </div>
+                            <div className='col-6 ms-0'>
+                                <MostraCasaEscolhida casa={info.infoUser.idCasa} muda={mudaCasa}/>
+                            </div>
+                        </div>
+                    </span>
+                    
+                    <span className='row m-0 mt-2 justify-content-end' style={{padding: "0 40px"}}>
+                        <p className='col-2 indicaObrigatorio'>*Obrigatório</p>
+                        <SubmitButton params={info} openModal={onOpen} tipoForm="UserEdit"/>
+                    </span>
                 </div>
-                <SuccessModal show={this.state.mostraModal} onHide={this.onClose} tiponotif="Editar"/>
             </div>
-        )
-    } 
+            <SuccessModal show={mostraModal} onHide={onClose} tiponotif="CriarUtilizador"/>
+        </div>
+    )
 }
 
 export default EditUser;

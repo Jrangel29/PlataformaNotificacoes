@@ -17,6 +17,10 @@ const InfoSection = (props) => {
         dispatch(getSingleUser(id))
     }, [])
 
+    useEffect(() => {
+        props.guardaInfo(user, id)
+    }, [user])
+
     if (isLoadingUser) {
         return (
             <Loading />
@@ -25,7 +29,6 @@ const InfoSection = (props) => {
 
     return(
         <div className='row m-0' style={{padding: "10px 40px"}}>
-            {console.log(user)}
             
             <div className='col-4'>
                 <h1 className='textoSeccaoPagina'><b>Nome:</b> {user.nome}</h1>

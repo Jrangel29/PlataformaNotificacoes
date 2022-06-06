@@ -13,3 +13,7 @@ export const SINGLE_USER_GET_ERROR = 'singleUser/get:error';
 export const TIPOLOGIA_USERS_GET_START = 'tipologiaUsers/get:start';
 export const TIPOLOGIA_USERS_GET_SUCCESS = 'tipologiaUsers/get:success';
 export const TIPOLOGIA_USERS_GET_ERROR = 'tipologiaUsers/get:error';
+
+export const USER_UPDATE_START = 'user/update:start';
+export const USER_UPDATE_SUCCESS = 'user/update:success';
+export const USER_UPDATE_ERROR = 'user/update:error';

@@ -24,7 +24,17 @@ class User extends React.Component {
             showDeleteModalRoutine: false,
             showSuccessModal: false,
             tipoApagado: "",
-            tipoModal: ""
+            tipoModal: "", 
+            userInfo: {
+                nome: '',
+                id_casa: '',
+                idade: '',
+                info: '',
+                localidade: '',
+                casa: '',
+                blacklist: ''
+            },
+            idUser: ''
         }
     }
 
@@ -62,18 +72,20 @@ class User extends React.Component {
 
     onCloseSuccess = () => this.setState({showSuccessModal: false});
 
+    setUserInfo = (info, id) => this.setState({userInfo: info, idUser: id});
+
     render(){
         return(
             <div>
                 <div className='mainBodyForm container px-0'>
                     <Navbar/>
-                    <Header nome="Utilizadores" detalhe="sim" apagaMuda="sim"/>
+                    <Header nome="Utilizadores" detalhe="sim" apagaMuda="sim" id={this.state.idUser}/>
                     <div>
                         <div className='prevSeccao ms-0'>
                             <h1 className='tituloSeccaoPaginaNotifs'>Informação geral</h1>
                         </div>
 
-                        <InfoSection/>
+                        <InfoSection guardaInfo={this.setUserInfo}/>
 
                         <div className='prevSeccao ms-0'>
                                 <h1 className='tituloSeccaoPaginaNotifs'>Notificações</h1>

@@ -6,19 +6,17 @@ import SuccessModal from '../../Components/Modal/SuccessModal';
 import SubmitButton from '../../Components/Geral/SubmitButton';
 import { BuscaDistritosConcelhos } from '../../Components/Forms/Hooks';
 
-class CreateHouse extends React.Component {
+class EditHouse extends React.Component {
 
     constructor(props){
         super(props);
         this.state={
             mostraModal: false,
             infoUser: {
-                nomeUser: "",
-                idade: "",
+                nomeCasa: "",
                 idBox: "",
                 distrito: "",
-                concelho: "",
-                infoAdicional: ""
+                concelho: ""
             }
         }
     }
@@ -69,34 +67,34 @@ class CreateHouse extends React.Component {
     render(){
         return(
             <div>
-                <Navbar/>
-                <div className='mainBody container'>
-                    <Header nome="Editar Casa" detalhe="sim" apagaMuda="nao"/>
-                    <div className='row m-0'>
-                        <h1 className='tituloSeccaoPagina'>Informação Geral</h1>
-                        <span className='col-12 m-0'>
+                <div className='mainBodyForm container px-0'>
+                    <Navbar/>
+                    <Header nome="Criar Casa" detalhe="sim" apagaMuda="nao"/>
+                    <div className='row m-0 p-0'>
+                        <div className='prevSeccao ms-0'>
+                            <h1 className='tituloSeccaoPaginaNotifs'>Informação Geral</h1>
+                        </div>
+                        <span className='col-12 mx-3 mt-2' style={{padding: "0 40px"}}>
                             <p className='subtituloSeccaoPagina'>Nome da Casa <span className='obrigatorio'>*</span></p>
-                            <input type="text" className='inputsForms w-100' value={this.state.infoUser.nomeUser} id='nomeUser' onChange={this.atualizaInfo}/>
+                            <input type="text" className='inputsForms w-100' value={this.state.infoUser.nomeCasa} id='nomeCasa' onChange={this.atualizaInfo}/>
                         </span>
-                        <div className='row col-12 m-0'>
+                        <div className='row col-12 mx-3' style={{padding: "0 40px"}}>
                             <span className='col-4 p-0 mt-3'>
                                 <p className='subtituloSeccaoPagina'>ID da box <span className='obrigatorio'>*</span></p>
                                 <input type="text" value={this.state.infoUser.idBox} id='idBox' onChange={this.atualizaInfo} className='inputsForms w-100'/>
                             </span>
                         </div>
 
-                        <div className='row col-12 m-0'>
+                        <div className='row col-12 mx-3' style={{padding: "0 40px"}}>
                             <BuscaDistritosConcelhos valor={this.state.infoUser.distrito} atualiza={this.atualizaDistrito} valorConcelho={this.state.infoUser.concelho} atualizaConcelho={this.atualizaConcelho}/>
                         </div>
 
-                        <span className='col-12 m-0'>
-                            <p className='tituloSeccaoPagina mt-3'>Membros da casa</p>
-                            <textarea rows="4" className='inputsForms w-100' value={this.state.infoUser.infoAdicional} id='infoAdicional' onChange={this.atualizaInfo}/>
-                        </span>
-                        <span className='row m-0 mt-2 justify-content-end'>
+                        <span className='row m-0 mt-2 justify-content-end' style={{padding: "0 40px"}}>
                             <p className='col-2 indicaObrigatorio'>*Obrigatório</p>
                         </span>
+                        <div style={{padding: "0 40px"}}>
                         <SubmitButton params={this.state} openModal={this.onOpen} tipoForm="Casa"/>
+                        </div>
                     </div>
                 </div>
                 <SuccessModal show={this.state.mostraModal} onHide={this.onClose} tiponotif="CriarCasa"/>
@@ -105,4 +103,4 @@ class CreateHouse extends React.Component {
     } 
 }
 
-export default CreateHouse;
+export default EditHouse;

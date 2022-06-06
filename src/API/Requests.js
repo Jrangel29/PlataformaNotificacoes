@@ -13,6 +13,16 @@ export const createUser = (nome, idade, ref_id_casa, informacoes, blacklist) => 
     }).then(response => response.json())
 }
 
+export const updateUser = (uid, nome, idade, ref_id_casa, informacoes, blacklist) => {
+    fetch(`http://geo-navsafety.ua.pt:443/overtv/users`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({uid, nome, idade, ref_id_casa, informacoes, blacklist})
+    }).then(response => response.json())
+}
+
 export const fetchUsers = () =>
   fetch(`http://geo-navsafety.ua.pt:443/overtv/users`)
     .then(response => response.json())

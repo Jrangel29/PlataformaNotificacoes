@@ -46,7 +46,7 @@ class Header extends React.Component {
                             <img className="topIcons px-4" src={Editar}/>    
                         </Link>
                         :
-                        <Link to="/users/edit">
+                        <Link to={`/users/edit/${this.props.id}`}>
                             <img className="topIcons px-4" src={Editar}/>    
                         </Link>
                         }

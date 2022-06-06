@@ -6,7 +6,9 @@ import {
     SINGLE_USER_GET_START,
     SINGLE_USER_GET_SUCCESS,
     TIPOLOGIA_USERS_GET_START,
-    TIPOLOGIA_USERS_GET_SUCCESS
+    TIPOLOGIA_USERS_GET_SUCCESS,
+    USER_UPDATE_START,
+    USER_UPDATE_SUCCESS
 } from '../Actions/Constants'
 
 const initialState = {
@@ -15,7 +17,8 @@ const initialState = {
     singleUser: {},
     isLoadingUser: true,
     userUnique: {},
-    isLoadingTipologiaUsers: true
+    isLoadingTipologiaUsers: true,
+    isLoadingEdit: true
 }
 
 export default (state = initialState, { type, payload }) => {
@@ -40,6 +43,16 @@ export default (state = initialState, { type, payload }) => {
             return { ...state, isLoadingTipologiaUsers: true };
         case TIPOLOGIA_USERS_GET_SUCCESS:
             return { ...state, data: payload, isLoadingTipologiaUsers: false };
+        case USER_UPDATE_START:
+            return {...state, isLoadingEdit:true}
+        case USER_UPDATE_SUCCESS:
+            data = state.data.map((utilizador) => {
+                if (utilizador.id !== payload.id) {
+                    return utilizador;
+                }
+                    return payload;
+            });
+            return { ...state, isLoadingEdit: false, data };
         default:
             return state;
     }

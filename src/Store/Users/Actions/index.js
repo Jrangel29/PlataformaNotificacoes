@@ -10,9 +10,12 @@ import {
     SINGLE_USER_GET_SUCCESS,
     TIPOLOGIA_USERS_GET_ERROR,
     TIPOLOGIA_USERS_GET_START,
-    TIPOLOGIA_USERS_GET_SUCCESS
+    TIPOLOGIA_USERS_GET_SUCCESS,
+    USER_UPDATE_ERROR,
+    USER_UPDATE_START,
+    USER_UPDATE_SUCCESS
 } from './Constants';
-import {createUser, fetchUsers, fetchSingleUser, fetchTipologiaUsers} from '../../../API/Requests';
+import {createUser, fetchUsers, fetchSingleUser, fetchTipologiaUsers, updateUser} from '../../../API/Requests';
 
 export const createNewUser = ( nome = '', idade = '', idCasa = '', informacaoAdicional = '', blackList = '') => {  
   return(dispatch) => {
@@ -22,6 +25,17 @@ export const createNewUser = ( nome = '', idade = '', idCasa = '', informacaoAdi
           dispatch({type: USER_CREATE_SUCCESS, payload: Info})
       })
       .catch(() => dispatch({type: USER_CREATE_ERROR}))
+  }
+}
+
+export const updateUserInfo = ( idUser = '', nome = '', idade = '', idCasa = '', informacaoAdicional = '', blackList = '') => {  
+  return(dispatch) => {
+      dispatch({ type: USER_UPDATE_START });
+      updateUser(idUser, nome, idade, idCasa, informacaoAdicional, blackList)
+      .then(Info => {
+          dispatch({type: USER_UPDATE_SUCCESS, payload: Info})
+      })
+      .catch(() => dispatch({type: USER_UPDATE_ERROR}))
   }
 }
 

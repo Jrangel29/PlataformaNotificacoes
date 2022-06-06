@@ -28,6 +28,7 @@ const EventCards = (props) => {
         <div className='container m-0 p-0'>
             <div className='row cartasMainBody'>
                 {eventsList.map((item, index) => {
+                    //console.log(item)
                     return(
                         <Accordion defaultActiveKey="0" key={index} className='col-3 pb-3'>
                             <Accordion.Item eventKey="1">

@@ -38,7 +38,7 @@ function App() {
           <Route exact path="/users" element={<Users/>}/>
           <Route exact path="/users/:id" element={<User/>}/>
           <Route exact path="/users/create" element={<CreateUser/>}/>
-          <Route exact path="/users/edit" element={<EditUser/>}/>
+          <Route exact path="/users/edit/:id" element={<EditUser/>}/>
           <Route exact path="/routines" element={<Routines/>}/>
           {/*<Route exact path="/groups" element={<Groups/>}/>
           <Route exact path="/groups/group" element={<Group/>}/>
