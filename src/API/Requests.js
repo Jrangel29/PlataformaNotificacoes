@@ -38,7 +38,7 @@ export const fetchSingleUser = (id) =>
 //CASAS
 
 export const createHouse = (nome, idBox, concelho) => {
-    fetch(`http://geo-navsafety.ua.pt:443/overtv/casas/new`, {
+    fetch(`http://geo-navsafety.ua.pt:443/overtv/casas`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -111,11 +111,11 @@ export const fetchNotifications = (id) =>
 export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoUnico, mensagens, idTipologia, horaEvento, envioNotif, idRegular, dias, diaUnico, diaMes, subcategoria, paramsPersonalizado, casasEscolhidas, usersEscolhidos, dataFim) => {
     
     const objectImagens = {
-        "Agenda": "https://firebasestorage.googleapis.com/v0/b/tdi-rangel.appspot.com/o/iconeAgenda.png?alt=media&token=db7c8498-6b3d-47f8-a9ef-175bc5d02dbd",
-        "Saúde": "https://firebasestorage.googleapis.com/v0/b/tdi-rangel.appspot.com/o/iconeSaude.png?alt=media&token=6d2ed984-0cf4-4650-ab7a-ad9843a736b3",
-        "Programas": "https://firebasestorage.googleapis.com/v0/b/tdi-rangel.appspot.com/o/iconeConteudo.png?alt=media&token=07eb79dc-93b5-439b-87ca-083f71dfe971",
-        "Informação": "https://firebasestorage.googleapis.com/v0/b/tdi-rangel.appspot.com/o/iconeInfo.png?alt=media&token=15650b3a-70f0-4728-b846-73413afac8ba",
-        "Serviços": "https://firebasestorage.googleapis.com/v0/b/tdi-rangel.appspot.com/o/iconeServico.png?alt=media&token=970100b9-4a98-48f5-8038-6a9128026e79"
+        "Agenda": "https://firebasestorage.googleapis.com/v0/b/tdi-rangel.appspot.com/o/iconeAgenda.png?alt=media&token=38fb87cc-f8fa-4015-a775-b4da0e6b9a77",
+        "Saúde": "https://firebasestorage.googleapis.com/v0/b/tdi-rangel.appspot.com/o/iconeSaude.png?alt=media&token=fd1ae805-eea2-4dce-b4f8-4d904c4e65b4",
+        "Programas": "https://firebasestorage.googleapis.com/v0/b/tdi-rangel.appspot.com/o/iconeProgramas.png?alt=media&token=3e89e385-5379-403a-93b5-d05f9efda5a6",
+        "Informação": "https://firebasestorage.googleapis.com/v0/b/tdi-rangel.appspot.com/o/iconeInformacao.png?alt=media&token=e706c143-43d2-4625-af36-22a1a658ee30",
+        "Serviços": "https://firebasestorage.googleapis.com/v0/b/tdi-rangel.appspot.com/o/iconeServicos.png?alt=media&token=2d858888-6925-482c-b2e5-2c89722e5626"
     }
 
 

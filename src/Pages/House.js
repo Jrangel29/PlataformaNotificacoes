@@ -28,7 +28,6 @@ function House(props) {
     
     return(
         <div>
-            {console.log(casaInfo)}
             <div className='mainBodyForm container px-0'>
                 <Navbar/>
                 <Header nome="Casas" detalhe="sim" apagaMuda="sim"/>
@@ -41,8 +40,10 @@ function House(props) {
                         <p className='textoSeccaoPagina'><b>Localidade:</b> {casaInfo.localidade}</p>
                         <p className='textoSeccaoPagina'><b>ID da box:</b> {casaInfo.id_box}</p>
                     </div>
+                    <div className='prevSeccao ms-0 mb-3'>
+                        <h1 className='tituloSeccaoPaginaNotifs'>Membros da casa</h1>
+                    </div>
                     <div className='mt-1 mx-3' style={{padding: "0 40px"}}>
-                        <p className='subtituloSeccaoPagina'>Membros da casa</p>
                         <GroupDetailCards users={casaInfo.utilizadores}/>
                     </div>
                 </div>

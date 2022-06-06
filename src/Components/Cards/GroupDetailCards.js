@@ -8,9 +8,10 @@ const GroupDetailsCards = (props) => {
     console.log(props.users)
 
     return(            
-        <div className='container'>
-            <div className='row mt-1 seccaoCards'>
+        <div className='container m-0 p-0'>
+            <div className='row mt-1'>
                 {props.users.map((item, index) => {
+                    console.log(item)
                     return(
                         <span key={index} className='col-3 mb-2'>
                             <Card>

@@ -36,7 +36,7 @@ const BarraNav = () => {
                             <Nav.Link as={Link} className={lugar === "/notifications/create" ? 'navSelected' : '' } to="/notifications/create">
                                 Criar
                             </Nav.Link>
-                            <Nav.Link as={Link} className={lugar === "/events" ? 'navSelected' : '' } to="/events">
+                            <Nav.Link as={Link} className={lugar === "/events" || stringEvent === '/events' ? 'navSelected' : '' } to="/events">
                                 Eventos
                             </Nav.Link>
                             <Nav.Link as={Link} className={lugar === "/notifications" ? 'navSelected' : '' } to="/notifications">

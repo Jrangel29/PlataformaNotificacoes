@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import iconeAgenda from '../../Images/iconeAgenda.png';
-import iconeConteudo from '../../Images/iconeConteudo.png';
-import iconeInfo from '../../Images/iconeInfo.png';
+import iconeConteudo from '../../Images/iconeProgramas.png';
+import iconeInfo from '../../Images/iconeInformacao.png';
 import iconeSaude from '../../Images/iconeSaude.png';
-import iconeServico from '../../Images/iconeServico.png';
+import iconeServico from '../../Images/iconeServicos.png';
 import { Carousel } from 'react-bootstrap';
 
 export const PreviewNotif = (props) => {

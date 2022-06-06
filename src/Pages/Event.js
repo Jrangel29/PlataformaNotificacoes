@@ -7,6 +7,7 @@ import { getEventSingle } from '../Store/Eventos/Actions';
 import EventNotifications from '../Components/Cards/EventNotifications';
 import Loading from '../Pages/Loading';
 import { Button } from 'react-bootstrap';
+import GroupDetailCards from '../Components/Cards/GroupDetailCards';
 import '../Styles/User.css';
 
 function Event(props) {
@@ -33,6 +34,7 @@ function Event(props) {
     return(
         <div>
             <div className='mainBodyForm container px-0'>
+                {console.log(event)}
                 <Navbar/>
                 <Header nome="Eventos" detalhe="sim" apagaMuda="sim"/>
                 <div>
@@ -43,6 +45,14 @@ function Event(props) {
                         <p className='textoSeccaoPagina'><b>Nome:</b> {event.nome}</p>
                         <p className='textoSeccaoPagina'><b>Tipologia do evento:</b> {event.tipologia}</p>
                         <p className='textoSeccaoPagina'><b>Regularidade:</b> {event.regularidade}</p>
+                    </div>
+                </div>
+                <div className='p-0 m-0 mt-3'>
+                    <div className='prevSeccao ms-0'>
+                        <h1 className='tituloSeccaoPaginaNotifs'>Destinatários</h1>
+                    </div>
+                    <div className='mx-3' style={{padding: "10px 40px"}}>
+                        <GroupDetailCards users={event.users}/>
                     </div>
                 </div>
                 <div className='p-0 m-0 mt-3'>
