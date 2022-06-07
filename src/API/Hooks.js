@@ -31,6 +31,7 @@ export const GetMesesDif = (dataInicio, dataFim) => {
 
 export const GetUnique = (dia, msg) => {
     let days = [];
+    let atual = new Date();
 
     if(msg.semanaAntes.active === true){
         let date = new Date(dia.getFullYear(), dia.getMonth(), dia.getDay());
@@ -39,7 +40,9 @@ export const GetUnique = (dia, msg) => {
         let dataNew = new Date(dataAtualizada)
         var dataFinal = dataNew.getFullYear() + '-' + ((dataNew.getMonth() > 8) ? (dataNew.getMonth() + 1) : ('0' + (dataNew.getMonth() + 1))) + '-' + ((dataNew.getDate() > 9) ? dataNew.getDate() : ('0' + dataNew.getDate()));
 
-        days.push({name: 'semanaAntes', data: dataFinal});
+        if(dataNew >= atual){
+            days.push({name: 'semanaAntes', data: dataFinal});
+        }
     }
 
     if(msg.dias3.active === true){
@@ -49,7 +52,9 @@ export const GetUnique = (dia, msg) => {
         let dataNew = new Date(dataAtualizada)
         var dataFinal = dataNew.getFullYear() + '-' + ((dataNew.getMonth() > 8) ? (dataNew.getMonth() + 1) : ('0' + (dataNew.getMonth() + 1))) + '-' + ((dataNew.getDate() > 9) ? dataNew.getDate() : ('0' + dataNew.getDate()));
 
-        days.push({name: 'dias3', data: dataFinal});
+        if(dataNew >= atual){
+            days.push({name: 'dias3', data: dataFinal});
+        }
     }
 
     if(msg.diaAnterior.active === true){
@@ -59,7 +64,9 @@ export const GetUnique = (dia, msg) => {
         let dataNew = new Date(dataAtualizada)
         var dataFinal = dataNew.getFullYear() + '-' + ((dataNew.getMonth() > 8) ? (dataNew.getMonth() + 1) : ('0' + (dataNew.getMonth() + 1))) + '-' + ((dataNew.getDate() > 9) ? dataNew.getDate() : ('0' + dataNew.getDate()));
 
-        days.push({name: 'diaAnterior', data: dataFinal});
+        if(dataNew >= atual){
+            days.push({name: 'diaAnterior', data: dataFinal});
+        }
     }
 
     return {diasEvento: days};
@@ -101,14 +108,14 @@ export const GetDiaSemana = (dias, dates, msg, dataFim) => {
                     days.push(diaFormated);
                 }
     
-                if(date.getDay() == item && date > diaStart && msg.dias3.active === true && date <= diaFim){
+                if(date.getDay() == item && date >= diaStart && msg.dias3.active === true && date <= diaFim){
                     let date2 = new Date(current.year, current.month, d);
                     let dataWeek = date.getDate() - 3;
                     var dataAtualizada = date2.setDate(dataWeek);
                     let dataNew = new Date(dataAtualizada)
                     var dataFinal = dataNew.getFullYear() + '-' + ((dataNew.getMonth() > 8) ? (dataNew.getMonth() + 1) : ('0' + (dataNew.getMonth() + 1))) + '-' + ((dataNew.getDate() > 9) ? dataNew.getDate() : ('0' + dataNew.getDate()));
     
-                    if(dataNew > diaStart){
+                    if(dataNew >= diaStart){
                         messageDays.dias3.push(dataFinal);
                     }   
                 }
@@ -120,7 +127,7 @@ export const GetDiaSemana = (dias, dates, msg, dataFim) => {
                     let dataNew = new Date(dataAtualizada)
                     var dataFinal = dataNew.getFullYear() + '-' + ((dataNew.getMonth() > 8) ? (dataNew.getMonth() + 1) : ('0' + (dataNew.getMonth() + 1))) + '-' + ((dataNew.getDate() > 9) ? dataNew.getDate() : ('0' + dataNew.getDate()));
     
-                    if(dataNew > diaStart){
+                    if(dataNew >= diaStart){
                         messageDays.diaAnterior.push(dataFinal);
                     }
                 }
@@ -292,7 +299,7 @@ export const GetDias = (num_week_day, dates, msg) => {
                 let dataNew = new Date(dataAtualizada)
                 var dataFinal = dataNew.getFullYear() + '-' + ((dataNew.getMonth() > 8) ? (dataNew.getMonth() + 1) : ('0' + (dataNew.getMonth() + 1))) + '-' + ((dataNew.getDate() > 9) ? dataNew.getDate() : ('0' + dataNew.getDate()));
                 
-                if(dataNew > diaStart){
+                if(dataNew >= diaStart){
                     messageDays.semanaAntes.push(dataFinal);
                 }   
             }
@@ -303,7 +310,7 @@ export const GetDias = (num_week_day, dates, msg) => {
                 let dataNew = new Date(dataAtualizada)
                 var dataFinal = dataNew.getFullYear() + '-' + ((dataNew.getMonth() > 8) ? (dataNew.getMonth() + 1) : ('0' + (dataNew.getMonth() + 1))) + '-' + ((dataNew.getDate() > 9) ? dataNew.getDate() : ('0' + dataNew.getDate()));
 
-                if(dataNew > diaStart){
+                if(dataNew >= diaStart){
                     messageDays.dias3.push(dataFinal);
                 }   
             }
@@ -314,7 +321,7 @@ export const GetDias = (num_week_day, dates, msg) => {
                 let dataNew = new Date(dataAtualizada)
                 var dataFinal = dataNew.getFullYear() + '-' + ((dataNew.getMonth() > 8) ? (dataNew.getMonth() + 1) : ('0' + (dataNew.getMonth() + 1))) + '-' + ((dataNew.getDate() > 9) ? dataNew.getDate() : ('0' + dataNew.getDate()));
 
-                if(dataNew > diaStart){
+                if(dataNew >= diaStart){
                     messageDays.diaAnterior.push(dataFinal);
                 }
             }

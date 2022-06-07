@@ -109,7 +109,7 @@ const EditHouse = () => {
                         <p className='col-2 indicaObrigatorio'>*Obrigatório</p>
                     </span>
                     <div style={{padding: "0 40px"}}>
-                    <SubmitButton params={info} openModal={onOpen} tipoForm="Casa"/>
+                        <SubmitButton params={info} openModal={onOpen} tipoForm="Casa"/>
                     </div>
                 </div>
             </div>

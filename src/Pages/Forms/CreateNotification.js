@@ -156,7 +156,49 @@ class CreateNotification extends React.Component {
             this.setState({
                 tipologia: valor,
                 idTipologia: id,
-                categoriaInfo: subcategoria
+                categoriaInfo: subcategoria,
+                usersEscolhidos: [],
+                casasEscolhidas: [],
+                mensagens: {
+                    semanaAntes: {
+                        active: false, 
+                        message: ''},
+                    dias3: {
+                        active: false, 
+                        message: ''},
+                    diaAnterior: {
+                        active: false, 
+                        message: ''},
+                    diaProprio: {
+                        active: false, 
+                        message: ''},
+                    horaEspecifica: {
+                        active: false, 
+                        message: ''},
+                    imediato: {
+                        active: false, 
+                        message: ''},
+                    intervaloHoras: {
+                        active: false, 
+                        message: ''},
+                    horaAntes: {
+                        active: false, 
+                        message: ''},
+                    meiaHora: {
+                        active: false, 
+                        message: '',
+                        tituloBlade: '',
+                        descricao: ''},
+                    quartoHora: {
+                        active: false, 
+                        message: ''},
+                    minutos5: {
+                        active: false, 
+                        message: ''},
+                    momentoAcontecimento: {
+                        active: false, 
+                        message: ''}
+                }
             })
         }
     }
@@ -424,7 +466,7 @@ class CreateNotification extends React.Component {
             this.setState({
                 regularidade: valor.target.value,
                 envioNotif: "Pontual",
-                momentoUnico: '',
+                momentoUnico: 'Dia e Hora',
                 mensagens: {
                     semanaAntes: {
                         active: false, 
@@ -848,66 +890,6 @@ class CreateNotification extends React.Component {
                     </div>
 
                     <div className='row m-0 mt-2'>
-                        <div className='btn btnSeccao' onClick={() => this.mudaCollapse(2)}>
-                            <h1 className='tituloSeccaoPaginaNotifs'>Destinarários</h1>
-                            <img src={DownArrow} className={this.state.colapsado.collapse2 !== true ? "ArrowDown" : "ArrowDownRotated"}/>
-                        </div>
-                        <Collapse in={this.state.colapsado.collapse2}>
-                            <div className='row m-0' style={{padding: "0 40px"}}>
-                                
-                                {this.state.tipologia === 'Personalizada' ?
-                                <span className='col-3 me-3' style={{marginTop: "5px"}}>
-                                    <p className='subtituloSeccaoPagina'>Tipo de destinarário <span className='obrigatorio'>*</span></p>
-                                    <Dropdown>
-                                        <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
-                                            {this.state.paramsPersonalizado.tipoRecetor}
-                                        </Dropdown.Toggle>
-
-                                        <Dropdown.Menu className='dropdownFiltro'>
-                                            <Dropdown.Item onClick={() => this.alteraRecetoresIndividual("Recetores Individuais")}>Recetores Individuais</Dropdown.Item>
-                                            <Dropdown.Item onClick={() => this.alteraRecetoresIndividual("Casas")}>Casas</Dropdown.Item>
-                                        </Dropdown.Menu>
-                                    </Dropdown>
-                                </span>
-                                :
-                                <></>
-                                }
-
-                                <span className='row m-0'>
-                                    <div className='col-6 ms-0 ps-0'>
-                                        <h1 className='subtituloSeccaoPagina mt-3 mb-2'>Escolha de destinarários <span className='obrigatorio'>*</span></h1>
-                                    </div>
-                                    <div className='col-6 ms-0 ps-0'>
-                                        <h1 className='subtituloSeccaoPagina mt-3 mb-2'>Destinarários escolhidos</h1>
-                                    </div>
-                                </span>
-                                <span className='row m-0'>
-                                    {this.state.tipologia === 'Agenda' || this.state.tipologia === 'Programas' || this.state.tipologia === 'Saúde' || this.state.tipologia === 'Personalizada' && this.state.paramsPersonalizado.tipoRecetor === 'Recetores Individuais' ?
-                                    <>
-                                        <div className='col-6 ms-0 ps-0'>
-                                            <ListaUsersPesquisa tipo={this.state.recetores} idTipologia={this.state.idTipologia} adiciona={this.addUser} adicionados={this.state.usersEscolhidos}/>
-                                        </div>
-                                        <div className='col-6 m-0 p-0'>
-                                            <ListaUsersAdicionados adicionados={this.state.usersEscolhidos} remove={this.removeUser}/>
-                                        </div>
-                                    </>
-                                    :
-                                    <>
-                                        <div className='col-6 ms-0 ps-0'>
-                                            <CasasPesquisa adiciona={this.addCasa} casasEscolhidas={this.state.casasEscolhidas}/>
-                                        </div>
-                                        <div className='col-6 m-0 p-0'>
-                                            <CasasEscolhidas casas={this.state.casasEscolhidas} remove={this.removeCasa}/>
-                                        </div>
-                                    </>
-                                    }
-                                    
-                                </span>
-                            </div>
-                        </Collapse>
-                    </div>
-
-                    <div className='row m-0 mt-2'>
                         <div className='btn btnSeccao' onClick={() => this.mudaCollapse(3)}>
                             <h1 className='tituloSeccaoPaginaNotifs'>Dados do evento</h1>
                             <img src={DownArrow} className={this.state.colapsado.collapse3 !== true ? "ArrowDown" : "ArrowDownRotated"}/>
@@ -947,6 +929,67 @@ class CreateNotification extends React.Component {
                                     <NotificationTimeSelection collapseState={this.state.colapsado} mudaDataFim={this.alteraDataFim} parametros={this.state} mudaDiaUnico={this.alteraDiaUnico} alteraDiaMes={this.alteraDiaMes} mudaMomentoUnico={this.alteraMomentoUnico} mudaHora={this.alteraHora} mudaHorario={this.alteraHorario} alterarEnvio={this.alteraEnvio} mudaDia={this.alteraDia} mudaMomento={this.alteraMomento}/>                    
                                 </div>
                             </span>
+                        </Collapse>
+                    </div>
+
+                    <div className='row m-0 mt-2'>
+                        <div className='btn btnSeccao' onClick={() => this.mudaCollapse(2)}>
+                            <h1 className='tituloSeccaoPaginaNotifs'>Destinarários das notificações</h1>
+                            <img src={DownArrow} className={this.state.colapsado.collapse2 !== true ? "ArrowDown" : "ArrowDownRotated"}/>
+                        </div>
+                        <Collapse in={this.state.colapsado.collapse2}>
+                            <div className='row m-0' style={{padding: "0 40px"}}>
+                                
+                                {this.state.tipologia === 'Personalizada' ?
+                                <span className='col-3 me-3' style={{marginTop: "5px"}}>
+                                    <p className='subtituloSeccaoPagina'>Tipo de destinarário <span className='obrigatorio'>*</span></p>
+                                    <Dropdown>
+                                        <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
+                                            {this.state.paramsPersonalizado.tipoRecetor}
+                                        </Dropdown.Toggle>
+
+                                        <Dropdown.Menu className='dropdownFiltro'>
+                                            <Dropdown.Item onClick={() => this.alteraRecetoresIndividual("Recetores Individuais")}>Recetores Individuais</Dropdown.Item>
+                                            <Dropdown.Item onClick={() => this.alteraRecetoresIndividual("Casas")}>Casas</Dropdown.Item>
+                                        </Dropdown.Menu>
+                                    </Dropdown>
+                                </span>
+                                :
+                                <></>
+                                }
+
+                                <span className='row m-0'>
+                                    <div className='col-6 ms-0 ps-0'>
+                                        <h1 className='subtituloSeccaoPagina mt-3 mb-0'>Escolha de destinarários <span className='obrigatorio'>*</span></h1>
+                                        {/*<p className='bigSmall mb-2'>No caso de eventos de Agenda e Saúde, só pode enviar para um utilizador.</p>*/}
+                                    </div>
+                                    <div className='col-6 ms-0 ps-0'>
+                                        <h1 className='subtituloSeccaoPagina mt-3 mb-2'>Destinarários escolhidos</h1>
+                                    </div>
+                                </span>
+                                <span className='row m-0'>
+                                    {this.state.tipologia === 'Agenda' || this.state.tipologia === 'Programas' || this.state.tipologia === 'Saúde' || this.state.tipologia === 'Personalizada' && this.state.paramsPersonalizado.tipoRecetor === 'Recetores Individuais' ?
+                                    <>
+                                        <div className='col-6 ms-0 ps-0'>
+                                            <ListaUsersPesquisa tipo={this.state.recetores} idTipologia={this.state.idTipologia} adiciona={this.addUser} adicionados={this.state.usersEscolhidos}/>
+                                        </div>
+                                        <div className='col-6 m-0 p-0'>
+                                            <ListaUsersAdicionados adicionados={this.state.usersEscolhidos} remove={this.removeUser}/>
+                                        </div>
+                                    </>
+                                    :
+                                    <>
+                                        <div className='col-6 ms-0 ps-0'>
+                                            <CasasPesquisa adiciona={this.addCasa} casasEscolhidas={this.state.casasEscolhidas}/>
+                                        </div>
+                                        <div className='col-6 m-0 p-0'>
+                                            <CasasEscolhidas casas={this.state.casasEscolhidas} remove={this.removeCasa}/>
+                                        </div>
+                                    </>
+                                    }
+                                    
+                                </span>
+                            </div>
                         </Collapse>
                     </div>
 

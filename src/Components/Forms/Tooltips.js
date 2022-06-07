@@ -21,6 +21,7 @@ export const CategoryTooltip = (props) => {
             <span>
                 <p className='m-0 p-0' style={{fontSize: '14px'}}><b>Indicações</b></p>
                 <p className='m-0 mt-1 p-0' style={{fontSize: '13px', textJustify: 'inter-word', textAlign: 'left'}}><b>-</b> Dependendo da categoria escolhida, alguns recetores podem não aparecer. Alguns dos momentos de envio podem também estar indisponíveis.</p>
+                <p className='m-0 mt-1 p-0' style={{fontSize: '13px', textJustify: 'inter-word', textAlign: 'left'}}><b>-</b> A categoria escolhida também influencia o número de recetores que pode escolher</p>
             </span>
         </Tooltip>
     )

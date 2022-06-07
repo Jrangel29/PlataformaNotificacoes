@@ -7,7 +7,6 @@ import LoadingComponent from '../../Components/Geral/LoadingComponent';
 const GetUsers = (props) => {
     
     let contagem = 0;
-
     return(
         <>
         {
@@ -43,9 +42,14 @@ const GetUsers = (props) => {
                                         <p className='btn btnListaUser disabled disabledButton'>Adicionado</p>
                                     </span>
                                     :
-                                    <span key={index} className='col-4'>
-                                        <p className='btn btnListaUser' onClick={() => props.add({idCasa: value.id_casa, nomeCasa: value.casa, idUser: value.id_utilizador, nome: value.utilizador, informacao: value.info})}>Adicionar</p>
-                                    </span>
+                                    props.tipo === 1 || props.tipo === 4 ?
+                                        <span key={index} className='col-4'>
+                                            <p className='btn btnListaUserDisabled' disabled>Adicionar</p>
+                                        </span>
+                                        :
+                                        <span key={index} className='col-4'>
+                                            <p className='btn btnListaUser' onClick={() => props.add({idCasa: value.id_casa, nomeCasa: value.casa, idUser: value.id_utilizador, nome: value.utilizador, informacao: value.info})}>Adicionar</p>
+                                        </span>
                                 }
                                 </>
                             :
@@ -104,16 +108,9 @@ export const ListaUsersPesquisa = (props) => {
             <span className='row ListaUsersForm'>
                 {casasList.map((item, index) => {
                     return(
-                        <GetUsers key={index} id={item.id_casa} allUsers={usersList} nome={item.nome} add={props.adiciona} added={props.adicionados}></GetUsers>
+                        <GetUsers key={index} id={item.id_casa} allUsers={usersList} nome={item.nome} add={props.adiciona} added={props.adicionados} tipo={props.idTipologia}></GetUsers>
                     )
                 })}
-                
-                {/*<span className='col-12 row itemListaUsersForm m-0'>
-                    <p className='col-8 infoCasaFormUser'>Bruno Costa</p>
-                    <span className='col-4'>
-                        <p className='btn btnListaUser disabled disabledButton'>Adicionado</p>
-                    </span>
-            </span>*/}
             </span>
             
         </>             

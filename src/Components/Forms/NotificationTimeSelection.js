@@ -33,12 +33,11 @@ function NotificationTimeSelection(props) {
             <>
             {props.parametros.envioNotif === "Pontual" ?
                 <>
-                    {props.parametros.tipologia !== 'Informação' ? 
-                    <>
+                    
                     <h1 className='subtituloSeccaoPagina mt-2'>Horário do evento</h1>
                     <span className="col-3">
                         <Dropdown>
-                            <Dropdown.Toggle variant="flat" className="dropdownFiltro">
+                            <Dropdown.Toggle className="dropdownFiltro" variant={props.parametros.tipologia !== 'Informação' ? 'flat' : 'custom'} disabled={props.parametros.tipologia !== 'Informação' ? false : true}>
                                 {props.parametros.momentoUnico}
                             </Dropdown.Toggle>
 
@@ -52,10 +51,6 @@ function NotificationTimeSelection(props) {
                             </Dropdown.Menu>
                         </Dropdown>
                     </span>
-                    </>
-                    :
-                    <></>
-                    }
                 </>
             : 
                 props.parametros.envioNotif === "Semanal" ?
@@ -141,6 +136,9 @@ function NotificationTimeSelection(props) {
                             </tr>
                         </tbody>
                     </Table>
+                    {props.parametros.tipologia === 'Informação' ?
+                    <></>
+                    :
                     <span className="col-3">
                         <p className="subtituloSeccaoPagina mt-2">Hora</p>
                         <span className="row col-12">
@@ -149,6 +147,7 @@ function NotificationTimeSelection(props) {
                             </span>
                         </span>
                     </span>
+                    }
                     <span className="col-3">
                         <p className="subtituloSeccaoPagina mt-2">Data de fim</p>
                         <span className="row col-12">
@@ -161,6 +160,9 @@ function NotificationTimeSelection(props) {
                     : 
                     props.parametros.envioNotif === "Diária" ?
                     <div className='mt-2'>
+                        {props.parametros.tipologia === 'Informação' ?
+                        <></>
+                        :
                         <span className="col-3">
                             <p className="subtituloSeccaoPagina">Hora</p>
                             <span className="row col-12">
@@ -169,8 +171,9 @@ function NotificationTimeSelection(props) {
                                 </span>
                             </span>
                         </span>
+                        }
                         <span className="col-3">
-                            <p className="subtituloSeccaoPagina mt-2">Data de fim</p>
+                            <p className={props.parametros.tipologia === 'Informação' ? "subtituloSeccaoPagina" : "subtituloSeccaoPagina mt-2"}>Data de fim</p>
                             <span className="row col-12">
                                 <span className="col-3">
                                     <input type="date" className='inputsForms w-50' onChange={props.mudaDataFim} style={{height: "37px"}}/>
@@ -221,12 +224,25 @@ function NotificationTimeSelection(props) {
                                 </Dropdown.Menu>
                             </Dropdown>
                         </span>
+                        {props.parametros.tipologia === 'Informação' ?
+                        <>
+                        <p className="subtituloSeccaoPagina mt-2">Data de fim</p>
+                        <span className="col-3">
+                            <span className="row col-12 m-0">
+                                <span className="col-12 m-0 p-0">
+                                    <input type="date" className='inputsForms w-50' onChange={props.mudaDataFim} style={{height: "37px"}}/>
+                                </span>
+                            </span>
+                        </span>
+                        </>
+                        :
+                        <>
                         <p className="subtituloSeccaoPagina mt-2">Hora</p>
                         <span className="col-3">
-                                <span className="col-3">
-                                    <input type="time" className='inputsForms without_ampm w-50' onInput={props.mudaHora} onChange={props.mudaHora} style={{height: "37px"}}/>
-                                </span>
-                                <span className="col-3">
+                            <span className="col-3">
+                                <input type="time" className='inputsForms without_ampm w-50' onInput={props.mudaHora} onChange={props.mudaHora} style={{height: "37px"}}/>
+                            </span>
+                            <span className="col-3">
                                 <p className="subtituloSeccaoPagina mt-2">Data de fim</p>
                                 <span className="row col-12 m-0">
                                     <span className="col-12 m-0 p-0">
@@ -235,6 +251,8 @@ function NotificationTimeSelection(props) {
                                 </span>
                             </span>
                         </span>
+                        </>
+                        }
                     </>
             }
             </>
@@ -268,6 +286,9 @@ function NotificationTimeSelection(props) {
                             onClickDay={props.mudaDiaUnico}
                             minDate={new Date()}/>
                     </span>
+                    {props.parametros.tipologia === 'Informação' ?
+                    <></>
+                    :
                     <span className="col-12">
                         <p className="subtituloSeccaoPagina mt-1">Hora</p>
                         <span className="row col-12">
@@ -276,6 +297,7 @@ function NotificationTimeSelection(props) {
                             </span> 
                         </span>
                     </span>
+                    }
                 </div>
                 :
                 <></>
@@ -284,21 +306,6 @@ function NotificationTimeSelection(props) {
             }
         </>
         }
-        
-        {/*props.parametros.tipologia === "Agenda" && props.parametros.envioNotif !== "Semanal" && props.parametros.momentoUnico === "Dia e Hora" ?
-            <div className='row mt-2'>
-                <div className='col-12'>
-                    <p className='textoSeccaoPagina'>
-                        *Se possível, serão enviadas notificações uma semana antes da data definida, 3 dias antes, na rotina de Boa noite do dia anterior e na rotina de Bom Dia do próprio dia. Será também avisado 2 horas antes, uma hora antes, 30 minutos, 15 minutos e 5 minutos antes do evento.
-                    </p>
-                    <p className='textoSeccaoPagina'>
-                        *O utilizador pode escolher ser relembrado da notificação 15 minutos depois de a receber.
-                    </p>
-                </div>
-            </div>
-            :
-            <></>
-    */}
     </>  
     )
 }

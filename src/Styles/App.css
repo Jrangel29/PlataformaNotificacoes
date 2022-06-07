@@ -300,7 +300,7 @@ textarea:focus, input:focus{
     display: flex;
     flex-direction: row;
     align-items:center;
-    border-radius: 10px;
+    border-radius: 7px;
     font-size: 20px;
     margin: auto;
 }
@@ -488,6 +488,22 @@ textarea:focus, input:focus{
     justify-content: center!important;
     margin: auto;
     background-color: #2d507c!important;
+    border: none!important;
+    color: #F9F7F7!important;
+}
+
+.btnListaUserDisabled{
+    width: 80%!important;
+    text-align: center!important;
+    height: 30px;
+    font-size: 14px!important;
+    display: flex!important;
+    flex-direction: column!important;
+    justify-content: center!important;
+    margin: auto;
+    background-color: #3F72AF!important;
+    opacity: 50%;
+    cursor: initial!important;
     border: none!important;
     color: #F9F7F7!important;
 }

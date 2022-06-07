@@ -13,10 +13,12 @@ const BarraNav = () => {
     const stringHouse = lugar.substring(0, 7);
 
     useEffect(() => {
-        if(lugar === "/notifications/create" || lugar === "/notifications" || lugar === "/history" || lugar === "/history/details" || lugar === "/events" || stringEvent === '/events'){
-            setTipo('Notifs')
-        } else{
+        if(lugar === "/notifications/create" || lugar === "/events" || stringEvent === '/events'){
+            setTipo('Eventos')
+        } else if(lugar === '/users' || stringUser === "/users" || lugar === "/users/create"){
             setTipo('Destino')
+        } else {
+            setTipo('Notifications')
         }
     }, [])
 
@@ -24,21 +26,26 @@ const BarraNav = () => {
         <div className={tipo === 'Notifs' ? 'barraNavegacao pt1 m-0 p-0' : 'barraNavegacao pt2 m-0 p-0'}>
             <div className='containerNavBar topPart'>
                 <div className='topBar m-0 p-0 h-100'>
-                    <div className={tipo === 'Notifs' ? 'btn btnNav escolheHalf' : 'btn btnNav escolheHalfNot H1'} onClick={() => setTipo('Notifs')}>Notificações</div>
+                    <div className={tipo === 'Eventos' ? 'btn btnNav escolheHalf' : 'btn btnNav escolheHalfNot H1'} onClick={() => setTipo('Eventos')}>Eventos</div>
+                    <div className={tipo === 'Notifications' ? 'btn btnNav escolheHalf' : 'btn btnNav escolheHalfNot H2'} onClick={() => setTipo('Notifications')}>Notificações</div>
                     <div className={tipo === 'Destino' ? 'btn btnNav escolheHalf' : 'btn btnNav escolheHalfNot H2'} onClick={() => setTipo('Destino')}>Destinatários</div>
                 </div>
             </div>
-            <div className='containerNavBar w-50'>
+            <div className='containerNavBar w-100'>
                 <Navbar className='m-0 p-0 h-100 w-100'>
-                    <Nav activeKey={lugar} className='containerNavBar' style={tipo === 'Notifs' ? {margin: 'auto', marginRight: '0'} : null}>
-                        {tipo === 'Notifs' ? 
+                    <Nav activeKey={lugar} className='containerNavBar' style={tipo === 'Eventos' ? {textAlign: 'center', marginLeft: '10%', marginRight: 'auto'} : tipo === 'Notifications' ? {textAlign: 'center', margin: 'auto'} : {textAlign: 'center', marginLeft: 'auto', marginRight: '9%'}}>
+                        {tipo === 'Eventos' ? 
                         <>
-                            <Nav.Link as={Link} className={lugar === "/notifications/create" ? 'navSelected' : '' } to="/notifications/create">
+                            <Nav.Link as={Link} className={lugar === "/events/create" ? 'navSelected' : '' } to="/events/create">
                                 Criar
                             </Nav.Link>
-                            <Nav.Link as={Link} className={lugar === "/events" || stringEvent === '/events' ? 'navSelected' : '' } to="/events">
+                            <Nav.Link as={Link} className={lugar === "/events" || stringEvent === '/events' && lugar !== '/events/create' ? 'navSelected' : '' } to="/events">
                                 Eventos
                             </Nav.Link>
+                        </>
+                        :
+                        tipo === 'Notifications' ?
+                        <>
                             <Nav.Link as={Link} className={lugar === "/notifications" ? 'navSelected' : '' } to="/notifications">
                                 Agendadas
                             </Nav.Link>

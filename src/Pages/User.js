@@ -18,13 +18,13 @@ class User extends React.Component {
         super(props);
         this.state = {
             seccao: "Por Enviar",
+            infoModal: '',
             showModal: false,
             showModalInfo: false,
             showDeleteModal: false,
             showDeleteModalRoutine: false,
             showSuccessModal: false,
             tipoApagado: "",
-            tipoModal: "", 
             userInfo: {
                 nome: '',
                 id_casa: '',
@@ -40,17 +40,8 @@ class User extends React.Component {
 
     mudaSeccao = (valorClicado) => this.setState({seccao: valorClicado})
     
-    onOpen = (tipo) => this.setState({showModal: true, tipoModal: tipo});
+    onOpen = (info) => this.setState({showModal: true, infoModal: info});
     onClose = () => this.setState({showModal: false});
-
-    onOpenAddInfo = () => this.setState({showModalInfo: true});
-    onCloseAddInfo = (resposta) => {
-        if(resposta === "Cancela"){
-            this.setState({showModalInfo: false, showSuccessModal: false})
-        } else {
-            this.setState({showModalInfo: false, showSuccessModal: true, tipoApagado: "AddInfo"})
-        }
-    };
 
     onOpenDelete = () => this.setState({showDeleteModal: true});
     onCloseDelete = (resposta) => {
@@ -75,6 +66,7 @@ class User extends React.Component {
     setUserInfo = (info, id) => this.setState({userInfo: info, idUser: id});
 
     render(){
+        {console.log(this.state)}
         return(
             <div>
                 <div className='mainBodyForm container px-0'>
@@ -97,12 +89,11 @@ class User extends React.Component {
                                 <Button onClick={() => this.mudaSeccao("Enviadas")} className='seccaoBtn col-3 mx-2' variant={this.state.seccao == "Enviadas" ? 'flat' : 'custom'}>Enviadas</Button>
                             </div>
                             {/*<NotificationCards tipo={this.state.seccao == "notificacoes" ? "notificacoes" : this.state.seccao == "rotina" ? "RotinaUser" : "historico"} pagina={'users'} abreModal={this.onOpen} abreModalInfo={this.onOpenAddInfo} abreModalDelete={this.onOpenDelete} abreModalDeleteRotina={this.onOpenDeleteRoutine}/>*/}
-                            <UserNotifications seccao={this.state.seccao}/>
+                            <UserNotifications seccao={this.state.seccao} showModal={this.onOpen}/>
                         </div>
                     </div>
                 </div>
-                <NotificationModal show={this.state.showModal} onHide={this.onClose} tipo={this.state.tipoModal == "notificacoes" ? "notificacoes" : "RotinaUser"}/>
-                <AddInfoModal show={this.state.showModalInfo} onHide={this.onCloseAddInfo}/>
+                <NotificationModal show={this.state.showModal} onHide={this.onClose}/>
                 <DeleteNotificationAll show={this.state.showDeleteModal} onHide={this.onCloseDelete} utilizador="Sim"/>
                 <DeleteRoutine show={this.state.showDeleteModalRoutine} onHide={this.onCloseDeleteRoutine} utilizador="Sim"/>
                 <SuccessModal show={this.state.showSuccessModal} onHide={this.onCloseSuccess} tiponotif={this.state.tipoApagado}/>

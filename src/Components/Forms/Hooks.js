@@ -135,13 +135,13 @@ export const BuscaDistritosConcelhos = (props) => {
                 <Dropdown value={props.valor} onSelect={concelhoSearch}>
                     {props.valor !== '' ?
                     <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
-                        {distritosList.map(item => {
+                        {distritosList.map((item, index) => {
                             return(
                                 <>
                                 {props.valor == item.id_localidade ?
-                                <>{item.nome}</>
+                                <span className="m-0 p-0" key={index}>{item.nome}</span>
                                 :
-                                <></>
+                                <span key={index}></span>
                                 }
                                 </>
                             )
@@ -154,9 +154,9 @@ export const BuscaDistritosConcelhos = (props) => {
                     }
 
                     <Dropdown.Menu className='dropdownFiltro'>
-                        {distritosList.map(item => {
+                        {distritosList.map((item, index) => {
                             return(
-                                <Dropdown.Item eventKey={item.id_localidade}>{item.nome}</Dropdown.Item>
+                                <Dropdown.Item eventKey={item.id_localidade} key={index}>{item.nome}</Dropdown.Item>
                             )
                         })}
                     </Dropdown.Menu>
@@ -177,18 +177,18 @@ export const BuscaDistritosConcelhos = (props) => {
 
     return(
         <>
-        <span className='col-3 divMargem'>
+        <span className='col-3 ps-0'>
             <p className='subtituloSeccaoPagina p-0 mt-3'>Distrito <span className='obrigatorio'>*</span></p>
             <Dropdown value={props.valor} onSelect={concelhoSearch}>
                 {props.valor !== '' ?
                 <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
-                    {distritosList.map(item => {
+                    {distritosList.map((item, index) => {
                         return(
                             <>
                             {props.valor == item.id_localidade ?
-                            <>{item.nome}</>
+                            <span className="m-0 p-0" key={index}>{item.nome}</span>
                             :
-                            <></>
+                            <span key={index}></span>
                             }
                             </>
                         )
@@ -201,27 +201,27 @@ export const BuscaDistritosConcelhos = (props) => {
                 }
 
                 <Dropdown.Menu className='dropdownFiltro'>
-                    {distritosList.map(item => {
+                    {distritosList.map((item, index) => {
                         return(
-                            <Dropdown.Item eventKey={item.id_localidade}>{item.nome}</Dropdown.Item>
+                            <Dropdown.Item eventKey={item.id_localidade} key={index}>{item.nome}</Dropdown.Item>
                         )
                     })}
                 </Dropdown.Menu>
             </Dropdown>  
         </span>
 
-        <span className='col-3 divMargem'>
+        <span className='col-3 ps-0'>
             <p className='subtituloSeccaoPagina p-0 mt-3'>Concelho <span className='obrigatorio'>*</span></p>
             <Dropdown value={props.valorConcelho} onSelect={props.atualizaConcelho}>
                 {props.valorConcelho !== '' ?
                 <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
-                    {concelhosList.map(item => {
+                    {concelhosList.map((item, index) => {
                         return(
                             <>
                             {props.valorConcelho == item.id_localidade ?
-                            <>{item.nome}</>
+                            <span className="m-0 p-0" key={index}>{item.nome}</span>
                             :
-                            <></>
+                            <span key={index}></span>
                             }
                             </>
                         )
@@ -234,9 +234,9 @@ export const BuscaDistritosConcelhos = (props) => {
                 }
 
                 <Dropdown.Menu className='dropdownFiltro'>
-                    {concelhosList.map(item => {
+                    {concelhosList.map((item, index) => {
                         return(
-                            <Dropdown.Item eventKey={item.id_localidade}>{item.nome}</Dropdown.Item>
+                            <Dropdown.Item eventKey={item.id_localidade} key={index}>{item.nome}</Dropdown.Item>
                         )
                     })}
                 </Dropdown.Menu>

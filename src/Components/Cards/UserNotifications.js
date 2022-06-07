@@ -51,7 +51,7 @@ const EventCards = (props) => {
                             contagemFuture++
                             return(
                                 <span key={index} className='col-4 ps-0 pb-3'>
-                                    <Card style={{cursor: "pointer", minHeight: "100%"}}>
+                                    <Card style={{cursor: "pointer", minHeight: "100%"}} onClick={() => props.showModal(item)}>
                                         <Card.Header style={{textDecoration: "none"}} className='row headerCarta m-0 gx-1'>
                                             <span className='col-9 p-0 tituloNotificacao'>{item.mensagem}</span>
                                             <span className='col-3 p-0 dataNotificacao'>

@@ -47,6 +47,7 @@ function Event(props) {
                     </div>
                 </div>
                 <div className='p-0 m-0 mt-3'>
+                    {console.log(event)}
                     <div className='prevSeccao ms-0'>
                         <h1 className='tituloSeccaoPaginaNotifs'>Destinatários</h1>
                     </div>

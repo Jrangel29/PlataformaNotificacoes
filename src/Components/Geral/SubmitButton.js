@@ -364,11 +364,19 @@ const SubmitButton = (props) => {
                         props.params.envioNotif === 'Semanal' ?
                             <>
                                 {Object.keys(props.params.dias).map(item => {
-                                    if(item === true){
+                                    if(props.params.dias[item] === true){
                                         contagemDias++;
                                     }
                                 })}
-                                {contagemDias !== 0 && props.params.hora !== '' && props.params.dataFim !== '' && props.params.tipologia === 'Serviços' || contagemDias !== 0 && props.params.tipologia === 'Informação' ?
+                                {Object.keys(props.params.mensagens).map(item => {
+                                    if(item !== "meiaHora" && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== ''){
+                                        contagemMomentos++;
+                                    }
+                                    if(item === "meiaHora" && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                        contagemMomentos++;
+                                    }
+                                })}
+                                {contagemDias !== 0 && contagemMomentos !== 0 && props.params.hora !== '' && props.params.dataFim !== '' && props.params.tipologia === 'Serviços' || contagemDias !== 0 && contagemMomentos !== 0 && props.params.tipologia === 'Informação' ?
                                 <span className='row m-0 justify-content-end'>
                                     <Button 
                                         className='col-2' 

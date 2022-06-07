@@ -129,7 +129,7 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
     if(envioNotif === 'Pontual' && momentoUnico === 'Imediato'){
         var diaInicio = new Date();
         var diaImediato = diaInicio.getFullYear() + '-' + ((diaInicio.getMonth() > 8) ? (diaInicio.getMonth() + 1) : ('0' + (diaInicio.getMonth() + 1))) + '-' + ((diaInicio.getDate() > 9) ? diaInicio.getDate() : ('0' + diaInicio.getDate()));
-        var horaImediato = `${diaInicio.getHours()}:${diaInicio.getMinutes()}`;
+        var horaImediato = `${diaInicio.getHours()}:${(diaInicio.getMinutes() < 10) ? `0${diaInicio.getMinutes()}` : diaInicio.getMinutes()}`;
     }
 
     if(envioNotif === 'Diária' || envioNotif === 'Mensal'){
@@ -173,7 +173,7 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
     
     if(tipologia === 'Informação' || tipologia === 'Serviços' || tipologia === 'Personalizada' && paramsPersonalizado.tipoRecetor === 'Casas'){
         casasEscolhidas.map(item => {
-            ObjetoEnvio.destinatarios.push(item.idCasa)
+            ObjetoEnvio.destinatarios.push(item.id)
         })
     }
 
