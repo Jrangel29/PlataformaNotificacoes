@@ -7,7 +7,7 @@ import { getEventSingle } from '../Store/Eventos/Actions';
 import EventNotifications from '../Components/Cards/EventNotifications';
 import Loading from '../Pages/Loading';
 import { Button } from 'react-bootstrap';
-import GroupDetailCards from '../Components/Cards/GroupDetailCards';
+import UserDetailCards from '../Components/Cards/UserDetailCards';
 import '../Styles/User.css';
 
 function Event(props) {
@@ -51,7 +51,7 @@ function Event(props) {
                         <h1 className='tituloSeccaoPaginaNotifs'>Destinatários</h1>
                     </div>
                     <div className='mx-3' style={{padding: "10px 40px"}}>
-                        <GroupDetailCards users={event.users}/>
+                        <UserDetailCards users={event.users}/>
                     </div>
                 </div>
                 <div className='p-0 m-0 mt-3'>

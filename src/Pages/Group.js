@@ -5,7 +5,7 @@ import {Button} from 'react-bootstrap';
 import '../Styles/User.css';
 import NotificationCards from '../Components/Cards/NotificationCards';
 import NotificationModal from '../Components/Modal/NotificationModal';
-import GroupDetailCards from '../Components/Cards/GroupDetailCards';
+import UserDetailCards from '../Components/Cards/UserDetailCards';
 import DeleteNotification from '../Components/Modal/DeleteNotification';
 import DeleteRoutine from '../Components/Modal/DeleteRoutine';
 import SuccessModal from '../Components/Modal/SuccessModal';
@@ -61,7 +61,7 @@ class Group extends React.Component {
                             <p className='subtituloSeccaoPagina'>Descrição</p>
                             <p className='textoSeccaoPagina mb-3'>Este grupo engloba todos os idosos de Lisboa que precisam de receber informação sobre a aleração dos preços nos medicamentos nas farmácias.</p>
                             <p className='subtituloSeccaoPagina'>Membros do grupo</p>
-                            <GroupDetailCards/>
+                            <UserDetailCards/>
                         </div>
                         <div className='mt-4'>
                             <div className='row offset-1 col-10 justify-content-center'>

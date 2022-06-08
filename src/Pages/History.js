@@ -16,7 +16,7 @@ class History extends React.Component {
                         <Filters tipo="Histórico"/>
                     </div>
                     <div style={{padding: "0 40px"}}>
-                        <NotificationCards tipo={"historico"}/>
+                        <NotificationCards tipo='Enviadas'/>
                     </div>
                 </div>
             </div>

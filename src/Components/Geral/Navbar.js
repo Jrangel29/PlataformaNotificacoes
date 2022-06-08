@@ -15,7 +15,7 @@ const BarraNav = () => {
     useEffect(() => {
         if(lugar === "/notifications/create" || lugar === "/events" || stringEvent === '/events'){
             setTipo('Eventos')
-        } else if(lugar === '/users' || stringUser === "/users" || lugar === "/users/create"){
+        } else if(lugar === '/users' || stringUser === "/users" || lugar === "/users/create" || lugar === "/houses" || stringHouse === "/houses" || lugar === "/houses/create"){
             setTipo('Destino')
         } else {
             setTipo('Notifications')

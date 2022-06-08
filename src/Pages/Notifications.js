@@ -41,7 +41,7 @@ class Notifications extends React.Component {
                         <Filters tipo="Notificação"/>
                     </div>
                     <div style={{padding: "0 40px"}}>
-                        <NotificationCards tipo={"notificacoes"} abreModal={this.onOpen} abreModalDelete={this.onOpenDelete}/>
+                        <NotificationCards tipo='Por enviar' abreModal={this.onOpen} abreModalDelete={this.onOpenDelete}/>
                     </div>
                 </div>
                 <NotificationModal show={this.state.showModal} onHide={this.onClose} tipo="notificacoes"/>

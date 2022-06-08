@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { createNewGroup } from '../../Store/Groups/Actions';
 import { updateUserInfo, createNewUser } from '../../Store/Users/Actions';
 import { createNewNotification } from '../../Store/Notifications/Actions';
-import { createNewHouse, getHousePeopleList, updateHouseInfo } from '../../Store/Casas/Actions';
+import { createNewHouse, updateHouseInfo } from '../../Store/Casas/Actions';
 
 const SubmitButton = (props) => {
     

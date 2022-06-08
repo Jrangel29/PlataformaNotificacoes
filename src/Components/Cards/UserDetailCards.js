@@ -3,12 +3,13 @@ import '../../Styles/Cards.css';
 import '../../Styles/Filters.css';
 import {Card} from 'react-bootstrap';
 
-const GroupDetailsCards = (props) => {
+const UserDetailsCards = (props) => {
 
     return(            
         <div className='container m-0 p-0'>
             <div className='row mt-1'>
-                {props.users.map((item, index) => {
+                {props.users.length > 0 ?
+                props.users.map((item, index) => {
                     return(
                         <span key={index} className='col-3 mb-2'>
                             <Card>
@@ -35,10 +36,15 @@ const GroupDetailsCards = (props) => {
                             </Card>
                         </span>
                     )
-                })}
+                })
+                :
+                <span className='col-12' >
+                    Esta casa ainda não tem utilizadores.
+                </span>
+                }
             </div>
         </div>    
     )
 }
 
-export default GroupDetailsCards;
+export default UserDetailsCards;

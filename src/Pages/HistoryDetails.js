@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from '../Components/Geral/Navbar';
 import Header from '../Components/Geral/Header';
 import '../Styles/User.css';
-import GroupDetailCards from '../Components/Cards/GroupDetailCards';
+import UserDetailCards from '../Components/Cards/UserDetailCards';
 import {Table} from 'react-bootstrap';
 
 class HistoryDetails extends React.Component {
@@ -53,7 +53,7 @@ class HistoryDetails extends React.Component {
                                 </tbody>
                             </Table>
                             <p className='subtituloSeccaoPagina'>Interações detalhadas</p>
-                            <GroupDetailCards historico="sim"/>
+                            <UserDetailCards historico="sim"/>
                         </div>
                     </div>
                 </div>
