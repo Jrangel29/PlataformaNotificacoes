@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { createNewGroup } from '../../Store/Groups/Actions';
 import { updateUserInfo, createNewUser } from '../../Store/Users/Actions';
 import { createNewNotification } from '../../Store/Notifications/Actions';
-import { createNewHouse, getHousePeopleList } from '../../Store/Casas/Actions';
+import { createNewHouse, getHousePeopleList, updateHouseInfo } from '../../Store/Casas/Actions';
 
 const SubmitButton = (props) => {
     
@@ -37,6 +37,11 @@ const SubmitButton = (props) => {
     const criaCasa = (nome, id, concelho) => {
         props.openModal();
         dispatch(createNewHouse(nome, id, concelho));
+    };
+
+    const editaCasa = (idCasa, nome, id, concelho) => {
+        props.openModal();
+        dispatch(updateHouseInfo(idCasa, nome, id, concelho));
     };
 
     if(props.tipoForm === "User"){
@@ -428,6 +433,26 @@ const SubmitButton = (props) => {
                             () => criaCasa(props.params.infoUser.nomeCasa, props.params.infoUser.idBox, props.params.infoUser.concelho)
                         } 
                         >Criar Casa</Button>
+                </span>
+                }
+            </>
+        )
+    } else if(props.tipoForm === "CasaEdit"){
+        return(
+            <>
+                {props.params.infoUser.nomeCasa === "" || props.params.infoUser.idBox === "" || props.params.infoUser.distrito === "" || props.params.infoUser.concelho === "" ?
+                <span className='row m-0 justify-content-end'>
+                    <Button className='col-2' variant='custom' disabled>Editar Casa</Button>
+                </span>
+                :
+                <span className='row m-0 justify-content-end'>
+                    <Button 
+                        className='col-2' 
+                        variant='flat'
+                        onClick={
+                            () => editaCasa(props.params.infoUser.idHouse, props.params.infoUser.nomeCasa, props.params.infoUser.idBox, props.params.infoUser.concelho)
+                        } 
+                        >Editar Casa</Button>
                 </span>
                 }
             </>

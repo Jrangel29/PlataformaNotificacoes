@@ -127,7 +127,7 @@ export const BuscaDistritosConcelhos = (props) => {
         )
     }
 
-    if (isLoadingConcelhos || props.concelho == '') {
+    if (isLoadingConcelhos || props.valor == '') {
         return (
             <>
             <span className='col-3 ps-0'>
@@ -172,6 +172,108 @@ export const BuscaDistritosConcelhos = (props) => {
                 </Dropdown>
             </span>
             </>
+        )
+    }
+
+    return(
+        <>
+        <span className='col-3 ps-0'>
+            <p className='subtituloSeccaoPagina p-0 mt-3'>Distrito <span className='obrigatorio'>*</span></p>
+            <Dropdown value={props.valor} onSelect={concelhoSearch}>
+                {props.valor !== '' ?
+                <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
+                    {distritosList.map((item, index) => {
+                        return(
+                            <>
+                            {props.valor == item.id_localidade ?
+                            <span className="m-0 p-0" key={index}>{item.nome}</span>
+                            :
+                            <span key={index}></span>
+                            }
+                            </>
+                        )
+                    })}
+                </Dropdown.Toggle>
+                :
+                <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
+                    Distrito
+                </Dropdown.Toggle>
+                }
+
+                <Dropdown.Menu className='dropdownFiltro'>
+                    {distritosList.map((item, index) => {
+                        return(
+                            <Dropdown.Item eventKey={item.id_localidade} key={index}>{item.nome}</Dropdown.Item>
+                        )
+                    })}
+                </Dropdown.Menu>
+            </Dropdown>  
+        </span>
+
+        <span className='col-3 ps-0'>
+            <p className='subtituloSeccaoPagina p-0 mt-3'>Concelho <span className='obrigatorio'>*</span></p>
+            <Dropdown value={props.valorConcelho} onSelect={props.atualizaConcelho}>
+                {props.valorConcelho !== '' ?
+                <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
+                    {concelhosList.map((item, index) => {
+                        return(
+                            <>
+                            {props.valorConcelho == item.id_localidade ?
+                            <span className="m-0 p-0" key={index}>{item.nome}</span>
+                            :
+                            <span key={index}></span>
+                            }
+                            </>
+                        )
+                    })}
+                </Dropdown.Toggle>
+                :
+                <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
+                    Concelho
+                </Dropdown.Toggle>
+                }
+
+                <Dropdown.Menu className='dropdownFiltro'>
+                    {concelhosList.map((item, index) => {
+                        return(
+                            <Dropdown.Item eventKey={item.id_localidade} key={index}>{item.nome}</Dropdown.Item>
+                        )
+                    })}
+                </Dropdown.Menu>
+            </Dropdown>
+        </span> 
+        </>
+    );
+}
+
+
+export const BuscaDistritosConcelhosEdit = (props) => {
+    const dispatch = useDispatch();
+    
+    const distritosList = useSelector(({ distritos }) => distritos.data)
+    const isLoadingDistrito = useSelector(({ distritos }) => distritos.isLoading)
+
+    const concelhosList = useSelector(({ concelhos }) => concelhos.data)
+    const isLoadingConcelhos = useSelector(({ concelhos }) => concelhos.isLoading)
+
+    useEffect(() => {
+        dispatch(getDistritosList())
+    }, []) 
+
+    useEffect(() => {
+        if(props.valorConcelho !== ''){
+            dispatch(getConcelhos(props.valor))
+        }
+    }, []) 
+
+    const concelhoSearch = (id) => {
+        props.atualiza(id)
+        dispatch(getConcelhos(id))
+    }
+
+    if (isLoadingDistrito || isLoadingConcelhos) {
+        return (
+            <LoadingComponent />
         )
     }
 

@@ -10,20 +10,21 @@ const EventNotifications = (props) => {
 
     let contagemFuture = 0;
     let contagemPast = 0;
-
+    let sorted = props.notificacoes.sort((a, b) => new Date(a.data) - new Date(b.data));
+    
     return(
         <div className='container m-0'>
             <div className='row cartasMainBody'>
-                {props.notificacoes.length !== 0 && props.notificacoes.map((item, index) => {
+                {props.notificacoes.length !== 0 && sorted.map((item, index) => {
 
                     let currentDate = new Date();
-                    let getDate = item.timestamp.substring(0, 10);
+                    let getDate = item.data.substring(0, 10);
                     let dataNova = new Date(getDate);
                     var dataFinal = ((dataNova.getDate() > 9) ? dataNova.getDate() : ('0' + dataNova.getDate()))  + '/' + ((dataNova.getMonth() > 8) ? (dataNova.getMonth() + 1) : ('0' + (dataNova.getMonth() + 1))) + '/' + dataNova.getFullYear();
 
                     let diaSemana = dataNova.getDay()
 
-                    let hora = item.timestamp.substring(11, 16);
+                    let hora = item.data.substring(11, 16);
 
                     if(props.seccao === 'Por Enviar'){
                         if(dataNova >= currentDate){

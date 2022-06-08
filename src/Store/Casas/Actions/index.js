@@ -8,8 +8,11 @@ import {
     CASAS_PESSOAS_GET_ERROR,
     CASAS_PESSOAS_GET_START,
     CASAS_PESSOAS_GET_SUCCESS,
+    CASAS_UPDATE_ERROR,
+    CASAS_UPDATE_START,
+    CASAS_UPDATE_SUCCESS
 } from './Constants';
-import {createHouse, fetchHouses, fetchHousePeople} from '../../../API/Requests';
+import {createHouse, fetchHouses, fetchHousePeople, updateHouse} from '../../../API/Requests';
 
 export const createNewHouse = ( nome = '', id = '', concelho = '') => {
     
@@ -21,6 +24,18 @@ export const createNewHouse = ( nome = '', id = '', concelho = '') => {
         })
         .catch(() => dispatch({type: CASAS_CREATE_ERROR}))
     }
+}
+
+export const updateHouseInfo = ( idHouse = '', nome = '', id = '', concelho = '') => {
+
+  return(dispatch) => {
+      dispatch({ type: CASAS_UPDATE_START });
+      updateHouse(idHouse, nome, id, concelho)
+      .then(Info => {
+          dispatch({type: CASAS_UPDATE_SUCCESS, payload: Info})
+      })
+      .catch(() => dispatch({type: CASAS_UPDATE_ERROR}))
+  }
 }
 
 export const getHousesList = () => {

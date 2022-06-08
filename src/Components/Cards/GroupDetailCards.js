@@ -14,11 +14,14 @@ const GroupDetailsCards = (props) => {
                             <Card>
                                 <Card.Body className='m-0 cartaGrupos'>
                                     <span>
-                                        <p className='tituloUserCarta mb-1'>
-                                            {item.nome}
+                                        <p className='tituloUserCarta mb-2'>
+                                            {item.nomeUser}
                                         </p>
-                                        <p className='mb-0' style={{fontSize: '14px'}}>
-                                            Idade: {item.idade} anos
+                                        <p className='textoSmall mb-0' style={{fontSize: '14px'}}>
+                                            {item.nomeCasa}
+                                        </p>
+                                        <p className='textoSmall mb-0' style={{fontSize: '14px'}}>
+                                            {item.idade} anos
                                         </p>
                                     </span>
                                 </Card.Body>

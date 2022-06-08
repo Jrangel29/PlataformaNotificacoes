@@ -16,6 +16,7 @@ class CreateHouse extends React.Component {
                 nomeCasa: "",
                 idBox: "",
                 distrito: "",
+                nomeDistrito: '',
                 concelho: ""
             }
         }
@@ -33,11 +34,12 @@ class CreateHouse extends React.Component {
         })
     }
 
-    atualizaDistrito = (e) => {
+    atualizaDistrito = (e, nome) => {
         this.setState({
             infoUser: {
                 ...this.state.infoUser,
                 distrito: e,
+                nomeDistrito: nome,
                 concelho: ''
             }
         })
@@ -65,6 +67,7 @@ class CreateHouse extends React.Component {
     }
 
     render(){
+        console.log(this.state)
         return(
             <div>
                 <div className='mainBodyForm container px-0'>

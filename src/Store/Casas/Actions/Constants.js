@@ -9,3 +9,7 @@ export const CASAS_GET_ERROR = 'casas/get:error';
 export const CASAS_PESSOAS_GET_START = 'casasPessoas/get:start';
 export const CASAS_PESSOAS_GET_SUCCESS = 'casasPessoas/get:success';
 export const CASAS_PESSOAS_GET_ERROR = 'casasPessoas/get:error';
+
+export const CASAS_UPDATE_START = 'casas/update:start';
+export const CASAS_UPDATE_SUCCESS = 'casas/update:success';
+export const CASAS_UPDATE_ERROR = 'casas/update:error';

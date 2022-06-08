@@ -4,14 +4,17 @@ import {
     CASAS_GET_START,
     CASAS_GET_SUCCESS,
     CASAS_PESSOAS_GET_START,
-    CASAS_PESSOAS_GET_SUCCESS
+    CASAS_PESSOAS_GET_SUCCESS,
+    CASAS_UPDATE_START,
+    CASAS_UPDATE_SUCCESS
 } from '../Actions/Constants'
 
 const initialState = {
     isLoadingCreate: true,
     singleCasa: {},
     isLoading: true,
-    isLoadingPeople: true
+    isLoadingPeople: true,
+    isLoadingEdit: true
 }
 
 export default (state = initialState, { type, payload }) => {
@@ -33,6 +36,16 @@ export default (state = initialState, { type, payload }) => {
             return { ...state, isLoadingPeople: true };
         case CASAS_PESSOAS_GET_SUCCESS:
             return { ...state, singleCasa: payload, isLoadingPeople: false };
+        case CASAS_UPDATE_START:
+            return {...state, isLoadingEdit:true}
+        case CASAS_UPDATE_SUCCESS:
+            data = state.data.map((casa) => {
+                if (casa.id !== payload.id) {
+                    return casa;
+                }
+                    return payload;
+            });
+            return { ...state, isLoadingEdit: false, data };
         default:
             return state;
     }

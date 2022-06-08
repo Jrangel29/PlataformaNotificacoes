@@ -5,7 +5,7 @@ import Navbar from '../../Components/Geral/Navbar';
 import Header from '../../Components/Geral/Header';
 import SuccessModal from '../../Components/Modal/SuccessModal';
 import SubmitButton from '../../Components/Geral/SubmitButton';
-import { BuscaDistritosConcelhos } from '../../Components/Forms/Hooks';
+import { BuscaDistritosConcelhosEdit } from '../../Components/Forms/Hooks';
 import { getHousePeopleList } from '../../Store/Casas/Actions';
 import Loading from '../../Pages/Loading';
 
@@ -23,7 +23,8 @@ const EditHouse = () => {
             nomeCasa: "",
             idBox: "",
             distrito: "",
-            concelho: ""
+            concelho: "",
+            idHouse: id
         }
     })
 
@@ -36,8 +37,10 @@ const EditHouse = () => {
             setInfo({
                 infoUser: {
                     nomeCasa: casaInfo.nome,
-                    distrito: casaInfo.localidade,
-                    idBox: casaInfo.id_box
+                    distrito: casaInfo.parent_id,
+                    idBox: casaInfo.id_box,
+                    concelho: casaInfo.id_localidade,
+                    idHouse: id
                 }
             })
         }
@@ -102,14 +105,14 @@ const EditHouse = () => {
                     </div>
 
                     <div className='row col-12 mx-3' style={{padding: "0 40px"}}>
-                        <BuscaDistritosConcelhos valor={info.infoUser.distrito} atualiza={atualizaDistrito} valorConcelho={info.infoUser.concelho} atualizaConcelho={atualizaConcelho}/>
+                        <BuscaDistritosConcelhosEdit valor={info.infoUser.distrito} atualiza={atualizaDistrito} valorConcelho={info.infoUser.concelho} atualizaConcelho={atualizaConcelho}/>
                     </div>
 
                     <span className='row m-0 mt-2 justify-content-end' style={{padding: "0 40px"}}>
                         <p className='col-2 indicaObrigatorio'>*Obrigatório</p>
                     </span>
                     <div style={{padding: "0 40px"}}>
-                        <SubmitButton params={info} openModal={onOpen} tipoForm="Casa"/>
+                        <SubmitButton params={info} openModal={onOpen} tipoForm="CasaEdit"/>
                     </div>
                 </div>
             </div>
