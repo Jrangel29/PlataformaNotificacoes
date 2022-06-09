@@ -8,6 +8,7 @@ import Plus from '../../Images/Plus.svg';
 import {Link} from 'react-router-dom';
 import Loading from '../../Pages/Loading';
 import { getNotifications } from '../../Store/Notifications/Actions';
+import NotificationModal from '../../Components/Modal/NotificationModal';
 
 const NotificationCards = (props) => {
 
@@ -15,6 +16,7 @@ const NotificationCards = (props) => {
     
     const notificationList = useSelector(({ notificacoes }) => notificacoes.data)
     const isLoadingAll = useSelector(({ notificacoes }) => notificacoes.isLoadingAll)
+    const [modal, setModal] = useState([false, {}]);
 
     useEffect(() => {
         dispatch(getNotifications())
@@ -41,14 +43,14 @@ const NotificationCards = (props) => {
                         return(
                             <span key={index} className='col-4 ps-0 pb-3'>
                                 <Card style={{cursor: "pointer", minHeight: "100%"}}>
-                                    <Card.Header as={Link} to="/history/details" style={{textDecoration: "none"}} className='row headerCarta m-0 gx-1'>
+                                    <Card.Header onClick={() => setModal([true, item])} style={{textDecoration: "none"}} className='row headerCarta m-0 gx-1'>
                                         <span className='col-9 p-0 tituloNotificacao'>{item.mensagem}</span>
                                         <span className='col-3 p-0 dataNotificacao'>
                                             {dataFinal}
                                         </span>
                                     </Card.Header>
                                     
-                                    <Card.Body as={Link} to="/history/details" style={{textDecoration: "none", color: "black"}} className='bodyCarta m-0'>
+                                    <Card.Body onClick={() => setModal([true, item])} style={{textDecoration: "none", color: "black"}} className='bodyCarta m-0'>
                                         <Card.Text className='p-0' style={{fontSize: '14px'}}>O Benfica defronta o Liverpool em casa, para a Champions League, amanhã.</Card.Text>
                                     </Card.Body>
                                 </Card>
@@ -57,6 +59,7 @@ const NotificationCards = (props) => {
                     }
                 })}
             </div>
+            <NotificationModal show={modal[0]} onHide={() => setModal([false, {}])} tipo="notificacoes" info={modal[1]}/>
         </div>
     )
 }

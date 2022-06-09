@@ -85,17 +85,16 @@ export const BuscaTipologiasNotificacoes = (props) => {
 
                 <Dropdown.Menu className='dropdownFiltro'>
                     {tipologiaList.map((item, index) => {
-                        return(
-                            <Dropdown.Item key={index} onClick={
-                                item.nome === "Informação" ?
-                                () => props.mudaForm(item.nome, item.id_tipologia, "Combustíveis")
-                                :
-                                item.nome === "Saúde" ?
-                                () => props.mudaForm(item.nome, item.id_tipologia, "Inatividade")
-                                :
-                                () => props.mudaForm(item.nome, item.id_tipologia, "nao")
-                            }>{item.nome}</Dropdown.Item>
-                        )
+                        if(item.id_tipologia <= 6){
+                            return(
+                                <Dropdown.Item key={index} onClick={
+                                    item.nome === "Informação" ?
+                                    () => props.mudaForm(item.nome, item.id_tipologia, "Combustíveis")
+                                    :
+                                    () => props.mudaForm(item.nome, item.id_tipologia, "nao")
+                                }>{item.nome}</Dropdown.Item>
+                            )
+                        }
                     })}
                 </Dropdown.Menu>
             </Dropdown>

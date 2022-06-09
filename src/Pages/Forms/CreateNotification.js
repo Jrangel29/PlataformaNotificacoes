@@ -90,7 +90,9 @@ class CreateNotification extends React.Component {
                     descricao: ''},
                 quartoHora: {
                     active: false, 
-                    message: ''},
+                    message: '',
+                    tituloBlade: '',
+                    descricao: ''},
                 minutos5: {
                     active: false, 
                     message: ''},
@@ -740,12 +742,32 @@ class CreateNotification extends React.Component {
                     }
                 }
             })
-        } else{
+        } else if(escolhido === 'meiaHoraDescricaoBlade'){
             this.setState({
                 mensagens:{
                     ...this.state.mensagens,
                     meiaHora: {
                         ...this.state.mensagens.meiaHora,
+                        descricao: escrito
+                    }
+                }
+            })
+        } else if(escolhido === 'quartoHoraTituloBlade'){
+            this.setState({
+                mensagens:{
+                    ...this.state.mensagens,
+                    quartoHora: {
+                        ...this.state.mensagens.quartoHora,
+                        tituloBlade: escrito
+                    }
+                }
+            })
+        } else {
+            this.setState({
+                mensagens:{
+                    ...this.state.mensagens,
+                    quartoHora: {
+                        ...this.state.mensagens.quartoHora,
                         descricao: escrito
                     }
                 }
@@ -817,25 +839,17 @@ class CreateNotification extends React.Component {
 
                                 <span className='col-3 p-0 me-3'>
                                     <p className='subtituloSeccaoPagina p-0' style={{ marginTop: "5px"}}>Subcategoria</p>
-                                    {this.state.tipologia === "Informação" || this.state.tipologia === "Saúde" ?
+                                    {this.state.tipologia === "Informação" ?
                                     <Dropdown>
                                         <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
                                             {this.state.categoriaInfo}
                                         </Dropdown.Toggle>
-                                        {this.state.tipologia === "Informação" ?
                                         <Dropdown.Menu className='dropdownFiltro'>
                                             <Dropdown.Item onClick={() => this.alteraFormulario(this.state.tipologia, this.state.idTipologia, "Combustíveis")}>Combustíveis</Dropdown.Item>
                                             <Dropdown.Item onClick={() => this.alteraFormulario(this.state.tipologia, this.state.idTipologia, "Farmácias de Serviço")}>Farmácias de Serviço</Dropdown.Item>
                                             <Dropdown.Item onClick={() => this.alteraFormulario(this.state.tipologia, this.state.idTipologia, "Feriados")}>Feriados</Dropdown.Item>
                                             <Dropdown.Item onClick={() => this.alteraFormulario(this.state.tipologia, this.state.idTipologia, "Greves")}>Greves</Dropdown.Item>
                                         </Dropdown.Menu>
-                                        :
-                                        <Dropdown.Menu className='dropdownFiltro'>
-                                            <Dropdown.Item onClick={() => this.alteraFormulario(this.state.tipologia, this.state.idTipologia, "Inatividade")}>Inatividade</Dropdown.Item>
-                                            <Dropdown.Item onClick={() => this.alteraFormulario(this.state.tipologia, this.state.idTipologia, "Ingestão de Líquidos")}>Ingestão de Líquidos</Dropdown.Item>
-                                            <Dropdown.Item onClick={() => this.alteraFormulario(this.state.tipologia, this.state.idTipologia, "Medicação")}>Medicação</Dropdown.Item>
-                                        </Dropdown.Menu>
-                                        }
                                     </Dropdown>
                                     :
                                     <Dropdown>

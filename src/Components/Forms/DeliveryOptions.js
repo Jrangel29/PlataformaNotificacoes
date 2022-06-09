@@ -28,9 +28,7 @@ export const DeliveryOptions = (props) => {
                                 props.tipo === 'Informação' 
                                 || props.tipo === 'Programas' 
                                 || props.tipo === 'Serviços' 
-                                || props.subSaude === 'Inatividade' 
-                                || props.subSaude === 'Ingestão de Líquidos' 
-                                || props.subSaude === 'Medicação' 
+                                || props.tipo === 'Saúde'
                                 || props.verificaMomento === 'Imediato'
                                 || props.verificaMomento === 'Hora do dia atual' 
                                 || props.periodicidade === 'Diária'
@@ -57,9 +55,7 @@ export const DeliveryOptions = (props) => {
                                 props.tipo === 'Informação' 
                                 || props.tipo === 'Programas' 
                                 || props.tipo === 'Serviços' 
-                                || props.subSaude === 'Inatividade' 
-                                || props.subSaude === 'Ingestão de Líquidos' 
-                                || props.subSaude === 'Medicação' 
+                                || props.tipo === 'Saúde' 
                                 || props.verificaMomento === 'Imediato' 
                                 || props.verificaMomento === 'Hora do dia atual'
                                 || props.periodicidade === 'Diária' ? true : false
@@ -84,9 +80,7 @@ export const DeliveryOptions = (props) => {
                             disabled={
                                 props.tipo === 'Programas' 
                                 || props.tipo === 'Serviços' 
-                                || props.subSaude === 'Inatividade' 
-                                || props.subSaude === 'Ingestão de Líquidos'
-                                || props.subSaude === 'Medicação' 
+                                || props.tipo === 'Saúde' 
                                 || props.verificaMomento === 'Hora do dia atual'
                                 || props.verificaMomento === 'Imediato' ? true : false
                             }
@@ -110,9 +104,7 @@ export const DeliveryOptions = (props) => {
                             disabled={
                                 props.tipo === 'Programas' 
                                 || props.tipo === 'Serviços' 
-                                || props.subSaude === 'Inatividade' 
-                                || props.subSaude === 'Ingestão de Líquidos' 
-                                || props.subSaude === 'Medicação' 
+                                || props.tipo === 'Saúde' 
                                 || props.verificaMomento === 'Hora do dia atual'
                                 || props.verificaMomento === 'Imediato' ? true : false
                             }
@@ -123,7 +115,7 @@ export const DeliveryOptions = (props) => {
                     </td>
                 </tr>
 
-                <tr>
+                {/*<tr>
                     <td>
                         <Form.Check 
                             type="checkbox" 
@@ -147,7 +139,7 @@ export const DeliveryOptions = (props) => {
                     <td>
                         <input type="text" value={props.momentos.horaEspecifica.message} placeholder='Mensagem do pop-up (Max. 50 caracteres)' onChange={props.changeMensagem} className={props.momentos.horaEspecifica.active === true ? 'inputsForms w-100 py-1' : 'inputsFormsDisabled'} id='horaEspecifica' maxLength="50"/>
                     </td>
-                </tr>
+                        </tr>*/}
 
                 <tr>
                     <td>
@@ -164,9 +156,7 @@ export const DeliveryOptions = (props) => {
                                 || props.tipo === 'Programas' && props.verificaMomento !== 'Imediato'
                                 || props.tipo === 'Serviços' && props.verificaMomento !== 'Imediato'
                                 || props.tipo === 'Agenda' && props.verificaMomento !== 'Imediato'
-                                || props.subSaude === 'Inatividade' && props.verificaMomento !== 'Imediato'
-                                || props.subSaude === 'Ingestão de Líquidos' && props.verificaMomento !== 'Imediato'
-                                || props.subSaude === 'Medicação' && props.verificaMomento !== 'Imediato' ? true : false
+                                || props.tipo === 'Saúde' && props.verificaMomento !== 'Imediato' ? true : false
                             }
                             onChange={props.changeMomento}/>
                     </td>
@@ -175,7 +165,7 @@ export const DeliveryOptions = (props) => {
                     </td>
                 </tr>
 
-                <tr>
+                {/*<tr>
                     <td>
                         <Form.Check 
                             type="checkbox" 
@@ -199,7 +189,7 @@ export const DeliveryOptions = (props) => {
                     <td>
                         <input type="text" value={props.momentos.intervaloHoras.message} placeholder='Mensagem do pop-up (Max. 50 caracteres)' onChange={props.changeMensagem} className={props.momentos.intervaloHoras.active === true ? 'inputsForms w-100 py-1' : 'inputsFormsDisabled'} id='intervaloHoras' maxLength="50"/>
                     </td>
-                </tr>
+                </tr>*/}
 
                 <tr>
                     <td>
@@ -215,9 +205,7 @@ export const DeliveryOptions = (props) => {
                                 props.tipo === 'Informação' 
                                 || props.tipo === 'Programas' 
                                 || props.tipo === 'Serviços' 
-                                || props.subSaude === 'Inatividade' 
-                                || props.subSaude === 'Ingestão de Líquidos' 
-                                || props.subSaude === 'Medicação' 
+                                || props.tipo === 'Saúde'
                                 || props.verificaMomento === 'Imediato' ? true : false
                             }
                             onChange={props.changeMomento}/>
@@ -239,11 +227,8 @@ export const DeliveryOptions = (props) => {
                             className='py-1'
                             disabled={
                                 props.tipo === 'Informação' 
-                                || props.tipo === 'Programas' 
-                                || props.tipo === 'Serviços' 
-                                || props.subSaude === 'Inatividade' 
-                                || props.subSaude === 'Ingestão de Líquidos' 
-                                || props.subSaude === 'Medicação' 
+                                || props.tipo === 'Programas'
+                                || props.tipo === 'Saúde' 
                                 || props.verificaMomento === 'Imediato' ? true : false
                             }
                             onChange={props.changeMomento}/>
@@ -271,14 +256,20 @@ export const DeliveryOptions = (props) => {
                                 props.tipo === 'Informação' 
                                 || props.tipo === 'Programas' 
                                 || props.tipo === 'Serviços' 
-                                || props.subSaude === 'Inatividade' 
-                                || props.subSaude === 'Ingestão de Líquidos' 
                                 || props.verificaMomento === 'Imediato' ? true : false
                             }
                             onChange={props.changeMomento}/>
                     </td>
                     <td>
                         <input type="text" value={props.momentos.quartoHora.message} placeholder='Mensagem do pop-up (Max. 50 caracteres)' onChange={props.changeMensagem} className={props.momentos.quartoHora.active === true ? 'inputsForms w-100 py-1' : 'inputsFormsDisabled'} id='quartoHora' maxLength="50"/>
+                        {props.tipo === 'Saúde' ? 
+                        <>
+                            <p className={props.momentos.quartoHora.active === true ? 'p-0 BladeSection' : 'p-0 BladeSectionDisabled'} style={props.momentos.quartoHora.active === true ? {display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '2px'} : null}>Blade horizontal <OverlayTrigger placement='right' delay={{ show: 250, hide: 400}} overlay={BladeTooltip}><img src={InformationIcon} style={{width: 'auto', height: '16px', margin: '0', marginLeft:'10px', padding: '0'}}/></OverlayTrigger></p>
+                            <input type="text" value={props.momentos.quartoHora.tituloBlade} placeholder='Título do blade (Max. 50 caracteres)' onChange={props.blade} className={props.momentos.quartoHora.active === true ? 'inputsForms w-100' : 'inputsFormsDisabled'} id='quartoHoraTituloBlade' maxLength="50"/>
+                            <textarea rows={3} value={props.momentos.quartoHora.descricao} placeholder='Descrição do blade (Max. 150 caracteres)' onChange={props.blade} className={props.momentos.quartoHora.active === true ? 'inputsForms mt-2 w-100 pb-1' : 'inputsFormsDisabled mt-2'} id='quartoHoraDescricaoBlade' maxLength="150"/>
+                        </>
+                        :
+                        <></>}
                     </td>
                 </tr> 
 
@@ -296,9 +287,7 @@ export const DeliveryOptions = (props) => {
                                 props.tipo === 'Informação' 
                                 || props.tipo === 'Serviços' 
                                 || props.tipo === 'Agenda' 
-                                || props.subSaude === 'Inatividade' 
-                                || props.subSaude === 'Ingestão de Líquidos' 
-                                || props.subSaude === 'Medicação' 
+                                || props.tipo === 'Saúde'
                                 || props.verificaMomento === 'Imediato' ? true : false
                             }
                             onChange={props.changeMomento}/>
@@ -320,10 +309,8 @@ export const DeliveryOptions = (props) => {
                             className='py-1'
                             disabled={
                                 props.tipo === 'Informação' 
-                                || props.tipo === 'Serviços' 
                                 || props.tipo === 'Agenda' 
-                                || props.subSaude === 'Inatividade' 
-                                || props.subSaude === 'Ingestão de Líquidos' 
+                                || props.tipo === 'Serviços' 
                                 || props.verificaMomento === 'Imediato' ? true : false
                             }
                             onChange={props.changeMomento}/>

@@ -3,19 +3,38 @@ import '../../Styles/Modal.css';
 import {Modal} from 'react-bootstrap';
 
 function NotificationModal (props) {
+
+    if(!props.info){
+        return(
+            <></>
+        )
+    }
+
     return(
         <Modal
             {...props}
             centered
             size="lg"
         >
-            
+            {console.log(props.info)}
             <Modal.Header className='tituloModal' closeButton closeVariant='white'>
-                Tomar o medicamento para os diabetes
+                {props.info.mensagem}
             </Modal.Header>
             <Modal.Body>
-                <h1 className='tituloCategoriasModal'>Descrição</h1>
-                    <p className='textoModal'>Olá Luísa, não se esqueça de tomar os medicamentos dos diabetes.</p>
+                <h1 className='tituloCategoriasModal'>Evento</h1>
+                    <p className='textoModal'>{props.info.nome}</p>
+
+                <h1 className='tituloCategoriasModal'>Informação do rodapé</h1>
+                    <span className='row'>
+                        <span className='col-5 me-0 pe-0'>
+                            <h2 className='subtituloCategoriasModal'>Título do rodapé</h2>
+                            <p className='textoModal'>{props.info.titulo !== null ? props.info.titulo : 'Este evento não tem título de rodapé.'}</p>
+                        </span>
+                        <span className='col-6 ms-0 ps-0'>
+                            <h2 className='subtituloCategoriasModal'>Descrição do rodapé</h2>
+                            <p className='textoModal'>{props.info.descricao !== null ? props.info.descricao : 'Este evento não tem descrição de rodapé.'}</p>
+                        </span>
+                    </span>
 
                 <h1 className='tituloCategoriasModal'>Momentos de Entrega</h1>
                     <span className='row'>
