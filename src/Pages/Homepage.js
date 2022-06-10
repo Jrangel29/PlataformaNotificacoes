@@ -29,7 +29,6 @@ class Homepage extends React.Component {
     render(){
         return(
             <div className='mainHomepage'>
-                {/*this.api()*/}
                 <div className='conteudoHomepage container'>
                     <div className='fila row'>
                         <Link to="/events/create" className='quadradoAzul col-xs-4 col-md-3'>

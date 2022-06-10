@@ -29,7 +29,7 @@ const UserCards = (props) => {
             <div className={props.pagina === "criaGrupo" ? 'row cartasForm' : 'row cartasMainBody'}>
                 {usersList.map((item, index) => {
                     return(
-                        <Accordion key={index} defaultActiveKey="0" className={props.pagina === "criaGrupo" ? 'col-6 pb-1' : 'col-4 pb-3'}>
+                        <Accordion key={index} defaultActiveKey="0" className={props.pagina === "criaGrupo" ? 'col-6 pb-1' : 'col-3 pb-3'}>
                             <Accordion.Item eventKey="1">
                                 <Accordion.Header className='m-0'>
                                     <span>
@@ -50,8 +50,7 @@ const UserCards = (props) => {
                                 </Accordion.Body>
                                 :
                                 <Accordion.Body className='footerUser row mx-0 justify-content-center'>
-                                    <Button as={Link} to={`/users/${item.id_utilizador}`} className='textoBtnUser col-5 mx-2' variant='flat'>Mais informação</Button>
-                                    <Button as={Link} to="/notifications/create" className='textoBtnUser col-5 mx-2' variant='flat'>Criar evento</Button>
+                                    <Button as={Link} to={`/users/${item.id_utilizador}`} className='textoBtnUser col-9 mx-2' variant='flat'>Mais informação</Button>
                                 </Accordion.Body>
                                 }
                             </Accordion.Item>

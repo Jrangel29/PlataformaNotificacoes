@@ -45,7 +45,7 @@ const HouseCards = () => {
             <div className='row cartasMainBody'>
                 {casasList.map((item, index) => {
                     return(
-                    <Accordion defaultActiveKey="0" className='col-4 pb-3'>
+                    <Accordion defaultActiveKey="0" className='col-3 pb-3'>
                         <Accordion.Item eventKey="1">
                             <Accordion.Header className='m-0'>
                                 <span>
@@ -63,8 +63,7 @@ const HouseCards = () => {
                                 </span>
                             </Accordion.Header>
                             <Accordion.Body className='footerUser row mx-0 justify-content-center'>
-                                <Button as={Link} to={`/houses/${item.id_casa}`} className='textoBtnUser col-5 mx-2' variant='flat'>Mais informação</Button>
-                                <Button as={Link} to="/notifications/create" className='textoBtnUser col-5 mx-2' variant='flat'>Criar evento</Button>
+                                <Button as={Link} to={`/houses/${item.id_casa}`} className='textoBtnUser col-10 mx-2' variant='flat'>Mais informação</Button>
                             </Accordion.Body>
                         </Accordion.Item>
                     </Accordion>
