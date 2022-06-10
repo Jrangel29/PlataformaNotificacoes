@@ -3,9 +3,10 @@ import '../Styles/Homepage.css';
 //import axios from 'axios';
 import lapis from '../Images/Lapis.svg';
 import historico from '../Images/Historico.svg';
-import pessoa from '../Images/Pessoa.svg';
+import event from '../Images/Event.svg';
 import pessoas from '../Images/Pessoas.svg';
 import rotina from '../Images/Rotina.svg';
+import house from '../Images/House.svg';
 import sino from '../Images/Sino.svg';
 import {Link} from 'react-router-dom';
 
@@ -31,29 +32,29 @@ class Homepage extends React.Component {
                 {/*this.api()*/}
                 <div className='conteudoHomepage container'>
                     <div className='fila row'>
+                        <Link to="/events/create" className='quadradoAzul col-xs-4 col-md-3'>
+                            <img src={lapis} className="imagemHomepage"/>
+                            <>Criar eventos</>
+                        </Link>
+                        <Link to="/events" className='quadradoAzul col-xs-4 col-md-3'>
+                            <img src={event} className="imagemHomepage"/>
+                            <>Eventos criados</>
+                        </Link>
                         <Link to="/notifications" className='quadradoAzul col-xs-4 col-md-3'>
                             <img src={sino} className="imagemHomepage"/>
-                            <>Notificações</>
-                        </Link>
-                        <Link to="/groups" className='quadradoAzul col-xs-4 col-md-3'>
-                            <img src={pessoas} className="imagemHomepage"/>
-                            <>Grupos</>
+                            <>Notificações por enviar</>
                         </Link>
                         <Link to="/history" className='quadradoAzul col-xs-4 col-md-3'>
                             <img src={historico} className="imagemHomepage"/>
-                            <>Histórico</>
+                            <>Notificações enviadas</>
                         </Link>
                         <Link to="/users" className='quadradoAzul col-xs-4 col-md-3'>
-                            <img src={pessoa} className="imagemHomepage"/>
+                            <img src={pessoas} className="imagemHomepage"/>
                             <>Utilizadores</>
                         </Link>
-                        <Link to="/routines" className='quadradoAzul col-xs-4 col-md-3'>
-                            <img src={rotina} className="imagemHomepage"/>
-                            <>Rotinas</>
-                        </Link>
-                        <Link to="/templates" className='quadradoAzul col-xs-4 col-md-3'>
-                            <img src={lapis} className="imagemHomepage"/>
-                            <>Templates</>
+                        <Link to="/houses" className='quadradoAzul col-xs-4 col-md-3'>
+                            <img src={house} className="imagemHomepage"/>
+                            <>Casas</>
                         </Link>
                     </div>
                 </div>
