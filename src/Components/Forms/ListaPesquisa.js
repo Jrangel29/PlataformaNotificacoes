@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getHousesList, getHousePeopleList } from '../../Store/Casas/Actions';
+import { getUsersList } from '../../Store/Users/Actions';
 import { getTipologiaUsersList } from '../../Store/Users/Actions';
 import LoadingComponent from '../../Components/Geral/LoadingComponent';
 
@@ -229,14 +230,32 @@ export const CasasPesquisa = (props) => {
 
     const casasList = useSelector(({ casas }) => casas.data)
     const isLoadingCasas = useSelector(({ casas }) => casas.isLoading)
+    const usersList = useSelector(({ utilizadores }) => utilizadores.data)
+    const isLoadingUsers = useSelector(({ utilizadores }) => utilizadores.isLoading)
 
     let contagem = 0;
 
     useEffect(() => {
         dispatch(getHousesList())
+        dispatch(getUsersList())
     }, [])
 
-    if (isLoadingCasas) {
+    const adicionaCasa = (info) => {
+        let contaUser = 0;
+        let user;
+        usersList.map((item) => {
+            //console.log(item.id_casa, info.id)
+            if(item.id_casa === info.id && contaUser === 0){
+                contaUser++;
+                //console.log({idCasa: item.id_casa, nomeCasa: item.casa, idUser: item.id_utilizador, nome: item.utilizador})
+                user = {idCasa: item.id_casa, nomeCasa: item.casa, idUser: item.id_utilizador, nome: item.utilizador, informacao: item.info}
+            }
+        })
+        contaUser--;
+        props.adiciona(info, user)
+    }
+
+    if (isLoadingCasas || isLoadingUsers) {
         return (
             <LoadingComponent />
         )
@@ -246,7 +265,6 @@ export const CasasPesquisa = (props) => {
         <>
             <input type="text" placeholder="Pesquisa" className='barraPesquisaForm py-1 px-3 w-100'/>
             <span className='row ListaUsersFormCasa'>
-                {}
                 {casasList.map((item, index) => {
                     contagem = 0;
                     return(
@@ -262,7 +280,7 @@ export const CasasPesquisa = (props) => {
                                 <span key={index} className='col-12 row itemListaUsersFormCasa m-0'>
                                     <p className='col-8 infoCasaForm'><b>{item.nome}</b></p>
                                     <span className='col-4'>
-                                        <p className='btn btnListaUser' onClick={() => props.adiciona({id: item.id_casa, nome: item.nome})}>Escolher</p>
+                                        <p className='btn btnListaUser' onClick={() => adicionaCasa({id: item.id_casa, nome: item.nome})}>Escolher</p>
                                     </span>
                                 </span>
                             :
@@ -278,7 +296,7 @@ export const CasasPesquisa = (props) => {
                         <span key={index} className='col-12 row itemListaUsersFormCasa m-0'>
                             <p className='col-8 infoCasaForm'><b>{item.nome}</b></p>
                             <span className='col-4'>
-                                <p className='btn btnListaUser' onClick={() => props.adiciona({id: item.id_casa, nome: item.nome})}>Escolher</p>
+                                <p className='btn btnListaUser' onClick={() => adicionaCasa({id: item.id_casa, nome: item.nome})}>Escolher</p>
                             </span>
                         </span>
                         }

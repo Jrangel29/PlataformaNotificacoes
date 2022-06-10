@@ -181,17 +181,9 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
         notificacoes:[]
     }
 
-    if(tipologia === 'Agenda' || tipologia === 'Programas' || tipologia === 'Saúde' || tipologia === 'Personalizada' && paramsPersonalizado.tipoRecetor === 'Recetores Individuais'){
-        usersEscolhidos.map(item => {
-            ObjetoEnvio.destinatarios.push(item.idUser)
-        })
-    }
-    
-    if(tipologia === 'Informação' || tipologia === 'Serviços' || tipologia === 'Personalizada' && paramsPersonalizado.tipoRecetor === 'Casas'){
-        casasEscolhidas.map(item => {
-            ObjetoEnvio.destinatarios.push(item.id)
-        })
-    }
+    usersEscolhidos.map(item => {
+        ObjetoEnvio.destinatarios.push(item.idUser)
+    })
 
     if(envioNotif === 'Pontual' && momentoUnico === 'Dia e Hora'){
         let diasEvento = GetUnique(diaInicio, mensagens);

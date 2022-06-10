@@ -804,17 +804,21 @@ class CreateNotification extends React.Component {
         })
     }
 
-    addCasa = (val) => {
+    addCasa = (val, user) => {
         this.setState({
+            usersEscolhidos: [...this.state.usersEscolhidos, user],
             casasEscolhidas: [...this.state.casasEscolhidas, val]
         })
     }
 
     removeCasa = (val) => {
         let array = [...this.state.casasEscolhidas];
+        let array2 = [...this.state.usersEscolhidos];
         array.splice(val, 1)
+        array2.splice(val, 1)
         this.setState({
-            casasEscolhidas: array
+            casasEscolhidas: array,
+            usersEscolhidos: array2
         })
     }
 
@@ -822,6 +826,7 @@ class CreateNotification extends React.Component {
         return(
             <div>
                 <div className='mainBodyForm container px-0'>
+                    {console.log(this.state)}
                     <Navbar/>
                     <Header nome="Criar Evento" detalhe="sim" apagaMuda="nao"/>
                     <PreviewNotif tipo={this.state.tipologia} tipoPers={this.state.paramsPersonalizado.tipoRecetor} users={this.state.usersEscolhidos} casas={this.state.casasEscolhidas} personalizado={this.state.paramsPersonalizado} mensagens={this.state.mensagens} titulo={this.state.nomeItem} sub={this.state.categoriaInfo}/>
@@ -1036,7 +1041,10 @@ class CreateNotification extends React.Component {
                         <SubmitButton params={this.state} openModal={this.onOpen} tipoForm="Notification"/>
                     </div>
                 </div>
+                {this.state.tipologia === 'Agenda' || this.state.tipologia === 'Programas' || this.state.tipologia === 'Saúde' || this.state.tipologia === 'Personalizada' && this.state.paramsPersonalizado.tipoRecetor === 'Recetores Individuais' ?
                 <UserPreferencesModal show={this.state.mostraModalInfo} users={this.state.usersEscolhidos} onHide={this.onCloseInfo}/>
+                :
+                <></>}
                 <SuccessModal show={this.state.mostraModal} onHide={this.onClose} tiponotif="CriarNotificação"/>
             </div>
         )
