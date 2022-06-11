@@ -6,7 +6,8 @@ import {
     CASAS_PESSOAS_GET_START,
     CASAS_PESSOAS_GET_SUCCESS,
     CASAS_UPDATE_START,
-    CASAS_UPDATE_SUCCESS
+    CASAS_UPDATE_SUCCESS,
+    CASAS_DELETE_SUCCESS
 } from '../Actions/Constants'
 
 const initialState = {
@@ -46,6 +47,8 @@ export default (state = initialState, { type, payload }) => {
                     return payload;
             });
             return { ...state, isLoadingEdit: false, data };
+        case CASAS_DELETE_SUCCESS:
+            return { ...state };
         default:
             return state;
     }

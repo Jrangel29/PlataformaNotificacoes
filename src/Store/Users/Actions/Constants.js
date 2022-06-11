@@ -17,3 +17,7 @@ export const TIPOLOGIA_USERS_GET_ERROR = 'tipologiaUsers/get:error';
 export const USER_UPDATE_START = 'user/update:start';
 export const USER_UPDATE_SUCCESS = 'user/update:success';
 export const USER_UPDATE_ERROR = 'user/update:error';
+
+export const USER_DELETE_START = 'user/delete:start';
+export const USER_DELETE_SUCCESS = 'user/delete:success';
+export const USER_DELETE_ERROR = 'user/delete:error';

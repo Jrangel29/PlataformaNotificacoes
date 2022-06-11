@@ -1,13 +1,13 @@
 import React from 'react';
 import '../../Styles/App.css';
 import BackArrow from './BackArrow';
-import Lixo from '../../Images/LixoPreto.svg';
 import Editar from '../../Images/EditarPreto.svg';
 import DeleteUser from '../Modal/DeleteUser';
 import DeleteGroup from '../Modal/DeleteGroup';
 import DeleteHouse from '../Modal/DeleteHouse';
 import SuccessModal from '../Modal/SuccessModal';
 import {Link} from 'react-router-dom';
+import DeleteButton from './DeleteButton';
 
 class Header extends React.Component {
 
@@ -50,7 +50,7 @@ class Header extends React.Component {
                             <img className="topIcons px-4" src={Editar}/>    
                         </Link>
                         }
-                        <img className="topIcons" style={{marginRight: "40px", cursor: "pointer"}} onClick={() => this.onOpen()} src={Lixo}/>
+                        <DeleteButton tipo={this.props.nome} open={this.onOpen} id={this.props.id}/>
                         {this.props.nome === "Utilizadores" ?
                         <DeleteUser show={this.state.showDelete} onHide={this.onClose}/>
                         :

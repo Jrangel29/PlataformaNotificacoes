@@ -35,6 +35,14 @@ export const fetchSingleUser = (id) =>
   fetch(`http://geo-navsafety.ua.pt:443/overtv/users/${id}`)
     .then(response => response.json())
 
+export const deleteUser = (id) => {
+    fetch(`http://geo-navsafety.ua.pt:443/overtv/users/${id}`, {
+        method: 'DELETE'
+    })
+}
+
+
+
 //CASAS
 
 export const createHouse = (nome, idBox, concelho) => {
@@ -66,6 +74,12 @@ export const fetchHouses = () =>
 export const fetchHousePeople = (id) =>
     fetch(`http://geo-navsafety.ua.pt:443/overtv/casas/${id}`)
       .then(response => response.json())
+
+export const deleteHouse = (id) => {
+    fetch(`http://geo-navsafety.ua.pt:443/overtv/casas/${id}`, {
+        method: 'DELETE'
+    })
+}
 
 
 
@@ -112,6 +126,13 @@ export const fetchEventos = () =>
 export const fetchSingleEvent = (id) =>
     fetch(`http://geo-navsafety.ua.pt:443/overtv/eventos/${id}`)
       .then(response => response.json())
+
+
+export const deleteEvent = (id) => {
+    fetch(`http://geo-navsafety.ua.pt:443/overtv/eventos/${id}`, {
+        method: 'DELETE'
+    })
+}
 
 
 //NOTIFICATIONS

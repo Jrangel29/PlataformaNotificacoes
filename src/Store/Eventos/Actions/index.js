@@ -5,8 +5,11 @@ import {
     EVENT_GET_SUCCESS,
     EVENT_GET_ERROR,
     EVENT_GET_START,
+    EVENT_DELETE_ERROR,
+    EVENT_DELETE_START,
+    EVENT_DELETE_SUCCESS
 } from './Constants';
-import {fetchEventos, fetchSingleEvent} from '../../../API/Requests';
+import {fetchEventos, fetchSingleEvent, deleteEvent} from '../../../API/Requests';
 
 export const getEventsList = () => {
     return (dispatch) => {
@@ -29,5 +32,17 @@ export const getEventSingle = (id) => {
             dispatch({ type: EVENT_GET_SUCCESS, payload: Event })
         })
         .catch(() => dispatch({ type: EVENT_GET_ERROR }))
+    }
+  }
+
+export const deleteEventSingle = (id) => {
+    return (dispatch) => {
+      dispatch({ type: EVENT_DELETE_START });
+  
+      deleteEvent(id)
+        .then(Event => {
+            dispatch({ type: EVENT_DELETE_SUCCESS, payload: Event })
+        })
+        .catch(() => dispatch({ type: EVENT_DELETE_ERROR }))
     }
   }

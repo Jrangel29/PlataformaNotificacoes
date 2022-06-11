@@ -10,9 +10,12 @@ import {
     CASAS_PESSOAS_GET_SUCCESS,
     CASAS_UPDATE_ERROR,
     CASAS_UPDATE_START,
-    CASAS_UPDATE_SUCCESS
+    CASAS_UPDATE_SUCCESS,
+    CASAS_DELETE_ERROR,
+    CASAS_DELETE_START,
+    CASAS_DELETE_SUCCESS
 } from './Constants';
-import {createHouse, fetchHouses, fetchHousePeople, updateHouse} from '../../../API/Requests';
+import {createHouse, fetchHouses, fetchHousePeople, updateHouse, deleteHouse} from '../../../API/Requests';
 
 export const createNewHouse = ( nome = '', id = '', concelho = '') => {
     
@@ -59,5 +62,17 @@ export const getHousePeopleList = (id) => {
           dispatch({ type: CASAS_PESSOAS_GET_SUCCESS, payload: People })
         })
         .catch(() => dispatch({ type: CASAS_PESSOAS_GET_ERROR }))
+    }
+  }
+
+export const deleteSingleHouse = (id) => {
+    return (dispatch) => {
+      dispatch({ type: CASAS_DELETE_START });
+  
+      deleteHouse(id)
+        .then(House => {
+          dispatch({ type: CASAS_DELETE_SUCCESS, payload: House })
+        })
+        .catch(() => dispatch({ type: CASAS_DELETE_ERROR }))
     }
   }

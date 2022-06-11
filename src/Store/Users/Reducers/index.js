@@ -8,7 +8,8 @@ import {
     TIPOLOGIA_USERS_GET_START,
     TIPOLOGIA_USERS_GET_SUCCESS,
     USER_UPDATE_START,
-    USER_UPDATE_SUCCESS
+    USER_UPDATE_SUCCESS, 
+    USER_DELETE_SUCCESS
 } from '../Actions/Constants'
 
 const initialState = {
@@ -53,6 +54,8 @@ export default (state = initialState, { type, payload }) => {
                     return payload;
             });
             return { ...state, isLoadingEdit: false, data };
+        case USER_DELETE_SUCCESS:
+            return { ...state };
         default:
             return state;
     }

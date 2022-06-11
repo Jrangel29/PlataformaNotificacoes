@@ -3,6 +3,7 @@ import {
     EVENTS_GET_SUCCESS,
     EVENT_GET_START,
     EVENT_GET_SUCCESS,
+    EVENT_DELETE_SUCCESS
 } from '../Actions/Constants'
 
 const initialState = {
@@ -23,6 +24,8 @@ export default (state = initialState, { type, payload }) => {
             return { ...state, isLoadingEvent: true };
         case EVENT_GET_SUCCESS:
             return { ...state, singleEvent: payload, isLoadingEvent: false };
+        case EVENT_DELETE_SUCCESS:
+            return { ...state };
         default:
             return state;
     }
