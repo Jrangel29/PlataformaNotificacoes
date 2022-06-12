@@ -25,7 +25,7 @@ function DeleteUser (props) {
                 :
                 props.tiponotif === "CriarGrupo" ?
                 <>
-                Grupo criado
+                Evento criado
                 </>
                 :
                 props.tiponotif === "CriarNotificação" ?
@@ -70,8 +70,8 @@ function DeleteUser (props) {
                     props.tiponotif === "Utilizador" ?
                     <p className='textoSeccaoPagina p-0'>O utilizador foi eliminado com sucesso!</p>
                     :
-                    props.tiponotif === "Grupo" ?
-                    <p className='textoSeccaoPagina p-0'>O grupo foi eliminado com sucesso!</p>
+                    props.tiponotif === "Evento" ?
+                    <p className='textoSeccaoPagina p-0'>O evento foi eliminado com sucesso!</p>
                     :
                     props.tiponotif === "AddInfo" ?
                     <p className='textoSeccaoPagina p-0'>A informação foi adicionada à notificação com sucesso!</p>
@@ -111,13 +111,10 @@ function DeleteUser (props) {
                         variant='success' 
                         to={
                             props.tiponotif === "CriarNotificação" ?
-                            '/notifications'
+                            '/events'
                             :
-                            props.tiponotif === "CriarGrupo" || props.tiponotif === "Grupo" ?
-                            '/groups'
-                            :
-                            props.tiponotif === "CriarTemplate" ?
-                            '/templates'
+                            props.tiponotif === "CriarGrupo" || props.tiponotif === "Evento" ?
+                            '/events'
                             :
                             props.tiponotif === "Casa" ?
                             '/houses'

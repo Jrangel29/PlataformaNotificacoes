@@ -4,7 +4,7 @@ import Filters from '../Components/Geral/Filters';
 import GroupCards from '../Components/Cards/GroupCards';
 import Header from '../Components/Geral/Header';
 import SuccessModal from '../Components/Modal/SuccessModal';
-import DeleteGroup from '../Components/Modal/DeleteGroup';
+import DeleteEvent from '../Components/Modal/DeleteEvent';
 
 class Groups extends React.Component {
 
@@ -39,7 +39,7 @@ class Groups extends React.Component {
                         <GroupCards abreModalDelete={this.onOpenDelete}/>
                     </div>
                 </div>
-                <DeleteGroup show={this.state.showDeleteModal} onHide={this.onCloseDelete}/>
+                <DeleteEvent show={this.state.showDeleteModal} onHide={this.onCloseDelete}/>
                 <SuccessModal show={this.state.showSuccessModal} onHide={this.onCloseSuccess} tiponotif="Grupo"/>
             </div>
         )

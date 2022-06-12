@@ -3,14 +3,16 @@ import '../../Styles/Modal.css';
 import {Button, Modal} from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { deleteSingleUser } from '../../Store/Users/Actions';
+import { deleteSingleHouse } from '../../Store/Casas/Actions';
+import { deleteEventSingle } from '../../Store/Eventos/Actions';
 
-function DeleteUser (props) {
+function DeleteEvent (props) {
 
     const dispatch = useDispatch();
 
-    const apagaUser = () => {
-        props.onHide("Confirma", "Utilizador")
-        dispatch(deleteSingleUser(props.id))
+    const apagaEvento = () => {
+        props.onHide("Confirma", "Evento")
+        dispatch(deleteEventSingle(props.id))
     }
 
     return(
@@ -21,20 +23,20 @@ function DeleteUser (props) {
             size="lg"
         >
             <Modal.Header className='tituloModal' closeVariant='white'>
-                Eliminar Utilizador
+                Eliminar Grupo
             </Modal.Header>
             <Modal.Body>
                 <div className='row m-0'>
-                    <p className='textoSeccaoPagina p-0'>Tem a certeza que pretende apagar este utilizador? Se o fizer, este deixará de estar no serviço e de receber informações na sua Box.</p>
+                    <p className='textoSeccaoPagina p-0'>Tem a certeza que pretende apagar este evento? Os utilizadores deixarão de receber notificações associadas ao mesmo.</p>
                 </div>
                 
                 <div className='row m-0 mt-3 justify-content-end'>
                     <Button className='col-2 me-3' variant='danger' onClick={() => props.onHide("Cancela")}>Cancelar</Button>
-                    <Button className='col-2' variant='success' onClick={() => apagaUser()}>Confirmar</Button>
+                    <Button className='col-2' variant='success' onClick={() => apagaEvento()}>Confirmar</Button>
                 </div>
             </Modal.Body>
         </Modal>
     )
 }
 
-export default DeleteUser;
+export default DeleteEvent;

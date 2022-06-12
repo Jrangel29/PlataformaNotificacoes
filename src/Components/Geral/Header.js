@@ -3,11 +3,11 @@ import '../../Styles/App.css';
 import BackArrow from './BackArrow';
 import Editar from '../../Images/EditarPreto.svg';
 import DeleteUser from '../Modal/DeleteUser';
-import DeleteGroup from '../Modal/DeleteGroup';
+import DeleteEvent from '../Modal/DeleteEvent';
 import DeleteHouse from '../Modal/DeleteHouse';
 import SuccessModal from '../Modal/SuccessModal';
 import {Link} from 'react-router-dom';
-import DeleteButton from './DeleteButton';
+import Lixo from '../../Images/LixoPreto.svg';
 
 class Header extends React.Component {
 
@@ -50,14 +50,14 @@ class Header extends React.Component {
                             <img className="topIcons px-4" src={Editar}/>    
                         </Link>
                         }
-                        <DeleteButton tipo={this.props.nome} open={this.onOpen} id={this.props.id}/>
+                        <img className="topIcons" style={{marginRight: "40px", cursor: "pointer"}} onClick={() => this.onOpen()} src={Lixo}/>
                         {this.props.nome === "Utilizadores" ?
-                        <DeleteUser show={this.state.showDelete} onHide={this.onClose}/>
+                        <DeleteUser show={this.state.showDelete} onHide={this.onClose} id={this.props.id}/>
                         :
                         this.props.nome === "Casas" ?
-                        <DeleteHouse show={this.state.showDelete} onHide={this.onClose}/>
+                        <DeleteHouse show={this.state.showDelete} onHide={this.onClose} id={this.props.id}/>
                         :
-                        <DeleteGroup show={this.state.showDelete} onHide={this.onClose}/>
+                        <DeleteEvent show={this.state.showDelete} onHide={this.onClose} id={this.props.id}/>
                         }
                     </span>
                 :
