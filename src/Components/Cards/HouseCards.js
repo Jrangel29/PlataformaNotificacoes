@@ -9,7 +9,7 @@ import LoadingComponent from '../../Components/Geral/LoadingComponent';
 import Loading from '../../Pages/Loading';
 import PeopleHouseCards from './PeopleHouseCards';
 
-const HouseCards = () => {
+const HouseCards = (props) => {
     const dispatch = useDispatch();
 
     const casasList = useSelector(({ casas }) => casas.data)
@@ -44,30 +44,61 @@ const HouseCards = () => {
         <div className='container m-0 p-0'>
             <div className='row cartasMainBody'>
                 {casasList.map((item, index) => {
-                    return(
-                    <Accordion defaultActiveKey="0" className='col-3 pb-3'>
-                        <Accordion.Item eventKey="1">
-                            <Accordion.Header className='m-0'>
-                                <span>
-                                    <p className='tituloGrupoCarta mb-2'>
-                                        {item.nome}
-                                    </p>
-                                    <p className='mb-1' style={{fontSize: '14px'}}>
-                                        {item.localidade}
-                                    </p>
-                                    <PeopleHouseCards idCasa={item.id_casa} funcao={showUsers} users={array}/>
-                                    <p className='mb-0 textHouseCards'>
-                                        <span className={item.ativa.data[0] === 0 ? 'redDot' : 'greenDot'}></span>
-                                        {item.ativa.data[0] === 0 ? ' Box Desligada' : ' Box Ligada'}
-                                    </p>
-                                </span>
-                            </Accordion.Header>
-                            <Accordion.Body className='footerUser row mx-0 justify-content-center'>
-                                <Button as={Link} to={`/houses/${item.id_casa}`} className='textoBtnUser col-10 mx-2' variant='flat'>Mais informação</Button>
-                            </Accordion.Body>
-                        </Accordion.Item>
-                    </Accordion>
-                    )
+                    if(props.pesquisa === ''){
+                        return(
+                        <Accordion defaultActiveKey="0" className='col-3 pb-3'>
+                            <Accordion.Item eventKey="1">
+                                <Accordion.Header className='m-0'>
+                                    <span>
+                                        <p className='tituloGrupoCarta mb-2'>
+                                            {item.nome}
+                                        </p>
+                                        <p className='mb-1' style={{fontSize: '14px'}}>
+                                            {item.localidade}
+                                        </p>
+                                        <PeopleHouseCards idCasa={item.id_casa} funcao={showUsers} users={array}/>
+                                        <p className='mb-0 textHouseCards'>
+                                            <span className={item.ativa.data[0] === 0 ? 'redDot' : 'greenDot'}></span>
+                                            {item.ativa.data[0] === 0 ? ' Box Desligada' : ' Box Ligada'}
+                                        </p>
+                                    </span>
+                                </Accordion.Header>
+                                <Accordion.Body className='footerUser row mx-0 justify-content-center'>
+                                    <Button as={Link} to={`/houses/${item.id_casa}`} className='textoBtnUser col-10 mx-2' variant='flat'>Mais informação</Button>
+                                </Accordion.Body>
+                            </Accordion.Item>
+                        </Accordion>
+                        )
+                    } else {
+                        let pesquisado = props.pesquisa.toLowerCase();
+                        let nomes = item.nome.toLowerCase();
+                        if(item.nome.startsWith(props.pesquisa) || nomes.startsWith(pesquisado)){
+                            return(
+                                <Accordion defaultActiveKey="0" className='col-3 pb-3'>
+                                    <Accordion.Item eventKey="1">
+                                        <Accordion.Header className='m-0'>
+                                            <span>
+                                                <p className='tituloGrupoCarta mb-2'>
+                                                    {item.nome}
+                                                </p>
+                                                <p className='mb-1' style={{fontSize: '14px'}}>
+                                                    {item.localidade}
+                                                </p>
+                                                <PeopleHouseCards idCasa={item.id_casa} funcao={showUsers} users={array}/>
+                                                <p className='mb-0 textHouseCards'>
+                                                    <span className={item.ativa.data[0] === 0 ? 'redDot' : 'greenDot'}></span>
+                                                    {item.ativa.data[0] === 0 ? ' Box Desligada' : ' Box Ligada'}
+                                                </p>
+                                            </span>
+                                        </Accordion.Header>
+                                        <Accordion.Body className='footerUser row mx-0 justify-content-center'>
+                                            <Button as={Link} to={`/houses/${item.id_casa}`} className='textoBtnUser col-10 mx-2' variant='flat'>Mais informação</Button>
+                                        </Accordion.Body>
+                                    </Accordion.Item>
+                                </Accordion>
+                            )
+                        }
+                    }
                 })}
             </div>
         </div>    

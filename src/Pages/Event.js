@@ -35,12 +35,12 @@ function Event(props) {
         <div>
             <div className='mainBodyForm container px-0'>
                 <Navbar/>
-                <Header nome="Eventos" detalhe="sim" apagaMuda="sim" id={id}/>
+                <Header nome="Eventos" detalhe="sim" apagaMuda="sim" id={id} info={event}/>
                 <div>
                     <div className='prevSeccao ms-0'>
                         <h1 className='tituloSeccaoPaginaNotifs'>Informação geral</h1>
                     </div>
-                    <div className='mx-3' style={{padding: "10px 40px"}}>
+                    <div className='mx-3' style={{padding: "10px 40px 0 40px"}}>
                         <p className='textoSeccaoPagina'><b>Nome:</b> {event.nome}</p>
                         <p className='textoSeccaoPagina'><b>Tipologia do evento:</b> {event.tipologia}</p>
                         <p className='textoSeccaoPagina'><b>Regularidade:</b> {event.regularidade}</p>
@@ -50,7 +50,7 @@ function Event(props) {
                     <div className='prevSeccao ms-0'>
                         <h1 className='tituloSeccaoPaginaNotifs'>Destinatários</h1>
                     </div>
-                    <div className='mx-3' style={{padding: "10px 40px"}}>
+                    <div className='mx-3' style={{padding: "10px 40px 0 40px"}}>
                         <UserDetailCards users={event.users}/>
                     </div>
                 </div>
@@ -59,7 +59,7 @@ function Event(props) {
                         <h1 className='tituloSeccaoPaginaNotifs'>Notificações</h1>
                     </div>
                     <div className='mx-3' style={{padding: "10px 40px"}}>
-                        <div className='row offset-1 mt-4 col-10 justify-content-center'>
+                        <div className='row offset-1 mt-3 col-10 justify-content-center'>
                             <Button onClick={() => setSeccao('Por Enviar')} className='seccaoBtn col-3 mx-2' variant={seccao == "Por Enviar" ? 'flat' : 'custom'}>Por Enviar</Button>
                             <Button onClick={() => setSeccao('Enviadas')} className='seccaoBtn col-3 mx-2' variant={seccao == "Enviadas" ? 'flat' : 'custom'}>Enviadas</Button>
                         </div>

@@ -25,7 +25,7 @@ class Houses extends React.Component {
                         <Filters tipo="Casa" change={this.onChangeSearch} valorMuda={this.state.search}/>
                     </div>
                     <div style={{padding: "0 40px"}}>
-                        <HouseCards pagina="UserList"/>
+                        <HouseCards pagina="UserList" pesquisa={this.state.search}/>
                     </div>
                 </div>
             </div>

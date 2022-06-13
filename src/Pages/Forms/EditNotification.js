@@ -13,6 +13,7 @@ import { PreviewNotif } from '../../Components/Forms/PreviewNotif';
 import UserPreferencesModal from '../../Components/Modal/UserPreferencesModal';
 import InformationIcon from '../../Images/information.png';
 import { MomentsTooltip, CategoryTooltip } from '../../Components/Forms/Tooltips';
+import {connect} from 'react-redux'
 
 class EditNotification extends React.Component {
 
@@ -815,12 +816,98 @@ class EditNotification extends React.Component {
         })
     }
 
+    componentDidMount = () => {
+        console.log(this.props)
+        this.setState({
+            mostraModal: false,
+            mostraModalInfo: false,
+            id_evento: this.props.event.id_evento,
+            tipologia: this.props.event.tipologia,
+            idTipologia: 1,
+            categoriaInfo: "",
+            nomeItem: this.props.event.nome,
+            regularidade: '',
+            envioNotif: "Pontual",
+            idRegular: '',
+            diaUnico: '',
+            hora: '',
+            momentoUnico: '',
+            usersEscolhidos: [],
+            casasEscolhidas: [],
+            diaMes: '',
+            dataFim: '',
+            dias: {
+                domingo0: false,
+                segunda1: false,
+                terca2: false,
+                quarta3: false,
+                quinta4: false,
+                sexta5: false,
+                sabado6: false
+            },
+            paramsPersonalizado: {
+                usaIcone: "Não",
+                icone: "Agenda",
+                tipoRecetor: 'Recetores Individuais'
+            },
+            colapsado: {
+                collapse1: false,
+                collapse2: false,
+                collapse3: false,
+                collapse4: false
+            },
+            mensagens: {
+                semanaAntes: {
+                    active: false, 
+                    message: ''},
+                dias3: {
+                    active: false, 
+                    message: ''},
+                diaAnterior: {
+                    active: false, 
+                    message: ''},
+                diaProprio: {
+                    active: false, 
+                    message: ''},
+                horaEspecifica: {
+                    active: false, 
+                    message: ''},
+                imediato: {
+                    active: false, 
+                    message: ''},
+                intervaloHoras: {
+                    active: false, 
+                    message: ''},
+                horaAntes: {
+                    active: false, 
+                    message: ''},
+                meiaHora: {
+                    active: false, 
+                    message: '',
+                    tituloBlade: '',
+                    descricao: ''},
+                quartoHora: {
+                    active: false, 
+                    message: '',
+                    tituloBlade: '',
+                    descricao: ''},
+                minutos5: {
+                    active: false, 
+                    message: ''},
+                momentoAcontecimento: {
+                    active: false, 
+                    message: ''}
+            }
+        })
+    }
+
     render(){
+        console.log(this.state)
         return(
             <div>
                 <div className='mainBodyForm container px-0'>
                     <Navbar/>
-                    <Header nome="Criar Evento" detalhe="sim" apagaMuda="nao"/>
+                    <Header nome="Editar Evento" detalhe="sim" apagaMuda="nao"/>
                     <PreviewNotif tipo={this.state.tipologia} tipoPers={this.state.paramsPersonalizado.tipoRecetor} users={this.state.usersEscolhidos} casas={this.state.casasEscolhidas} personalizado={this.state.paramsPersonalizado} mensagens={this.state.mensagens} titulo={this.state.nomeItem} sub={this.state.categoriaInfo}/>
                     <div>
                         <div className='btn btnSeccao ms-0' onClick={() => this.mudaCollapse(1)}>
@@ -1040,4 +1127,10 @@ class EditNotification extends React.Component {
     } 
 }
 
-export default EditNotification;
+const mapStateToProps = (state) => {
+    return{
+        event: state.eventos.singleEvent
+    }
+}
+
+export default connect(mapStateToProps)(EditNotification);

@@ -34,7 +34,6 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Homepage/>}/>
           <Route exact path="/notifications" element={<Notifications/>}/>
-          <Route exact path="/notifications/edit" element={<EditNotification/>}/>
           <Route exact path="/users" element={<Users/>}/>
           <Route exact path="/users/:id" element={<User/>}/>
           <Route exact path="/users/create" element={<CreateUser/>}/>
@@ -56,6 +55,7 @@ function App() {
           <Route exact path="/events" element={<Events/>}/>
           <Route exact path="/events/:id" element={<Event/>}/>
           <Route exact path="/events/create" element={<CreateNotification/>}/>
+          <Route exact path="/events/edit/:id" element={<EditNotification/>}/>
           <Route path="*" element={<Error404/>}/>
         </Routes>
       </BrowserRouter>
