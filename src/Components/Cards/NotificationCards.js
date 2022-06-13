@@ -60,15 +60,15 @@ const NotificationCards = (props) => {
                                         </Card.Header>
                                         
                                         <Card.Body onClick={() => setModal([true, item])} style={{textDecoration: "none", color: "black"}} className='bodyCartaRotina row m-0 px-0'>
-                                            <span className='col-9'>
+                                            <span className='col-6'>
                                                 <Card.Title className='dataNotifsTitle'>Dia</Card.Title>
                                                 <Card.Text className='dataNotifs'>
                                                     {diaSemana === 1 ? 'Segunda-Feira' : diaSemana === 2 ? 'Terça-Feira' : diaSemana === 3 ? 'Quarta-Feira' : diaSemana === 4 ? 'Quinta-Feira' : diaSemana === 5 ? 'Sexta-Feira' : diaSemana === 6 ? 'Sábado' : 'Domingo' }
                                                 </Card.Text>
                                             </span>
-                                            <span className='col-3 d-flex flex-column' style={{textAlign: "right"}}>
+                                            <span className='col-6 d-flex flex-column' style={{textAlign: "right"}}>
                                                 <Card.Title className='dataNotifsTitle'>Horas</Card.Title>
-                                                <Card.Text className='dataNotifs'>{hora}</Card.Text>
+                                                <Card.Text className='dataNotifs'>{item.ref_id_rotinas === null ? hora : item.ref_id_rotinas === 1 ? 'Rotina de Bom dia' : 'Rotina de Boa Noite'}</Card.Text>
                                             </span>
                                         </Card.Body>
                                     </Card>
@@ -82,15 +82,15 @@ const NotificationCards = (props) => {
                                         </Card.Header>
                                         
                                         <Card.Body as={Link} to={`/history/${item.id_notificacao}`} style={{textDecoration: "none", color: "black"}} className='bodyCartaRotina row m-0 px-0'>
-                                            <span className='col-9'>
+                                            <span className='col-6'>
                                                 <Card.Title className='dataNotifsTitle'>Dia</Card.Title>
                                                 <Card.Text className='dataNotifs'>
                                                     {diaSemana === 1 ? 'Segunda-Feira' : diaSemana === 2 ? 'Terça-Feira' : diaSemana === 3 ? 'Quarta-Feira' : diaSemana === 4 ? 'Quinta-Feira' : diaSemana === 5 ? 'Sexta-Feira' : diaSemana === 6 ? 'Sábado' : 'Domingo' }
                                                 </Card.Text>
                                             </span>
-                                            <span className='col-3 d-flex flex-column' style={{textAlign: "right"}}>
+                                            <span className='col-6 d-flex flex-column' style={{textAlign: "right"}}>
                                                 <Card.Title className='dataNotifsTitle'>Horas</Card.Title>
-                                                <Card.Text className='dataNotifs'>{hora}</Card.Text>
+                                                <Card.Text className='dataNotifs'>{item.ref_id_rotinas === null ? hora : item.ref_id_rotinas === 1 ? 'Rotina de Bom dia' : 'Rotina de Boa Noite'}</Card.Text>
                                             </span>
                                         </Card.Body>
                                     </Card>
@@ -113,15 +113,15 @@ const NotificationCards = (props) => {
                                             </Card.Header>
                                             
                                             <Card.Body onClick={() => setModal([true, item])} style={{textDecoration: "none", color: "black"}} className='bodyCartaRotina row m-0 px-0'>
-                                                <span className='col-9'>
+                                                <span className='col-6'>
                                                     <Card.Title className='dataNotifsTitle'>Dia</Card.Title>
                                                     <Card.Text className='dataNotifs'>
                                                         {diaSemana === 1 ? 'Segunda-Feira' : diaSemana === 2 ? 'Terça-Feira' : diaSemana === 3 ? 'Quarta-Feira' : diaSemana === 4 ? 'Quinta-Feira' : diaSemana === 5 ? 'Sexta-Feira' : diaSemana === 6 ? 'Sábado' : 'Domingo' }
                                                     </Card.Text>
                                                 </span>
-                                                <span className='col-3 d-flex flex-column' style={{textAlign: "right"}}>
+                                                <span className='col-6 d-flex flex-column' style={{textAlign: "right"}}>
                                                     <Card.Title className='dataNotifsTitle'>Horas</Card.Title>
-                                                    <Card.Text className='dataNotifs'>{hora}</Card.Text>
+                                                    <Card.Text className='dataNotifs'>{item.ref_id_rotinas === null ? hora : item.ref_id_rotinas === 1 ? 'Rotina de Bom dia' : 'Rotina de Boa Noite'}</Card.Text>
                                                 </span>
                                             </Card.Body>
                                         </Card>
@@ -135,15 +135,15 @@ const NotificationCards = (props) => {
                                             </Card.Header>
                                             
                                             <Card.Body as={Link} to={`/history/${item.id_notificacao}`} style={{textDecoration: "none", color: "black"}} className='bodyCartaRotina row m-0 px-0'>
-                                                <span className='col-9'>
+                                                <span className='col-6'>
                                                     <Card.Title className='dataNotifsTitle'>Dia</Card.Title>
                                                     <Card.Text className='dataNotifs'>
                                                         {diaSemana === 1 ? 'Segunda-Feira' : diaSemana === 2 ? 'Terça-Feira' : diaSemana === 3 ? 'Quarta-Feira' : diaSemana === 4 ? 'Quinta-Feira' : diaSemana === 5 ? 'Sexta-Feira' : diaSemana === 6 ? 'Sábado' : 'Domingo' }
                                                     </Card.Text>
                                                 </span>
-                                                <span className='col-3 d-flex flex-column' style={{textAlign: "right"}}>
+                                                <span className='col-6 d-flex flex-column' style={{textAlign: "right"}}>
                                                     <Card.Title className='dataNotifsTitle'>Horas</Card.Title>
-                                                    <Card.Text className='dataNotifs'>{hora}</Card.Text>
+                                                    <Card.Text className='dataNotifs'>{item.ref_id_rotinas === null ? hora : item.ref_id_rotinas === 1 ? 'Rotina de Bom dia' : 'Rotina de Boa Noite'}</Card.Text>
                                                 </span>
                                             </Card.Body>
                                         </Card>

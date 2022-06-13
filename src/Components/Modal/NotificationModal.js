@@ -47,7 +47,7 @@ function NotificationModal (props) {
                         </span>
                         <span className='col-5 ps-0'>
                             <h2 className='subtituloCategoriasModal'>Horas</h2>
-                            <p className='textoModal'>{props.info.hora ? props.info.hora.slice(0, 5) : 'Esta notificação não tem hora definida.'}</p>
+                            <p className='textoModal'>{props.info.ref_id_rotinas === null ? props.info.hora.slice(0, 5) : props.info.ref_id_rotinas === 1 ? 'Rotina de Bom dia' : 'Rotina de Boa Noite'}</p>
                         </span>
                     </span>
                 
