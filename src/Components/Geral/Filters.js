@@ -26,7 +26,7 @@ const Filters = (props) => {
                     : "/templates/create"} className='col-2 offset-2' variant="flat">Criar {props.tipo}</Button>
                 }
             </div>
-            {props.tipo == "Histórico" ?
+            {/*props.tipo == "Histórico" ?
             <div className='row d-flex flex-row segundaLinhaFiltro'>
                 <span className='FiltrarPor col-1 p-0'>Filtrar por:</span>
                 <input type="date" className='col-2 FiltroInput divMargem m-0 ps-2 pe-0'/>
@@ -41,7 +41,7 @@ const Filters = (props) => {
             </div>
             :
             <></>
-            }
+            */}
         </div>
     )
 

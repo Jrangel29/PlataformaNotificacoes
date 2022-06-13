@@ -25,7 +25,7 @@ class Users extends React.Component {
                         <Filters tipo="Utilizador" change={this.onChangeSearch} valorMuda={this.state.search}/>
                     </div>
                     <div style={{padding: "0 40px"}}>
-                        <UserCards pagina="UserList"/>
+                        <UserCards pagina="UserList" pesquisa={this.state.search}/>
                     </div>
                 </div>
             </div>

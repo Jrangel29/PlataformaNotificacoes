@@ -25,7 +25,7 @@ class History extends React.Component {
                         <Filters tipo="Histórico" change={this.onChangeSearch} valorMuda={this.state.search}/>
                     </div>
                     <div style={{padding: "0 40px"}}>
-                        <NotificationCards tipo='Enviadas'/>
+                        <NotificationCards tipo='Enviadas' pesquisa={this.state.search}/>
                     </div>
                 </div>
             </div>

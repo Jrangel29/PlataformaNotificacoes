@@ -25,7 +25,7 @@ class Events extends React.Component {
                         <Filters tipo="Evento" change={this.onChangeSearch} valorMuda={this.state.search}/>
                     </div>
                     <div style={{padding: "0 40px"}}>
-                        <EventCards/>
+                        <EventCards pesquisa={this.state.search}/>
                     </div>
                 </div>
             </div>
