@@ -86,7 +86,7 @@ const EditHouse = () => {
     return(
         <div>
             <div className='mainBodyForm container px-0'>
-                {console.log(info.infoUser)}
+                {/*console.log(info.infoUser)*/}
                 <Navbar/>
                 <Header nome="Editar Casa" detalhe="sim" apagaMuda="nao"/>
                 <div className='row m-0 p-0'>

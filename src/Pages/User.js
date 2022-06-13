@@ -66,7 +66,7 @@ class User extends React.Component {
     setUserInfo = (info, id) => this.setState({userInfo: info, idUser: id});
 
     render(){
-        {console.log(this.state)}
+        {/*console.log(this.state)*/}
         return(
             <div>
                 <div className='mainBodyForm container px-0'>

@@ -57,7 +57,7 @@ export const createHouse = (nome, idBox, concelho) => {
 
 export const updateHouse = (id_casa, nome, idBox, concelho) => {
     
-    console.log(id_casa)
+    //console.log(id_casa)
     fetch(`http://geo-navsafety.ua.pt:443/overtv/casas`, {
         method: 'PUT',
         headers: {

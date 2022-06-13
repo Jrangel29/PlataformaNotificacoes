@@ -817,7 +817,7 @@ class EditNotification extends React.Component {
     }
 
     componentDidMount = () => {
-        console.log(this.props)
+        //console.log(this.props)
         this.setState({
             mostraModal: false,
             mostraModalInfo: false,
@@ -902,7 +902,7 @@ class EditNotification extends React.Component {
     }
 
     render(){
-        console.log(this.state)
+        //console.log(this.state)
         return(
             <div>
                 <div className='mainBodyForm container px-0'>

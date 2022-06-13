@@ -29,7 +29,7 @@ const HistoryDetails = () => {
 
     return(
         <div>
-            {console.log(notificationInfo)}
+            {/*console.log(notificationInfo)*/}
             <div className='mainBodyForm p-0 container'>
             <Navbar/>
                 <Header nome="Histórico" detalhe="sim" apagaMuda="nao"/>

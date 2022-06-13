@@ -826,7 +826,7 @@ class CreateNotification extends React.Component {
         return(
             <div>
                 <div className='mainBodyForm container px-0'>
-                    {console.log(this.state)}
+                    {/*console.log(this.state)*/}
                     <Navbar/>
                     <Header nome="Criar Evento" detalhe="sim" apagaMuda="nao"/>
                     <PreviewNotif tipo={this.state.tipologia} tipoPers={this.state.paramsPersonalizado.tipoRecetor} users={this.state.usersEscolhidos} casas={this.state.casasEscolhidas} personalizado={this.state.paramsPersonalizado} mensagens={this.state.mensagens} titulo={this.state.nomeItem} sub={this.state.categoriaInfo}/>
