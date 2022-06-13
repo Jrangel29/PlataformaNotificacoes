@@ -4,14 +4,17 @@ import {
     NOTIFICATION_GET_SUCCESS,
     NOTIFICATION_GET_START,
     NOTIFICATION_ALL_GET_START,
-    NOTIFICATION_ALL_GET_SUCCESS
+    NOTIFICATION_ALL_GET_SUCCESS,
+    NOTIFICATION_SINGLE_GET_SUCCESS,
+    NOTIFICATION_SINGLE_GET_START,
 } from '../Actions/Constants'
 
 const initialState = {
     isLoadingCreate: true,
     singleNotification: {},
     isLoading: true,
-    isLoadingAll: true
+    isLoadingAll: true,
+    isLoadingSingle: true
 }
 
 export default (state = initialState, { type, payload }) => {
@@ -24,8 +27,6 @@ export default (state = initialState, { type, payload }) => {
         case NOTIFICATION_CREATE_SUCCESS:
             return {...state, isLoadingCreate: false};
             break;
-        default:
-            return state;
         case NOTIFICATION_GET_START:
             return { ...state, isLoading: true };
         case NOTIFICATION_GET_SUCCESS:
@@ -34,5 +35,11 @@ export default (state = initialState, { type, payload }) => {
             return { ...state, isLoadingAll: true };
         case NOTIFICATION_ALL_GET_SUCCESS:
             return { ...state, data: payload, isLoadingAll: false };
+        case NOTIFICATION_SINGLE_GET_START:
+            return { ...state, isLoadingSingle: true };
+        case NOTIFICATION_SINGLE_GET_SUCCESS:
+            return { ...state, data: payload, isLoadingSingle: false };
+        default:
+            return state;
     }
 }

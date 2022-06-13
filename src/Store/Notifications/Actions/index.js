@@ -7,9 +7,12 @@ import {
     NOTIFICATION_GET_START,
     NOTIFICATION_ALL_GET_START,
     NOTIFICATION_ALL_GET_SUCCESS,
-    NOTIFICATION_ALL_GET_ERROR
+    NOTIFICATION_ALL_GET_ERROR,
+    NOTIFICATION_SINGLE_GET_SUCCESS,
+    NOTIFICATION_SINGLE_GET_ERROR,
+    NOTIFICATION_SINGLE_GET_START,
 } from './Constants';
-import {createNotification, fetchNotifications, fetchAllNotifications} from '../../../API/Requests';
+import {createNotification, fetchNotifications, fetchAllNotifications, fetchNotificationInfo} from '../../../API/Requests';
 
 export const createNewNotification = ( tipologia = '', regularidade = '', nomeItem = '', momentoUnico = '', mensagens = '', idTipologia = '', hora = '', envioNotif = '', idRegular = '', dias = '', diaUnico = '', diaMes = '', subcategoria = '', paramsPersonalizado = '', casasEscolhidas = '', usersEscolhidos = '', dataFim = '') => {
     
@@ -44,5 +47,17 @@ export const getNotificationsUser = (id) => {
           dispatch({ type: NOTIFICATION_ALL_GET_SUCCESS, payload: Notification })
         })
         .catch(() => dispatch({ type: NOTIFICATION_ALL_GET_ERROR }))
+    }
+  }
+
+  export const getNotificationInfo = (id) => {
+    return (dispatch) => {
+      dispatch({ type: NOTIFICATION_SINGLE_GET_START });
+  
+      fetchNotificationInfo(id)
+        .then(Notification => {
+          dispatch({ type: NOTIFICATION_SINGLE_GET_SUCCESS, payload: Notification })
+        })
+        .catch(() => dispatch({ type: NOTIFICATION_SINGLE_GET_ERROR }))
     }
   }
