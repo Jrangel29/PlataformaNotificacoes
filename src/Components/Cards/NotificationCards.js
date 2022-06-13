@@ -42,6 +42,7 @@ const NotificationCards = (props) => {
                     if(dataNova < dataAtual && props.tipo === 'Enviadas' || dataNova >= dataAtual && props.tipo === 'Por enviar'){
                         return(
                             <span key={index} className='col-4 ps-0 pb-3'>
+                                {props.tipo === 'Por enviar' ?
                                 <Card style={{cursor: "pointer", minHeight: "100%"}}>
                                     <Card.Header onClick={() => setModal([true, item])} style={{textDecoration: "none"}} className='row headerCarta m-0 gx-1'>
                                         <span className='col-9 p-0 tituloNotificacao'>{item.mensagem}</span>
@@ -54,6 +55,20 @@ const NotificationCards = (props) => {
                                         <Card.Text className='p-0' style={{fontSize: '14px'}}>O Benfica defronta o Liverpool em casa, para a Champions League, amanhã.</Card.Text>
                                     </Card.Body>
                                 </Card>
+                                :
+                                <Card style={{cursor: "pointer", minHeight: "100%"}}>
+                                    <Card.Header as={Link} to={`/history/${item.id_notificacao}`} style={{textDecoration: "none"}} className='row headerCarta m-0 gx-1'>
+                                        <span className='col-9 p-0 tituloNotificacao'>{item.mensagem}</span>
+                                        <span className='col-3 p-0 dataNotificacao'>
+                                            {dataFinal}
+                                        </span>
+                                    </Card.Header>
+                                    
+                                    <Card.Body as={Link} to={`/history/${item.id_notificacao}`} style={{textDecoration: "none", color: "black"}} className='bodyCarta m-0'>
+                                        <Card.Text className='p-0' style={{fontSize: '14px'}}>O Benfica defronta o Liverpool em casa, para a Champions League, amanhã.</Card.Text>
+                                    </Card.Body>
+                                </Card>
+                                }
                             </span>
                         )
                     }

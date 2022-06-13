@@ -10,6 +10,9 @@ function NotificationModal (props) {
         )
     }
 
+    let dataNova = new Date(props.info.data);
+    let diaSemana = dataNova.getDay();
+
     return(
         <Modal
             {...props}
@@ -38,13 +41,13 @@ function NotificationModal (props) {
 
                 <h1 className='tituloCategoriasModal'>Momentos de Entrega</h1>
                     <span className='row'>
-                        <span className='col-4'>
-                            <h2 className='subtituloCategoriasModal'>Dias</h2>
-                            <p className='textoModal'>Segunda-Feira, Terça-Feira</p>
+                        <span className='col-5'>
+                            <h2 className='subtituloCategoriasModal'>Dia</h2>
+                            <p className='textoModal'>{diaSemana === 1 ? 'Segunda-Feira' : diaSemana === 2 ? 'Terça-Feira' : diaSemana === 3 ? 'Quarta-Feira' : diaSemana === 4 ? 'Quinta-Feira' : diaSemana === 5 ? 'Sexta-Feira' : diaSemana === 6 ? 'Sábado' : 'Domingo' }</p>
                         </span>
-                        <span className='col-2'>
+                        <span className='col-5 ps-0'>
                             <h2 className='subtituloCategoriasModal'>Horas</h2>
-                            <p className='textoModal'>16:30</p>
+                            <p className='textoModal'>{props.info.hora ? props.info.hora.slice(0, 5) : 'Esta notificação não tem hora definida.'}</p>
                         </span>
                     </span>
                 

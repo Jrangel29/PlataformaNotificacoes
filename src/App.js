@@ -48,7 +48,7 @@ function App() {
           <Route exact path="/templates/create" element={<CreateTemplate/>}/>
           <Route exact path="/templates/edit" element={<EditTemplate/>}/>*/}
           <Route exact path="/history" element={<History/>}/>
-          <Route exact path="/history/details" element={<HistoryDetails/>}/>
+          <Route exact path="/history/:id" element={<HistoryDetails/>}/>
           <Route exact path="/houses" element={<Houses/>}/>
           <Route exact path="/houses/:id" element={<House/>}/>
           <Route exact path="/houses/create" element={<CreateHouse/>}/>

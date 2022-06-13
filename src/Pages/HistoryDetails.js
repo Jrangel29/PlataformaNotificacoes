@@ -5,61 +5,64 @@ import '../Styles/User.css';
 import UserDetailCards from '../Components/Cards/UserDetailCards';
 import {Table} from 'react-bootstrap';
 
-class HistoryDetails extends React.Component {
+const HistoryDetails = () => {
 
-    render(){
-        return(
-            <div>
-                <Navbar/>
-                <div className='mainBody container'>
-                    <Header nome="Histórico" detalhe="sim" apagaMuda="nao"/>
-                    <div className='px-2'>
-                        <div>
-                            <h1 className='tituloSeccaoPagina'>Descontos em carne do Lidl</h1>
-                            <p className='subtituloSeccaoPagina'>Conteúdo</p>
-                            <p className='textoSeccaoPagina mb-3'>50% Desconto em todas as carnes vermelhas!</p>
-                        </div>
-                        <div>
-                            <h1 className='tituloSeccaoPagina'>Interações</h1>
-                            <p className='subtituloSeccaoPagina'>Contagem</p>
-                            <Table striped bordered hover className='tabelaHistorico'>
-                                <thead>
-                                    <tr>
-                                        <th>Interação</th>
-                                        <th>Contagem</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Não Relembrar</td>
-                                        <td>1</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Relembrar daqui a 15 minutos</td>
-                                        <td>1</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Relembrar daqui a 30 minutos</td>
-                                        <td>0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Relembrar daqui a 1 hora</td>
-                                        <td>0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Relembrar daqui a 2 horas</td>
-                                        <td>0</td>
-                                    </tr>
-                                </tbody>
-                            </Table>
-                            <p className='subtituloSeccaoPagina'>Interações detalhadas</p>
-                            <UserDetailCards historico="sim"/>
-                        </div>
-                    </div>
+    return(
+        <div>
+            <div className='mainBodyForm p-0 container'>
+            <Navbar/>
+                <Header nome="Histórico" detalhe="sim" apagaMuda="nao"/>
+                <div className='prevSeccao ms-0'>
+                    <h1 className='tituloSeccaoPaginaNotifs'>Informação geral</h1>
+                </div>
+                <div style={{padding: '0 40px'}} className="mx-2">
+                    <p className='subtituloSeccaoPagina mt-2 mb-0'>Título</p>
+                    <p className='textoSeccaoPagina'>50% Desconto em todas as carnes vermelhas!</p>
+                    <p className='subtituloSeccaoPagina mt-2 mb-0'>Mensagem</p>
+                    <p className='textoSeccaoPagina mb-3'>50% Desconto em todas as carnes vermelhas!</p>
+                </div>
+                <div className='prevSeccao ms-0'>
+                    <h1 className='tituloSeccaoPaginaNotifs'>Interações</h1>
+                </div>
+                <div style={{padding: '0 40px'}} className="mx-2">
+                    <p className='subtituloSeccaoPagina mt-2'>Contagem</p>
+                    <Table striped bordered hover className='tabelaHistorico'>
+                        <thead>
+                            <tr>
+                                <th style={{fontSize: '16px'}}>Interação</th>
+                                <th style={{fontSize: '16px'}}>Contagem</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style={{fontSize: '14px'}}>Não Relembrar</td>
+                                <td style={{fontSize: '14px'}}>1</td>
+                            </tr>
+                            <tr>
+                                <td style={{fontSize: '14px'}}>Relembrar daqui a 15 minutos</td>
+                                <td style={{fontSize: '14px'}}>1</td>
+                            </tr>
+                            <tr>
+                                <td style={{fontSize: '14px'}}>Relembrar daqui a 30 minutos</td>
+                                <td style={{fontSize: '14px'}}>0</td>
+                            </tr>
+                            <tr>
+                                <td style={{fontSize: '14px'}}>Relembrar daqui a 1 hora</td>
+                                <td style={{fontSize: '14px'}}>0</td>
+                            </tr>
+                            <tr>
+                                <td style={{fontSize: '14px'}}>Relembrar daqui a 2 horas</td>
+                                <td style={{fontSize: '14px'}}>0</td>
+                            </tr>
+                        </tbody>
+                    </Table>
+                    <p className='subtituloSeccaoPagina'>Interações detalhadas</p>
+                    {/*<UserDetailCards historico="sim"/>*/}
                 </div>
             </div>
-        )
-    } 
+        </div>
+    )
+    
 }
 
 export default HistoryDetails;
