@@ -14,7 +14,8 @@ class Notifications extends React.Component {
         this.state = {
             showModal: false,
             showDeleteModal: false,
-            showSuccessModal: false
+            showSuccessModal: false,
+            search: ''
         }
     }
 
@@ -31,6 +32,8 @@ class Notifications extends React.Component {
     };
     onCloseSuccess = () => this.setState({showSuccessModal: false});
 
+    onChangeSearch = (e) => this.setState({search: e.target.value});
+
     render(){
         return(
             <div>
@@ -38,7 +41,7 @@ class Notifications extends React.Component {
                     <Navbar/>
                     <Header nome="Notificações agendadas" apagaMuda="nao"/>
                     <div style={{padding: "0 40px"}}>
-                        <Filters tipo="Notificação"/>
+                        <Filters tipo="Notificação" change={this.onChangeSearch} valorMuda={this.state.search}/>
                     </div>
                     <div style={{padding: "0 40px"}}>
                         <NotificationCards tipo='Por enviar' abreModal={this.onOpen} abreModalDelete={this.onOpenDelete}/>

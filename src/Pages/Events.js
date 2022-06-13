@@ -6,6 +6,15 @@ import EventCards from '../Components/Cards/EventCards';
 
 class Events extends React.Component {
 
+    constructor(props){
+        super(props);
+        this.state = {
+            search: ''
+        }
+    }
+
+    onChangeSearch = (e) => this.setState({search: e.target.value});
+
     render(){
         return(
             <div>
@@ -13,7 +22,7 @@ class Events extends React.Component {
                     <Navbar/>
                     <Header nome="Eventos" apagaMuda="nao"/>
                     <div style={{padding: "0 40px"}}>
-                        <Filters tipo="Evento"/>
+                        <Filters tipo="Evento" change={this.onChangeSearch} valorMuda={this.state.search}/>
                     </div>
                     <div style={{padding: "0 40px"}}>
                         <EventCards/>

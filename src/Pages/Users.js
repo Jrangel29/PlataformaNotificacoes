@@ -6,6 +6,15 @@ import Header from '../Components/Geral/Header';
 
 class Users extends React.Component {
 
+    constructor(props){
+        super(props);
+        this.state = {
+            search: ''
+        }
+    }
+
+    onChangeSearch = (e) => this.setState({search: e.target.value});
+
     render(){
         return(
             <div>
@@ -13,7 +22,7 @@ class Users extends React.Component {
                     <Navbar/>
                     <Header nome="Utilizadores" apagaMuda="nao"/>
                     <div style={{padding: "0 40px"}}>
-                        <Filters tipo="Utilizador"/>
+                        <Filters tipo="Utilizador" change={this.onChangeSearch} valorMuda={this.state.search}/>
                     </div>
                     <div style={{padding: "0 40px"}}>
                         <UserCards pagina="UserList"/>
