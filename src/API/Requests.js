@@ -149,7 +149,7 @@ export const fetchNotificationInfo = (id) =>
     fetch(`http://geo-navsafety.ua.pt:443/overtv/notifications/${id}`)
       .then(response => response.json())
 
-export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoUnico, mensagens, idTipologia, horaEvento, envioNotif, idRegular, dias, diaUnico, diaMes, subcategoria, paramsPersonalizado, casasEscolhidas, usersEscolhidos, dataFim) => {
+export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoUnico, mensagens, idTipologia, horaEvento, envioNotif, idRegular, dias, diaUnico, diaMes, subcategoria, paramsPersonalizado, casasEscolhidas, usersEscolhidos, dataFim, canal) => {
     
     const objectImagens = {
         "Agenda": "https://firebasestorage.googleapis.com/v0/b/tdi-rangel.appspot.com/o/iconeAgenda.png?alt=media&token=38fb87cc-f8fa-4015-a775-b4da0e6b9a77",
@@ -212,7 +212,7 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
 
     if(envioNotif === 'Pontual' && momentoUnico === 'Dia e Hora'){
         let diasEvento = GetUnique(diaInicio, mensagens);
-        let notificacao = GeraNotificacoes(mensagens, diasEvento, tipologia, horaEvento, momentoUnico, 'Unico', diaInicio, paramsPersonalizado.icone, paramsPersonalizado.usaIcone);
+        let notificacao = GeraNotificacoes(mensagens, diasEvento, tipologia, horaEvento, momentoUnico, 'Unico', diaInicio, paramsPersonalizado.icone, paramsPersonalizado.usaIcone, canal);
         
         let dataNew = new Date(diaInicio);
         let diaFormated = dataNew.getFullYear() + '-' + ((dataNew.getMonth() > 8) ? (dataNew.getMonth() + 1) : ('0' + (dataNew.getMonth() + 1))) + '-' + ((dataNew.getDate() > 9) ? dataNew.getDate() : ('0' + dataNew.getDate()));
@@ -239,7 +239,11 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
                     data: diaImediato,
                     hora: horaImediato,
                     rotina: null,
-                    zapping: 0
+                    zapping: 0,
+                    titulo: null,
+                    descricao: null,
+                    botao_titulo: null,
+                    botao_navigate: null,
                 }
                 ObjetoEnvio.notificacoes.push(imediato)
             } else if(tipologia === 'Personalizada' && paramsPersonalizado.usaIcone === "Não"){
@@ -249,7 +253,11 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
                     data: diaImediato,
                     hora: horaImediato,
                     rotina: null,
-                    zapping: 0
+                    zapping: 0,
+                    titulo: null,
+                    descricao: null,
+                    botao_titulo: null,
+                    botao_navigate: null,
                 }
                 ObjetoEnvio.notificacoes.push(imediato)
             } else {
@@ -259,7 +267,11 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
                     data: diaImediato,
                     hora: horaImediato,
                     rotina: null,
-                    zapping: 0
+                    zapping: 0,
+                    titulo: null,
+                    descricao: null,
+                    botao_titulo: null,
+                    botao_navigate: null,
                 }
                 ObjetoEnvio.notificacoes.push(imediato)
             }
@@ -273,7 +285,11 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
             data: diaImediato,
             hora: horaImediato,
             rotina: null,
-            zapping: 0
+            zapping: 0,
+            titulo: null,
+            descricao: null,
+            botao_titulo: null,
+            botao_navigate: null,
         }
         ObjetoEnvio.regularidade.tipo = 1;
         ObjetoEnvio.regularidade.data = diaImediato;
@@ -285,7 +301,7 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
     if(envioNotif === 'Diária'){
         let meses = GetMesesDif(diaInicio, dataFim);
         let diasEvento = GetEveryday(GetMeses(meses), dataFim);
-        let notificacao = GeraNotificacoes(mensagens, diasEvento, tipologia, horaEvento, momentoUnico, 'Diária', envioNotif, paramsPersonalizado.icone, paramsPersonalizado.usaIcone);
+        let notificacao = GeraNotificacoes(mensagens, diasEvento, tipologia, horaEvento, momentoUnico, 'Diária', envioNotif, paramsPersonalizado.icone, paramsPersonalizado.usaIcone, canal);
         ObjetoEnvio.regularidade.tipo = 2;
         ObjetoEnvio.regularidade.data = null;
         ObjetoEnvio.regularidade.hora = horaEvento;
@@ -304,7 +320,11 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
                     data: diaImediato,
                     hora: horaImediato,
                     rotina: null,
-                    zapping: 0
+                    zapping: 0,
+                    titulo: null,
+                    descricao: null,
+                    botao_titulo: null,
+                    botao_navigate: null,
                 }
                 ObjetoEnvio.notificacoes.push(imediato)
             } else if(tipologia === 'Personalizada' && paramsPersonalizado.usaIcone === "Não"){
@@ -314,7 +334,11 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
                     data: diaImediato,
                     hora: horaImediato,
                     rotina: null,
-                    zapping: 0
+                    zapping: 0,
+                    titulo: null,
+                    descricao: null,
+                    botao_titulo: null,
+                    botao_navigate: null,
                 }
                 ObjetoEnvio.notificacoes.push(imediato)
             } else {
@@ -324,7 +348,11 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
                     data: diaImediato,
                     hora: horaImediato,
                     rotina: null,
-                    zapping: 0
+                    zapping: 0,
+                    titulo: null,
+                    descricao: null,
+                    botao_titulo: null,
+                    botao_navigate: null,
                 }
                 ObjetoEnvio.notificacoes.push(imediato)
             }
@@ -334,7 +362,7 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
     if(envioNotif === 'Semanal'){
         let meses = GetMesesDif(diaInicio, dataFim);
         let diasEvento = GetDiaSemana(diasWeek, GetMeses(meses), mensagens, dataFim);
-        let notificacao = GeraNotificacoes(mensagens, diasEvento, tipologia, horaEvento, momentoUnico, 'Semanal', envioNotif, paramsPersonalizado.icone, paramsPersonalizado.usaIcone);
+        let notificacao = GeraNotificacoes(mensagens, diasEvento, tipologia, horaEvento, momentoUnico, 'Semanal', envioNotif, paramsPersonalizado.icone, paramsPersonalizado.usaIcone, canal);
         ObjetoEnvio.regularidade.tipo = 3;
         ObjetoEnvio.regularidade.data = null;
         ObjetoEnvio.regularidade.data = diaUnico;
@@ -359,7 +387,11 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
                     data: diaImediato,
                     hora: horaImediato,
                     rotina: null,
-                    zapping: 0
+                    zapping: 0,
+                    titulo: null,
+                    descricao: null,
+                    botao_titulo: null,
+                    botao_navigate: null,
                 }
                 ObjetoEnvio.notificacoes.push(imediato)
             } else if(tipologia === 'Personalizada' && paramsPersonalizado.usaIcone === "Não"){
@@ -369,7 +401,11 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
                     data: diaImediato,
                     hora: horaImediato,
                     rotina: null,
-                    zapping: 0
+                    zapping: 0,
+                    titulo: null,
+                    descricao: null,
+                    botao_titulo: null,
+                    botao_navigate: null,
                 }
                 ObjetoEnvio.notificacoes.push(imediato)
             } else {
@@ -379,7 +415,11 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
                     data: diaImediato,
                     hora: horaImediato,
                     rotina: null,
-                    zapping: 0
+                    zapping: 0,
+                    titulo: null,
+                    descricao: null,
+                    botao_titulo: null,
+                    botao_navigate: null,
                 }
                 ObjetoEnvio.notificacoes.push(imediato)
             }
@@ -389,7 +429,7 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
     if(envioNotif === 'Mensal'){
         let meses = GetMesesDif(diaInicio, dataFim);
         let diasEvento = GetDiaMes(diaMes, GetMeses(meses), mensagens, dataFim);
-        let notificacao = GeraNotificacoes(mensagens, diasEvento, tipologia, horaEvento, momentoUnico, 'Mensal', envioNotif, paramsPersonalizado.icone, paramsPersonalizado.usaIcone);
+        let notificacao = GeraNotificacoes(mensagens, diasEvento, tipologia, horaEvento, momentoUnico, 'Mensal', envioNotif, paramsPersonalizado.icone, paramsPersonalizado.usaIcone, canal);
         ObjetoEnvio.regularidade.tipo = 4;
         ObjetoEnvio.regularidade.data = null;
         ObjetoEnvio.regularidade.hora = horaEvento;
@@ -407,7 +447,11 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
                     data: diaImediato,
                     hora: horaImediato,
                     rotina: null,
-                    zapping: 0
+                    zapping: 0,
+                    titulo: null,
+                    descricao: null,
+                    botao_titulo: null,
+                    botao_navigate: null,
                 }
                 ObjetoEnvio.notificacoes.push(imediato)
             } else if(tipologia === 'Personalizada' && paramsPersonalizado.usaIcone === "Não"){
@@ -417,7 +461,11 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
                     data: diaImediato,
                     hora: horaImediato,
                     rotina: null,
-                    zapping: 0
+                    zapping: 0,
+                    titulo: null,
+                    descricao: null,
+                    botao_titulo: null,
+                    botao_navigate: null,
                 }
                 ObjetoEnvio.notificacoes.push(imediato)
             } else {
@@ -427,7 +475,11 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
                     data: diaImediato,
                     hora: horaImediato,
                     rotina: null,
-                    zapping: 0
+                    zapping: 0,
+                    titulo: null,
+                    descricao: null,
+                    botao_titulo: null,
+                    botao_navigate: null,
                 }
                 ObjetoEnvio.notificacoes.push(imediato)
             }
@@ -436,11 +488,11 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
 
     //console.log(ObjetoEnvio)
 
-    fetch(`http://geo-navsafety.ua.pt:443/overtv/eventos/new`, {
+    /*fetch(`http://geo-navsafety.ua.pt:443/overtv/eventos/new`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({...ObjetoEnvio})
-    }).then(response => response.json())
+    }).then(response => response.json())*/
 }

@@ -39,6 +39,10 @@ class CreateNotification extends React.Component {
             casasEscolhidas: [],
             diaMes: '',
             dataFim: '',
+            canal: {
+                nome: '',
+                id: ''
+            },
             dias: {
                 domingo0: false,
                 segunda1: false,
@@ -113,6 +117,10 @@ class CreateNotification extends React.Component {
                 categoriaInfo: '',
                 usersEscolhidos: [],
                 casasEscolhidas: [],
+                canal: {
+                    nome: '',
+                    id: ''
+                },
                 mensagens: {
                     semanaAntes: {
                         active: false, 
@@ -148,10 +156,14 @@ class CreateNotification extends React.Component {
                         message: ''},
                     minutos5: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: ''},
                     momentoAcontecimento: {
                         active: false, 
-                        message: ''}
+                        message: '',
+                        tituloBlade: '',
+                        descricao: ''}
                 }
             })
         }
@@ -162,6 +174,10 @@ class CreateNotification extends React.Component {
                 categoriaInfo: subcategoria,
                 usersEscolhidos: [],
                 casasEscolhidas: [],
+                canal: {
+                    nome: '',
+                    id: ''
+                },
                 mensagens: {
                     semanaAntes: {
                         active: false, 
@@ -763,12 +779,52 @@ class CreateNotification extends React.Component {
                     }
                 }
             })
-        } else {
+        } else if(escolhido === 'quartoHoraDescricaoBlade'){
             this.setState({
                 mensagens:{
                     ...this.state.mensagens,
                     quartoHora: {
                         ...this.state.mensagens.quartoHora,
+                        descricao: escrito
+                    }
+                }
+            })
+        } else if(escolhido === 'minutos5TituloBlade'){
+            this.setState({
+                mensagens:{
+                    ...this.state.mensagens,
+                    minutos5: {
+                        ...this.state.mensagens.minutos5,
+                        tituloBlade: escrito
+                    }
+                }
+            })
+        } else if(escolhido === 'minutos5DescricaoBlade'){
+            this.setState({
+                mensagens:{
+                    ...this.state.mensagens,
+                    minutos5: {
+                        ...this.state.mensagens.minutos5,
+                        descricao: escrito
+                    }
+                }
+            })
+        } else if(escolhido === 'momentoAcontecimentoTituloBlade'){
+            this.setState({
+                mensagens:{
+                    ...this.state.mensagens,
+                    momentoAcontecimento: {
+                        ...this.state.mensagens.momentoAcontecimento,
+                        tituloBlade: escrito
+                    }
+                }
+            })
+        } else {
+            this.setState({
+                mensagens:{
+                    ...this.state.mensagens,
+                    momentoAcontecimento: {
+                        ...this.state.mensagens.momentoAcontecimento,
                         descricao: escrito
                     }
                 }
@@ -820,6 +876,15 @@ class CreateNotification extends React.Component {
         this.setState({
             casasEscolhidas: array,
             usersEscolhidos: array2
+        })
+    }
+
+    mudaCanal = (name, idChannel) => {
+        this.setState({
+            canal: {
+                nome: name,
+                id: idChannel
+            }
         })
     }
 
@@ -955,13 +1020,13 @@ class CreateNotification extends React.Component {
                                         <span className='col-3 ps-0 pe-3'>
                                             <Dropdown>
                                                 <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
-                                                    Canal
+                                                    {this.state.canal.nome === '' ? 'Canal' : this.state.canal.nome}
                                                 </Dropdown.Toggle>
 
                                                 <Dropdown.Menu className='dropdownFiltro'>
                                                     {ListaMeo.map((item, key) => {
                                                         return(
-                                                            <Dropdown.Item>{item.name}</Dropdown.Item>
+                                                            <Dropdown.Item onClick={() => this.mudaCanal(item.name, item.channel)}>{item.name}</Dropdown.Item>
                                                         )
                                                     })}
                                                 </Dropdown.Menu>

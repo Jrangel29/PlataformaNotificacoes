@@ -294,6 +294,15 @@ export const DeliveryOptions = (props) => {
                     </td>
                     <td>
                         <input type="text" value={props.momentos.minutos5.message} placeholder='Mensagem do pop-up (Max. 50 caracteres)' onChange={props.changeMensagem} className={props.momentos.minutos5.active === true ? 'inputsForms w-100 py-1' : 'inputsFormsDisabled'} id='minutos5' maxLength="50"/>
+                        {props.tipo === 'Programas' ?
+                            <>
+                                <p className={props.momentos.minutos5.active === true ? 'p-0 BladeSection' : 'p-0 BladeSectionDisabled'} style={props.momentos.minutos5.active === true ? {display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '2px'} : null}>Blade horizontal <OverlayTrigger placement='right' delay={{ show: 250, hide: 400}} overlay={BladeTooltip}><img src={InformationIcon} style={{width: 'auto', height: '16px', margin: '0', marginLeft:'10px', padding: '0'}}/></OverlayTrigger></p>
+                                <input type="text" value={props.momentos.minutos5.tituloBlade} placeholder='Título do blade (Max. 50 caracteres)' onChange={props.blade} className={props.momentos.minutos5.active === true ? 'inputsForms w-100' : 'inputsFormsDisabled'} id='minutos5TituloBlade' maxLength="50"/>
+                                <textarea rows={3} value={props.momentos.minutos5.descricao} placeholder='Descrição do blade (Max. 150 caracteres)' onChange={props.blade} className={props.momentos.minutos5.active === true ? 'inputsForms mt-2 w-100 pb-1' : 'inputsFormsDisabled mt-2'} id='minutos5DescricaoBlade' maxLength="150"/>
+                            </>
+                            :
+                            <></>
+                        }
                     </td>
                 </tr> 
 
@@ -317,6 +326,15 @@ export const DeliveryOptions = (props) => {
                     </td>
                     <td>
                         <input type="text" value={props.momentos.momentoAcontecimento.message} placeholder='Mensagem do pop-up (Max. 50 caracteres)' onChange={props.changeMensagem} className={props.momentos.momentoAcontecimento.active === true ? 'inputsForms w-100 py-1' : 'inputsFormsDisabled'} id='momentoAcontecimento' maxLength="50"/>
+                        {props.tipo === 'Programas' ?
+                            <>
+                                <p className={props.momentos.momentoAcontecimento.active === true ? 'p-0 BladeSection' : 'p-0 BladeSectionDisabled'} style={props.momentos.momentoAcontecimento.active === true ? {display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '2px'} : null}>Blade horizontal <OverlayTrigger placement='right' delay={{ show: 250, hide: 400}} overlay={BladeTooltip}><img src={InformationIcon} style={{width: 'auto', height: '16px', margin: '0', marginLeft:'10px', padding: '0'}}/></OverlayTrigger></p>
+                                <input type="text" value={props.momentos.momentoAcontecimento.tituloBlade} placeholder='Título do blade (Max. 50 caracteres)' onChange={props.blade} className={props.momentos.momentoAcontecimento.active === true ? 'inputsForms w-100' : 'inputsFormsDisabled'} id='momentoAcontecimentoTituloBlade' maxLength="50"/>
+                                <textarea rows={3} value={props.momentos.momentoAcontecimento.descricao} placeholder='Descrição do blade (Max. 150 caracteres)' onChange={props.blade} className={props.momentos.momentoAcontecimento.active === true ? 'inputsForms mt-2 w-100 pb-1' : 'inputsFormsDisabled mt-2'} id='momentoAcontecimentoDescricaoBlade' maxLength="150"/>
+                            </>
+                            :
+                            <></>
+                        }
                     </td>
                 </tr> 
             </tbody>    

@@ -6,7 +6,7 @@ const objectImagens = {
     "Serviços": "https://firebasestorage.googleapis.com/v0/b/tdi-rangel.appspot.com/o/iconeServicos.png?alt=media&token=2d858888-6925-482c-b2e5-2c89722e5626"
 }
 
-export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, regular, dia, iconePersonalizado, usaIcone) => {
+export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, regular, dia, iconePersonalizado, usaIcone, canal) => {
     
     let notificacoesFinal = [];
     
@@ -763,19 +763,6 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                     rotina: null,
                     zapping: 0
                 })
-            } else if(tipologia === 'Programas') {
-                notificacoesFinal.push({
-                    mensagem: mensagens.meiaHora.message,
-                    titulo: mensagens.meiaHora.tituloBlade,
-                    descricao: mensagens.meiaHora.descricao,
-                    botao_titulo: 'Mudar de Canal',
-                    botao_navigate: null,
-                    url_icone: objectImagens[tipologia],
-                    data: diaFormated,
-                    hora: horaFinal,
-                    rotina: null,
-                    zapping: 0
-                })
             } else {
                 notificacoesFinal.push({
                     mensagem: mensagens.meiaHora.message,
@@ -837,19 +824,6 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                         titulo: mensagens.meiaHora.tituloBlade,
                         descricao: mensagens.meiaHora.descricao,
                         botao_titulo: 'Ir para App',
-                        botao_navigate: null,
-                        url_icone: objectImagens[tipologia],
-                        data: item,
-                        hora: horaFinal,
-                        rotina: null,
-                        zapping: 0
-                    })
-                } else if(tipologia === 'Programas') {
-                    notificacoesFinal.push({
-                        mensagem: mensagens.meiaHora.message,
-                        titulo: mensagens.meiaHora.tituloBlade,
-                        descricao: mensagens.meiaHora.descricao,
-                        botao_titulo: 'Mudar de Canal',
                         botao_navigate: null,
                         url_icone: objectImagens[tipologia],
                         data: item,
@@ -1074,6 +1048,19 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                     rotina: null,
                     zapping: 0
                 })
+            } else if(tipologia === 'Programas') {
+                notificacoesFinal.push({
+                    mensagem: mensagens.minutos5.message,
+                    titulo: mensagens.minutos5.tituloBlade,
+                    descricao: mensagens.minutos5.descricao,
+                    botao_titulo: `Mudar para ${canal.nome}`,
+                    botao_navigate: `tune:${canal.id}`,
+                    url_icone: objectImagens[tipologia],
+                    data: diaFormated,
+                    hora: horaFinal,
+                    rotina: null,
+                    zapping: 0
+                })
             } else {
                 notificacoesFinal.push({
                     mensagem: mensagens.minutos5.message,
@@ -1123,6 +1110,19 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                         botao_titulo: null,
                         botao_navigate: null,
                         url_icone: null,
+                        data: item,
+                        hora: horaFinal,
+                        rotina: null,
+                        zapping: 0
+                    })
+                } else if(tipologia === 'Programas') {
+                    notificacoesFinal.push({
+                        mensagem: mensagens.minutos5.message,
+                        titulo: mensagens.minutos5.tituloBlade,
+                        descricao: mensagens.minutos5.descricao,
+                        botao_titulo: `Mudar para ${canal.nome}`,
+                        botao_navigate: `tune:${canal.id}`,
+                        url_icone: objectImagens[tipologia],
                         data: item,
                         hora: horaFinal,
                         rotina: null,
@@ -1187,6 +1187,19 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                     rotina: null,
                     zapping: 0
                 })
+            } else if(tipologia === 'Programas') {
+                notificacoesFinal.push({
+                    mensagem: mensagens.momentoAcontecimento.message,
+                    titulo: mensagens.momentoAcontecimento.tituloBlade,
+                    descricao: mensagens.momentoAcontecimento.descricao,
+                    botao_titulo: `Mudar para ${canal.nome}`,
+                    botao_navigate: `tune:${canal.id}`,
+                    url_icone: objectImagens[tipologia],
+                    data: diaFormated,
+                    hora: horaEvento,
+                    rotina: null,
+                    zapping: 0
+                })
             } else {
                 notificacoesFinal.push({
                     mensagem: mensagens.momentoAcontecimento.message,
@@ -1241,7 +1254,20 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                         rotina: null,
                         zapping: 0
                     })
-                }  else {
+                } else if(tipologia === 'Programas') {
+                    notificacoesFinal.push({
+                        mensagem: mensagens.momentoAcontecimento.message,
+                        titulo: mensagens.momentoAcontecimento.tituloBlade,
+                        descricao: mensagens.momentoAcontecimento.descricao,
+                        botao_titulo: `Mudar para ${canal.nome}`,
+                        botao_navigate: `tune:${canal.id}`,
+                        url_icone: objectImagens[tipologia],
+                        data: item,
+                        hora: horaEvento,
+                        rotina: null,
+                        zapping: 0
+                    })
+                } else {
                     notificacoesFinal.push({
                         mensagem: mensagens.momentoAcontecimento.message,
                         titulo: null,
