@@ -209,6 +209,17 @@ textarea:focus, input:focus{
     display: inline;
 }
 
+.paginacao{
+    margin-left: auto!important;
+    margin-right: auto!important;
+}
+
+.paginacaoTop{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .inputsFormsDisabled{
     display: none;
 }
