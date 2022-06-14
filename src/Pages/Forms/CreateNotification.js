@@ -16,6 +16,7 @@ import { PreviewNotif } from '../../Components/Forms/PreviewNotif';
 import UserPreferencesModal from '../../Components/Modal/UserPreferencesModal';
 import InformationIcon from '../../Images/information.png';
 import { MomentsTooltip, CategoryTooltip } from '../../Components/Forms/Tooltips';
+import { ListaMeo } from '../../Components/Forms/ListaMeo';
 
 class CreateNotification extends React.Component {
 
@@ -947,6 +948,30 @@ class CreateNotification extends React.Component {
                                     </span>
                                     <NotificationTimeSelection collapseState={this.state.colapsado} mudaDataFim={this.alteraDataFim} parametros={this.state} mudaDiaUnico={this.alteraDiaUnico} alteraDiaMes={this.alteraDiaMes} mudaMomentoUnico={this.alteraMomentoUnico} mudaHora={this.alteraHora} mudaHorario={this.alteraHorario} alterarEnvio={this.alteraEnvio} mudaDia={this.alteraDia} mudaMomento={this.alteraMomento}/>                    
                                 </div>
+                                {this.state.tipologia === 'Programas' ? 
+                                <div className='row col-12 mt-2'>
+                                    <span className='row m-0 col-12 pe-0'>
+                                        <p className='subtituloSeccaoPagina p-0' style={{marginTop: "5px"}}>Escolha do canal <span className='obrigatorio'>*</span></p>
+                                        <span className='col-3 ps-0 pe-3'>
+                                            <Dropdown>
+                                                <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
+                                                    Canal
+                                                </Dropdown.Toggle>
+
+                                                <Dropdown.Menu className='dropdownFiltro'>
+                                                    {ListaMeo.map((item, key) => {
+                                                        return(
+                                                            <Dropdown.Item>{item.name}</Dropdown.Item>
+                                                        )
+                                                    })}
+                                                </Dropdown.Menu>
+                                            </Dropdown>
+                                        </span>
+                                    </span>
+                                </div>
+                                :
+                                <></>
+                                }
                             </span>
                         </Collapse>
                     </div>
