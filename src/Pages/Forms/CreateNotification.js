@@ -108,6 +108,16 @@ class CreateNotification extends React.Component {
         }
     }
 
+    componentDidMount(){
+        let data = new Date();
+        let horaFinal = `${data.getHours() < 10 ? `0${data.getHours()}` : data.getHours()}:${data.getMinutes() < 10 ? '0' + data.getMinutes() : data.getMinutes()}`
+        let DataFinal = data.getFullYear() + '-' + ((data.getMonth() > 8) ? (data.getMonth() + 1) : ('0' + (data.getMonth() + 1))) + '-' + ((data.getDate() > 9) ? data.getDate() : ('0' + data.getDate()));
+        this.setState({
+            hora: horaFinal,
+            dataFim: DataFinal
+        })
+    }
+
     alteraFormulario = (valor, id, subcategoria) => {
         
         if(subcategoria === "nao"){
@@ -892,7 +902,7 @@ class CreateNotification extends React.Component {
         return(
             <div>
                 <div className='mainBodyForm container px-0'>
-                    {/*console.log(this.state)*/}
+                    {console.log(this.state)}
                     <Navbar/>
                     <Header nome="Criar Evento" detalhe="sim" apagaMuda="nao"/>
                     <PreviewNotif tipo={this.state.tipologia} tipoPers={this.state.paramsPersonalizado.tipoRecetor} users={this.state.usersEscolhidos} casas={this.state.casasEscolhidas} personalizado={this.state.paramsPersonalizado} mensagens={this.state.mensagens} titulo={this.state.nomeItem} sub={this.state.categoriaInfo}/>

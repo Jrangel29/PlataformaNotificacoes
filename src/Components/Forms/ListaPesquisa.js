@@ -15,7 +15,7 @@ const GetUsers = (props) => {
                 if(item.id_casa === props.id && contagem === 0){
                     contagem++;
                     return(
-                        <span className='col-12 row itemListaUsersFormCasa m-0'>
+                        <span key={index} className='col-12 row itemListaUsersFormCasa m-0'>
                             <p className='col-6 infoCasaForm'><b>{props.nome}</b></p>
                         </span>
                     )

@@ -583,7 +583,7 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
         novaData.setHours(hora, minutos);
         novaData.setHours(novaData.getHours() - 1);
 
-        let horaFinal = `${novaData.getHours()}:${novaData.getMinutes() < 10 ? '0' + novaData.getMinutes() : novaData.getMinutes()}`
+        let horaFinal = `${novaData.getHours() < 10 ? '0' + novaData.getHours() : novaData.getHours()}:${novaData.getMinutes() < 10 ? '0' + novaData.getMinutes() : novaData.getMinutes()}`
         
 
         if(regular === 'Unico') {
@@ -707,7 +707,7 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
         novaData.setHours(hora, minutos);
         let dataFlex = new Date(novaData - 30 * 60000);
 
-        let horaFinal = `${dataFlex.getHours()}:${(dataFlex.getMinutes() < 10) ? `0${dataFlex.getMinutes()}` : dataFlex.getMinutes()}`;
+        let horaFinal = `${dataFlex.getHours() < 10 ? `0${dataFlex.getHours()}` : dataFlex.getHours()}:${(dataFlex.getMinutes() < 10) ? `0${dataFlex.getMinutes()}` : dataFlex.getMinutes()}`;
 
         if(regular === 'Unico') {
             let diaFormated = dia.getFullYear() + '-' + ((dia.getMonth() > 8) ? (dia.getMonth() + 1) : ('0' + (dia.getMonth() + 1))) + '-' + ((dia.getDate() > 9) ? dia.getDate() : ('0' + dia.getDate()));
@@ -856,7 +856,7 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
         novaData.setHours(hora, minutos);
         let dataFlex = new Date(novaData - 15 * 60000);
 
-        let horaFinal = `${dataFlex.getHours()}:${(dataFlex.getMinutes() < 10) ? `0${dataFlex.getMinutes()}` : dataFlex.getMinutes()}`;
+        let horaFinal = `${dataFlex.getHours() < 10 ? `0${dataFlex.getHours()}` : dataFlex.getHours()}:${(dataFlex.getMinutes() < 10) ? `0${dataFlex.getMinutes()}` : dataFlex.getMinutes()}`;
          
         
         if(regular === 'Unico') {
@@ -1006,7 +1006,7 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
         novaData.setHours(hora, minutos);
         let dataFlex = new Date(novaData - 5 * 60000);
 
-        let horaFinal = `${dataFlex.getHours()}:${(dataFlex.getMinutes() < 10) ? `0${dataFlex.getMinutes()}` : dataFlex.getMinutes()}`;
+        let horaFinal = `${dataFlex.getHours() < 10 ? `0${dataFlex.getHours()}` : dataFlex.getHours()}:${(dataFlex.getMinutes() < 10) ? `0${dataFlex.getMinutes()}` : dataFlex.getMinutes()}`;
 
         if(regular === 'Unico') {
             let diaFormated = dia.getFullYear() + '-' + ((dia.getMonth() > 8) ? (dia.getMonth() + 1) : ('0' + (dia.getMonth() + 1))) + '-' + ((dia.getDate() > 9) ? dia.getDate() : ('0' + dia.getDate()));

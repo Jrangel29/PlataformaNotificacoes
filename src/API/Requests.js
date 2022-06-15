@@ -170,7 +170,7 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
     if(envioNotif === 'Pontual' && momentoUnico === 'Imediato'){
         var diaInicio = new Date();
         var diaImediato = diaInicio.getFullYear() + '-' + ((diaInicio.getMonth() > 8) ? (diaInicio.getMonth() + 1) : ('0' + (diaInicio.getMonth() + 1))) + '-' + ((diaInicio.getDate() > 9) ? diaInicio.getDate() : ('0' + diaInicio.getDate()));
-        var horaImediato = `${diaInicio.getHours()}:${(diaInicio.getMinutes() < 10) ? `0${diaInicio.getMinutes()}` : diaInicio.getMinutes()}`;
+        var horaImediato = `${diaInicio.getHours() < 10 ? `0${diaInicio.getHours()}` : diaInicio.getHours()}:${(diaInicio.getMinutes() < 10) ? `0${diaInicio.getMinutes()}` : diaInicio.getMinutes()}`;
     }
 
     if(envioNotif === 'Diária' || envioNotif === 'Mensal'){
@@ -230,7 +230,7 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
         if(mensagens.imediato.active === true){
             var diaInicio = new Date();
             var diaImediato = diaInicio.getFullYear() + '-' + ((diaInicio.getMonth() > 8) ? (diaInicio.getMonth() + 1) : ('0' + (diaInicio.getMonth() + 1))) + '-' + ((diaInicio.getDate() > 9) ? diaInicio.getDate() : ('0' + diaInicio.getDate()));
-            var horaImediato = `${diaInicio.getHours()}:${(diaInicio.getMinutes() < 10) ? `0${diaInicio.getMinutes()}` : diaInicio.getMinutes()}`;
+            var horaImediato = `${diaInicio.getHours() < 10 ? `0${diaInicio.getHours()}` : diaInicio.getHours()}:${(diaInicio.getMinutes() < 10) ? `0${diaInicio.getMinutes()}` : diaInicio.getMinutes()}`;
 
             if(tipologia === 'Personalizada' && paramsPersonalizado.usaIcone === "Sim"){
                 let imediato = {
@@ -311,7 +311,7 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
         if(mensagens.imediato.active === true){
             var diaInicio = new Date();
             var diaImediato = diaInicio.getFullYear() + '-' + ((diaInicio.getMonth() > 8) ? (diaInicio.getMonth() + 1) : ('0' + (diaInicio.getMonth() + 1))) + '-' + ((diaInicio.getDate() > 9) ? diaInicio.getDate() : ('0' + diaInicio.getDate()));
-            var horaImediato = `${diaInicio.getHours()}:${(diaInicio.getMinutes() < 10) ? `0${diaInicio.getMinutes()}` : diaInicio.getMinutes()}`;
+            var horaImediato = `${diaInicio.getHours() < 10 ? `0${diaInicio.getHours()}` : diaInicio.getHours()}:${(diaInicio.getMinutes() < 10) ? `0${diaInicio.getMinutes()}` : diaInicio.getMinutes()}`;
 
             if(tipologia === 'Personalizada' && paramsPersonalizado.usaIcone === "Sim"){
                 let imediato = {
@@ -379,7 +379,7 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
         if(mensagens.imediato.active === true){
             var diaInicio = new Date();
             var diaImediato = diaInicio.getFullYear() + '-' + ((diaInicio.getMonth() > 8) ? (diaInicio.getMonth() + 1) : ('0' + (diaInicio.getMonth() + 1))) + '-' + ((diaInicio.getDate() > 9) ? diaInicio.getDate() : ('0' + diaInicio.getDate()));
-            var horaImediato = `${diaInicio.getHours()}:${(diaInicio.getMinutes() < 10) ? `0${diaInicio.getMinutes()}` : diaInicio.getMinutes()}`;
+            var horaImediato = `${diaInicio.getHours() < 10 ? `0${diaInicio.getHours()}` : diaInicio.getHours()}:${(diaInicio.getMinutes() < 10) ? `0${diaInicio.getMinutes()}` : diaInicio.getMinutes()}`;
             if(tipologia === 'Personalizada' && paramsPersonalizado.usaIcone === "Sim"){
                 let imediato = {
                     mensagem: mensagens.imediato.message,
@@ -439,7 +439,7 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
         if(mensagens.imediato.active === true){
             var diaInicio = new Date();
             var diaImediato = diaInicio.getFullYear() + '-' + ((diaInicio.getMonth() > 8) ? (diaInicio.getMonth() + 1) : ('0' + (diaInicio.getMonth() + 1))) + '-' + ((diaInicio.getDate() > 9) ? diaInicio.getDate() : ('0' + diaInicio.getDate()));
-            var horaImediato = `${diaInicio.getHours()}:${(diaInicio.getMinutes() < 10) ? `0${diaInicio.getMinutes()}` : diaInicio.getMinutes()}`;
+            var horaImediato = `${diaInicio.getHours() < 10 ? `0${diaInicio.getHours()}` : diaInicio.getHours()}:${(diaInicio.getMinutes() < 10) ? `0${diaInicio.getMinutes()}` : diaInicio.getMinutes()}`;
             if(tipologia === 'Personalizada' && paramsPersonalizado.usaIcone === "Sim"){
                 let imediato = {
                     mensagem: mensagens.imediato.message,
@@ -486,7 +486,7 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
         }
     }
 
-    //console.log(ObjetoEnvio)
+    console.log(ObjetoEnvio)
 
     /*fetch(`http://geo-navsafety.ua.pt:443/overtv/eventos/new`, {
         method: 'POST',
