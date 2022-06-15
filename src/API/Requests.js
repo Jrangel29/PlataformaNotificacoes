@@ -496,3 +496,351 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
         body: JSON.stringify({...ObjetoEnvio})
     }).then(response => response.json())*/
 }
+
+export const updateNotification = (id, tipologia, intervaloTempo, nomeItem, momentoUnico, mensagens, idTipologia, horaEvento, envioNotif, idRegular, dias, diaUnico, diaMes, subcategoria, paramsPersonalizado, casasEscolhidas, usersEscolhidos, dataFim, canal) => {
+    
+    const objectImagens = {
+        "Agenda": "https://firebasestorage.googleapis.com/v0/b/tdi-rangel.appspot.com/o/iconeAgenda.png?alt=media&token=38fb87cc-f8fa-4015-a775-b4da0e6b9a77",
+        "Saúde": "https://firebasestorage.googleapis.com/v0/b/tdi-rangel.appspot.com/o/iconeSaude.png?alt=media&token=fd1ae805-eea2-4dce-b4f8-4d904c4e65b4",
+        "Programas": "https://firebasestorage.googleapis.com/v0/b/tdi-rangel.appspot.com/o/iconeProgramas.png?alt=media&token=3e89e385-5379-403a-93b5-d05f9efda5a6",
+        "Informação": "https://firebasestorage.googleapis.com/v0/b/tdi-rangel.appspot.com/o/iconeInformacao.png?alt=media&token=e706c143-43d2-4625-af36-22a1a658ee30",
+        "Serviços": "https://firebasestorage.googleapis.com/v0/b/tdi-rangel.appspot.com/o/iconeServicos.png?alt=media&token=2d858888-6925-482c-b2e5-2c89722e5626"
+    }
+
+
+    //DATAS
+
+    if(envioNotif === 'Pontual' && momentoUnico === 'Dia e Hora'){
+        var diaInicio = new Date(diaUnico);
+        var weekDay = diaInicio.getDay();
+    }
+
+    if(envioNotif === 'Pontual' && momentoUnico === 'Imediato'){
+        var diaInicio = new Date();
+        var diaImediato = diaInicio.getFullYear() + '-' + ((diaInicio.getMonth() > 8) ? (diaInicio.getMonth() + 1) : ('0' + (diaInicio.getMonth() + 1))) + '-' + ((diaInicio.getDate() > 9) ? diaInicio.getDate() : ('0' + diaInicio.getDate()));
+        var horaImediato = `${diaInicio.getHours() < 10 ? `0${diaInicio.getHours()}` : diaInicio.getHours()}:${(diaInicio.getMinutes() < 10) ? `0${diaInicio.getMinutes()}` : diaInicio.getMinutes()}`;
+    }
+
+    if(envioNotif === 'Diária' || envioNotif === 'Mensal'){
+        var diaInicio = new Date();
+    }
+
+    if(envioNotif === 'Semanal'){
+        var diaInicio = new Date();
+        var diasWeek = [];
+        Object.keys(dias).map(item => {
+            if(dias[item] === true){
+                let str = item.slice(item.length - 1);
+                diasWeek.push(str)
+            }
+        })
+    }
+    
+
+    //Tipologias
+
+
+
+    var ObjetoEnvio = {
+        nome_evento: nomeItem,
+        tipologia: idTipologia,
+        regularidade: {
+            tipo: idRegular,
+            data: '', // diaUnico
+            hora: '', // horaEvento
+            dias: []
+        },
+        destinatarios: [],
+        notificacoes:[]
+    }
+
+    usersEscolhidos.map(item => {
+        ObjetoEnvio.destinatarios.push(item.idUser)
+    })
+
+    if(envioNotif === 'Pontual' && momentoUnico === 'Dia e Hora'){
+        let diasEvento = GetUnique(diaInicio, mensagens);
+        let notificacao = GeraNotificacoes(mensagens, diasEvento, tipologia, horaEvento, momentoUnico, 'Unico', diaInicio, paramsPersonalizado.icone, paramsPersonalizado.usaIcone, canal);
+        
+        let dataNew = new Date(diaInicio);
+        let diaFormated = dataNew.getFullYear() + '-' + ((dataNew.getMonth() > 8) ? (dataNew.getMonth() + 1) : ('0' + (dataNew.getMonth() + 1))) + '-' + ((dataNew.getDate() > 9) ? dataNew.getDate() : ('0' + dataNew.getDate()));
+        
+        ObjetoEnvio.regularidade.tipo = 1;
+        ObjetoEnvio.regularidade.data = diaFormated;
+        ObjetoEnvio.regularidade.hora = horaEvento;
+        if(weekDay !== 0){
+            ObjetoEnvio.regularidade.dias = [weekDay];
+        } else {
+            ObjetoEnvio.regularidade.dias = [7];
+        }
+        ObjetoEnvio.notificacoes = notificacao;
+
+        if(mensagens.imediato.active === true){
+            var diaInicio = new Date();
+            var diaImediato = diaInicio.getFullYear() + '-' + ((diaInicio.getMonth() > 8) ? (diaInicio.getMonth() + 1) : ('0' + (diaInicio.getMonth() + 1))) + '-' + ((diaInicio.getDate() > 9) ? diaInicio.getDate() : ('0' + diaInicio.getDate()));
+            var horaImediato = `${diaInicio.getHours() < 10 ? `0${diaInicio.getHours()}` : diaInicio.getHours()}:${(diaInicio.getMinutes() < 10) ? `0${diaInicio.getMinutes()}` : diaInicio.getMinutes()}`;
+
+            if(tipologia === 'Personalizada' && paramsPersonalizado.usaIcone === "Sim"){
+                let imediato = {
+                    mensagem: mensagens.imediato.message,
+                    url_icone: objectImagens[paramsPersonalizado.icone],
+                    data: diaImediato,
+                    hora: horaImediato,
+                    rotina: null,
+                    zapping: 0,
+                    titulo: null,
+                    descricao: null,
+                    botao_titulo: null,
+                    botao_navigate: null,
+                }
+                ObjetoEnvio.notificacoes.push(imediato)
+            } else if(tipologia === 'Personalizada' && paramsPersonalizado.usaIcone === "Não"){
+                let imediato = {
+                    mensagem: mensagens.imediato.message,
+                    url_icone: null,
+                    data: diaImediato,
+                    hora: horaImediato,
+                    rotina: null,
+                    zapping: 0,
+                    titulo: null,
+                    descricao: null,
+                    botao_titulo: null,
+                    botao_navigate: null,
+                }
+                ObjetoEnvio.notificacoes.push(imediato)
+            } else {
+                let imediato = {
+                    mensagem: mensagens.imediato.message,
+                    url_icone: objectImagens[tipologia],
+                    data: diaImediato,
+                    hora: horaImediato,
+                    rotina: null,
+                    zapping: 0,
+                    titulo: null,
+                    descricao: null,
+                    botao_titulo: null,
+                    botao_navigate: null,
+                }
+                ObjetoEnvio.notificacoes.push(imediato)
+            }
+        }
+    }
+
+    if(envioNotif === 'Pontual' && momentoUnico === 'Imediato'){
+        let notificacao = {
+            mensagem: mensagens.imediato.message,
+            url_icone: objectImagens[tipologia],
+            data: diaImediato,
+            hora: horaImediato,
+            rotina: null,
+            zapping: 0,
+            titulo: null,
+            descricao: null,
+            botao_titulo: null,
+            botao_navigate: null,
+        }
+        ObjetoEnvio.regularidade.tipo = 1;
+        ObjetoEnvio.regularidade.data = diaImediato;
+        ObjetoEnvio.regularidade.hora = horaImediato;
+        ObjetoEnvio.regularidade.dias = [];
+        ObjetoEnvio.notificacoes.push(notificacao);
+    }
+
+    if(envioNotif === 'Diária'){
+        let meses = GetMesesDif(diaInicio, dataFim);
+        let diasEvento = GetEveryday(GetMeses(meses), dataFim);
+        let notificacao = GeraNotificacoes(mensagens, diasEvento, tipologia, horaEvento, momentoUnico, 'Diária', envioNotif, paramsPersonalizado.icone, paramsPersonalizado.usaIcone, canal);
+        ObjetoEnvio.regularidade.tipo = 2;
+        ObjetoEnvio.regularidade.data = null;
+        ObjetoEnvio.regularidade.hora = horaEvento;
+        ObjetoEnvio.regularidade.dias = [1, 2, 3, 4, 5, 6, 7];
+        ObjetoEnvio.notificacoes = notificacao;
+       
+        if(mensagens.imediato.active === true){
+            var diaInicio = new Date();
+            var diaImediato = diaInicio.getFullYear() + '-' + ((diaInicio.getMonth() > 8) ? (diaInicio.getMonth() + 1) : ('0' + (diaInicio.getMonth() + 1))) + '-' + ((diaInicio.getDate() > 9) ? diaInicio.getDate() : ('0' + diaInicio.getDate()));
+            var horaImediato = `${diaInicio.getHours() < 10 ? `0${diaInicio.getHours()}` : diaInicio.getHours()}:${(diaInicio.getMinutes() < 10) ? `0${diaInicio.getMinutes()}` : diaInicio.getMinutes()}`;
+
+            if(tipologia === 'Personalizada' && paramsPersonalizado.usaIcone === "Sim"){
+                let imediato = {
+                    mensagem: mensagens.imediato.message,
+                    url_icone: objectImagens[paramsPersonalizado.icone],
+                    data: diaImediato,
+                    hora: horaImediato,
+                    rotina: null,
+                    zapping: 0,
+                    titulo: null,
+                    descricao: null,
+                    botao_titulo: null,
+                    botao_navigate: null,
+                }
+                ObjetoEnvio.notificacoes.push(imediato)
+            } else if(tipologia === 'Personalizada' && paramsPersonalizado.usaIcone === "Não"){
+                let imediato = {
+                    mensagem: mensagens.imediato.message,
+                    url_icone: null,
+                    data: diaImediato,
+                    hora: horaImediato,
+                    rotina: null,
+                    zapping: 0,
+                    titulo: null,
+                    descricao: null,
+                    botao_titulo: null,
+                    botao_navigate: null,
+                }
+                ObjetoEnvio.notificacoes.push(imediato)
+            } else {
+                let imediato = {
+                    mensagem: mensagens.imediato.message,
+                    url_icone: objectImagens[tipologia],
+                    data: diaImediato,
+                    hora: horaImediato,
+                    rotina: null,
+                    zapping: 0,
+                    titulo: null,
+                    descricao: null,
+                    botao_titulo: null,
+                    botao_navigate: null,
+                }
+                ObjetoEnvio.notificacoes.push(imediato)
+            }
+        }
+    }
+
+    if(envioNotif === 'Semanal'){
+        let meses = GetMesesDif(diaInicio, dataFim);
+        let diasEvento = GetDiaSemana(diasWeek, GetMeses(meses), mensagens, dataFim);
+        let notificacao = GeraNotificacoes(mensagens, diasEvento, tipologia, horaEvento, momentoUnico, 'Semanal', envioNotif, paramsPersonalizado.icone, paramsPersonalizado.usaIcone, canal);
+        ObjetoEnvio.regularidade.tipo = 3;
+        ObjetoEnvio.regularidade.data = null;
+        ObjetoEnvio.regularidade.data = diaUnico;
+        ObjetoEnvio.regularidade.hora = horaEvento;
+        diasWeek.map(item => {
+            if(item !== 0){
+                ObjetoEnvio.regularidade.dias.push(item)
+            } else {
+                ObjetoEnvio.regularidade.dias.push(7)
+            }
+        })
+        ObjetoEnvio.notificacoes = notificacao;
+        
+        if(mensagens.imediato.active === true){
+            var diaInicio = new Date();
+            var diaImediato = diaInicio.getFullYear() + '-' + ((diaInicio.getMonth() > 8) ? (diaInicio.getMonth() + 1) : ('0' + (diaInicio.getMonth() + 1))) + '-' + ((diaInicio.getDate() > 9) ? diaInicio.getDate() : ('0' + diaInicio.getDate()));
+            var horaImediato = `${diaInicio.getHours() < 10 ? `0${diaInicio.getHours()}` : diaInicio.getHours()}:${(diaInicio.getMinutes() < 10) ? `0${diaInicio.getMinutes()}` : diaInicio.getMinutes()}`;
+            if(tipologia === 'Personalizada' && paramsPersonalizado.usaIcone === "Sim"){
+                let imediato = {
+                    mensagem: mensagens.imediato.message,
+                    url_icone: objectImagens[paramsPersonalizado.icone],
+                    data: diaImediato,
+                    hora: horaImediato,
+                    rotina: null,
+                    zapping: 0,
+                    titulo: null,
+                    descricao: null,
+                    botao_titulo: null,
+                    botao_navigate: null,
+                }
+                ObjetoEnvio.notificacoes.push(imediato)
+            } else if(tipologia === 'Personalizada' && paramsPersonalizado.usaIcone === "Não"){
+                let imediato = {
+                    mensagem: mensagens.imediato.message,
+                    url_icone: null,
+                    data: diaImediato,
+                    hora: horaImediato,
+                    rotina: null,
+                    zapping: 0,
+                    titulo: null,
+                    descricao: null,
+                    botao_titulo: null,
+                    botao_navigate: null,
+                }
+                ObjetoEnvio.notificacoes.push(imediato)
+            } else {
+                let imediato = {
+                    mensagem: mensagens.imediato.message,
+                    url_icone: objectImagens[tipologia],
+                    data: diaImediato,
+                    hora: horaImediato,
+                    rotina: null,
+                    zapping: 0,
+                    titulo: null,
+                    descricao: null,
+                    botao_titulo: null,
+                    botao_navigate: null,
+                }
+                ObjetoEnvio.notificacoes.push(imediato)
+            }
+        }
+    }
+
+    if(envioNotif === 'Mensal'){
+        let meses = GetMesesDif(diaInicio, dataFim);
+        let diasEvento = GetDiaMes(diaMes, GetMeses(meses), mensagens, dataFim);
+        let notificacao = GeraNotificacoes(mensagens, diasEvento, tipologia, horaEvento, momentoUnico, 'Mensal', envioNotif, paramsPersonalizado.icone, paramsPersonalizado.usaIcone, canal);
+        ObjetoEnvio.regularidade.tipo = 4;
+        ObjetoEnvio.regularidade.data = null;
+        ObjetoEnvio.regularidade.hora = horaEvento;
+        ObjetoEnvio.regularidade.dias = [];
+        ObjetoEnvio.notificacoes = notificacao;
+        
+        if(mensagens.imediato.active === true){
+            var diaInicio = new Date();
+            var diaImediato = diaInicio.getFullYear() + '-' + ((diaInicio.getMonth() > 8) ? (diaInicio.getMonth() + 1) : ('0' + (diaInicio.getMonth() + 1))) + '-' + ((diaInicio.getDate() > 9) ? diaInicio.getDate() : ('0' + diaInicio.getDate()));
+            var horaImediato = `${diaInicio.getHours() < 10 ? `0${diaInicio.getHours()}` : diaInicio.getHours()}:${(diaInicio.getMinutes() < 10) ? `0${diaInicio.getMinutes()}` : diaInicio.getMinutes()}`;
+            if(tipologia === 'Personalizada' && paramsPersonalizado.usaIcone === "Sim"){
+                let imediato = {
+                    mensagem: mensagens.imediato.message,
+                    url_icone: objectImagens[paramsPersonalizado.icone],
+                    data: diaImediato,
+                    hora: horaImediato,
+                    rotina: null,
+                    zapping: 0,
+                    titulo: null,
+                    descricao: null,
+                    botao_titulo: null,
+                    botao_navigate: null,
+                }
+                ObjetoEnvio.notificacoes.push(imediato)
+            } else if(tipologia === 'Personalizada' && paramsPersonalizado.usaIcone === "Não"){
+                let imediato = {
+                    mensagem: mensagens.imediato.message,
+                    url_icone: null,
+                    data: diaImediato,
+                    hora: horaImediato,
+                    rotina: null,
+                    zapping: 0,
+                    titulo: null,
+                    descricao: null,
+                    botao_titulo: null,
+                    botao_navigate: null,
+                }
+                ObjetoEnvio.notificacoes.push(imediato)
+            } else {
+                let imediato = {
+                    mensagem: mensagens.imediato.message,
+                    url_icone: objectImagens[tipologia],
+                    data: diaImediato,
+                    hora: horaImediato,
+                    rotina: null,
+                    zapping: 0,
+                    titulo: null,
+                    descricao: null,
+                    botao_titulo: null,
+                    botao_navigate: null,
+                }
+                ObjetoEnvio.notificacoes.push(imediato)
+            }
+        }
+    }
+
+    console.log(ObjetoEnvio)
+
+    /*fetch(`http://geo-navsafety.ua.pt:443/overtv/eventos/new`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({...ObjetoEnvio})
+    }).then(response => response.json())*/
+}

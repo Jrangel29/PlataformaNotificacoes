@@ -7,6 +7,8 @@ import {
     NOTIFICATION_ALL_GET_SUCCESS,
     NOTIFICATION_SINGLE_GET_SUCCESS,
     NOTIFICATION_SINGLE_GET_START,
+    NOTIFICATION_UPDATE_SUCCESS,
+    NOTIFICATION_UPDATE_START,
 } from '../Actions/Constants'
 
 const initialState = {
@@ -14,7 +16,8 @@ const initialState = {
     singleNotification: {},
     isLoading: true,
     isLoadingAll: true,
-    isLoadingSingle: true
+    isLoadingSingle: true,
+    isLoadingEdit: true
 }
 
 export default (state = initialState, { type, payload }) => {
@@ -39,6 +42,17 @@ export default (state = initialState, { type, payload }) => {
             return { ...state, isLoadingSingle: true };
         case NOTIFICATION_SINGLE_GET_SUCCESS:
             return { ...state, data: payload, isLoadingSingle: false };
+        case NOTIFICATION_UPDATE_START:
+            return {...state, isLoadingEdit:true}
+        case NOTIFICATION_UPDATE_SUCCESS:
+            data = state.data.map((event) => {
+                console.log(event.id)
+                if (event.id !== payload.id) {
+                    return event;
+                }
+                    return payload;
+            });
+            return { ...state, isLoadingEdit: false, data };
         default:
             return state;
     }

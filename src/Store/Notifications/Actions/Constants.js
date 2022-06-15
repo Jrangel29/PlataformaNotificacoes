@@ -13,3 +13,7 @@ export const NOTIFICATION_ALL_GET_ERROR = 'notificationAll/get:error';
 export const NOTIFICATION_SINGLE_GET_START = 'notificationSingle/get:start';
 export const NOTIFICATION_SINGLE_GET_SUCCESS = 'notificationSingle/get:success';
 export const NOTIFICATION_SINGLE_GET_ERROR = 'notificationSingle/get:error';
+
+export const NOTIFICATION_UPDATE_START = 'notification/update:start';
+export const NOTIFICATION_UPDATE_SUCCESS = 'notification/update:success';
+export const NOTIFICATION_UPDATE_ERROR = 'notification/update:error';

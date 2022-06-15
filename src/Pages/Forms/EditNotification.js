@@ -818,7 +818,10 @@ class EditNotification extends React.Component {
     }
 
     componentDidMount = () => {
-        console.log(this.props)
+        //console.log(this.props)
+        let data = new Date();
+        let horaFinal = `${data.getHours() < 10 ? `0${data.getHours()}` : data.getHours()}:${data.getMinutes() < 10 ? '0' + data.getMinutes() : data.getMinutes()}`
+        let DataFinal = data.getFullYear() + '-' + ((data.getMonth() > 8) ? (data.getMonth() + 1) : ('0' + (data.getMonth() + 1))) + '-' + ((data.getDate() > 9) ? data.getDate() : ('0' + data.getDate()));
 
         if(Object.keys(this.props.event).length !== 0){
             let array = [];
@@ -893,12 +896,12 @@ class EditNotification extends React.Component {
                 envioNotif: reg.envio,
                 idRegular: reg.idReg,
                 diaUnico: '',
-                hora: '',
+                hora: horaFinal,
                 momentoUnico: '',
                 usersEscolhidos: array,
                 casasEscolhidas: [],
                 diaMes: '',
-                dataFim: '',
+                dataFim: DataFinal,
                 dias: {
                     domingo0: diasNew.domingo0,
                     segunda1: diasNew.segunda1,
@@ -1197,7 +1200,7 @@ class EditNotification extends React.Component {
                         <p className='col-2 indicaObrigatorio'>*Obrigatório</p>
                     </span>
                     <div className='row m-0' style={{padding: "0 40px"}}>
-                        <SubmitButton params={this.state} openModal={this.onOpen} tipoForm="Notification"/>
+                        <SubmitButton params={this.state} openModal={this.onOpen} tipoForm="NotificationEdit"/>
                     </div>
                 </div>
                 <UserPreferencesModal show={this.state.mostraModalInfo} users={this.state.usersEscolhidos} onHide={this.onCloseInfo}/>
