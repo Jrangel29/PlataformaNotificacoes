@@ -77,6 +77,7 @@ function NotificationTimeSelection(props) {
                                         id="segunda1" 
                                         key="segunda1" 
                                         value="segunda1"
+                                        checked={props.parametros.dias.segunda1}
                                         onChange={props.mudaDia}/>
                                 </td>
                                 <td>
@@ -86,6 +87,7 @@ function NotificationTimeSelection(props) {
                                         id="terca2" 
                                         key="terca2" 
                                         value="terca2"
+                                        checked={props.parametros.dias.terca2}
                                         onChange={props.mudaDia}/>
                                 </td>
                                 <td>
@@ -95,6 +97,7 @@ function NotificationTimeSelection(props) {
                                         id="quarta3" 
                                         key="quarta3" 
                                         value="quarta3"
+                                        checked={props.parametros.dias.quarta3}
                                         onChange={props.mudaDia}/>
                                 </td>
                                 <td>
@@ -104,6 +107,7 @@ function NotificationTimeSelection(props) {
                                         id="quinta4" 
                                         key="quinta4" 
                                         value="quinta4"
+                                        checked={props.parametros.dias.quinta4}
                                         onChange={props.mudaDia}/>
                                 </td>
                                 <td>
@@ -113,6 +117,7 @@ function NotificationTimeSelection(props) {
                                         id="sexta5" 
                                         key="sexta5" 
                                         value="sexta5"
+                                        checked={props.parametros.dias.sexta5}
                                         onChange={props.mudaDia}/>
                                 </td>
                                 <td>
@@ -122,6 +127,7 @@ function NotificationTimeSelection(props) {
                                         id="sabado6" 
                                         key="sabado6" 
                                         value="sabado6"
+                                        checked={props.parametros.dias.sabado6}
                                         onChange={props.mudaDia}/>
                                 </td>
                                 <td>
@@ -131,6 +137,7 @@ function NotificationTimeSelection(props) {
                                         id="domingo0" 
                                         key="domingo0" 
                                         value="domingo0"
+                                        checked={props.parametros.dias.domingo0}
                                         onChange={props.mudaDia}/>
                                 </td>
                             </tr>

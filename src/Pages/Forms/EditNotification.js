@@ -13,7 +13,8 @@ import { PreviewNotif } from '../../Components/Forms/PreviewNotif';
 import UserPreferencesModal from '../../Components/Modal/UserPreferencesModal';
 import InformationIcon from '../../Images/information.png';
 import { MomentsTooltip, CategoryTooltip } from '../../Components/Forms/Tooltips';
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
+import { useNavigate } from "react-router-dom";
 
 class EditNotification extends React.Component {
 
@@ -818,25 +819,17 @@ class EditNotification extends React.Component {
 
     componentDidMount = () => {
         console.log(this.props)
-        this.setState({
-            mostraModal: false,
-            mostraModalInfo: false,
-            id_evento: this.props.event.id_evento,
-            tipologia: this.props.event.tipologia,
-            idTipologia: 1,
-            categoriaInfo: "",
-            nomeItem: this.props.event.nome,
-            regularidade: '',
-            envioNotif: "Pontual",
-            idRegular: '',
-            diaUnico: '',
-            hora: '',
-            momentoUnico: '',
-            usersEscolhidos: [],
-            casasEscolhidas: [],
-            diaMes: '',
-            dataFim: '',
-            dias: {
+
+        if(Object.keys(this.props.event).length !== 0){
+            let array = [];
+
+            var reg = {
+                regularidade: '',
+                idReg: null,
+                envio: ''
+            }
+
+            var diasNew = {
                 domingo0: false,
                 segunda1: false,
                 terca2: false,
@@ -844,65 +837,150 @@ class EditNotification extends React.Component {
                 quinta4: false,
                 sexta5: false,
                 sabado6: false
-            },
-            paramsPersonalizado: {
-                usaIcone: "Não",
-                icone: "Agenda",
-                tipoRecetor: 'Recetores Individuais'
-            },
-            colapsado: {
-                collapse1: false,
-                collapse2: false,
-                collapse3: false,
-                collapse4: false
-            },
-            mensagens: {
-                semanaAntes: {
-                    active: false, 
-                    message: ''},
-                dias3: {
-                    active: false, 
-                    message: ''},
-                diaAnterior: {
-                    active: false, 
-                    message: ''},
-                diaProprio: {
-                    active: false, 
-                    message: ''},
-                horaEspecifica: {
-                    active: false, 
-                    message: ''},
-                imediato: {
-                    active: false, 
-                    message: ''},
-                intervaloHoras: {
-                    active: false, 
-                    message: ''},
-                horaAntes: {
-                    active: false, 
-                    message: ''},
-                meiaHora: {
-                    active: false, 
-                    message: '',
-                    tituloBlade: '',
-                    descricao: ''},
-                quartoHora: {
-                    active: false, 
-                    message: '',
-                    tituloBlade: '',
-                    descricao: ''},
-                minutos5: {
-                    active: false, 
-                    message: ''},
-                momentoAcontecimento: {
-                    active: false, 
-                    message: ''}
             }
-        })
+
+            this.props.event.users.map(item => {
+                array.push({idCasa: item.id_casa, nomeCasa: item.nomeCasa, idUser: item.id_utilizador, nome: item.nomeUser})
+            })
+
+            if(this.props.event.regularidade === 'Pontual'){
+                reg = {
+                    regularidade: this.props.event.regularidade,
+                    idReg: 1,
+                    envio: 'Dia e Hora'
+                }
+            } else if(this.props.event.regularidade === 'Diária'){
+                reg = {
+                    regularidade: 'Regular',
+                    idReg: 2,
+                    envio: this.props.event.regularidade
+                }
+            } else if(this.props.event.regularidade === 'Semanal'){
+                reg = {
+                    regularidade: 'Regular',
+                    idReg: 3,
+                    envio: this.props.event.regularidade
+                }
+                this.props.event.dias.map(item => {
+                    Object.keys(diasNew).map(val => {
+                        var lastChar = val.substr(val.length - 1);
+                        var number = parseInt(lastChar)
+                        if(number == item){
+                            diasNew = {
+                                ...diasNew,
+                                [val]: true
+                            }
+                        }
+                    })
+                })
+            } else {
+                reg = {
+                    regularidade: 'Regular',
+                    idReg: 4,
+                    envio: this.props.event.regularidade
+                }
+            }
+    
+            this.setState({
+                mostraModal: false,
+                mostraModalInfo: false,
+                id_evento: this.props.event.id_evento,
+                tipologia: this.props.event.tipologia,
+                idTipologia: 1,
+                categoriaInfo: "",
+                nomeItem: this.props.event.nome,
+                regularidade: reg.regularidade,
+                envioNotif: reg.envio,
+                idRegular: reg.idReg,
+                diaUnico: '',
+                hora: '',
+                momentoUnico: '',
+                usersEscolhidos: array,
+                casasEscolhidas: [],
+                diaMes: '',
+                dataFim: '',
+                dias: {
+                    domingo0: diasNew.domingo0,
+                    segunda1: diasNew.segunda1,
+                    terca2: diasNew.terca2,
+                    quarta3: diasNew.quarta3,
+                    quinta4: diasNew.quinta4,
+                    sexta5: diasNew.sexta5,
+                    sabado6: diasNew.sabado6
+                },
+                paramsPersonalizado: {
+                    usaIcone: "Não",
+                    icone: "Agenda",
+                    tipoRecetor: 'Recetores Individuais'
+                },
+                colapsado: {
+                    collapse1: false,
+                    collapse2: false,
+                    collapse3: false,
+                    collapse4: false
+                },
+                mensagens: {
+                    semanaAntes: {
+                        active: false, 
+                        message: ''},
+                    dias3: {
+                        active: false, 
+                        message: ''},
+                    diaAnterior: {
+                        active: false, 
+                        message: ''},
+                    diaProprio: {
+                        active: false, 
+                        message: ''},
+                    horaEspecifica: {
+                        active: false, 
+                        message: ''},
+                    imediato: {
+                        active: false, 
+                        message: ''},
+                    intervaloHoras: {
+                        active: false, 
+                        message: ''},
+                    horaAntes: {
+                        active: false, 
+                        message: ''},
+                    meiaHora: {
+                        active: false, 
+                        message: '',
+                        tituloBlade: '',
+                        descricao: ''},
+                    quartoHora: {
+                        active: false, 
+                        message: '',
+                        tituloBlade: '',
+                        descricao: ''},
+                    minutos5: {
+                        active: false, 
+                        message: ''},
+                    momentoAcontecimento: {
+                        active: false, 
+                        message: ''}
+                }
+            })
+        }
     }
 
     render(){
         //console.log(this.state)
+        if(Object.keys(this.props.event).length === 0){
+            return(
+                <div>
+                    <div className='mainBodyForm container px-0'>
+                        <Navbar/>
+                        <Header nome="Editar Evento" detalhe="sim" apagaMuda="nao"/>
+                        <div>
+                            <MandaEmbora/>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
+        
         return(
             <div>
                 <div className='mainBodyForm container px-0'>
@@ -1009,6 +1087,7 @@ class EditNotification extends React.Component {
                                             name="radios"
                                             id="Pontual" 
                                             key="Pontual" 
+                                            checked={this.state.regularidade === 'Pontual' ? true : false}
                                             value="Pontual"
                                             label='Pontual'
                                             onChange={this.alteraRegularidade}
@@ -1018,7 +1097,8 @@ class EditNotification extends React.Component {
                                             inline
                                             name="radios" 
                                             id="Regular" 
-                                            key="Regular" 
+                                            key="Regular"
+                                            checked={this.state.regularidade === 'Regular' ? true : false} 
                                             value="Regular"
                                             label='Regular'
                                             onChange={this.alteraRegularidade}
@@ -1128,9 +1208,23 @@ class EditNotification extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+
     return{
         event: state.eventos.singleEvent
     }
+}
+
+
+const MandaEmbora = () => {
+    const navigate = useNavigate();
+    setTimeout(function() {
+        document.getElementById("botaozinho").click();
+    }, 10)
+    
+
+    return(
+        <button id='botaozinho' style={{display: 'none'}} onClick={() => navigate(-1)}></button>
+    )
 }
 
 export default connect(mapStateToProps)(EditNotification);

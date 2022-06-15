@@ -74,7 +74,7 @@ const EventCards = (props) => {
                                             {item.tipologia}
                                         </p>
                                         <p className='textoSmall mb-0'>
-                                            Regularidade
+                                            {item.regularidade === 1 ? 'Pontual' : item.regularidade === 2 ? 'Diária' : item.regularidade === 3 ? 'Semanal' : 'Mensal'}
                                         </p>
                                     </span>
                                 </Accordion.Header>
