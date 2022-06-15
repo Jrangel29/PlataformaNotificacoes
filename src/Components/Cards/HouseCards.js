@@ -77,7 +77,7 @@ const HouseCards = (props) => {
             <div className='row cartasMainBody'>
                 {currentItems.current.map((item, index) => {
                     return(
-                    <Accordion defaultActiveKey="0" className='col-3 pb-3'>
+                    <Accordion key={index} defaultActiveKey="0" className='col-3 pb-3'>
                         <Accordion.Item eventKey="1">
                             <Accordion.Header className='m-0'>
                                 <span>

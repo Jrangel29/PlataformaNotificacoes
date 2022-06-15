@@ -3,7 +3,7 @@ import '../../Styles/Cards.css';
 import '../../Styles/Filters.css';
 import {Card} from 'react-bootstrap';
 
-const UserDetailsCards = (props) => {
+const UserHouseDetailsCards = (props) => {
 
     return(            
         <div className='container m-0 p-0'>
@@ -15,11 +15,8 @@ const UserDetailsCards = (props) => {
                             <Card>
                                 <Card.Body className='m-0 cartaGrupos'>
                                     <span>
-                                        <p className='tituloUserCartaSmall mb-2'>
-                                            {item.nomeUser}
-                                        </p>
-                                        <p className='textoSmall mb-0' style={{fontSize: '14px'}}>
-                                            {item.nomeCasa}
+                                        <p className='tituloUserCartaSmall mb-1'>
+                                            {item.nome}
                                         </p>
                                         <p className='textoSmall mb-0' style={{fontSize: '14px'}}>
                                             {item.idade} anos
@@ -47,4 +44,4 @@ const UserDetailsCards = (props) => {
     )
 }
 
-export default UserDetailsCards;
+export default UserHouseDetailsCards;

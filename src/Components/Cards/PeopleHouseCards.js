@@ -30,7 +30,7 @@ const PeopleHouseCards = (props) => {
         <p className='mb-1 textHouseCards'>
             {props.users.map((item, index) => {
                 return(
-                    <>
+                    <span className='m-0 p-0' key={index}>
                         {item.id_casa === props.idCasa ? 
                             item.utilizadores.length !== 0 ?
                                 item.utilizadores.map((value, index) => {
@@ -43,7 +43,7 @@ const PeopleHouseCards = (props) => {
                             :
                             <></>
                         }
-                    </>
+                    </span>
                 )
             })}
         </p>

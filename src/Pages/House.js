@@ -3,7 +3,7 @@ import { useParams } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 import Navbar from '../Components/Geral/Navbar';
 import Header from '../Components/Geral/Header';
-import UserDetailCards from '../Components/Cards/UserDetailCards';
+import UserHouseDetailCards from '../Components/Cards/UserHouseDetailCards';
 import { getHousePeopleList } from '../Store/Casas/Actions';
 import Loading from '../Pages/Loading';
 import '../Styles/User.css';
@@ -44,7 +44,7 @@ function House(props) {
                         <h1 className='tituloSeccaoPaginaNotifs'>Membros da casa</h1>
                     </div>
                     <div className='mt-1 mx-3' style={{padding: "0 40px"}}>
-                        <UserDetailCards users={casaInfo.utilizadores}/>
+                        <UserHouseDetailCards users={casaInfo.utilizadores}/>
                     </div>
                 </div>
                 <div className='p-0 m-0 mt-3'>

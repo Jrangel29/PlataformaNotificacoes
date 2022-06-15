@@ -21,7 +21,7 @@ const NotificationCards = (props) => {
     const [modal, setModal] = useState([false, {}]);
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage, setItemsPerPage] = useState(12);
+    const [itemsPerPage, setItemsPerPage] = useState(15);
     const indexOfLastPost = currentPage * itemsPerPage;
     const indexOfFirstPost = indexOfLastPost - itemsPerPage;
     const [currentItems, setCurrentItems] = useState({todos: [], current: []});
@@ -65,7 +65,7 @@ const NotificationCards = (props) => {
             <Loading />
         )
     }
-
+    //console.log(currentItems)
     return(
         <div className='container m-0' style={props.pagina === 'users' ? {padding: "0 40px"} : null}>
             <div className='row cartasMainBody'>
@@ -130,7 +130,7 @@ const NotificationCards = (props) => {
                         </span>
                     )
                 })}
-                {currentItems.todos.length > 12 ? 
+                {currentItems.todos.length > 15 ? 
                     <Pagination itemsPerPage={itemsPerPage} totalItems={currentItems.todos.length} paginate={paginate}/>
                 :
                 <></>

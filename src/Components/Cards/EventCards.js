@@ -16,7 +16,7 @@ const EventCards = (props) => {
     const isLoadingEvents = useSelector(({ eventos }) => eventos.isLoading)
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage, setItemsPerPage] = useState(12);
+    const [itemsPerPage, setItemsPerPage] = useState(16);
     const indexOfLastPost = currentPage * itemsPerPage;
     const indexOfFirstPost = indexOfLastPost - itemsPerPage;
     const [currentItems, setCurrentItems] = useState({todos: [], current: []});
@@ -85,7 +85,7 @@ const EventCards = (props) => {
                         </Accordion>
                     )
                 })}
-                {currentItems.todos.length > 12 ? 
+                {currentItems.todos.length > 16 ? 
                     <Pagination itemsPerPage={itemsPerPage} totalItems={currentItems.todos.length} paginate={paginate}/>
                 :
                 <></>
