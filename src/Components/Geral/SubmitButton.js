@@ -13,6 +13,7 @@ const SubmitButton = (props) => {
 
     let contagemDias = 0;
     let contagemMomentos = 0;
+    let contagemMensagens = 0;
 
     const criaUser = (nome, idade, idCasa, informacaoAdicional, blackList) => {
         props.openModal();
@@ -156,26 +157,45 @@ const SubmitButton = (props) => {
                                 props.params.diaUnico !== '' && props.params.hora !== '' ?
                                     <>
                                         {Object.keys(props.params.mensagens).map(item => {
-                                            if(item !== "meiaHora" && item !== 'quartoHora' && item !== 'minutos5' && item !== 'momentoAcontecimento' && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== ''){
+                                            if(item !== "meiaHora" && item !== 'quartoHora' && item !== 'minutos5' && item !== 'momentoAcontecimento' && props.params.mensagens[item].active === true){
                                                 contagemMomentos++;
+                                                if(props.params.mensagens[item].message !== ''){
+                                                    contagemMensagens++;
+                                                }
                                             }
-                                            if(item === "meiaHora" && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                            if(item === "meiaHora" && props.params.mensagens[item].active === true){
                                                 contagemMomentos++;
+                                                if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                                    contagemMensagens++;
+                                                }
                                             }
-                                            if(item === "quartoHora" && props.params.tipologia === 'Saúde' && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                            if(item === "quartoHora" && props.params.tipologia === 'Saúde' && props.params.mensagens[item].active === true){
                                                 contagemMomentos++;
+                                                if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                                    contagemMensagens++;
+                                                }
                                             }
-                                            if(item === "quartoHora" && props.params.tipologia !== 'Saúde' && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== ''){
+                                            if(item === "quartoHora" && props.params.tipologia !== 'Saúde' && props.params.mensagens[item].active === true){
                                                 contagemMomentos++;
+                                                if(props.params.mensagens[item].message !== ''){
+                                                    contagemMensagens++;
+                                                }
                                             }
-                                            if(item === 'minutos5' && props.params.tipologia === 'Programas' && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== '' || item === 'momentoAcontecimento' && props.params.tipologia === 'Programas' && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                            if(item === 'minutos5' && props.params.tipologia === 'Programas' && props.params.mensagens[item].active === true || item === 'momentoAcontecimento' && props.params.tipologia === 'Programas' && props.params.mensagens[item].active === true){
                                                 contagemMomentos++;
+                                                if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                                    contagemMensagens++;
+                                                }
                                             }
-                                            if(item === "minutos5" && props.params.tipologia !== 'Programas' && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== '' || item === "momentoAcontecimento" && props.params.tipologia !== 'Programas' && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== ''){
+                                            if(item === "minutos5" && props.params.tipologia !== 'Programas' && props.params.mensagens[item].active === true || item === "momentoAcontecimento" && props.params.tipologia !== 'Programas' && props.params.mensagens[item].active === true){
                                                 contagemMomentos++;
+                                                if(props.params.mensagens[item].message !== ''){
+                                                    contagemMensagens++;
+                                                }
                                             }
                                         })}
-                                        {contagemMomentos !== 0 && props.params.hora !== '' ?
+                                        {contagemMomentos !== 0 && contagemMomentos === contagemMensagens
+                                         && props.params.hora !== '' ?
                                             props.params.tipologia !== 'Programas' ?
                                                 <span className='row m-0 justify-content-end'>
                                                     <Button 
@@ -214,26 +234,44 @@ const SubmitButton = (props) => {
                                 props.params.hora !== '' && props.params.dataFim !== '' ?
                                 <>
                                     {Object.keys(props.params.mensagens).map(item => {
-                                        if(item !== "meiaHora" && item !== "quartoHora" && item !== 'minutos5' && item !== 'momentoAcontecimento' && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== ''){
+                                        if(item !== "meiaHora" && item !== "quartoHora" && item !== 'minutos5' && item !== 'momentoAcontecimento' && props.params.mensagens[item].active === true){
                                             contagemMomentos++;
+                                            if(props.params.mensagens[item].message !== ''){
+                                                contagemMensagens++;
+                                            }
                                         }
-                                        if(item === "meiaHora" && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                        if(item === "meiaHora" && props.params.mensagens[item].active === true){
                                             contagemMomentos++;
+                                            if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                                contagemMensagens++;
+                                            }
                                         }
-                                        if(item === "quartoHora" && props.params.tipologia === 'Saúde' && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                        if(item === "quartoHora" && props.params.tipologia === 'Saúde' && props.params.mensagens[item].active === true){
                                             contagemMomentos++;
+                                            if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                                contagemMensagens++;
+                                            }
                                         }
-                                        if(item === "quartoHora" && props.params.tipologia !== 'Saúde' && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== ''){
+                                        if(item === "quartoHora" && props.params.tipologia !== 'Saúde' && props.params.mensagens[item].active === true){
                                             contagemMomentos++;
+                                            if(props.params.mensagens[item].message !== ''){
+                                                contagemMensagens++;
+                                            }
                                         }
-                                        if(item === 'minutos5' && props.params.tipologia === 'Programas' && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== '' || item === 'momentoAcontecimento' && props.params.tipologia === 'Programas' && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                        if(item === 'minutos5' && props.params.tipologia === 'Programas' && props.params.mensagens[item].active === true || item === 'momentoAcontecimento' && props.params.tipologia === 'Programas' && props.params.mensagens[item].active === true){
                                             contagemMomentos++;
+                                            if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                                contagemMensagens++;
+                                            }
                                         }
-                                        if(item === "minutos5" && props.params.tipologia !== 'Programas' && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== '' || item === "momentoAcontecimento" && props.params.tipologia !== 'Programas' && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== ''){
+                                        if(item === "minutos5" && props.params.tipologia !== 'Programas' && props.params.mensagens[item].active === true || item === "momentoAcontecimento" && props.params.tipologia !== 'Programas' && props.params.mensagens[item].active === true){
                                             contagemMomentos++;
+                                            if(props.params.mensagens[item].message !== ''){
+                                                contagemMensagens++;
+                                            }
                                         }
                                     })}
-                                    {contagemMomentos !== 0 ?
+                                    {contagemMomentos !== 0 && contagemMomentos === contagemMensagens ?
                                         props.params.tipologia !== 'Programas' ?
                                             <span className='row m-0 justify-content-end'>
                                                 <Button 
@@ -277,27 +315,45 @@ const SubmitButton = (props) => {
                                         }
                                     })}
                                     {Object.keys(props.params.mensagens).map(item => {
-                                        if(item !== "meiaHora" && item !== "quartoHora" && item !== 'minutos5' && item !== 'momentoAcontecimento' && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== ''){
+                                        if(item !== "meiaHora" && item !== "quartoHora" && item !== 'minutos5' && item !== 'momentoAcontecimento' && props.params.mensagens[item].active === true){
                                             contagemMomentos++;
+                                            if(props.params.mensagens[item].message !== ''){
+                                                contagemMensagens++;
+                                            }
                                         }
-                                        if(item === "meiaHora" && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                        if(item === "meiaHora" && props.params.mensagens[item].active === true){
                                             contagemMomentos++;
+                                            if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                                contagemMensagens++;
+                                            }
                                         }
-                                        if(item === "quartoHora" && props.params.tipologia === 'Saúde' && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                        if(item === "quartoHora" && props.params.tipologia === 'Saúde' && props.params.mensagens[item].active === true){
                                             contagemMomentos++;
+                                            if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                                contagemMensagens++;
+                                            }
                                         }
-                                        if(item === "quartoHora" && props.params.tipologia !== 'Saúde' && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== ''){
+                                        if(item === "quartoHora" && props.params.tipologia !== 'Saúde' && props.params.mensagens[item].active === true){
                                             contagemMomentos++;
+                                            if(props.params.mensagens[item].message !== ''){
+                                                contagemMensagens++;
+                                            }
                                         }
-                                        if(item === 'minutos5' && props.params.tipologia === 'Programas' && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== '' || item === 'momentoAcontecimento' && props.params.tipologia === 'Programas' && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                        if(item === 'minutos5' && props.params.tipologia === 'Programas' && props.params.mensagens[item].active === true || item === 'momentoAcontecimento' && props.params.tipologia === 'Programas' && props.params.mensagens[item].active === true){
                                             contagemMomentos++;
+                                            if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                                contagemMensagens++;
+                                            }
                                         }
-                                        if(item === "minutos5" && props.params.tipologia !== 'Programas' && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== '' || item === "momentoAcontecimento" && props.params.tipologia !== 'Programas' && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== ''){
+                                        if(item === "minutos5" && props.params.tipologia !== 'Programas' && props.params.mensagens[item].active === true || item === "momentoAcontecimento" && props.params.tipologia !== 'Programas' && props.params.mensagens[item].active === true){
                                             contagemMomentos++;
+                                            if(props.params.mensagens[item].message !== ''){
+                                                contagemMensagens++;
+                                            }
                                         }
                                     })}
                                     
-                                    {contagemDias !== 0 && contagemMomentos !== 0 && props.params.hora !== '' && props.params.dataFim !== '' ?
+                                    {contagemDias !== 0 && contagemMomentos !== 0 && contagemMomentos === contagemMensagens && props.params.hora !== '' && props.params.dataFim !== '' ?
                                         props.params.tipologia !== 'Programas' ?
                                             <span className='row m-0 justify-content-end'>
                                                 <Button 
@@ -330,27 +386,45 @@ const SubmitButton = (props) => {
                                 :
                                 <>
                                     {Object.keys(props.params.mensagens).map(item => {
-                                        if(item !== "meiaHora" && item !== "quartoHora" && item !== 'minutos5' && item !== 'momentoAcontecimento' && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== ''){
+                                        if(item !== "meiaHora" && item !== "quartoHora" && item !== 'minutos5' && item !== 'momentoAcontecimento' && props.params.mensagens[item].active === true){
                                             contagemMomentos++;
+                                            if(props.params.mensagens[item].message !== ''){
+                                                contagemMensagens++;
+                                            }
                                         }
-                                        if(item === "meiaHora" && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                        if(item === "meiaHora" && props.params.mensagens[item].active === true){
                                             contagemMomentos++;
+                                            if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                                contagemMensagens++;
+                                            }
                                         }
-                                        if(item === "quartoHora" && props.params.tipologia === 'Saúde' && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                        if(item === "quartoHora" && props.params.tipologia === 'Saúde' && props.params.mensagens[item].active === true){
                                             contagemMomentos++;
+                                            if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                                contagemMensagens++;
+                                            }
                                         }
-                                        if(item === "quartoHora" && props.params.tipologia !== 'Saúde' && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== ''){
+                                        if(item === "quartoHora" && props.params.tipologia !== 'Saúde' && props.params.mensagens[item].active === true){
                                             contagemMomentos++;
+                                            if(props.params.mensagens[item].message !== ''){
+                                                contagemMensagens++;
+                                            }
                                         }
-                                        if(item === 'minutos5' && props.params.tipologia === 'Programas' && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== '' || item === 'momentoAcontecimento' && props.params.tipologia === 'Programas' && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                        if(item === 'minutos5' && props.params.tipologia === 'Programas' && props.params.mensagens[item].active === true || item === 'momentoAcontecimento' && props.params.tipologia === 'Programas' && props.params.mensagens[item].active === true){
                                             contagemMomentos++;
+                                            if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                                contagemMensagens++;
+                                            }
                                         }
-                                        if(item === "minutos5" && props.params.tipologia !== 'Programas' && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== '' || item === "momentoAcontecimento" && props.params.tipologia !== 'Programas' && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== ''){
+                                        if(item === "minutos5" && props.params.tipologia !== 'Programas' && props.params.mensagens[item].active === true || item === "momentoAcontecimento" && props.params.tipologia !== 'Programas' && props.params.mensagens[item].active === true){
                                             contagemMomentos++;
+                                            if(props.params.mensagens[item].message !== ''){
+                                                contagemMensagens++;
+                                            }
                                         }
                                     })}
                                     {props.params.diaMes !== '' && props.params.hora !== '' && props.params.dataFim !== '' ?
-                                        contagemMomentos !== 0 ?
+                                        contagemMomentos !== 0 && contagemMomentos === contagemMensagens ?
                                             props.params.tipologia !== 'Programas' ?
                                                 <span className='row m-0 justify-content-end'>
                                                     <Button 
@@ -406,20 +480,32 @@ const SubmitButton = (props) => {
                                 props.params.diaUnico !== '' && props.params.hora !== '' ?
                                     <>
                                         {Object.keys(props.params.mensagens).map(item => {
-                                            if(item !== "meiaHora" && item !== "quartoHora" && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== ''){
+                                            if(item !== "meiaHora" && item !== "quartoHora" && props.params.mensagens[item].active === true){
                                                 contagemMomentos++;
+                                                if(props.params.mensagens[item].message !== ''){
+                                                    contagemMensagens++;
+                                                }
                                             }
-                                            if(item === "meiaHora" && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                            if(item === "meiaHora" && props.params.mensagens[item].active === true){
                                                 contagemMomentos++;
+                                                if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                                    contagemMensagens++;
+                                                }
                                             }
-                                            if(item === "quartoHora" && props.params.tipologia === 'Saúde' && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                            if(item === "quartoHora" && props.params.tipologia === 'Saúde' && props.params.mensagens[item].active === true){
                                                 contagemMomentos++;
+                                                if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                                    contagemMensagens++;
+                                                }
                                             }
-                                            if(item === "quartoHora" && props.params.tipologia !== 'Saúde' && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== ''){
+                                            if(item === "quartoHora" && props.params.tipologia !== 'Saúde' && props.params.mensagens[item].active === true){
                                                 contagemMomentos++;
+                                                if(props.params.mensagens[item].message !== ''){
+                                                    contagemMensagens++;
+                                                }
                                             }
                                         })}
-                                        {contagemMomentos !== 0 && props.params.hora !== '' ?
+                                        {contagemMomentos !== 0 && contagemMomentos === contagemMensagens && props.params.hora !== '' ?
                                         <span className='row m-0 justify-content-end'>
                                             <Button 
                                                 className='col-2' 
@@ -466,20 +552,32 @@ const SubmitButton = (props) => {
                                 props.params.hora !== '' && props.params.dataFim !== '' ?
                                 <>
                                     {Object.keys(props.params.mensagens).map(item => {
-                                        if(item !== "meiaHora" && item !== "quartoHora" && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== ''){
+                                        if(item !== "meiaHora" && item !== "quartoHora" && props.params.mensagens[item].active === true){
                                             contagemMomentos++;
+                                            if(props.params.mensagens[item].message !== ''){
+                                                contagemMensagens++;
+                                            }
                                         }
-                                        if(item === "meiaHora" && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                        if(item === "meiaHora" && props.params.mensagens[item].active === true){
                                             contagemMomentos++;
+                                            if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                                contagemMensagens++;
+                                            }
                                         }
-                                        if(item === "quartoHora" && props.params.tipologia === 'Saúde' && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                        if(item === "quartoHora" && props.params.tipologia === 'Saúde' && props.params.mensagens[item].active === true){
                                             contagemMomentos++;
+                                            if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                                contagemMensagens++;
+                                            }
                                         }
-                                        if(item === "quartoHora" && props.params.tipologia !== 'Saúde' && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== ''){
+                                        if(item === "quartoHora" && props.params.tipologia !== 'Saúde' && props.params.mensagens[item].active === true){
                                             contagemMomentos++;
+                                            if(props.params.mensagens[item].message !== ''){
+                                                contagemMensagens++;
+                                            }
                                         }
                                     })}
-                                    {contagemMomentos !== 0 ?
+                                    {contagemMomentos !== 0 && contagemMomentos === contagemMensagens ?
                                     <span className='row m-0 justify-content-end'>
                                         <Button 
                                             className='col-2' 
@@ -501,20 +599,32 @@ const SubmitButton = (props) => {
                             :
                                 <>
                                     {Object.keys(props.params.mensagens).map(item => {
-                                        if(item !== "meiaHora" && item !== "quartoHora" && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== ''){
+                                        if(item !== "meiaHora" && item !== "quartoHora" && props.params.mensagens[item].active === true){
                                             contagemMomentos++;
+                                            if(props.params.mensagens[item].message !== ''){
+                                                contagemMensagens++;
+                                            }
                                         }
-                                        if(item === "meiaHora" && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                        if(item === "meiaHora" && props.params.mensagens[item].active === true){
                                             contagemMomentos++;
+                                            if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                                contagemMensagens++;
+                                            }
                                         }
-                                        if(item === "quartoHora" && props.params.tipologia === 'Saúde' && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                        if(item === "quartoHora" && props.params.tipologia === 'Saúde' && props.params.mensagens[item].active === true){
                                             contagemMomentos++;
+                                            if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                                contagemMensagens++;
+                                            }
                                         }
-                                        if(item === "quartoHora" && props.params.tipologia !== 'Saúde' && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== ''){
+                                        if(item === "quartoHora" && props.params.tipologia !== 'Saúde' && props.params.mensagens[item].active === true){
                                             contagemMomentos++;
+                                            if(props.params.mensagens[item].message !== ''){
+                                                contagemMensagens++;
+                                            }
                                         }
                                     })}
-                                    {contagemMomentos !== 0 ?
+                                    {contagemMomentos !== 0 && contagemMomentos === contagemMensagens ?
                                     <span className='row m-0 justify-content-end'>
                                         <Button 
                                             className='col-2' 
@@ -538,20 +648,32 @@ const SubmitButton = (props) => {
                                     }
                                 })}
                                 {Object.keys(props.params.mensagens).map(item => {
-                                    if(item !== "meiaHora" && item !== "quartoHora" && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== ''){
+                                    if(item !== "meiaHora" && item !== "quartoHora" && props.params.mensagens[item].active === true){
                                         contagemMomentos++;
+                                        if(props.params.mensagens[item].message !== ''){
+                                            contagemMensagens++;
+                                        }
                                     }
-                                    if(item === "meiaHora" && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                    if(item === "meiaHora" && props.params.mensagens[item].active === true){
                                         contagemMomentos++;
+                                        if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                            contagemMensagens++;
+                                        }
                                     }
-                                    if(item === "quartoHora" && props.params.tipologia === 'Saúde' && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                    if(item === "quartoHora" && props.params.tipologia === 'Saúde' && props.params.mensagens[item].active === true){
                                         contagemMomentos++;
+                                        if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                            contagemMensagens++;
+                                        }
                                     }
-                                    if(item === "quartoHora" && props.params.tipologia !== 'Saúde' && props.params.mensagens[item].active === true && props.params.mensagens[item].message !== ''){
+                                    if(item === "quartoHora" && props.params.tipologia !== 'Saúde' && props.params.mensagens[item].active === true){
                                         contagemMomentos++;
+                                        if(props.params.mensagens[item].message !== ''){
+                                            contagemMensagens++;
+                                        }
                                     }
                                 })}
-                                {contagemDias !== 0 && contagemMomentos !== 0 && props.params.hora !== '' && props.params.dataFim !== '' && props.params.tipologia === 'Serviços' || contagemDias !== 0 && contagemMomentos !== 0 && props.params.tipologia === 'Informação' ?
+                                {contagemDias !== 0 && contagemMomentos !== 0 && contagemMomentos === contagemMensagens && props.params.hora !== '' && props.params.dataFim !== '' && props.params.tipologia === 'Serviços' || contagemDias !== 0 && contagemMomentos !== 0 && props.params.tipologia === 'Informação' ?
                                 <span className='row m-0 justify-content-end'>
                                     <Button 
                                         className='col-2' 
