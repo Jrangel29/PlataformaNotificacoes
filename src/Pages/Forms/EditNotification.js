@@ -1204,7 +1204,7 @@ class EditNotification extends React.Component {
                     </div>
                 </div>
                 <UserPreferencesModal show={this.state.mostraModalInfo} users={this.state.usersEscolhidos} onHide={this.onCloseInfo}/>
-                <SuccessModal show={this.state.mostraModal} onHide={this.onClose} tiponotif="CriarNotificação"/>
+                <SuccessModal show={this.state.mostraModal} onHide={this.onClose} tiponotif="Editar"/>
             </div>
         )
     } 
