@@ -829,7 +829,8 @@ class EditNotification extends React.Component {
             var reg = {
                 regularidade: '',
                 idReg: null,
-                envio: ''
+                envio: '',
+                momento: ''
             }
 
             var diasNew = {
@@ -850,7 +851,8 @@ class EditNotification extends React.Component {
                 reg = {
                     regularidade: this.props.event.regularidade,
                     idReg: 1,
-                    envio: 'Dia e Hora'
+                    envio: 'Pontual',
+                    momento: 'Dia e Hora'
                 }
             } else if(this.props.event.regularidade === 'Diária'){
                 reg = {
@@ -897,7 +899,7 @@ class EditNotification extends React.Component {
                 idRegular: reg.idReg,
                 diaUnico: '',
                 hora: horaFinal,
-                momentoUnico: '',
+                momentoUnico: reg.momento,
                 usersEscolhidos: array,
                 casasEscolhidas: [],
                 diaMes: '',
