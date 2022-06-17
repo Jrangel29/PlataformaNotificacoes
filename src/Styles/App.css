@@ -605,3 +605,14 @@ textarea:focus, input:focus{
     color: #FFFFFF;
     max-width: 600px;
 }
+
+.selecionado{
+    background-color: #2d507c!important;
+    color: white!important;
+    cursor: pointer!important;
+}
+
+.notSelecionado{
+    color: #2d507c!important;
+    cursor: pointer!important;
+}

@@ -131,7 +131,7 @@ const NotificationCards = (props) => {
                     )
                 })}
                 {currentItems.todos.length > 15 ? 
-                    <Pagination itemsPerPage={itemsPerPage} totalItems={currentItems.todos.length} paginate={paginate}/>
+                    <Pagination itemsPerPage={itemsPerPage} totalItems={currentItems.todos.length} paginate={paginate} currentPage={currentPage}/>
                 :
                 <></>
                 }
