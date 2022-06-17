@@ -21,7 +21,7 @@ const HistoryDetails = () => {
         enviou: 0
     })
 
-    const notificationInfo = useSelector(({ notificacoes }) => notificacoes.data)
+    const notificationInfo = useSelector(({ notificacoes }) => notificacoes.singleNotification)
     const isLoadingNotificationInfo = useSelector(({ notificacoes }) => notificacoes.isLoadingSingle)
 
     useEffect(() => {
@@ -85,7 +85,7 @@ const HistoryDetails = () => {
                     <h1 className='tituloSeccaoPaginaNotifs'>Estatísticas</h1>
                 </div>
                 <div style={{padding: '0 40px'}} className="mx-2 row">
-                    <p className='subtituloSeccaoPagina mt-2 px-0'>Contagem</p>
+                    <p className='subtituloSeccaoPagina mt-2 px-0'>Contagem das interações</p>
                     <span className='col-6 m-0 p-0'>
                         <Table striped bordered hover className='tabelaHistorico'>
                             <thead>

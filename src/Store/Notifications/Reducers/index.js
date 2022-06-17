@@ -41,7 +41,7 @@ export default (state = initialState, { type, payload }) => {
         case NOTIFICATION_SINGLE_GET_START:
             return { ...state, isLoadingSingle: true };
         case NOTIFICATION_SINGLE_GET_SUCCESS:
-            return { ...state, data: payload, isLoadingSingle: false };
+            return { ...state, singleNotification: payload, isLoadingSingle: false };
         case NOTIFICATION_UPDATE_START:
             return {...state, isLoadingEdit:true}
         case NOTIFICATION_UPDATE_SUCCESS:
