@@ -8,18 +8,31 @@ import { getNotificationInfo } from '../Store/Notifications/Actions';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
 import Loading from '../Pages/Loading';
+import { PieChart } from '../Components/Charts/PieChart';
 
 const HistoryDetails = () => {
 
     const dispatch = useDispatch();
     const {id} = useParams();
 
-    const [estatiticas, setEstatisticas] = useState({
-        fechou: 0,
-        abriu: 0,
-        recebeu: 0,
-        enviou: 0
-    })
+    const [estatiticas, setEstatisticas] = useState([
+        {
+            name: 'Fechou',
+            value: 0
+        },
+        {
+            name: 'Abriu',
+            value: 0
+        },
+        {
+            name: 'Recebeu',
+            value: 0
+        },
+        {
+            name: 'Enviou',
+            value: 0
+        },
+    ])
 
     const notificationInfo = useSelector(({ notificacoes }) => notificacoes.singleNotification)
     const isLoadingNotificationInfo = useSelector(({ notificacoes }) => notificacoes.isLoadingSingle)
@@ -49,12 +62,24 @@ const HistoryDetails = () => {
                     fechou++
                 }
             })
-            setEstatisticas({
-                fechou: fechou,
-                abriu: abriu,
-                recebeu: recebeu,
-                enviou: enviou
-            })
+            setEstatisticas([
+                {
+                    name: 'Fechou',
+                    value: 123
+                },
+                {
+                    name: 'Abriu',
+                    value: 77
+                },
+                {
+                    name: 'Recebeu',
+                    value: 200
+                },
+                {
+                    name: 'Enviou',
+                    value: 225
+                },
+            ])
         }
     }, [isLoadingNotificationInfo])
 
@@ -63,10 +88,9 @@ const HistoryDetails = () => {
             <Loading/>
         )
     }
-
+    console.log(notificationInfo[0])
     return(
         <div>
-            {console.log(notificationInfo)}
             <div className='mainBodyForm p-0 container'>
             <Navbar/>
                 <Header nome="Histórico" detalhe="sim" apagaMuda="nao"/>
@@ -97,11 +121,11 @@ const HistoryDetails = () => {
                             <tbody>
                                 <tr>
                                     <td style={{fontSize: '14px'}}>A notificação foi enviada.</td>
-                                    <td style={{fontSize: '14px'}}>{estatiticas.enviou}</td>
+                                    <td style={{fontSize: '14px'}}>{estatiticas[3].value}</td>
                                 </tr>
                                 <tr>
                                     <td style={{fontSize: '14px'}}>A notificação foi recebida.</td>
-                                    <td style={{fontSize: '14px'}}>{estatiticas.recebeu}</td>
+                                    <td style={{fontSize: '14px'}}>{estatiticas[2].value}</td>
                                 </tr>
                             </tbody>
                         </Table>
@@ -117,17 +141,25 @@ const HistoryDetails = () => {
                             <tbody>
                                 <tr>
                                     <td style={{fontSize: '14px'}}>O utilizador fechou a notificação.</td>
-                                    <td style={{fontSize: '14px'}}>{estatiticas.fechou}</td>
+                                    <td style={{fontSize: '14px'}}>{estatiticas[0].value}</td>
                                 </tr>
                                 <tr>
                                     <td style={{fontSize: '14px'}}>O especatador escolheu "Relembrar daqui a 15 minutos".</td>
-                                    <td style={{fontSize: '14px'}}>{estatiticas.abriu}</td>
+                                    <td style={{fontSize: '14px'}}>{estatiticas[1].value}</td>
                                 </tr>
                             </tbody>
                         </Table>
                     </span>
-                    <p className='subtituloSeccaoPagina px-0'>Interações detalhadas</p>
-                    {<UserNotificationCards historico="sim" info={notificationInfo}/>}
+                    <span className='row col-12 m-0 p-0'>
+                        <p className='subtituloSeccaoPagina px-0 mb-0 pb-0'>Representação gráfica</p>
+                        <PieChart info={estatiticas}/>
+                    </span>
+                </div>
+                <div className='prevSeccao ms-0'>
+                    <h1 className='tituloSeccaoPaginaNotifs'>Interações detalhadas</h1>
+                </div>
+                <div style={{padding: '0 40px'}} className="mx-2 row mt-2">
+                    <UserNotificationCards historico="sim" info={notificationInfo}/>
                 </div>
             </div>
         </div>
