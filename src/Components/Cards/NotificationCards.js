@@ -10,6 +10,8 @@ import Loading from '../../Pages/Loading';
 import { getNotifications } from '../../Store/Notifications/Actions';
 import NotificationModal from '../../Components/Modal/NotificationModal';
 import Pagination from '../Geral/Pagination';
+import { PieChartNotiList } from '../Charts/PieChart';
+import { Table } from 'react-bootstrap'
 
 const NotificationCards = (props) => {
 
@@ -25,6 +27,67 @@ const NotificationCards = (props) => {
     const indexOfLastPost = currentPage * itemsPerPage;
     const indexOfFirstPost = indexOfLastPost - itemsPerPage;
     const [currentItems, setCurrentItems] = useState({todos: [], current: []});
+
+    const [estatiticas, setEstatisticas] = useState([
+        {
+            name: 'Fechou',
+            value: 0
+        },
+        {
+            name: 'Abriu',
+            value: 0
+        },
+        {
+            name: 'Recebeu',
+            value: 0
+        },
+        {
+            name: 'Enviou',
+            value: 0
+        },
+    ])
+
+    useEffect(() => {
+
+        var fechou = 0;
+        var abriu = 0;
+        var recebeu = 0;
+        var enviou = 0;
+
+        if(!isLoadingAll){
+            /*notificationList.map(item => {
+                if(item.enviado.data[0] !== 0){
+                    enviou++;
+                }
+                if(item.recebido.data[0] !== 0){
+                    recebeu++;
+                }
+                if(item.fechou.data[0] !== 0){
+                    abriu++;
+                } else {
+                    fechou++
+                }
+            })*/
+            setEstatisticas([
+                {
+                    name: 'Fechou',
+                    value: 123
+                },
+                {
+                    name: 'Abriu',
+                    value: 77
+                },
+                {
+                    name: 'Recebeu',
+                    value: 200
+                },
+                {
+                    name: 'Enviou',
+                    value: 225
+                },
+            ])
+        }
+    }, [isLoadingAll])
 
     useEffect(() => {
         dispatch(getNotifications())
@@ -136,6 +199,60 @@ const NotificationCards = (props) => {
                 <></>
                 }
             </div>
+            {props.tipo === 'Enviadas' ? 
+                <>
+                <div className='m-0 p-0 inicioPagina'>
+                    <h1 className='estatisticasPagina'>Estatísticas</h1>
+                </div>
+                <div className='row m-0 p-0 justify-content-center'>
+                    <span className='col-5 p-0'>
+                        <Table striped bordered hover className='tabelaHistorico2'>
+                            <thead>
+                                <tr>
+                                    <th style={{fontSize: '16px'}}>Envio/Receção da notificação</th>
+                                    <th style={{fontSize: '16px'}}>Contagem</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style={{fontSize: '14px'}}>A notificação foi enviada.</td>
+                                    <td style={{fontSize: '14px'}}>{estatiticas[3].value}</td>
+                                </tr>
+                                <tr>
+                                    <td style={{fontSize: '14px'}}>A notificação foi recebida.</td>
+                                    <td style={{fontSize: '14px'}}>{estatiticas[2].value}</td>
+                                </tr>
+                            </tbody>
+                        </Table>
+                    </span>
+                    <span className='col-5 offset-1 p-0'>
+                        <Table striped bordered hover className='tabelaHistorico2'>
+                            <thead>
+                                <tr>
+                                    <th style={{fontSize: '16px'}}>Interação</th>
+                                    <th style={{fontSize: '16px'}}>Contagem</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style={{fontSize: '14px'}}>A notificação foi fechada.</td>
+                                    <td style={{fontSize: '14px'}}>{estatiticas[0].value}</td>
+                                </tr>
+                                <tr>
+                                    <td style={{fontSize: '14px'}}>A notificação obteve resposta.</td>
+                                    <td style={{fontSize: '14px'}}>{estatiticas[1].value}</td>
+                                </tr>
+                            </tbody>
+                        </Table>
+                    </span>
+                </div>
+                <div className='row m-0 p-0 justify-content-center'>
+                    <PieChartNotiList info={estatiticas}/>
+                </div>
+                </>
+                :
+                <></>
+            }
             <NotificationModal show={modal[0]} onHide={() => setModal([false, {}])} tipo="notificacoes" info={modal[1]}/>
         </div>
     )

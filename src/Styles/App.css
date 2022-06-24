@@ -91,6 +91,16 @@ textarea:focus, input:focus{
     margin-bottom: 0;
 }
 
+.estatisticasPagina{
+    font-size: 30px;
+    font-weight: 700;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    color: #112D4E;
+    margin-bottom: 0;
+}
+
+
 .inicioPagina{
     margin: 0;
     padding: 0;

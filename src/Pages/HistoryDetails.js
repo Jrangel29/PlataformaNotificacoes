@@ -150,7 +150,7 @@ const HistoryDetails = () => {
                             </tbody>
                         </Table>
                     </span>
-                    <span className='row col-12 m-0 p-0'>
+                    <span className='row col-6 m-0 p-0'>
                         <p className='subtituloSeccaoPagina px-0 mb-0 pb-0'>Representação gráfica</p>
                         <PieChart info={estatiticas}/>
                     </span>
