@@ -1,7 +1,9 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Homepage from "./Pages/Homepage.js";
-import Login from "./Pages/Login.js";
+import { useAuth } from "./firebase.js";
+import SignIn from "./Pages/SignIn.js";
+import ProtectedRoutes from "./Auth/ProtectedRoutes.js";
 import Notifications from "./Pages/Notifications.js";
 import Users from "./Pages/Users.js";
 import User from "./Pages/User.js";
@@ -29,39 +31,48 @@ import Error404 from "./Pages/404.js";
 import "./Styles/App.css";
 
 function App() {
-  return (
-    <div style={{ backgroundColor: "#eaeaea", minHeight: "100vh" }}>
-      <BrowserRouter>
-        <Routes>
-          <Route exact path='/' element={<Homepage />} />
-          <Route exact path='/notifications' element={<Notifications />} />
-          <Route exact path='/users' element={<Users />} />
-          <Route exact path='/users/:id' element={<User />} />
-          <Route exact path='/users/create' element={<CreateUser />} />
-          <Route exact path='/users/edit/:id' element={<EditUser />} />
-          <Route exact path='/routines' element={<Routines />} />
-          {/*<Route exact path="/groups" element={<Groups/>}/>
+  const currentUser = useAuth();
+
+  if (currentUser === null) {
+    return <></>;
+  } else {
+    return (
+      <div style={{ backgroundColor: "#eaeaea", minHeight: "100vh" }}>
+        <BrowserRouter>
+          <Routes>
+            <Route element={<ProtectedRoutes />}>
+              <Route exact path='/' element={<Homepage />} />
+              <Route exact path='/notifications' element={<Notifications />} />
+              <Route exact path='/users' element={<Users />} />
+              <Route exact path='/users/:id' element={<User />} />
+              <Route exact path='/users/create' element={<CreateUser />} />
+              <Route exact path='/users/edit/:id' element={<EditUser />} />
+              <Route exact path='/routines' element={<Routines />} />
+              {/*<Route exact path="/groups" element={<Groups/>}/>
           <Route exact path="/groups/group" element={<Group/>}/>
           <Route exact path="/groups/create" element={<CreateGroup/>}/>
           <Route exact path="/groups/edit" element={<EditGroup/>}/>
           <Route exact path="/templates" element={<Templates/>}/>
           <Route exact path="/templates/create" element={<CreateTemplate/>}/>
           <Route exact path="/templates/edit" element={<EditTemplate/>}/>*/}
-          <Route exact path='/history' element={<History />} />
-          <Route exact path='/history/:id' element={<HistoryDetails />} />
-          <Route exact path='/houses' element={<Houses />} />
-          <Route exact path='/houses/:id' element={<House />} />
-          <Route exact path='/houses/create' element={<CreateHouse />} />
-          <Route exact path='/houses/edit/:id' element={<EditHouse />} />
-          <Route exact path='/events' element={<Events />} />
-          <Route exact path='/events/:id' element={<Event />} />
-          <Route exact path='/events/create' element={<CreateNotification />} />
-          <Route exact path='/events/edit/:id' element={<EditNotification />} />
-          <Route path='*' element={<Error404 />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
-  );
+              <Route exact path='/history' element={<History />} />
+              <Route exact path='/history/:id' element={<HistoryDetails />} />
+              <Route exact path='/houses' element={<Houses />} />
+              <Route exact path='/houses/:id' element={<House />} />
+              <Route exact path='/houses/create' element={<CreateHouse />} />
+              <Route exact path='/houses/edit/:id' element={<EditHouse />} />
+              <Route exact path='/events' element={<Events />} />
+              <Route exact path='/events/:id' element={<Event />} />
+              <Route exact path='/events/create' element={<CreateNotification />} />
+              <Route exact path='/events/edit/:id' element={<EditNotification />} />
+              <Route exact path='/registar' element={<SignIn />} />
+              <Route path='*' element={<Error404 />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </div>
+    );
+  }
 }
 
 export default App;
