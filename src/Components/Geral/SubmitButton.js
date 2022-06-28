@@ -142,7 +142,7 @@ const SubmitButton = (props) => {
                                     </span>
                                 :
                                 props.params.tipologia === 'Programas' && props.params.canal.channel !== '' && props.params.canal.nome !== '' ?
-                                    props.params.mensagens.imediato.active === true && props.params.mensagens.imediato.message !== '' ?
+                                    props.params.mensagens.imediato.active === true && props.params.mensagens.imediato.message !== '' && props.params.mensagens.imediato.tituloBlade !== '' && props.params.mensagens.imediato.descricao !== '' ?
                                         <span className='row m-0 justify-content-end'>
                                             <Button 
                                                 className='col-2' 
@@ -470,7 +470,7 @@ const SubmitButton = (props) => {
                         props.params.tipologia === 'Serviços' ?
                             props.params.momentoUnico === 'Imediato' ?
                                 props.params.canal.nome !== '' ?
-                                    props.params.mensagens.imediato.active === true && props.params.mensagens.imediato.message !== '' ?
+                                    props.params.mensagens.imediato.active === true && props.params.mensagens.imediato.message !== '' && props.params.mensagens.imediato.tituloBlade !== '' && props.params.mensagens.imediato.descricao !== '' ?
                                         <span className='row m-0 justify-content-end'>
                                             <Button 
                                                 className='col-2' 
@@ -739,7 +739,7 @@ const SubmitButton = (props) => {
                         props.params.regularidade === 'Pontual' ?
                             props.params.momentoUnico === 'Imediato' ?
                                 props.params.tipologia !== 'Programas' ?
-                                    props.params.mensagens.imediato.active === true && props.params.mensagens.imediato.message !== '' ?
+                                    props.params.mensagens.imediato.active === true && props.params.mensagens.imediato.message !== '' && props.params.mensagens.imediato.tituloBlade !== '' && props.params.mensagens.imediato.descricao !== '' ?
                                         <span className='row m-0 justify-content-end'>
                                             <Button 
                                                 className='col-2' 
@@ -1081,7 +1081,7 @@ const SubmitButton = (props) => {
                     props.params.regularidade === 'Pontual' ?
                         props.params.tipologia === 'Serviços' ?
                             props.params.momentoUnico === 'Imediato' ?
-                                props.params.mensagens.imediato.active === true && props.params.mensagens.imediato.message !== '' ?
+                                props.params.mensagens.imediato.active === true && props.params.mensagens.imediato.message !== '' && props.params.mensagens.imediato.tituloBlade !== '' && props.params.mensagens.imediato.descricao !== '' ?
                                     <span className='row m-0 justify-content-end'>
                                         <Button 
                                             className='col-2' 

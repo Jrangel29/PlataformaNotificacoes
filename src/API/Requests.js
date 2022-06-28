@@ -150,7 +150,7 @@ export const fetchNotificationInfo = (id) =>
       .then(response => response.json())
 
 export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoUnico, mensagens, idTipologia, horaEvento, envioNotif, idRegular, dias, diaUnico, diaMes, subcategoria, paramsPersonalizado, casasEscolhidas, usersEscolhidos, dataFim, canal) => {
-    console.log({tipologia: tipologia, intervalo: intervaloTempo, nome: nomeItem, momento: momentoUnico, mensagens: mensagens, idTipo: idTipologia, hora: horaEvento, envio: envioNotif, idReg: idRegular, dias: dias, diaUnico: diaUnico, diaMes: diaMes, sub: subcategoria, params: paramsPersonalizado, casas: casasEscolhidas, users: usersEscolhidos, dataFim: dataFim, canal: canal})
+    //console.log({tipologia: tipologia, intervalo: intervaloTempo, nome: nomeItem, momento: momentoUnico, mensagens: mensagens, idTipo: idTipologia, hora: horaEvento, envio: envioNotif, idReg: idRegular, dias: dias, diaUnico: diaUnico, diaMes: diaMes, sub: subcategoria, params: paramsPersonalizado, casas: casasEscolhidas, users: usersEscolhidos, dataFim: dataFim, canal: canal})
     const objectImagens = {
         "Agenda": "https://firebasestorage.googleapis.com/v0/b/tdi-rangel.appspot.com/o/iconeAgenda.png?alt=media&token=38fb87cc-f8fa-4015-a775-b4da0e6b9a77",
         "Saúde": "https://firebasestorage.googleapis.com/v0/b/tdi-rangel.appspot.com/o/iconeSaude.png?alt=media&token=fd1ae805-eea2-4dce-b4f8-4d904c4e65b4",
@@ -279,23 +279,61 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
     }
 
     if(envioNotif === 'Pontual' && momentoUnico === 'Imediato'){
-        let notificacao = {
-            mensagem: mensagens.imediato.message,
-            url_icone: objectImagens[tipologia],
-            data: diaImediato,
-            hora: horaImediato,
-            rotina: null,
-            zapping: 0,
-            titulo: null,
-            descricao: null,
-            botao_titulo: null,
-            botao_navigate: null,
+        if(tipologia === 'Serviços'){
+            let notificacao = {
+                mensagem: mensagens.imediato.message,
+                url_icone: objectImagens[tipologia],
+                data: diaImediato,
+                hora: horaImediato,
+                rotina: null,
+                zapping: 0,
+                titulo: mensagens.imediato.tituloBlade,
+                descricao: mensagens.imediato.descricao,
+                botao_titulo: 'Ir para App',
+                botao_navigate: `page:${canal.id}`,
+            }
+            ObjetoEnvio.regularidade.tipo = 1;
+            ObjetoEnvio.regularidade.data = diaImediato;
+            ObjetoEnvio.regularidade.hora = horaImediato;
+            ObjetoEnvio.regularidade.dias = [];
+            ObjetoEnvio.notificacoes.push(notificacao);
+        } else if(tipologia === 'Programas'){
+            let notificacao = {
+                mensagem: mensagens.imediato.message,
+                url_icone: objectImagens[tipologia],
+                data: diaImediato,
+                hora: horaImediato,
+                rotina: null,
+                zapping: 0,
+                titulo: mensagens.imediato.tituloBlade,
+                descricao: mensagens.imediato.descricao,
+                botao_titulo: `Mudar para ${canal.nome}`,
+                botao_navigate: `tune:${canal.id}`,
+            }
+            ObjetoEnvio.regularidade.tipo = 1;
+            ObjetoEnvio.regularidade.data = diaImediato;
+            ObjetoEnvio.regularidade.hora = horaImediato;
+            ObjetoEnvio.regularidade.dias = [];
+            ObjetoEnvio.notificacoes.push(notificacao);
+        } else {
+            let notificacao = {
+                mensagem: mensagens.imediato.message,
+                url_icone: objectImagens[tipologia],
+                data: diaImediato,
+                hora: horaImediato,
+                rotina: null,
+                zapping: 0,
+                titulo: null,
+                descricao: null,
+                botao_titulo: null,
+                botao_navigate: null,
+            }
+            ObjetoEnvio.regularidade.tipo = 1;
+            ObjetoEnvio.regularidade.data = diaImediato;
+            ObjetoEnvio.regularidade.hora = horaImediato;
+            ObjetoEnvio.regularidade.dias = [];
+            ObjetoEnvio.notificacoes.push(notificacao);
         }
-        ObjetoEnvio.regularidade.tipo = 1;
-        ObjetoEnvio.regularidade.data = diaImediato;
-        ObjetoEnvio.regularidade.hora = horaImediato;
-        ObjetoEnvio.regularidade.dias = [];
-        ObjetoEnvio.notificacoes.push(notificacao);
     }
 
     if(envioNotif === 'Diária'){
@@ -499,7 +537,7 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
 
 export const updateNotification = (id, tipologia, intervaloTempo, nomeItem, momentoUnico, mensagens, idTipologia, horaEvento, envioNotif, idRegular, dias, diaUnico, diaMes, subcategoria, paramsPersonalizado, casasEscolhidas, usersEscolhidos, dataFim, canal) => {
     
-    console.log({id: id, tipologia: tipologia, intervalo: intervaloTempo, nome: nomeItem, momento: momentoUnico, mensagens: mensagens, idTipo: idTipologia, hora: horaEvento, envio: envioNotif, idReg: idRegular, dias: dias, diaUnico: diaUnico, diaMes: diaMes, sub: subcategoria, params: paramsPersonalizado, casas: casasEscolhidas, users: usersEscolhidos, dataFim: dataFim, canal: canal})
+    //console.log({id: id, tipologia: tipologia, intervalo: intervaloTempo, nome: nomeItem, momento: momentoUnico, mensagens: mensagens, idTipo: idTipologia, hora: horaEvento, envio: envioNotif, idReg: idRegular, dias: dias, diaUnico: diaUnico, diaMes: diaMes, sub: subcategoria, params: paramsPersonalizado, casas: casasEscolhidas, users: usersEscolhidos, dataFim: dataFim, canal: canal})
     const objectImagens = {
         "Agenda": "https://firebasestorage.googleapis.com/v0/b/tdi-rangel.appspot.com/o/iconeAgenda.png?alt=media&token=38fb87cc-f8fa-4015-a775-b4da0e6b9a77",
         "Saúde": "https://firebasestorage.googleapis.com/v0/b/tdi-rangel.appspot.com/o/iconeSaude.png?alt=media&token=fd1ae805-eea2-4dce-b4f8-4d904c4e65b4",
@@ -630,23 +668,61 @@ export const updateNotification = (id, tipologia, intervaloTempo, nomeItem, mome
     }
 
     if(envioNotif === 'Pontual' && momentoUnico === 'Imediato'){
-        let notificacao = {
-            mensagem: mensagens.imediato.message,
-            url_icone: objectImagens[tipologia],
-            data: diaImediato,
-            hora: horaImediato,
-            rotina: null,
-            zapping: 0,
-            titulo: null,
-            descricao: null,
-            botao_titulo: null,
-            botao_navigate: null,
+        if(tipologia === 'Serviços'){
+            let notificacao = {
+                mensagem: mensagens.imediato.message,
+                url_icone: objectImagens[tipologia],
+                data: diaImediato,
+                hora: horaImediato,
+                rotina: null,
+                zapping: 0,
+                titulo: mensagens.imediato.tituloBlade,
+                descricao: mensagens.imediato.descricao,
+                botao_titulo: 'Ir para App',
+                botao_navigate: `page:${canal.id}`,
+            }
+            ObjetoEnvio.regularidade.tipo = 1;
+            ObjetoEnvio.regularidade.data = diaImediato;
+            ObjetoEnvio.regularidade.hora = horaImediato;
+            ObjetoEnvio.regularidade.dias = [];
+            ObjetoEnvio.notificacoes.push(notificacao);
+        } else if(tipologia === 'Programas'){
+            let notificacao = {
+                mensagem: mensagens.imediato.message,
+                url_icone: objectImagens[tipologia],
+                data: diaImediato,
+                hora: horaImediato,
+                rotina: null,
+                zapping: 0,
+                titulo: mensagens.imediato.tituloBlade,
+                descricao: mensagens.imediato.descricao,
+                botao_titulo: `Mudar para ${canal.nome}`,
+                botao_navigate: `tune:${canal.id}`,
+            }
+            ObjetoEnvio.regularidade.tipo = 1;
+            ObjetoEnvio.regularidade.data = diaImediato;
+            ObjetoEnvio.regularidade.hora = horaImediato;
+            ObjetoEnvio.regularidade.dias = [];
+            ObjetoEnvio.notificacoes.push(notificacao);
+        } else {
+            let notificacao = {
+                mensagem: mensagens.imediato.message,
+                url_icone: objectImagens[tipologia],
+                data: diaImediato,
+                hora: horaImediato,
+                rotina: null,
+                zapping: 0,
+                titulo: null,
+                descricao: null,
+                botao_titulo: null,
+                botao_navigate: null,
+            }
+            ObjetoEnvio.regularidade.tipo = 1;
+            ObjetoEnvio.regularidade.data = diaImediato;
+            ObjetoEnvio.regularidade.hora = horaImediato;
+            ObjetoEnvio.regularidade.dias = [];
+            ObjetoEnvio.notificacoes.push(notificacao);
         }
-        ObjetoEnvio.regularidade.tipo = 1;
-        ObjetoEnvio.regularidade.data = diaImediato;
-        ObjetoEnvio.regularidade.hora = horaImediato;
-        ObjetoEnvio.regularidade.dias = [];
-        ObjetoEnvio.notificacoes.push(notificacao);
     }
 
     if(envioNotif === 'Diária'){

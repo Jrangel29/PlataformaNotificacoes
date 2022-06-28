@@ -25,8 +25,8 @@ class CreateNotification extends React.Component {
         this.state = {
             mostraModal: false,
             mostraModalInfo: false,
-            tipologia: "Agenda",
-            idTipologia: 1,
+            tipologia: "Serviços",
+            idTipologia: 5,
             categoriaInfo: "",
             nomeItem: "",
             regularidade: '',
@@ -81,7 +81,9 @@ class CreateNotification extends React.Component {
                     message: ''},
                 imediato: {
                     active: false, 
-                    message: ''},
+                    message: '',
+                    tituloBlade: '',
+                    descricao: ''},
                 intervaloHoras: {
                     active: false, 
                     message: ''},
@@ -149,7 +151,9 @@ class CreateNotification extends React.Component {
                         message: ''},
                     imediato: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: ''},
                     intervaloHoras: {
                         active: false, 
                         message: ''},
@@ -206,7 +210,9 @@ class CreateNotification extends React.Component {
                         message: ''},
                     imediato: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: ''},
                     intervaloHoras: {
                         active: false, 
                         message: ''},
@@ -255,7 +261,9 @@ class CreateNotification extends React.Component {
                         message: ''},
                     imediato: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: ''},
                     intervaloHoras: {
                         active: false, 
                         message: ''},
@@ -301,7 +309,9 @@ class CreateNotification extends React.Component {
                         message: ''},
                     imediato: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: ''},
                     intervaloHoras: {
                         active: false, 
                         message: ''},
@@ -347,7 +357,9 @@ class CreateNotification extends React.Component {
                         message: ''},
                     imediato: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: ''},
                     intervaloHoras: {
                         active: false, 
                         message: ''},
@@ -393,7 +405,9 @@ class CreateNotification extends React.Component {
                         message: ''},
                     imediato: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: ''},
                     intervaloHoras: {
                         active: false, 
                         message: ''},
@@ -468,7 +482,9 @@ class CreateNotification extends React.Component {
                         message: ''},
                     imediato: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: ''},
                     intervaloHoras: {
                         active: false, 
                         message: ''},
@@ -514,7 +530,9 @@ class CreateNotification extends React.Component {
                         message: ''},
                     imediato: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: ''},
                     intervaloHoras: {
                         active: false, 
                         message: ''},
@@ -560,7 +578,9 @@ class CreateNotification extends React.Component {
                         message: ''},
                     imediato: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: ''},
                     intervaloHoras: {
                         active: false, 
                         message: ''},
@@ -607,7 +627,9 @@ class CreateNotification extends React.Component {
                     message: ''},
                 imediato: {
                     active: false, 
-                    message: ''},
+                    message: '',
+                    tituloBlade: '',
+                    descricao: ''},
                 intervaloHoras: {
                     active: false, 
                     message: ''},
@@ -829,12 +851,32 @@ class CreateNotification extends React.Component {
                     }
                 }
             })
-        } else {
+        } else if(escolhido === 'momentoAcontecimentoDescricaoBlade') {
             this.setState({
                 mensagens:{
                     ...this.state.mensagens,
                     momentoAcontecimento: {
                         ...this.state.mensagens.momentoAcontecimento,
+                        descricao: escrito
+                    }
+                }
+            })
+        } else if(escolhido === 'imediatoTituloBlade'){
+            this.setState({
+                mensagens:{
+                    ...this.state.mensagens,
+                    imediato: {
+                        ...this.state.mensagens.imediato,
+                        tituloBlade: escrito
+                    }
+                }
+            })
+        } else {
+            this.setState({
+                mensagens:{
+                    ...this.state.mensagens,
+                    imediato: {
+                        ...this.state.mensagens.imediato,
                         descricao: escrito
                     }
                 }
@@ -902,7 +944,7 @@ class CreateNotification extends React.Component {
         return(
             <div>
                 <div className='mainBodyForm container px-0'>
-                    {/*console.log(this.state)*/}
+                    {console.log(this.state)}
                     <Navbar/>
                     <Header nome="Criar Evento" detalhe="sim" apagaMuda="nao"/>
                     <PreviewNotif tipo={this.state.tipologia} tipoPers={this.state.paramsPersonalizado.tipoRecetor} users={this.state.usersEscolhidos} casas={this.state.casasEscolhidas} personalizado={this.state.paramsPersonalizado} mensagens={this.state.mensagens} titulo={this.state.nomeItem} sub={this.state.categoriaInfo}/>
