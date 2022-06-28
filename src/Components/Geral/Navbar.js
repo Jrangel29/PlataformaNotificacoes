@@ -6,7 +6,7 @@ import { logOut } from "../../firebase";
 
 function TerminarSessao() {
   return (
-    <div onClick={logOut} className={"btn btnNav escolheHalfNot logout"}>
+    <div onClick={logOut} className={"btn btnNav logoutButton logout"}>
       <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='white' class='bi bi-box-arrow-right' viewBox='0 0 16 16'>
         <path
           fill-rule='evenodd'
