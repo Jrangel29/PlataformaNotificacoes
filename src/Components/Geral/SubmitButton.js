@@ -469,21 +469,26 @@ const SubmitButton = (props) => {
                     props.params.regularidade === 'Pontual' ?
                         props.params.tipologia === 'Serviços' ?
                             props.params.momentoUnico === 'Imediato' ?
-                                props.params.mensagens.imediato.active === true && props.params.mensagens.imediato.message !== '' ?
+                                props.params.canal.nome !== '' ?
+                                    props.params.mensagens.imediato.active === true && props.params.mensagens.imediato.message !== '' ?
+                                        <span className='row m-0 justify-content-end'>
+                                            <Button 
+                                                className='col-2' 
+                                                variant='flat' 
+                                                onClick={
+                                                    () => criaNotification(props.params.tipologia, props.params.regularidade, props.params.nomeItem, props.params.momentoUnico, props.params.mensagens, props.params.idTipologia, props.params.hora, props.params.envioNotif, props.params.idRegular, props.params.dias, props.params.diaUnico, props.params.diaMes, props.params.categoriaInfo, props.params.paramsPersonalizado, props.params.casasEscolhidas, props.params.usersEscolhidos, props.params.dataFim, props.params.canal)
+                                                    }>Criar Notificação</Button>
+                                        </span>
+                                    :
                                     <span className='row m-0 justify-content-end'>
-                                        <Button 
-                                            className='col-2' 
-                                            variant='flat' 
-                                            onClick={
-                                                () => criaNotification(props.params.tipologia, props.params.regularidade, props.params.nomeItem, props.params.momentoUnico, props.params.mensagens, props.params.idTipologia, props.params.hora, props.params.envioNotif, props.params.idRegular, props.params.dias, props.params.diaUnico, props.params.diaMes, props.params.categoriaInfo, props.params.paramsPersonalizado, props.params.casasEscolhidas, props.params.usersEscolhidos, props.params.dataFim, props.params.canal)
-                                                }>Criar Notificação</Button>
+                                        <Button className='col-2' variant='custom' disabled>Criar Notificação</Button>
                                     </span>
                                 :
                                 <span className='row m-0 justify-content-end'>
                                     <Button className='col-2' variant='custom' disabled>Criar Notificação</Button>
                                 </span>
                             :
-                                props.params.diaUnico !== '' && props.params.hora !== '' ?
+                                props.params.diaUnico !== '' && props.params.hora !== '' && props.params.canal.nome !== '' ?
                                     <>
                                         {Object.keys(props.params.mensagens).map(item => {
                                             if(item !== "meiaHora" && item !== "quartoHora" && props.params.mensagens[item].active === true){
@@ -555,7 +560,7 @@ const SubmitButton = (props) => {
                     :
                         props.params.envioNotif === 'Diária' ?
                             props.params.tipologia === 'Serviços' ?
-                                props.params.hora !== '' && props.params.dataFim !== '' ?
+                                props.params.hora !== '' && props.params.dataFim !== '' && props.params.canal.nome !== '' ?
                                 <>
                                     {Object.keys(props.params.mensagens).map(item => {
                                         if(item !== "meiaHora" && item !== "quartoHora" && props.params.mensagens[item].active === true){
@@ -679,7 +684,7 @@ const SubmitButton = (props) => {
                                         }
                                     }
                                 })}
-                                {contagemDias !== 0 && contagemMomentos !== 0 && contagemMomentos === contagemMensagens && props.params.hora !== '' && props.params.dataFim !== '' && props.params.tipologia === 'Serviços' || contagemDias !== 0 && contagemMomentos !== 0 && props.params.tipologia === 'Informação' ?
+                                {contagemDias !== 0 && contagemMomentos !== 0 && contagemMomentos === contagemMensagens && props.params.hora !== '' && props.params.dataFim !== '' && props.params.tipologia === 'Serviços' && props.params.canal.nome !== '' || contagemDias !== 0 && contagemMomentos !== 0 && props.params.tipologia === 'Informação' ?
                                 <span className='row m-0 justify-content-end'>
                                     <Button 
                                         className='col-2' 
@@ -695,7 +700,7 @@ const SubmitButton = (props) => {
                                 }
                             </> 
                             :
-                            props.params.diaMes !== '' && props.params.hora !== '' && props.params.dataFim !== '' ?
+                            props.params.diaMes !== '' && props.params.hora !== '' && props.params.dataFim !== '' && props.params.canal.nome !== '' && props.params.tipologia === 'Serviços' || props.params.diaMes !== '' && props.params.hora !== '' && props.params.dataFim !== '' && props.params.tipologia === 'Informação' ?
                                 <span className='row m-0 justify-content-end'>
                                     <Button 
                                         className='col-2' 

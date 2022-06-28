@@ -16,7 +16,7 @@ import { PreviewNotif } from '../../Components/Forms/PreviewNotif';
 import UserPreferencesModal from '../../Components/Modal/UserPreferencesModal';
 import InformationIcon from '../../Images/information.png';
 import { MomentsTooltip, CategoryTooltip } from '../../Components/Forms/Tooltips';
-import { ListaMeo } from '../../Components/Forms/ListaMeo';
+import { ListaMeo, Apps } from '../../Components/Forms/ListaMeo';
 
 class CreateNotification extends React.Component {
 
@@ -35,8 +35,8 @@ class CreateNotification extends React.Component {
             diaUnico: '',
             hora: '',
             momentoUnico: '',
-            usersEscolhidos: [],
-            casasEscolhidas: [],
+            usersEscolhidos: [{idCasa: 1, nomeCasa: 'zequim', idUser: 3, nome: 'Quim zé'}],
+            casasEscolhidas: [{id: 1, nome: 'zequim'}],
             diaMes: '',
             dataFim: '',
             canal: {
@@ -1037,6 +1037,28 @@ class CreateNotification extends React.Component {
                                                     {ListaMeo.map((item, key) => {
                                                         return(
                                                             <Dropdown.Item onClick={() => this.mudaCanal(item.name, item.channel)}>{item.name}</Dropdown.Item>
+                                                        )
+                                                    })}
+                                                </Dropdown.Menu>
+                                            </Dropdown>
+                                        </span>
+                                    </span>
+                                </div>
+                                :
+                                this.state.tipologia === 'Serviços' ? 
+                                <div className='row col-12 mt-2'>
+                                    <span className='row m-0 col-12 pe-0'>
+                                        <p className='subtituloSeccaoPagina p-0' style={{marginTop: "5px"}}>Escolha da aplicação <span className='obrigatorio'>*</span></p>
+                                        <span className='col-3 ps-0 pe-3'>
+                                            <Dropdown>
+                                                <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
+                                                    {this.state.canal.nome === '' ? 'Aplicação' : this.state.canal.nome}
+                                                </Dropdown.Toggle>
+
+                                                <Dropdown.Menu className='dropdownFiltro'>
+                                                    {Apps.map((item, key) => {
+                                                        return(
+                                                            <Dropdown.Item onClick={() => this.mudaCanal(item.name, item.link)}>{item.name}</Dropdown.Item>
                                                         )
                                                     })}
                                                 </Dropdown.Menu>

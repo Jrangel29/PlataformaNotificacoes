@@ -29,3 +29,10 @@ export const ListaMeo = [
     { channel: 49, name: "Baby TV" },
     { channel: 50, name: "Lolly Kids" },
   ];
+
+export const Apps = [
+    { name: 'Telepizza', link: 'https://yubuy.app.iptv.telecom.pt:443/YubuyUserAz/sendData.aspx?SourceChannel=MAPP&partnerName=telepizza&account=$(acct)&deviceid=$(dev)' },
+    { name: 'Pizzahut', link: 'https://yubuy.app.iptv.telecom.pt:443/YubuyUserAz/sendData.aspx?SourceChannel=MAPP&partnerName=pizhm&account=$(acct)&deviceid=$(dev)' },
+    { name: 'NoMenu', link: 'https://yubuy.app.iptv.telecom.pt:443/YubuyUserAz/sendData.aspx?SourceChannel=MAPP&partnerName=nomenu&account=$(acct)&deviceid=$(dev)' },
+    { name: 'Benfica', link: 'https://yubuy.app.iptv.telecom.pt:443/YubuyUserAz/sendData.aspx?SourceChannel=MAPP&partnerName=benfica&account=$(acct)&deviceid=$(dev)' }
+]
