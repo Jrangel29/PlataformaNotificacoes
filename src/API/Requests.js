@@ -206,8 +206,31 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
         notificacoes:[]
     }
 
+    var contagemUser = 0;
+    var casasUser = [];
+
     usersEscolhidos.map(item => {
-        ObjetoEnvio.destinatarios.push(item.idUser)
+        if(tipologia === 'Personalizada'){
+            if(ObjetoEnvio.destinatarios.length === 0){
+                ObjetoEnvio.destinatarios.push(item.idUser)
+            }
+            for (let i = 0; i < ObjetoEnvio.destinatarios.length; i++){
+                if(ObjetoEnvio.destinatarios[i] === item.idUser){
+                    casasUser.push(item.idCasa);
+                }
+            }
+            for (let i = 0; i < casasUser; i++){
+                if(casasUser[i] === item.idCasa){
+                    contagemUser++;
+                }
+            }
+            if(contagemUser === 0){
+                ObjetoEnvio.destinatarios.push(item.idUser)
+            }
+            contagemUser = 0;
+        } else {
+            ObjetoEnvio.destinatarios.push(item.idUser)
+        }
     })
 
     if(envioNotif === 'Pontual' && momentoUnico === 'Dia e Hora'){
