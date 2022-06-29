@@ -15,6 +15,7 @@ import InformationIcon from '../../Images/information.png';
 import { MomentsTooltip, CategoryTooltip } from '../../Components/Forms/Tooltips';
 import {connect} from 'react-redux';
 import { useNavigate } from "react-router-dom";
+import { ListaMeo, Apps } from '../../Components/Forms/ListaMeo';
 
 class EditNotification extends React.Component {
 
@@ -37,6 +38,10 @@ class EditNotification extends React.Component {
             casasEscolhidas: [],
             diaMes: '',
             dataFim: '',
+            canal: {
+                nome: '',
+                id: ''
+            },
             dias: {
                 domingo0: false,
                 segunda1: false,
@@ -75,7 +80,9 @@ class EditNotification extends React.Component {
                     message: ''},
                 imediato: {
                     active: false, 
-                    message: ''},
+                    message: '',
+                    tituloBlade: '',
+                    descricao: ''},
                 intervaloHoras: {
                     active: false, 
                     message: ''},
@@ -111,6 +118,10 @@ class EditNotification extends React.Component {
                 categoriaInfo: '',
                 usersEscolhidos: [],
                 casasEscolhidas: [],
+                canal: {
+                    nome: '',
+                    id: ''
+                },
                 mensagens: {
                     semanaAntes: {
                         active: false, 
@@ -129,7 +140,9 @@ class EditNotification extends React.Component {
                         message: ''},
                     imediato: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: ''},
                     intervaloHoras: {
                         active: false, 
                         message: ''},
@@ -160,6 +173,10 @@ class EditNotification extends React.Component {
                 categoriaInfo: subcategoria,
                 usersEscolhidos: [],
                 casasEscolhidas: [],
+                canal: {
+                    nome: '',
+                    id: ''
+                },
                 mensagens: {
                     semanaAntes: {
                         active: false, 
@@ -178,7 +195,9 @@ class EditNotification extends React.Component {
                         message: ''},
                     imediato: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: ''},
                     intervaloHoras: {
                         active: false, 
                         message: ''},
@@ -227,7 +246,9 @@ class EditNotification extends React.Component {
                         message: ''},
                     imediato: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: ''},
                     intervaloHoras: {
                         active: false, 
                         message: ''},
@@ -273,7 +294,9 @@ class EditNotification extends React.Component {
                         message: ''},
                     imediato: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: ''},
                     intervaloHoras: {
                         active: false, 
                         message: ''},
@@ -319,7 +342,9 @@ class EditNotification extends React.Component {
                         message: ''},
                     imediato: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: ''},
                     intervaloHoras: {
                         active: false, 
                         message: ''},
@@ -365,7 +390,9 @@ class EditNotification extends React.Component {
                         message: ''},
                     imediato: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: ''},
                     intervaloHoras: {
                         active: false, 
                         message: ''},
@@ -440,7 +467,9 @@ class EditNotification extends React.Component {
                         message: ''},
                     imediato: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: ''},
                     intervaloHoras: {
                         active: false, 
                         message: ''},
@@ -486,7 +515,9 @@ class EditNotification extends React.Component {
                         message: ''},
                     imediato: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: ''},
                     intervaloHoras: {
                         active: false, 
                         message: ''},
@@ -532,7 +563,9 @@ class EditNotification extends React.Component {
                         message: ''},
                     imediato: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: ''},
                     intervaloHoras: {
                         active: false, 
                         message: ''},
@@ -579,7 +612,9 @@ class EditNotification extends React.Component {
                     message: ''},
                 imediato: {
                     active: false, 
-                    message: ''},
+                    message: '',
+                    tituloBlade: '',
+                    descricao: ''},
                 intervaloHoras: {
                     active: false, 
                     message: ''},
@@ -761,12 +796,72 @@ class EditNotification extends React.Component {
                     }
                 }
             })
-        } else {
+        } else if(escolhido === 'quartoHoraDescricaoBlade'){
             this.setState({
                 mensagens:{
                     ...this.state.mensagens,
                     quartoHora: {
                         ...this.state.mensagens.quartoHora,
+                        descricao: escrito
+                    }
+                }
+            })
+        } else if(escolhido === 'minutos5TituloBlade'){
+            this.setState({
+                mensagens:{
+                    ...this.state.mensagens,
+                    minutos5: {
+                        ...this.state.mensagens.minutos5,
+                        tituloBlade: escrito
+                    }
+                }
+            })
+        } else if(escolhido === 'minutos5DescricaoBlade'){
+            this.setState({
+                mensagens:{
+                    ...this.state.mensagens,
+                    minutos5: {
+                        ...this.state.mensagens.minutos5,
+                        descricao: escrito
+                    }
+                }
+            })
+        } else if(escolhido === 'momentoAcontecimentoTituloBlade'){
+            this.setState({
+                mensagens:{
+                    ...this.state.mensagens,
+                    momentoAcontecimento: {
+                        ...this.state.mensagens.momentoAcontecimento,
+                        tituloBlade: escrito
+                    }
+                }
+            })
+        } else if(escolhido === 'momentoAcontecimentoDescricaoBlade') {
+            this.setState({
+                mensagens:{
+                    ...this.state.mensagens,
+                    momentoAcontecimento: {
+                        ...this.state.mensagens.momentoAcontecimento,
+                        descricao: escrito
+                    }
+                }
+            })
+        } else if(escolhido === 'imediatoTituloBlade'){
+            this.setState({
+                mensagens:{
+                    ...this.state.mensagens,
+                    imediato: {
+                        ...this.state.mensagens.imediato,
+                        tituloBlade: escrito
+                    }
+                }
+            })
+        } else {
+            this.setState({
+                mensagens:{
+                    ...this.state.mensagens,
+                    imediato: {
+                        ...this.state.mensagens.imediato,
                         descricao: escrito
                     }
                 }
@@ -814,6 +909,15 @@ class EditNotification extends React.Component {
         array.splice(val, 1)
         this.setState({
             casasEscolhidas: array
+        })
+    }
+
+    mudaCanal = (name, idChannel) => {
+        this.setState({
+            canal: {
+                nome: name,
+                id: idChannel
+            }
         })
     }
 
@@ -904,6 +1008,10 @@ class EditNotification extends React.Component {
                 casasEscolhidas: [],
                 diaMes: '',
                 dataFim: DataFinal,
+                canal: {
+                    nome: '',
+                    id: ''
+                },
                 dias: {
                     domingo0: diasNew.domingo0,
                     segunda1: diasNew.segunda1,
@@ -942,7 +1050,9 @@ class EditNotification extends React.Component {
                         message: ''},
                     imediato: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: ''},
                     intervaloHoras: {
                         active: false, 
                         message: ''},
@@ -1111,6 +1221,52 @@ class EditNotification extends React.Component {
                                     </span>
                                     <NotificationTimeSelection collapseState={this.state.colapsado} mudaDataFim={this.alteraDataFim} parametros={this.state} mudaDiaUnico={this.alteraDiaUnico} alteraDiaMes={this.alteraDiaMes} mudaMomentoUnico={this.alteraMomentoUnico} mudaHora={this.alteraHora} mudaHorario={this.alteraHorario} alterarEnvio={this.alteraEnvio} mudaDia={this.alteraDia} mudaMomento={this.alteraMomento}/>                    
                                 </div>
+                                {this.state.tipologia === 'Programas' ? 
+                                <div className='row col-12 mt-2'>
+                                    <span className='row m-0 col-12 pe-0'>
+                                        <p className='subtituloSeccaoPagina p-0' style={{marginTop: "5px"}}>Escolha do canal <span className='obrigatorio'>*</span></p>
+                                        <span className='col-3 ps-0 pe-3'>
+                                            <Dropdown>
+                                                <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
+                                                    {this.state.canal.nome === '' ? 'Canal' : this.state.canal.nome}
+                                                </Dropdown.Toggle>
+
+                                                <Dropdown.Menu className='dropdownFiltro'>
+                                                    {ListaMeo.map((item, key) => {
+                                                        return(
+                                                            <Dropdown.Item onClick={() => this.mudaCanal(item.name, item.channel)}>{item.name}</Dropdown.Item>
+                                                        )
+                                                    })}
+                                                </Dropdown.Menu>
+                                            </Dropdown>
+                                        </span>
+                                    </span>
+                                </div>
+                                :
+                                this.state.tipologia === 'Serviços' ? 
+                                <div className='row col-12 mt-2'>
+                                    <span className='row m-0 col-12 pe-0'>
+                                        <p className='subtituloSeccaoPagina p-0' style={{marginTop: "5px"}}>Escolha da aplicação <span className='obrigatorio'>*</span></p>
+                                        <span className='col-3 ps-0 pe-3'>
+                                            <Dropdown>
+                                                <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
+                                                    {this.state.canal.nome === '' ? 'Aplicação' : this.state.canal.nome}
+                                                </Dropdown.Toggle>
+
+                                                <Dropdown.Menu className='dropdownFiltro'>
+                                                    {Apps.map((item, key) => {
+                                                        return(
+                                                            <Dropdown.Item onClick={() => this.mudaCanal(item.name, item.link)}>{item.name}</Dropdown.Item>
+                                                        )
+                                                    })}
+                                                </Dropdown.Menu>
+                                            </Dropdown>
+                                        </span>
+                                    </span>
+                                </div>
+                                :
+                                <></>
+                                }
                             </span>
                         </Collapse>
                     </div>
