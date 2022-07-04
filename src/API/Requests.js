@@ -938,11 +938,11 @@ export const updateNotification = (id, tipologia, intervaloTempo, nomeItem, mome
 
     console.log(ObjetoEnvio)
 
-    /*fetch(`https://geo-navsafety.ua.pt:443/overtv/eventos/new`, {
+    fetch(`http://geo-navsafety.ua.pt:443/overtv/eventos/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({id, ...ObjetoEnvio})
-    }).then(response => response.json())*/
+    }).then(response => response.json())
 }

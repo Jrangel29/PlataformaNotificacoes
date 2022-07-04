@@ -41,6 +41,7 @@ const UserNotificationCards = (props) => {
             <div className='row mt-1'>
                 {props.info.length > 0 ?
                 props.info.map((item, index) => {
+                    console.log(item)
                     return(
                         <span key={index} className='col-3 mb-2'>
                             <Card>
@@ -55,8 +56,8 @@ const UserNotificationCards = (props) => {
                                     </span>
                                 </Card.Body>
                                 {props.historico === "sim" ?
-                                <Card.Footer className={item.fechou.data[0] === 0 ? 'recusa m-0' : 'aceita m-0'}>
-                                    {item.fechou.data[0] === 0 ? 'Fechou a notificação' : 'Relembrou'}
+                                <Card.Footer className={item.fechou.data[0] === 1 ? 'recusa m-0' : 'aceita m-0'}>
+                                    {item.fechou.data[0] === 1 ? 'Fechou a notificação' : 'Relembrou'}
                                 </Card.Footer>
                                 :
                                 <></>

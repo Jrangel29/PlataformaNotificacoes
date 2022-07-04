@@ -19,7 +19,7 @@ const Filters = (props) => {
                 </>
                 :
                 <Button as={Link} 
-                    to={props.tipo === "Notificações" || props.tipo === "Rotina" || props.tipo === "Evento"  ? "/notifications/create" 
+                    to={props.tipo === "Notificações" || props.tipo === "Rotina" || props.tipo === "Evento"  ? "/events/create" 
                     : props.tipo === "Grupo" ? "/groups/create" 
                     : props.tipo === "Utilizador" ? "/users/create" 
                     : props.tipo === "Casa" ? "/houses/create" 
