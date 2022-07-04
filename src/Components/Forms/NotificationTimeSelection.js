@@ -34,7 +34,7 @@ function NotificationTimeSelection(props) {
             {props.parametros.envioNotif === "Pontual" ?
                 <>
                     
-                    <h1 className='subtituloSeccaoPagina mt-2'>Horário do evento</h1>
+                    <h1 className='subtituloSeccaoPagina mt-2'>Horário do evento <span className='obrigatorio'>*</span></h1>
                     <span className="col-3">
                         <Dropdown>
                             <Dropdown.Toggle className="dropdownFiltro" variant={props.parametros.tipologia !== 'Informação' ? 'flat' : 'custom'} disabled={props.parametros.tipologia !== 'Informação' ? false : true}>
@@ -55,7 +55,7 @@ function NotificationTimeSelection(props) {
             : 
                 props.parametros.envioNotif === "Semanal" ?
                 <div className='mt-3'>
-                    <h1 className='subtituloSeccaoPagina'>Dias da semana</h1>
+                    <h1 className='subtituloSeccaoPagina'>Dias da semana <span className='obrigatorio'>*</span></h1>
                     <Table striped bordered style={{textAlign: "center", width: "100%", marginBottom: '0'}}>
                         <thead>
                             <tr>
@@ -147,7 +147,7 @@ function NotificationTimeSelection(props) {
                     <></>
                     :
                     <span className="col-3">
-                        <p className="subtituloSeccaoPagina mt-2">Hora</p>
+                        <p className="subtituloSeccaoPagina mt-2">Hora <span className='obrigatorio'>*</span></p>
                         <span className="row col-12">
                             <span className="col-3">
                                 <input type="time" value={props.parametros.hora} className='inputsForms without_ampm w-50' onInput={props.mudaHora} onChange={props.mudaHora} style={{height: "37px"}}/>
@@ -156,7 +156,7 @@ function NotificationTimeSelection(props) {
                     </span>
                     }
                     <span className="col-3">
-                        <p className="subtituloSeccaoPagina mt-2">Data de fim</p>
+                        <p className="subtituloSeccaoPagina mt-2">Data de fim <span className='obrigatorio'>*</span></p>
                         <span className="row col-12">
                             <span className="col-3">
                                 <input type="date" className='inputsForms w-50' value={props.parametros.dataFim} onChange={props.mudaDataFim} style={{height: "37px"}}/>
@@ -171,7 +171,7 @@ function NotificationTimeSelection(props) {
                         <></>
                         :
                         <span className="col-3">
-                            <p className="subtituloSeccaoPagina">Hora</p>
+                            <p className="subtituloSeccaoPagina">Hora <span className='obrigatorio'>*</span></p>
                             <span className="row col-12">
                                 <span className="col-3">
                                     <input type="time" className='inputsForms without_ampm w-50' value={props.parametros.hora} onInput={props.mudaHora} onChange={props.mudaHora} style={{height: "37px"}}/>
@@ -180,7 +180,7 @@ function NotificationTimeSelection(props) {
                         </span>
                         }
                         <span className="col-3">
-                            <p className={props.parametros.tipologia === 'Informação' ? "subtituloSeccaoPagina" : "subtituloSeccaoPagina mt-2"}>Data de fim</p>
+                            <p className={props.parametros.tipologia === 'Informação' ? "subtituloSeccaoPagina" : "subtituloSeccaoPagina mt-2"}>Data de fim <span className='obrigatorio'>*</span></p>
                             <span className="row col-12">
                                 <span className="col-3">
                                     <input type="date" className='inputsForms w-50' value={props.parametros.dataFim} onChange={props.mudaDataFim} style={{height: "37px"}}/>
@@ -190,7 +190,7 @@ function NotificationTimeSelection(props) {
                     </div>
                     :
                     <>
-                        <p className="subtituloSeccaoPagina mt-2">Dia do mês</p>
+                        <p className="subtituloSeccaoPagina mt-2">Dia do mês <span className='obrigatorio'>*</span></p>
                         <span className="col-3">
                             <Dropdown>
                                 <Dropdown.Toggle variant="flat" className="dropdownFiltro">
@@ -233,7 +233,7 @@ function NotificationTimeSelection(props) {
                         </span>
                         {props.parametros.tipologia === 'Informação' ?
                         <>
-                        <p className="subtituloSeccaoPagina mt-2">Data de fim</p>
+                        <p className="subtituloSeccaoPagina mt-2">Data de fim <span className='obrigatorio'>*</span></p>
                         <span className="col-3">
                             <span className="row col-12 m-0">
                                 <span className="col-12 m-0 p-0">
@@ -244,13 +244,13 @@ function NotificationTimeSelection(props) {
                         </>
                         :
                         <>
-                        <p className="subtituloSeccaoPagina mt-2">Hora</p>
+                        <p className="subtituloSeccaoPagina mt-2">Hora <span className='obrigatorio'>*</span></p>
                         <span className="col-3">
                             <span className="col-3">
                                 <input type="time" className='inputsForms without_ampm w-50' value={props.parametros.hora} onInput={props.mudaHora} onChange={props.mudaHora} style={{height: "37px"}}/>
                             </span>
                             <span className="col-3">
-                                <p className="subtituloSeccaoPagina mt-2">Data de fim</p>
+                                <p className="subtituloSeccaoPagina mt-2">Data de fim <span className='obrigatorio'>*</span></p>
                                 <span className="row col-12 m-0">
                                     <span className="col-12 m-0 p-0">
                                         <input type="date" className='inputsForms w-50' value={props.parametros.dataFim} onChange={props.mudaDataFim} style={{height: "37px"}}/>
@@ -272,7 +272,7 @@ function NotificationTimeSelection(props) {
         :
         props.parametros.momentoUnico === "Hora do dia atual" ? 
         <>
-            <p className="subtituloSeccaoPagina mt-2">Hora</p>
+            <p className="subtituloSeccaoPagina mt-2">Hora <span className='obrigatorio'>*</span></p>
             <span className="col-3">
                 <input type="time" className='inputsForms without_ampm w-50' value={props.parametros.hora} onInput={props.mudaHora} onChange={props.mudaHora} style={{height: "37px"}}/>
             </span>
@@ -287,7 +287,7 @@ function NotificationTimeSelection(props) {
                 {props.parametros.momentoUnico !== '' ?
                 <div className="row col-12">
                     <span className="col-9">
-                        <p className="subtituloSeccaoPagina mt-2">Escolha de dia</p>
+                        <p className="subtituloSeccaoPagina mt-2">Escolha de dia <span className='obrigatorio'>*</span></p>
                         <Calendar 
                             className="m-0 p-0 w-100" 
                             onClickDay={props.mudaDiaUnico}
@@ -297,7 +297,7 @@ function NotificationTimeSelection(props) {
                     <></>
                     :
                     <span className="col-12">
-                        <p className="subtituloSeccaoPagina mt-1">Hora</p>
+                        <p className="subtituloSeccaoPagina mt-1">Hora <span className='obrigatorio'>*</span></p>
                         <span className="row col-12">
                             <span className="col-3">
                                 <input type="time" className='inputsForms without_ampm w-50' value={props.parametros.hora} onInput={props.mudaHora} onChange={props.mudaHora} style={{height: "37px"}}/>

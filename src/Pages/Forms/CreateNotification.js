@@ -25,8 +25,8 @@ class CreateNotification extends React.Component {
         this.state = {
             mostraModal: false,
             mostraModalInfo: false,
-            tipologia: "Serviços",
-            idTipologia: 5,
+            tipologia: "Agenda",
+            idTipologia: 1,
             categoriaInfo: "",
             nomeItem: "",
             regularidade: '',
@@ -35,8 +35,8 @@ class CreateNotification extends React.Component {
             diaUnico: '',
             hora: '',
             momentoUnico: '',
-            usersEscolhidos: [{idCasa: 1, nomeCasa: 'zequim', idUser: 3, nome: 'Quim zé'}],
-            casasEscolhidas: [{id: 1, nome: 'zequim'}],
+            usersEscolhidos: [{idCasa: 1, nomeCasa: 'Casa do Ricardo', idUser: 3, nome: 'Ricardo Manuel'}],
+            casasEscolhidas: [{id: 1, nome: 'Casa do Ricardo'}],
             diaMes: '',
             dataFim: '',
             canal: {
@@ -1183,7 +1183,7 @@ class CreateNotification extends React.Component {
                         </div>
                         <Collapse in={this.state.colapsado.collapse4}>
                             <span className='row m-0' style={{padding: "0 40px"}}>
-                                <p className='subtituloSeccaoPaginaBigger mt-2'>Criação das notificações <OverlayTrigger placement='right' delay={{ show: 250, hide: 400}} overlay={MomentsTooltip}><img src={InformationIcon} style={{width: 'auto', height: '22px', margin: '0', marginLeft:'10px', padding: '0'}}/></OverlayTrigger></p>
+                                <p className='subtituloSeccaoPaginaBigger mt-2'>Criação das notificações <span className='obrigatorio'>*</span> <OverlayTrigger placement='right' delay={{ show: 250, hide: 400}} overlay={MomentsTooltip}><img src={InformationIcon} style={{width: 'auto', height: '22px', margin: '0', marginLeft:'10px', padding: '0'}}/></OverlayTrigger></p>
                                 <p className='bigSmall mb-1'>Selecione os momentos em que quer mandar notifições.</p>
                                 <div className='row col-9'>
                                     <DeliveryOptions subSaude={this.state.categoriaInfo} changeMomento={this.updateMomentosEnvio} blade={this.updateBlade} changeMensagem={this.updateMensagensEnvio} momentos={this.state.mensagens} tipo={this.state.tipologia} verificaMomento={this.state.momentoUnico} periodicidade={this.state.envioNotif}/>

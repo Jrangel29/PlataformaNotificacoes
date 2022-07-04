@@ -81,8 +81,8 @@ const BarraNav = () => {
               tipo === "Eventos"
                 ? { textAlign: "center", marginLeft: "10%", marginRight: "auto" }
                 : tipo === "Notifications"
-                ? { textAlign: "center", margin: "auto" }
-                : { textAlign: "center", marginLeft: "auto", marginRight: "9%" }
+                ? { textAlign: "center", marginLeft: "38%", marginRight: 'auto' }
+                : { textAlign: "center", marginLeft: "auto", marginRight: "13%" }
             }
           >
             {tipo === "Eventos" ? (
