@@ -57,27 +57,27 @@ const HistoryDetails = () => {
                     recebeu++;
                 }
                 if(item.fechou.data[0] !== 0){
-                    abriu++;
+                    fechou++;
                 } else {
-                    fechou++
+                    abriu++
                 }
             })
             setEstatisticas([
                 {
                     name: 'Fechou',
-                    value: 123
+                    value: fechou
                 },
                 {
                     name: 'Abriu',
-                    value: 77
+                    value: abriu
                 },
                 {
                     name: 'Recebeu',
-                    value: 200
+                    value: recebeu
                 },
                 {
                     name: 'Enviou',
-                    value: 225
+                    value: enviou
                 },
             ])
         }
@@ -88,7 +88,7 @@ const HistoryDetails = () => {
             <Loading/>
         )
     }
-    console.log(notificationInfo[0])
+
     return(
         <div>
             <div className='mainBodyForm p-0 container'>
@@ -110,7 +110,7 @@ const HistoryDetails = () => {
                 </div>
                 <div style={{padding: '0 40px'}} className="mx-2 row">
                     <p className='subtituloSeccaoPagina mt-2 px-0'>Contagem das interações</p>
-                    <span className='col-6 m-0 p-0'>
+                    <span className='col-5 m-0 p-0'>
                         <Table striped bordered hover className='tabelaHistorico'>
                             <thead>
                                 <tr>
@@ -130,7 +130,7 @@ const HistoryDetails = () => {
                             </tbody>
                         </Table>
                     </span>
-                    <span className='col-6 m-0 p-0'>
+                    <span className='col-5 offset-1 p-0'>
                         <Table striped bordered hover className='tabelaHistorico'>
                             <thead>
                                 <tr>
@@ -150,7 +150,7 @@ const HistoryDetails = () => {
                             </tbody>
                         </Table>
                     </span>
-                    <span className='row col-6 m-0 p-0'>
+                    <span className='row col-12 m-0 p-0'>
                         <p className='subtituloSeccaoPagina px-0 mb-0 pb-0'>Representação gráfica</p>
                         <PieChart info={estatiticas}/>
                     </span>

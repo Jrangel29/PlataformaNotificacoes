@@ -29,6 +29,7 @@ import EditTemplate from "./Pages/Forms/EditTemplate.js";
 import EditHouse from "./Pages/Forms/EditHouse.js";
 import Error404 from "./Pages/404.js";
 import "./Styles/App.css";
+import NotificationDetails from './Pages/NotificationDetails.js'
 
 function App() {
   const currentUser = useAuth();
@@ -43,6 +44,7 @@ function App() {
             <Route element={<ProtectedRoutes />}>
               <Route exact path='/' element={<Homepage />} />
               <Route exact path='/notifications' element={<Notifications />} />
+              <Route exact path='/notifications/:id' element={<Notifications />} />
               <Route exact path='/users' element={<Users />} />
               <Route exact path='/users/:id' element={<User />} />
               <Route exact path='/users/create' element={<CreateUser />} />

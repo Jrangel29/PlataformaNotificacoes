@@ -86,7 +86,7 @@ export const deleteHouse = (id) => {
 //GROUPS
 
 export const createGroup = (name, descricao, idade, distrito, concelho) => {
-    fetch(`https://geo-navsafety.ua.pt:443/overtv/grupos`, {
+    fetch(`http://geo-navsafety.ua.pt:443/overtv/grupos`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -549,7 +549,7 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
 
     console.log(ObjetoEnvio)
 
-    /*fetch(`http://geo-navsafety.ua.pt:443/overtv/eventos/new`, {
+    /*fetch(`https://geo-navsafety.ua.pt:443/overtv/eventos/new`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -938,7 +938,7 @@ export const updateNotification = (id, tipologia, intervaloTempo, nomeItem, mome
 
     console.log(ObjetoEnvio)
 
-    /*fetch(`http://geo-navsafety.ua.pt:443/overtv/eventos/new`, {
+    /*fetch(`https://geo-navsafety.ua.pt:443/overtv/eventos/new`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'

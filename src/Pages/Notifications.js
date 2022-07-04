@@ -22,18 +22,6 @@ class Notifications extends React.Component {
     onOpen = () => this.setState({showModal: true});
     onClose = () => this.setState({showModal: false});
 
-    onOpenDelete = () => this.setState({showDeleteModal: true});
-    onCloseDelete = (resposta) => {
-        if(resposta === "Cancela"){
-            this.setState({showDeleteModal: false, showSuccessModal: false})
-        } else {
-            this.setState({showDeleteModal: false, showSuccessModal: true})
-        }
-    };
-    onCloseSuccess = () => this.setState({showSuccessModal: false});
-
-    onChangeSearch = (e) => this.setState({search: e.target.value});
-
     render(){
         return(
             <div>
@@ -41,14 +29,12 @@ class Notifications extends React.Component {
                     <Navbar/>
                     <Header nome="Notificações agendadas" apagaMuda="nao"/>
                     <div style={{padding: "0 40px"}}>
-                        <Filters tipo="Notificação" change={this.onChangeSearch} valorMuda={this.state.search}/>
+                        <Filters tipo="Notificações" change={this.onChangeSearch} valorMuda={this.state.search}/>
                     </div>
                     <div style={{padding: "0 40px"}}>
                         <NotificationCards tipo='Por enviar' pesquisa={this.state.search} abreModal={this.onOpen} abreModalDelete={this.onOpenDelete}/>
                     </div>
                 </div>
-                <NotificationModal show={this.state.showModal} onHide={this.onClose} tipo="notificacoes"/>
-                <DeleteNotificationAll show={this.state.showDeleteModal} onHide={this.onCloseDelete} tipo="nao"/>
                 <SuccessModal show={this.state.showSuccessModal} onHide={this.onCloseSuccess} tiponotif="Notificação"/>
             </div>
         )

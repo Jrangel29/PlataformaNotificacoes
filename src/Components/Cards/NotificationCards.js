@@ -128,7 +128,7 @@ const NotificationCards = (props) => {
             <Loading />
         )
     }
-    //console.log(currentItems)
+    console.log(currentItems)
     return(
         <div className='container m-0' style={props.pagina === 'users' ? {padding: "0 40px"} : null}>
             <div className='row cartasMainBody'>
@@ -147,14 +147,14 @@ const NotificationCards = (props) => {
                         <span key={index} className='col-4 ps-0 pb-3'>
                             {props.tipo === 'Por enviar' ?
                             <Card style={{cursor: "pointer", minHeight: "100%"}}>
-                                <Card.Header onClick={() => setModal([true, item])} style={{textDecoration: "none"}} className='row headerCarta m-0 gx-1'>
+                                <Card.Header as={Link} to={`/notifications/${item.id_notificacao}`} style={{textDecoration: "none"}} className='row headerCarta m-0 gx-1'>
                                     <span className='col-9 p-0 tituloNotificacao'>{item.mensagem}</span>
                                     <span className='col-3 p-0 dataNotificacao'>
                                         {dataFinal}
                                     </span>
                                 </Card.Header>
                                 
-                                <Card.Body onClick={() => setModal([true, item])} style={{textDecoration: "none", color: "black"}} className='bodyCartaRotina row m-0 px-0'>
+                                <Card.Body as={Link} to={`/notifications/${item.id_notificacao}`} style={{textDecoration: "none", color: "black"}} className='bodyCartaRotina row m-0 px-0'>
                                     <span className='col-6'>
                                         <Card.Title className='dataNotifsTitle'>Dia</Card.Title>
                                         <Card.Text className='dataNotifs'>
@@ -198,6 +198,12 @@ const NotificationCards = (props) => {
                 :
                 <></>
                 }
+                {currentItems.todos.length === 0 ?
+                <span className='col-12 ps-0 pb-3' style={{textAlign:'center'}}>
+                    Não encontramos nenhuma notificação!
+                </span>
+                :
+                <></>}
             </div>
             {props.tipo === 'Enviadas' ? 
                 <>

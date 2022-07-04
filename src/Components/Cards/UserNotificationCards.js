@@ -5,7 +5,38 @@ import {Card} from 'react-bootstrap';
 
 const UserNotificationCards = (props) => {
 
-    return(            
+    return(    
+        <>
+        {props.tipo === 'Por Enviar' ?
+        <div className='container m-0 p-0'>
+            <div className='row mt-1'>
+                {props.info.length > 0 ?
+                props.info.map((item, index) => {
+                    return(
+                        <span key={index} className='col-3 mb-2'>
+                            <Card>
+                                <Card.Body className='m-0 cartaGrupos'>
+                                    <span>
+                                        <p className='tituloUserCartaSmall mb-1'>
+                                            {item.nomeUser}
+                                        </p>
+                                        <p className='textoSmall mb-0' style={{fontSize: '14px'}}>
+                                            {item.idade} anos
+                                        </p>
+                                    </span>
+                                </Card.Body>
+                            </Card>
+                        </span>
+                    )
+                })
+                :
+                <span className='col-12' >
+                    Este evento não tem utilizadores.
+                </span>
+            }
+            </div>
+        </div> 
+        :
         <div className='container m-0 p-0'>
             <div className='row mt-1'>
                 {props.info.length > 0 ?
@@ -40,7 +71,9 @@ const UserNotificationCards = (props) => {
                 </span>
             }
             </div>
-        </div>    
+        </div>
+        }  
+        </>    
     )
 }
 

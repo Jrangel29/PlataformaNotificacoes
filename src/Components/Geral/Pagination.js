@@ -13,7 +13,6 @@ const Pagination = ({itemsPerPage, totalItems, paginate, currentPage}) => {
                 {pageNumbers.map(number => {
                     return(
                         <li key={number} className='page-item'>
-                            {console.log(currentPage, number)}
                             <a onClick={() => paginate(number)} className={currentPage === number ? 'page-link selecionado' : 'page-link notSelecionado'}>
                                 {number}
                             </a>
