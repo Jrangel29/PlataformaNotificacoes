@@ -44,7 +44,7 @@ function App() {
             <Route element={<ProtectedRoutes />}>
               <Route exact path='/' element={<Homepage />} />
               <Route exact path='/notifications' element={<Notifications />} />
-              <Route exact path='/notifications/:id' element={<Notifications />} />
+              <Route exact path='/notifications/:id' element={<NotificationDetails />} />
               <Route exact path='/users' element={<Users />} />
               <Route exact path='/users/:id' element={<User />} />
               <Route exact path='/users/create' element={<CreateUser />} />

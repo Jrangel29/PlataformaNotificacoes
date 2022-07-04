@@ -36,15 +36,45 @@ const HistoryDetails = () => {
                 <div className='prevSeccao ms-0'>
                     <h1 className='tituloSeccaoPaginaNotifs'>Informação da notificação</h1>
                 </div>
-                <div style={{padding: '0 40px'}} className="mx-2">
-                    <p className='subtituloSeccaoPagina mt-2 mb-0'>Mensagem da notificação</p>
-                    <p className='textoSeccaoPagina'>{notificationInfo[0].mensagem}</p>
-                    <p className='subtituloSeccaoPagina mt-2 mb-0'>Título do rodapé</p>
-                    <p className='textoSeccaoPagina'>{notificationInfo[0].titulo ? notificationInfo[0].titulo : 'Esta notificação não tem título de rodapé.'}</p>
-                    <p className='subtituloSeccaoPagina mt-2 mb-0'>Descrição do rodapé</p>
-                    <p className='textoSeccaoPagina mb-3'>{notificationInfo[0].descricao ? notificationInfo[0].descricao : 'Esta notificação não tem descrição de rodapé.'}</p>
+                <div style={{padding: '0 40px', display: 'flex', flexDirection: 'row'}} className="mx-2">
+                    
+                    <div className='pe-2'>
+                        <p className='subtituloSeccaoPagina mt-2 mb-0'>Mensagem da notificação</p>
+                        <p className='textoSeccaoPagina'>{notificationInfo[0].mensagem}</p>
+                        <p className='subtituloSeccaoPagina mt-2 mb-0'>Título do rodapé</p>
+                        <p className='textoSeccaoPagina'>{notificationInfo[0].titulo ? notificationInfo[0].titulo : 'Esta notificação não tem título de rodapé.'}</p>
+                        <p className='subtituloSeccaoPagina mt-2 mb-0'>Descrição do rodapé</p>
+                        <p className='textoSeccaoPagina mb-3'>{notificationInfo[0].descricao ? notificationInfo[0].descricao : 'Esta notificação não tem descrição de rodapé.'}</p>
+                    </div>
+                    <div className='px-5'>
+                        <p className='subtituloSeccaoPagina mt-2 mb-0'>Dia</p>
+                        <p className='textoSeccaoPagina'>{notificationInfo[0].mensagem}</p>
+                        <p className='subtituloSeccaoPagina mt-2 mb-0'>Hora</p>
+                        <p className='textoSeccaoPagina'>{notificationInfo[0].mensagem}</p>
+                    </div>
+                    
                 </div>
-                <div style={{padding: '0 40px'}} className="mx-2 row mt-2">
+                <div className='prevSeccao ms-0'>
+                    <h1 className='tituloSeccaoPaginaNotifs'>Informação do evento</h1>
+                </div>
+                <div style={{padding: '0 40px', display: 'flex', flexDirection: 'row', alignItems: 'center'}} className="mx-2 mb-2">
+                    <span className='pe-2'>
+                        <p className='subtituloSeccaoPagina mt-2 mb-0'>Nome do evento</p>
+                        <p className='textoSeccaoPagina'>{notificationInfo[0].mensagem}</p>
+                    </span> 
+                    <span className='px-5'>
+                        <p className='subtituloSeccaoPagina mt-2 mb-0'>Dia</p>
+                        <p className='textoSeccaoPagina'>{notificationInfo[0].mensagem}</p>
+                    </span>
+                    <span className='ps-2'>
+                        <p className='subtituloSeccaoPagina mt-2 mb-0'>Hora</p>
+                        <p className='textoSeccaoPagina'>{notificationInfo[0].mensagem}</p>
+                    </span>
+                </div>
+                <div className='prevSeccao ms-0'>
+                    <h1 className='tituloSeccaoPaginaNotifs'>Destinatários</h1>
+                </div>
+                <div style={{padding: '0 40px'}} className="mx-2 row mt-2 pb-1">
                     <UserNotificationCards historico="nao" info={notificationInfo} tipo='Por enviar'/>
                 </div>
             </div>

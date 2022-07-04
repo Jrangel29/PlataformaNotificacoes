@@ -549,13 +549,13 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
 
     console.log(ObjetoEnvio)
 
-    /*fetch(`https://geo-navsafety.ua.pt:443/overtv/eventos/new`, {
+    fetch(`http://geo-navsafety.ua.pt:443/overtv/eventos/new`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({...ObjetoEnvio})
-    }).then(response => response.json())*/
+    }).then(response => response.json())
 }
 
 export const updateNotification = (id, tipologia, intervaloTempo, nomeItem, momentoUnico, mensagens, idTipologia, horaEvento, envioNotif, idRegular, dias, diaUnico, diaMes, subcategoria, paramsPersonalizado, casasEscolhidas, usersEscolhidos, dataFim, canal) => {

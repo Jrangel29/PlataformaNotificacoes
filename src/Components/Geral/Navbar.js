@@ -29,6 +29,7 @@ const BarraNav = () => {
   const stringUser = lugar.substring(0, 6);
   const stringHouse = lugar.substring(0, 7);
   const stringHistory = lugar.substring(0, 8);
+  const stringNotification = lugar.substring(0, 14);
 
   useEffect(() => {
     if (lugar === "/notifications/create" || lugar === "/events" || stringEvent === "/events") {
@@ -100,7 +101,7 @@ const BarraNav = () => {
               </>
             ) : tipo === "Notifications" ? (
               <>
-                <Nav.Link as={Link} className={lugar === "/notifications" ? "navSelected" : ""} to='/notifications'>
+                <Nav.Link as={Link} className={lugar === "/notifications" || stringNotification === '/notifications' ? "navSelected" : ""} to='/notifications'>
                   Agendadas
                 </Nav.Link>
                 <Nav.Link
