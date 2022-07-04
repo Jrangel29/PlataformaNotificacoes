@@ -210,7 +210,7 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
     var casasUser = [];
 
     usersEscolhidos.map(item => {
-        if(tipologia === 'Personalizada'){
+        if(tipologia === 'Personalizada' || tipologia === 'Programas'){
             if(ObjetoEnvio.destinatarios.length === 0){
                 ObjetoEnvio.destinatarios.push(item.idUser)
             }
