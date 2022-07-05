@@ -4,7 +4,7 @@ import { GeraNotificacoes } from './CreateNotifs';
 //USERS
 
 export const createUser = (nome, idade, ref_id_casa, informacoes, blacklist) => {
-    fetch(`http://geo-navsafety.ua.pt:443/overtv/users`, {
+    fetch(`https://geo-navsafety.ua.pt:443/overtv/users`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -14,7 +14,7 @@ export const createUser = (nome, idade, ref_id_casa, informacoes, blacklist) => 
 }
 
 export const updateUser = (uid, nome, idade, ref_id_casa, informacoes, blacklist) => {
-    fetch(`http://geo-navsafety.ua.pt:443/overtv/users`, {
+    fetch(`https://geo-navsafety.ua.pt:443/overtv/users`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -24,19 +24,19 @@ export const updateUser = (uid, nome, idade, ref_id_casa, informacoes, blacklist
 }
 
 export const fetchUsers = () =>
-  fetch(`http://geo-navsafety.ua.pt:443/overtv/users`)
+  fetch(`https://geo-navsafety.ua.pt:443/overtv/users`)
     .then(response => response.json())
 
 export const fetchTipologiaUsers = (id) =>
-  fetch(`http://geo-navsafety.ua.pt:443/overtv/users/?tipologia=${id}`)
+  fetch(`https://geo-navsafety.ua.pt:443/overtv/users/?tipologia=${id}`)
     .then(response => response.json())
 
 export const fetchSingleUser = (id) =>
-  fetch(`http://geo-navsafety.ua.pt:443/overtv/users/${id}`)
+  fetch(`https://geo-navsafety.ua.pt:443/overtv/users/${id}`)
     .then(response => response.json())
 
 export const deleteUser = (id) => {
-    fetch(`http://geo-navsafety.ua.pt:443/overtv/users/${id}`, {
+    fetch(`https://geo-navsafety.ua.pt:443/overtv/users/${id}`, {
         method: 'DELETE'
     })
 }
@@ -46,7 +46,7 @@ export const deleteUser = (id) => {
 //CASAS
 
 export const createHouse = (nome, idBox, concelho) => {
-    fetch(`http://geo-navsafety.ua.pt:443/overtv/casas`, {
+    fetch(`https://geo-navsafety.ua.pt:443/overtv/casas`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -58,7 +58,7 @@ export const createHouse = (nome, idBox, concelho) => {
 export const updateHouse = (id_casa, nome, idBox, concelho) => {
     
     //console.log(id_casa)
-    fetch(`http://geo-navsafety.ua.pt:443/overtv/casas`, {
+    fetch(`https://geo-navsafety.ua.pt:443/overtv/casas`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -68,15 +68,15 @@ export const updateHouse = (id_casa, nome, idBox, concelho) => {
 }
 
 export const fetchHouses = () =>
-  fetch(`http://geo-navsafety.ua.pt:443/overtv/casas`)
+  fetch(`https://geo-navsafety.ua.pt:443/overtv/casas`)
     .then(response => response.json())
 
 export const fetchHousePeople = (id) =>
-    fetch(`http://geo-navsafety.ua.pt:443/overtv/casas/${id}`)
+    fetch(`https://geo-navsafety.ua.pt:443/overtv/casas/${id}`)
       .then(response => response.json())
 
 export const deleteHouse = (id) => {
-    fetch(`http://geo-navsafety.ua.pt:443/overtv/casas/${id}`, {
+    fetch(`https://geo-navsafety.ua.pt:443/overtv/casas/${id}`, {
         method: 'DELETE'
     })
 }
@@ -86,7 +86,7 @@ export const deleteHouse = (id) => {
 //GROUPS
 
 export const createGroup = (name, descricao, idade, distrito, concelho) => {
-    fetch(`http://geo-navsafety.ua.pt:443/overtv/grupos`, {
+    fetch(`https://geo-navsafety.ua.pt:443/overtv/grupos`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -99,37 +99,37 @@ export const createGroup = (name, descricao, idade, distrito, concelho) => {
 //TIPOLOGIAS
 
 export const fetchTipologiaList = () =>
-  fetch(`http://geo-navsafety.ua.pt:443/overtv/tipologias`)
+  fetch(`https://geo-navsafety.ua.pt:443/overtv/tipologias`)
     .then(response => response.json())
 
 
 //DISTRITOS
 
 export const fetchDistritosList = () =>
-  fetch(`http://geo-navsafety.ua.pt:443/overtv/localidade/distritos`)
+  fetch(`https://geo-navsafety.ua.pt:443/overtv/localidade/distritos`)
     .then(response => response.json())
 
 
 //CONCELHOS
 
 export const fetchConcelhos = (id) =>
-  fetch(`http://geo-navsafety.ua.pt:443/overtv/localidade/concelhos/${id}`)
+  fetch(`https://geo-navsafety.ua.pt:443/overtv/localidade/concelhos/${id}`)
     .then(response => response.json())
 
 
 //EVENTOS
 
 export const fetchEventos = () =>
-    fetch(`http://geo-navsafety.ua.pt:443/overtv/eventos`)
+    fetch(`https://geo-navsafety.ua.pt:443/overtv/eventos`)
       .then(response => response.json())
 
 export const fetchSingleEvent = (id) =>
-    fetch(`http://geo-navsafety.ua.pt:443/overtv/eventos/${id}`)
+    fetch(`https://geo-navsafety.ua.pt:443/overtv/eventos/${id}`)
       .then(response => response.json())
 
 
 export const deleteEvent = (id) => {
-    fetch(`http://geo-navsafety.ua.pt:443/overtv/eventos/${id}`, {
+    fetch(`https://geo-navsafety.ua.pt:443/overtv/eventos/${id}`, {
         method: 'DELETE'
     })
 }
@@ -138,15 +138,15 @@ export const deleteEvent = (id) => {
 //NOTIFICATIONS
 
 export const fetchAllNotifications = () =>
-    fetch(`http://geo-navsafety.ua.pt:443/overtv/notifications`)
+    fetch(`https://geo-navsafety.ua.pt:443/overtv/notifications`)
       .then(response => response.json())
 
 export const fetchNotifications = (id) =>
-    fetch(`http://geo-navsafety.ua.pt:443/overtv/notifications/user/${id}`)
+    fetch(`https://geo-navsafety.ua.pt:443/overtv/notifications/user/${id}`)
       .then(response => response.json())
 
 export const fetchNotificationInfo = (id) =>
-    fetch(`http://geo-navsafety.ua.pt:443/overtv/notifications/${id}`)
+    fetch(`https://geo-navsafety.ua.pt:443/overtv/notifications/${id}`)
       .then(response => response.json())
 
 export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoUnico, mensagens, idTipologia, horaEvento, envioNotif, idRegular, dias, diaUnico, diaMes, subcategoria, paramsPersonalizado, casasEscolhidas, usersEscolhidos, dataFim, canal) => {
@@ -549,7 +549,7 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
 
     //console.log(ObjetoEnvio)
 
-    fetch(`http://geo-navsafety.ua.pt:443/overtv/eventos/new`, {
+    fetch(`https://geo-navsafety.ua.pt:443/overtv/eventos/new`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -938,7 +938,7 @@ export const updateNotification = (id, tipologia, intervaloTempo, nomeItem, mome
 
     //console.log(ObjetoEnvio)
 
-    fetch(`http://geo-navsafety.ua.pt:443/overtv/eventos/${id}`, {
+    fetch(`https://geo-navsafety.ua.pt:443/overtv/eventos/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
