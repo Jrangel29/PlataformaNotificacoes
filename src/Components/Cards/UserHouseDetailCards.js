@@ -2,6 +2,7 @@ import React from 'react';
 import '../../Styles/Cards.css';
 import '../../Styles/Filters.css';
 import {Card} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const UserHouseDetailsCards = (props) => {
 
@@ -12,7 +13,7 @@ const UserHouseDetailsCards = (props) => {
                 props.users.map((item, index) => {
                     return(
                         <span key={index} className='col-3 mb-2'>
-                            <Card>
+                            <Card as={Link} to={`/users/${item.id_utilizador}`} style={{textDecoration: 'none'}}>
                                 <Card.Body className='m-0 cartaGrupos'>
                                     <span>
                                         <p className='tituloUserCartaSmall mb-1'>

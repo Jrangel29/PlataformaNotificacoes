@@ -31,7 +31,7 @@ const EventNotifications = (props) => {
                             contagemFuture++
                             return(
                                 <span key={index} className='col-4 ps-0 pb-3'>
-                                    <Card style={{cursor: "pointer", minHeight: "100%"}}>
+                                    <Card as={Link} to={`/notifications/${item.id_notificacao}`} style={{textDecoration: 'none', cursor: "pointer", minHeight: "100%"}}>
                                         <Card.Header style={{textDecoration: "none"}} className='row headerCarta m-0 gx-1'>
                                             <span className='col-9 p-0 tituloNotificacao'>{item.mensagem}</span>
                                             <span className='col-3 p-0 dataNotificacao'>
@@ -66,7 +66,7 @@ const EventNotifications = (props) => {
                             contagemPast++
                             return(
                                 <span key={index} className='col-4 ps-0 pb-3'>
-                                    <Card style={{cursor: "pointer", minHeight: "100%"}}>
+                                    <Card as={Link} to={`/history/${item.id_notificacao}`} style={{textDecoration: 'none', cursor: "pointer", minHeight: "100%"}}>
                                         <Card.Header style={{textDecoration: "none"}} className='row headerCarta m-0 gx-1'>
                                             <span className='col-9 p-0 tituloNotificacao'>{item.mensagem}</span>
                                             <span className='col-3 p-0 dataNotificacao'>

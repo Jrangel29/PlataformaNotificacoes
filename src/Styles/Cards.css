@@ -80,6 +80,7 @@
 
 .textoSmall{
     font-size: 14px;
+    color: black!important;
 }
 
 .tituloGrupoCarta{
@@ -116,6 +117,7 @@
 .dataNotifsTitle{
     font-size: 15px!important;
     margin-bottom: 3px!important;
+    color: black!important;
 }
 
 .dataNotificacao{
