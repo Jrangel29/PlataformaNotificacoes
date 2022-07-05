@@ -46,7 +46,7 @@ export default (state = initialState, { type, payload }) => {
             return {...state, isLoadingEdit:true}
         case NOTIFICATION_UPDATE_SUCCESS:
             data = state.data.map((event) => {
-                console.log(event.id)
+                //console.log(event.id)
                 if (event.id !== payload.id) {
                     return event;
                 }

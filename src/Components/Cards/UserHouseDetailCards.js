@@ -36,7 +36,10 @@ const UserHouseDetailsCards = (props) => {
                 })
                 :
                 <span className='col-12' >
-                    Este evento não tem utilizadores.
+                    {props.tipo === 'casa' ? 
+                    'Esta casa não tem utilizadores.'
+                    :
+                    'Este evento não tem utilizadores.'}
                 </span>
                 }
             </div>

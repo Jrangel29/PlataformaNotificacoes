@@ -19,7 +19,7 @@ function NotificationModal (props) {
             centered
             size="lg"
         >
-            {console.log(props.info)}
+            {/*console.log(props.info)*/}
             <Modal.Header className='tituloModal' closeButton closeVariant='white'>
                 {props.info.mensagem}
             </Modal.Header>

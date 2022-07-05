@@ -547,7 +547,7 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
         }
     }
 
-    console.log(ObjetoEnvio)
+    //console.log(ObjetoEnvio)
 
     fetch(`http://geo-navsafety.ua.pt:443/overtv/eventos/new`, {
         method: 'POST',
@@ -936,7 +936,7 @@ export const updateNotification = (id, tipologia, intervaloTempo, nomeItem, mome
         }
     }
 
-    console.log(ObjetoEnvio)
+    //console.log(ObjetoEnvio)
 
     fetch(`http://geo-navsafety.ua.pt:443/overtv/eventos/${id}`, {
         method: 'PUT',

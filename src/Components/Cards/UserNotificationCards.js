@@ -41,7 +41,7 @@ const UserNotificationCards = (props) => {
             <div className='row mt-1'>
                 {props.info.length > 0 ?
                 props.info.map((item, index) => {
-                    console.log(item)
+                    //console.log(item)
                     return(
                         <span key={index} className='col-3 mb-2'>
                             <Card>

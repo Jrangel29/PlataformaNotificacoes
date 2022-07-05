@@ -128,7 +128,7 @@ const NotificationCards = (props) => {
             <Loading />
         )
     }
-    console.log(currentItems)
+    //console.log(currentItems)
     return(
         <div className='container m-0' style={props.pagina === 'users' ? {padding: "0 40px"} : null}>
             <div className='row cartasMainBody'>
@@ -205,7 +205,7 @@ const NotificationCards = (props) => {
                 :
                 <></>}
             </div>
-            {props.tipo === 'Enviadas' ? 
+            {/*props.tipo === 'Enviadas' ? 
                 <>
                 <div className='m-0 p-0 inicioPagina'>
                     <h1 className='estatisticasPagina'>Estatísticas</h1>
@@ -258,7 +258,7 @@ const NotificationCards = (props) => {
                 </>
                 :
                 <></>
-            }
+                */}
             <NotificationModal show={modal[0]} onHide={() => setModal([false, {}])} tipo="notificacoes" info={modal[1]}/>
         </div>
     )

@@ -120,7 +120,7 @@ export const PieChartNotiList = (props) => {
     
     const [percentagem, setPercentagem] = useState({});
     const [percentagem2, setPercentagem2] = useState({});
-    console.log(props.info)
+    //console.log(props.info)
 
     useEffect(() => {
         var pFechou, pRespondeu;
