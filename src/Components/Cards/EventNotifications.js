@@ -21,7 +21,7 @@ const EventNotifications = (props) => {
                     let getDate = item.data.substring(0, 10);
 
                     let dataNova = new Date(getDate);
-                    console.log(dataNova)
+                    //console.log(dataNova)
                     var dataFinal = ((dataNova.getDate() > 9) ? dataNova.getDate() : ('0' + dataNova.getDate()))  + '/' + ((dataNova.getMonth() > 8) ? (dataNova.getMonth() + 1) : ('0' + (dataNova.getMonth() + 1))) + '/' + dataNova.getFullYear();
 
                     let diaSemana = dataNova.getDay()
@@ -35,7 +35,7 @@ const EventNotifications = (props) => {
                     } else {
                         hora = 'Boa noite'
                     }
-                    console.log(props.notificacoes)
+                    //console.log(props.notificacoes)
 
                     if(props.seccao === 'Por Enviar'){
                         if(item.enviado.data[0] === 0){

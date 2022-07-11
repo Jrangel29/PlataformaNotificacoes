@@ -31,6 +31,8 @@ function Event(props) {
         )
     }
 
+    console.log(event)
+
     return(
         <div>
             <div className='mainBodyForm container px-0'>
