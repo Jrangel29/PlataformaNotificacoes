@@ -118,7 +118,7 @@ const SubmitButton = (props) => {
                 <Button className='col-2' variant='custom' disabled>Criar Notificação</Button>
             </span>
             :
-                props.params.tipologia === 'Agenda' || props.params.tipologia === 'Saúde' || props.params.tipologia === 'Programas' || props.params.tipologia === 'Personalizada' && props.params.paramsPersonalizado.tipoRecetor === 'Recetores Individuais' ?
+                props.params.tipologia === 'Agenda' || props.params.tipologia === 'Saúde' || props.params.tipologia === 'Programas' || props.params.tipologia === 'Personalizada' ?
                     props.params.usersEscolhidos.length === 0 ?
                     <span className='row m-0 justify-content-end'>
                         <Button className='col-2' variant='custom' disabled>Criar Notificação</Button>
@@ -536,6 +536,7 @@ const SubmitButton = (props) => {
                                     <Button className='col-2' variant='custom' disabled>Criar Notificação</Button>
                                 </span>
                         :
+                            props.params.diaUnico !== '' ?
                             <>
                                 {Object.keys(props.params.mensagens).map(item => {
                                     if(props.params.mensagens[item].active === true && props.params.mensagens[item].message !== ''){
@@ -557,6 +558,10 @@ const SubmitButton = (props) => {
                                 </span>
                                 }
                             </>  
+                            :
+                            <span className='row m-0 justify-content-end'>
+                                <Button className='col-2' variant='custom' disabled>Criar Notificação</Button>
+                            </span>
                     :
                         props.params.envioNotif === 'Diária' ?
                             props.params.tipologia === 'Serviços' ?
@@ -730,7 +735,7 @@ const SubmitButton = (props) => {
                 <Button className='col-2' variant='custom' disabled>Editar Notificação</Button>
             </span>
             :
-                props.params.tipologia === 'Agenda' || props.params.tipologia === 'Saúde' || props.params.tipologia === 'Programas' || props.params.tipologia === 'Personalizada' && props.params.paramsPersonalizado.tipoRecetor === 'Recetores Individuais' ?
+                props.params.tipologia === 'Agenda' || props.params.tipologia === 'Saúde' || props.params.tipologia === 'Programas' || props.params.tipologia === 'Personalizada' ?
                     props.params.usersEscolhidos.length === 0 ?
                     <span className='row m-0 justify-content-end'>
                         <Button className='col-2' variant='custom' disabled>Editar Notificação</Button>
@@ -1143,6 +1148,7 @@ const SubmitButton = (props) => {
                                     <Button className='col-2' variant='custom' disabled>Editar Notificação</Button>
                                 </span>
                         :
+                            props.params.diaUnico !== '' ?
                             <>
                                 {Object.keys(props.params.mensagens).map(item => {
                                     if(props.params.mensagens[item].active === true && props.params.mensagens[item].message !== ''){
@@ -1163,7 +1169,11 @@ const SubmitButton = (props) => {
                                     <Button className='col-2' variant='custom' disabled>Editar Notificação</Button>
                                 </span>
                                 }
-                            </>  
+                            </> 
+                            :
+                            <span className='row m-0 justify-content-end'>
+                                <Button className='col-2' variant='custom' disabled>Criar Notificação</Button>
+                            </span>
                     :
                         props.params.envioNotif === 'Diária' ?
                             props.params.tipologia === 'Serviços' ?
