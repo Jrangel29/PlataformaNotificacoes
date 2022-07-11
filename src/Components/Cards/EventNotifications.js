@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom';
 
 const EventNotifications = (props) => {
 
-    let contagemFuture = 0;
+    let contagemFuture = 0; 
     let contagemPast = 0;
     let sorted = props.notificacoes.sort((a, b) => new Date(a.data) - new Date(b.data));
     
@@ -19,15 +19,26 @@ const EventNotifications = (props) => {
 
                     let currentDate = new Date();
                     let getDate = item.data.substring(0, 10);
+
                     let dataNova = new Date(getDate);
+                    console.log(dataNova)
                     var dataFinal = ((dataNova.getDate() > 9) ? dataNova.getDate() : ('0' + dataNova.getDate()))  + '/' + ((dataNova.getMonth() > 8) ? (dataNova.getMonth() + 1) : ('0' + (dataNova.getMonth() + 1))) + '/' + dataNova.getFullYear();
 
                     let diaSemana = dataNova.getDay()
 
-                    let hora = item.data.substring(11, 16);
+                    let hora;
+
+                    if(item.hora !== null){
+                        hora = item.hora.substring(0, 5);
+                    } else if(item.ref_id_rotinas === 1) {
+                        hora = 'Bom dia'
+                    } else {
+                        hora = 'Boa noite'
+                    }
+                    console.log(props.notificacoes)
 
                     if(props.seccao === 'Por Enviar'){
-                        if(dataNova >= currentDate){
+                        if(item.enviado.data[0] === 0){
                             contagemFuture++
                             return(
                                 <span key={index} className='col-4 ps-0 pb-3'>
@@ -62,7 +73,7 @@ const EventNotifications = (props) => {
                             )
                         }
                     } else {
-                        if(dataNova <= currentDate){
+                        if(item.enviado.data[0] !== 0){
                             contagemPast++
                             return(
                                 <span key={index} className='col-4 ps-0 pb-3'>

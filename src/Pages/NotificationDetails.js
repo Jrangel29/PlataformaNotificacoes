@@ -10,7 +10,7 @@ import { useParams } from 'react-router';
 import Loading from '../Pages/Loading';
 import { PieChart } from '../Components/Charts/PieChart';
 
-const HistoryDetails = () => {
+const NotificationDetails = () => {
 
     const dispatch = useDispatch();
     const {id} = useParams();
@@ -29,11 +29,13 @@ const HistoryDetails = () => {
         if(!isLoadingNotificationInfo){
             let dataNova = new Date(notificationInfo[0].data);
             var dataFinal = ((dataNova.getDate() > 9) ? dataNova.getDate() : ('0' + dataNova.getDate()))  + '/' + ((dataNova.getMonth() > 8) ? (dataNova.getMonth() + 1) : ('0' + (dataNova.getMonth() + 1))) + '/' + dataNova.getFullYear();
-
-            var hora = 'Indefinida'
-
+            let hora;
             if(notificationInfo[0].hora !== null){
                 hora = notificationInfo[0].hora.substring(0, 5);
+            } else if(notificationInfo[0].ref_id_rotinas === 1) {
+                hora = 'Rotina de bom dia'
+            } else {
+                hora = 'Rotina de boa noite'
             }
 
             setDataHora([dataFinal, hora])
@@ -58,6 +60,7 @@ const HistoryDetails = () => {
                     <span className='m-0 p-0'>
                         <p className='subtituloSeccaoPagina mt-2 mb-0'>Nome do evento</p>
                         <p className='textoSeccaoPagina'>{notificationInfo[0].nomeEvento}</p>
+                        {console.log(notificationInfo[0])}
                     </span> 
                     <div className='m-0 p-0'>
                         <p className='subtituloSeccaoPagina mt-3 mb-0'>Informação da notificação</p>
@@ -86,4 +89,4 @@ const HistoryDetails = () => {
     
 }
 
-export default HistoryDetails;
+export default NotificationDetails;

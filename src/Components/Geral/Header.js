@@ -42,21 +42,21 @@ class Header extends React.Component {
                 {this.props.apagaMuda !== "nao" ?
                     <span className="col-2 d-flex align-items-center justify-content-end">
                         {this.props.nome === "Casas" ?
-                        <Link to={`/houses/edit/${this.props.id}`}>
-                            <img className="topIcons px-4" src={Editar}/>    
+                        <Link className='mx-4' to={`/houses/edit/${this.props.id}`}>
+                            <img className="topIcons" src={Editar}/>    
                         </Link>
                         :
                         this.props.nome === "Utilizadores" ?
-                        <Link to={`/users/edit/${this.props.id}`}>
-                            <img className="topIcons px-4" src={Editar}/>    
+                        <Link className='mx-4' to={`/users/edit/${this.props.id}`}>
+                            <img className="topIcons" src={Editar}/>    
                         </Link>
                         :
-                        <Link to={{
+                        <Link className='mx-4' to={{
                             pathname: `/events/edit/${this.props.id}`,
                             state: {
                                 informacao: this.props.info
                             }}}>
-                            <img className="topIcons px-4" src={Editar}/>    
+                            <img className="topIcons" src={Editar}/>    
                         </Link>
                         }
                         <img className="topIcons" style={{marginRight: "40px", cursor: "pointer"}} onClick={() => this.onOpen()} src={Lixo}/>

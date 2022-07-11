@@ -11,6 +11,7 @@ function DeleteUser (props) {
             {...props}
             centered
             backdrop="static"
+            data-keyboard="false"
         >
             <Modal.Header className='tituloModal'>
                 {props.tiponotif === "AddInfo" ?

@@ -703,6 +703,8 @@ class CreateNotification extends React.Component {
     alteraRecetoresIndividual = (valor) => {
         if(valor === 'Casas'){
             this.setState({
+                usersEscolhidos: [],
+                casasEscolhidas: [],
                 paramsPersonalizado:{
                     ...this.state.paramsPersonalizado,
                     tipoRecetor: "Casas",
@@ -710,6 +712,8 @@ class CreateNotification extends React.Component {
             })
         } else {
             this.setState({
+                usersEscolhidos: [],
+                casasEscolhidas: [],
                 paramsPersonalizado:{
                     ...this.state.paramsPersonalizado,
                     tipoRecetor: "Recetores Individuais",
