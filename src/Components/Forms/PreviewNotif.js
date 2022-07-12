@@ -44,8 +44,6 @@ export const PreviewNotif = (props) => {
         setIndex(selectedIndex);
     };
 
-    console.log(carrocas)
-
     return(
         <>
             <div className='prevSeccao ms-0'>

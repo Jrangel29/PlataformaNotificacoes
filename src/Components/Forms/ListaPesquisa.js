@@ -233,12 +233,28 @@ export const CasasPesquisa = (props) => {
     const usersList = useSelector(({ utilizadores }) => utilizadores.data)
     const isLoadingUsers = useSelector(({ utilizadores }) => utilizadores.isLoading)
 
+    const [arrayCasas, setArrayCasas] = useState([]);
     let contagem = 0;
 
     useEffect(() => {
         dispatch(getHousesList())
         dispatch(getUsersList())
     }, [])
+
+    useEffect(() => {
+        if(!isLoadingCasas && !isLoadingUsers){
+            for(let i = 0; i < usersList.length; i++){
+                casasList.map(item => {
+                    //console.log(item.id_casa, usersList[i].id_casa)
+                    if(item.id_casa === usersList[i].id_casa){
+                        if(!arrayCasas.includes(item.id_casa)){
+                            setArrayCasas([...arrayCasas, item.id_casa])
+                        }
+                    }
+                })
+            }
+        }
+    }, [isLoadingCasas, isLoadingUsers, arrayCasas])
 
     const adicionaCasa = (info) => {
         let contaUser = 0;
@@ -261,48 +277,52 @@ export const CasasPesquisa = (props) => {
         )
     }
 
+    console.log(arrayCasas)
+
     return(
         <>
             <input type="text" placeholder="Pesquisa" className='barraPesquisaForm py-1 px-3 w-100'/>
             <span className='row ListaUsersFormCasa'>
                 {casasList.map((item, index) => {
                     contagem = 0;
-                    return(
-                        <>
-                        {props.casasEscolhidas.length > 0 ?
+                    if(arrayCasas.includes(item.id_casa)){
+                        return(
                             <>
-                            {props.casasEscolhidas.map(val => {
-                                if(val.id === item.id_casa){
-                                    contagem++;
-                                }
-                            })}
-                            {contagem === 0 ?
+                            {props.casasEscolhidas.length > 0 ?
+                                <>
+                                {props.casasEscolhidas.map(val => {
+                                    if(val.id === item.id_casa){
+                                        contagem++;
+                                    }
+                                })}
+                                {contagem === 0 ?
+                                    <span key={index} className='col-12 row itemListaUsersFormCasa m-0'>
+                                        <p className='col-8 infoCasaForm'><b>{item.nome}</b></p>
+                                        <span className='col-4'>
+                                            <p className='btn btnListaUser' onClick={() => adicionaCasa({id: item.id_casa, nome: item.nome})}>Escolher</p>
+                                        </span>
+                                    </span>
+                                :
                                 <span key={index} className='col-12 row itemListaUsersFormCasa m-0'>
                                     <p className='col-8 infoCasaForm'><b>{item.nome}</b></p>
                                     <span className='col-4'>
-                                        <p className='btn btnListaUser' onClick={() => adicionaCasa({id: item.id_casa, nome: item.nome})}>Escolher</p>
+                                        <p className='btn btnListaUser disabled disabledButton'>Escolhido</p>
                                     </span>
                                 </span>
+                                }
+                                </>
                             :
                             <span key={index} className='col-12 row itemListaUsersFormCasa m-0'>
                                 <p className='col-8 infoCasaForm'><b>{item.nome}</b></p>
                                 <span className='col-4'>
-                                    <p className='btn btnListaUser disabled disabledButton'>Escolhido</p>
+                                    <p className='btn btnListaUser' onClick={() => adicionaCasa({id: item.id_casa, nome: item.nome})}>Escolher</p>
                                 </span>
                             </span>
                             }
+                            
                             </>
-                        :
-                        <span key={index} className='col-12 row itemListaUsersFormCasa m-0'>
-                            <p className='col-8 infoCasaForm'><b>{item.nome}</b></p>
-                            <span className='col-4'>
-                                <p className='btn btnListaUser' onClick={() => adicionaCasa({id: item.id_casa, nome: item.nome})}>Escolher</p>
-                            </span>
-                        </span>
-                        }
-                        
-                        </>
-                    )
+                        )
+                    }
                 })}
             </span>
         </>                                     
