@@ -9,8 +9,9 @@ import { Carousel } from 'react-bootstrap';
 export const PreviewNotif = (props) => {
 
     const [offset, setOffset] = useState(0);
-    const [carrocas, setCarrocas] = useState(false);
+    const [carrocas, setCarrocas] = useState([false, 0]);
     let contagem = 0;
+    let contaMsg = 0;
 
     useEffect(() => {
         const onScroll = () => setOffset(window.pageYOffset);
@@ -22,15 +23,18 @@ export const PreviewNotif = (props) => {
 
     useEffect(() =>{
         Object.keys(props.mensagens).map((item, index) => {
-            if(props.mensagens[item].active === true && carrocas === false){
-                setCarrocas(true)
+            if(props.mensagens[item].active === true && carrocas[0] === false){
+                contaMsg++;
+                setCarrocas([true, contaMsg])
             }
-            if(props.mensagens[item].active === true && carrocas === true){
+            if(props.mensagens[item].active === true && carrocas[0] === true){
+                contaMsg++;
                 contagem++;
+                setCarrocas([true, contaMsg])
             }
         })
-        if(contagem === 0 && carrocas === true){
-            setCarrocas(false)
+        if(contagem === 0 && carrocas[0] === true){
+            setCarrocas([false, 0])
         }
     }, [props.mensagens])
 
@@ -40,64 +44,115 @@ export const PreviewNotif = (props) => {
         setIndex(selectedIndex);
     };
 
+    console.log(carrocas)
+
     return(
         <>
             <div className='prevSeccao ms-0'>
                 <h1 className='tituloSeccaoPaginaNotifs'>Pré-visualização das notificações</h1>
             </div>
             <div style={{padding: "0 40px"}} className={offset >= 230 ? 'stickyTop row m-0' : 'row m-0'}>
-                {carrocas === true ? 
-                    <Carousel 
-                    interval={null} activeIndex={index} variant='dark'
-                    onSelect={handleSelect} className='divPreview col-5'>
-                    {Object.keys(props.mensagens).map((item, index) => {
-                        if(props.mensagens[item].active === true){
-                            return(
-                                <Carousel.Item>
-                                    <span key={index} className='notiPreview'>
+                {carrocas[0] === true ? 
+                    carrocas[1] !== 1 ?
+                        <Carousel 
+                        interval={null} activeIndex={index} variant='dark'
+                        onSelect={handleSelect} className='divPreview col-5'>
+                        {Object.keys(props.mensagens).map((item, index) => {
+                            if(props.mensagens[item].active === true){
+                                return(
+                                    <Carousel.Item>
+                                        <span key={index} className='notiPreview'>
+                                            {props.tipo !== 'Personalizada' ?
+                                            <img src={
+                                                props.tipo === "Agenda" ?
+                                                iconeAgenda
+                                                :
+                                                props.tipo === "Programas" ?
+                                                iconeConteudo
+                                                :
+                                                props.tipo === "Informação" ?
+                                                iconeInfo
+                                                :
+                                                props.tipo === "Saúde" ?
+                                                iconeSaude
+                                                :
+                                                iconeServico
+                                                } className="imgPreview"/>
+                                            :
+                                            props.tipo === 'Personalizada' && props.personalizado.usaIcone === 'Sim' ?
+                                            <img src={
+                                                props.personalizado.icone === "Agenda" ?
+                                                iconeAgenda
+                                                :
+                                                props.personalizado.icone === "Programas" ?
+                                                iconeConteudo
+                                                :
+                                                props.personalizado.icone === "Informação" ?
+                                                iconeInfo
+                                                :
+                                                props.personalizado.icone === "Saúde" ?
+                                                iconeSaude
+                                                :
+                                                iconeServico
+                                                } className="imgPreview"/>
+                                                :
+                                                <></>
+                                            }
+                                            <p className='textPreview'>{props.mensagens[item].message !== '' ? props.mensagens[item].message : "Esta é uma mensagem de exemplo."}</p>
+                                        </span>
+                                    </Carousel.Item>
+                                )
+                            }
+                        })}
+                    </Carousel>
+                    :
+                    <div className='divPreview col-5'>
+                        {Object.keys(props.mensagens).map((item, index) => {
+                            if(props.mensagens[item].active === true){
+                                return(
+                                    <span className='notiPreview'>
                                         {props.tipo !== 'Personalizada' ?
-                                        <img src={
-                                            props.tipo === "Agenda" ?
-                                            iconeAgenda
+                                            <img src={
+                                                props.tipo === "Agenda" ?
+                                                iconeAgenda
+                                                :
+                                                props.tipo === "Programas" ?
+                                                iconeConteudo
+                                                :
+                                                props.tipo === "Informação" ?
+                                                iconeInfo
+                                                :
+                                                props.tipo === "Saúde" ?
+                                                iconeSaude
+                                                :
+                                                iconeServico
+                                                } className="imgPreview"/>
                                             :
-                                            props.tipo === "Programas" ?
-                                            iconeConteudo
-                                            :
-                                            props.tipo === "Informação" ?
-                                            iconeInfo
-                                            :
-                                            props.tipo === "Saúde" ?
-                                            iconeSaude
-                                            :
-                                            iconeServico
-                                            } className="imgPreview"/>
-                                        :
-                                        props.tipo === 'Personalizada' && props.personalizado.usaIcone === 'Sim' ?
-                                        <img src={
-                                            props.personalizado.icone === "Agenda" ?
-                                            iconeAgenda
-                                            :
-                                            props.personalizado.icone === "Programas" ?
-                                            iconeConteudo
-                                            :
-                                            props.personalizado.icone === "Informação" ?
-                                            iconeInfo
-                                            :
-                                            props.personalizado.icone === "Saúde" ?
-                                            iconeSaude
-                                            :
-                                            iconeServico
-                                            } className="imgPreview"/>
-                                            :
-                                            <></>
-                                        }
+                                            props.tipo === 'Personalizada' && props.personalizado.usaIcone === 'Sim' ?
+                                            <img src={
+                                                props.personalizado.icone === "Agenda" ?
+                                                iconeAgenda
+                                                :
+                                                props.personalizado.icone === "Programas" ?
+                                                iconeConteudo
+                                                :
+                                                props.personalizado.icone === "Informação" ?
+                                                iconeInfo
+                                                :
+                                                props.personalizado.icone === "Saúde" ?
+                                                iconeSaude
+                                                :
+                                                iconeServico
+                                                } className="imgPreview"/>
+                                                :
+                                                <></>
+                                            }
                                         <p className='textPreview'>{props.mensagens[item].message !== '' ? props.mensagens[item].message : "Esta é uma mensagem de exemplo."}</p>
                                     </span>
-                                </Carousel.Item>
-                            )
-                        }
-                    })}
-                </Carousel>
+                                )
+                            }
+                        })}
+                    </div>
                 :
                 <div className='divPreview col-5'>
                     <span className='notiPreview'>
