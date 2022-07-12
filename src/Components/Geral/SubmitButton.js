@@ -16,6 +16,10 @@ const SubmitButton = (props) => {
     let contagemMomentos = 0;
     let contagemMensagens = 0;
 
+    let diaAtual = new Date();
+    let diaFinal = new Date(props.params.dataFim);
+    diaFinal.setHours(diaAtual.getHours(), diaAtual.getMinutes() + 5, diaAtual.getSeconds());
+
     const criaUser = (nome, idade, idCasa, informacaoAdicional, blackList) => {
         props.openModal();
         dispatch(createNewUser(nome, idade, idCasa, informacaoAdicional, blackList));
@@ -237,82 +241,92 @@ const SubmitButton = (props) => {
                                 </span>
                         :
                             props.params.envioNotif === 'Diária' ?
-                                props.params.hora !== '' && props.params.dataFim !== '' ?
-                                <>
-                                    {Object.keys(props.params.mensagens).map(item => {
-                                        if(item !== "meiaHora" && item !== "quartoHora" && item !== 'minutos5' && item !== 'momentoAcontecimento' && props.params.mensagens[item].active === true){
-                                            contagemMomentos++;
-                                            if(props.params.mensagens[item].message !== ''){
-                                                contagemMensagens++;
+                                diaFinal < diaAtual ?
+                                    <span className='row m-0 justify-content-end'>
+                                        <Button className='col-2' variant='custom' disabled>Criar Notificação</Button>
+                                    </span>
+                                    :
+                                    props.params.hora !== '' && props.params.dataFim !== '' ?
+                                    <>
+                                        {Object.keys(props.params.mensagens).map(item => {
+                                            if(item !== "meiaHora" && item !== "quartoHora" && item !== 'minutos5' && item !== 'momentoAcontecimento' && props.params.mensagens[item].active === true){
+                                                contagemMomentos++;
+                                                if(props.params.mensagens[item].message !== ''){
+                                                    contagemMensagens++;
+                                                }
                                             }
-                                        }
-                                        if(item === "meiaHora" && props.params.mensagens[item].active === true){
-                                            contagemMomentos++;
-                                            if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
-                                                contagemMensagens++;
+                                            if(item === "meiaHora" && props.params.mensagens[item].active === true){
+                                                contagemMomentos++;
+                                                if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                                    contagemMensagens++;
+                                                }
                                             }
-                                        }
-                                        if(item === "quartoHora" && props.params.tipologia === 'Saúde' && props.params.mensagens[item].active === true){
-                                            contagemMomentos++;
-                                            if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
-                                                contagemMensagens++;
+                                            if(item === "quartoHora" && props.params.tipologia === 'Saúde' && props.params.mensagens[item].active === true){
+                                                contagemMomentos++;
+                                                if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                                    contagemMensagens++;
+                                                }
                                             }
-                                        }
-                                        if(item === "quartoHora" && props.params.tipologia !== 'Saúde' && props.params.mensagens[item].active === true){
-                                            contagemMomentos++;
-                                            if(props.params.mensagens[item].message !== ''){
-                                                contagemMensagens++;
+                                            if(item === "quartoHora" && props.params.tipologia !== 'Saúde' && props.params.mensagens[item].active === true){
+                                                contagemMomentos++;
+                                                if(props.params.mensagens[item].message !== ''){
+                                                    contagemMensagens++;
+                                                }
                                             }
-                                        }
-                                        if(item === 'minutos5' && props.params.tipologia === 'Programas' && props.params.mensagens[item].active === true || item === 'momentoAcontecimento' && props.params.tipologia === 'Programas' && props.params.mensagens[item].active === true){
-                                            contagemMomentos++;
-                                            if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
-                                                contagemMensagens++;
+                                            if(item === 'minutos5' && props.params.tipologia === 'Programas' && props.params.mensagens[item].active === true || item === 'momentoAcontecimento' && props.params.tipologia === 'Programas' && props.params.mensagens[item].active === true){
+                                                contagemMomentos++;
+                                                if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                                    contagemMensagens++;
+                                                }
                                             }
-                                        }
-                                        if(item === "minutos5" && props.params.tipologia !== 'Programas' && props.params.mensagens[item].active === true || item === "momentoAcontecimento" && props.params.tipologia !== 'Programas' && props.params.mensagens[item].active === true){
-                                            contagemMomentos++;
-                                            if(props.params.mensagens[item].message !== ''){
-                                                contagemMensagens++;
+                                            if(item === "minutos5" && props.params.tipologia !== 'Programas' && props.params.mensagens[item].active === true || item === "momentoAcontecimento" && props.params.tipologia !== 'Programas' && props.params.mensagens[item].active === true){
+                                                contagemMomentos++;
+                                                if(props.params.mensagens[item].message !== ''){
+                                                    contagemMensagens++;
+                                                }
                                             }
-                                        }
-                                    })}
-                                    {contagemMomentos !== 0 && contagemMomentos === contagemMensagens ?
-                                        props.params.tipologia !== 'Programas' ?
+                                        })}
+                                        {contagemMomentos !== 0 && contagemMomentos === contagemMensagens ?
+                                            props.params.tipologia !== 'Programas' ?
+                                                <span className='row m-0 justify-content-end'>
+                                                    <Button 
+                                                        className='col-2' 
+                                                        variant='flat' 
+                                                        onClick={
+                                                            () => criaNotification(props.params.tipologia, props.params.regularidade, props.params.nomeItem, props.params.momentoUnico, props.params.mensagens, props.params.idTipologia, props.params.hora, props.params.envioNotif, props.params.idRegular, props.params.dias, props.params.diaUnico, props.params.diaMes, props.params.categoriaInfo, props.params.paramsPersonalizado, props.params.casasEscolhidas, props.params.usersEscolhidos, props.params.dataFim, props.params.canal)
+                                                            }>Criar Notificação</Button>
+                                                </span>
+                                            :
+                                            props.params.tipologia === 'Programas' && props.params.canal.channel !== '' && props.params.canal.nome !== '' ?
+                                                <span className='row m-0 justify-content-end'>
+                                                    <Button 
+                                                        className='col-2' 
+                                                        variant='flat' 
+                                                        onClick={
+                                                            () => criaNotification(props.params.tipologia, props.params.regularidade, props.params.nomeItem, props.params.momentoUnico, props.params.mensagens, props.params.idTipologia, props.params.hora, props.params.envioNotif, props.params.idRegular, props.params.dias, props.params.diaUnico, props.params.diaMes, props.params.categoriaInfo, props.params.paramsPersonalizado, props.params.casasEscolhidas, props.params.usersEscolhidos, props.params.dataFim, props.params.canal)
+                                                            }>Criar Notificação</Button>
+                                                </span>
+                                            :
                                             <span className='row m-0 justify-content-end'>
-                                                <Button 
-                                                    className='col-2' 
-                                                    variant='flat' 
-                                                    onClick={
-                                                        () => criaNotification(props.params.tipologia, props.params.regularidade, props.params.nomeItem, props.params.momentoUnico, props.params.mensagens, props.params.idTipologia, props.params.hora, props.params.envioNotif, props.params.idRegular, props.params.dias, props.params.diaUnico, props.params.diaMes, props.params.categoriaInfo, props.params.paramsPersonalizado, props.params.casasEscolhidas, props.params.usersEscolhidos, props.params.dataFim, props.params.canal)
-                                                        }>Criar Notificação</Button>
-                                            </span>
-                                        :
-                                        props.params.tipologia === 'Programas' && props.params.canal.channel !== '' && props.params.canal.nome !== '' ?
-                                            <span className='row m-0 justify-content-end'>
-                                                <Button 
-                                                    className='col-2' 
-                                                    variant='flat' 
-                                                    onClick={
-                                                        () => criaNotification(props.params.tipologia, props.params.regularidade, props.params.nomeItem, props.params.momentoUnico, props.params.mensagens, props.params.idTipologia, props.params.hora, props.params.envioNotif, props.params.idRegular, props.params.dias, props.params.diaUnico, props.params.diaMes, props.params.categoriaInfo, props.params.paramsPersonalizado, props.params.casasEscolhidas, props.params.usersEscolhidos, props.params.dataFim, props.params.canal)
-                                                        }>Criar Notificação</Button>
+                                                <Button className='col-2' variant='custom' disabled>Criar Notificação</Button>
                                             </span>
                                         :
                                         <span className='row m-0 justify-content-end'>
                                             <Button className='col-2' variant='custom' disabled>Criar Notificação</Button>
                                         </span>
+                                        }
+                                    </> 
                                     :
                                     <span className='row m-0 justify-content-end'>
                                         <Button className='col-2' variant='custom' disabled>Criar Notificação</Button>
                                     </span>
-                                    }
-                                </> 
-                                :
-                                <span className='row m-0 justify-content-end'>
-                                    <Button className='col-2' variant='custom' disabled>Criar Notificação</Button>
-                                </span>
                             :  
                             props.params.envioNotif === 'Semanal' ?
+                                diaFinal < diaAtual ?
+                                    <span className='row m-0 justify-content-end'>
+                                        <Button className='col-2' variant='custom' disabled>Criar Notificação</Button>
+                                    </span>
+                                    :
                                 <>
                                     {Object.keys(props.params.dias).map(item => {
                                         //console.log(item, props.params.dias[item])
@@ -390,6 +404,11 @@ const SubmitButton = (props) => {
                                     }
                                 </> 
                                 :
+                                diaFinal < diaAtual ?
+                                    <span className='row m-0 justify-content-end'>
+                                        <Button className='col-2' variant='custom' disabled>Criar Notificação</Button>
+                                    </span>
+                                    :
                                 <>
                                     {Object.keys(props.params.mensagens).map(item => {
                                         if(item !== "meiaHora" && item !== "quartoHora" && item !== 'minutos5' && item !== 'momentoAcontecimento' && props.params.mensagens[item].active === true){
@@ -565,6 +584,11 @@ const SubmitButton = (props) => {
                     :
                         props.params.envioNotif === 'Diária' ?
                             props.params.tipologia === 'Serviços' ?
+                                diaFinal < diaAtual ?
+                                    <span className='row m-0 justify-content-end'>
+                                        <Button className='col-2' variant='custom' disabled>Criar Notificação</Button>
+                                    </span>
+                                    :
                                 props.params.hora !== '' && props.params.dataFim !== '' && props.params.canal.nome !== '' ?
                                 <>
                                     {Object.keys(props.params.mensagens).map(item => {
@@ -613,6 +637,11 @@ const SubmitButton = (props) => {
                                     <Button className='col-2' variant='custom' disabled>Criar Notificação</Button>
                                 </span>
                             :
+                                diaFinal < diaAtual ?
+                                    <span className='row m-0 justify-content-end'>
+                                        <Button className='col-2' variant='custom' disabled>Criar Notificação</Button>
+                                    </span>
+                                    :
                                 <>
                                     {Object.keys(props.params.mensagens).map(item => {
                                         if(item !== "meiaHora" && item !== "quartoHora" && props.params.mensagens[item].active === true){
@@ -657,6 +686,11 @@ const SubmitButton = (props) => {
                                 </> 
                         :  
                         props.params.envioNotif === 'Semanal' ?
+                            diaFinal < diaAtual ?
+                                <span className='row m-0 justify-content-end'>
+                                    <Button className='col-2' variant='custom' disabled>Criar Notificação</Button>
+                                </span>
+                                :
                             <>
                                 {Object.keys(props.params.dias).map(item => {
                                     if(props.params.dias[item] === true){
@@ -705,19 +739,24 @@ const SubmitButton = (props) => {
                                 }
                             </> 
                             :
-                            props.params.diaMes !== '' && props.params.hora !== '' && props.params.dataFim !== '' && props.params.canal.nome !== '' && props.params.tipologia === 'Serviços' || props.params.diaMes !== '' && props.params.hora !== '' && props.params.dataFim !== '' && props.params.tipologia === 'Informação' ?
-                                <span className='row m-0 justify-content-end'>
-                                    <Button 
-                                        className='col-2' 
-                                        variant='flat' 
-                                        onClick={
-                                            () => criaNotification(props.params.tipologia, props.params.regularidade, props.params.nomeItem, props.params.momentoUnico, props.params.mensagens, props.params.idTipologia, props.params.hora, props.params.envioNotif, props.params.idRegular, props.params.dias, props.params.diaUnico, props.params.diaMes, props.params.categoriaInfo, props.params.paramsPersonalizado, props.params.casasEscolhidas, props.params.usersEscolhidos, props.params.dataFim, props.params.canal)
-                                            }>Criar Notificação</Button>
-                                </span>
-                                :
+                            diaFinal < diaAtual ?
                                 <span className='row m-0 justify-content-end'>
                                     <Button className='col-2' variant='custom' disabled>Criar Notificação</Button>
                                 </span>
+                                :
+                                props.params.diaMes !== '' && props.params.hora !== '' && props.params.dataFim !== '' && props.params.canal.nome !== '' && props.params.tipologia === 'Serviços' || props.params.diaMes !== '' && props.params.hora !== '' && props.params.dataFim !== '' && props.params.tipologia === 'Informação' ?
+                                    <span className='row m-0 justify-content-end'>
+                                        <Button 
+                                            className='col-2' 
+                                            variant='flat' 
+                                            onClick={
+                                                () => criaNotification(props.params.tipologia, props.params.regularidade, props.params.nomeItem, props.params.momentoUnico, props.params.mensagens, props.params.idTipologia, props.params.hora, props.params.envioNotif, props.params.idRegular, props.params.dias, props.params.diaUnico, props.params.diaMes, props.params.categoriaInfo, props.params.paramsPersonalizado, props.params.casasEscolhidas, props.params.usersEscolhidos, props.params.dataFim, props.params.canal)
+                                                }>Criar Notificação</Button>
+                                    </span>
+                                    :
+                                    <span className='row m-0 justify-content-end'>
+                                        <Button className='col-2' variant='custom' disabled>Criar Notificação</Button>
+                                    </span>
                 :
                 <span className='row m-0 justify-content-end'>
                     <Button className='col-2' variant='custom' disabled>Criar Notificação</Button>
