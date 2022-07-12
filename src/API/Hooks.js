@@ -99,16 +99,16 @@ export const GetDiaSemana = (dias, dates, msg, dataFim) => {
         
         for (let d = 1; d <= current.days; d++) {
 
-            let date = new Date(current.year, current.month, d);
+            let date = new Date(current.year, current.month, d, diaStart.getHours(), diaStart.getMinutes() + 1);
+            let lastDay = new Date(current.year, current.month, d);
 
             dias.map(item => {
-                
-                if (date.getDay() == item && date >= diaStart && date <= diaFim) {
+                if (date.getDay() == item && date >= diaStart && lastDay <= diaFim) {
                     var diaFormated = date.getFullYear() + '-' + ((date.getMonth() > 8) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))) + '-' + ((date.getDate() > 9) ? date.getDate() : ('0' + date.getDate()));
                     days.push(diaFormated);
                 }
     
-                if(date.getDay() == item && date >= diaStart && msg.dias3.active === true && date <= diaFim){
+                if(date.getDay() == item && date >= diaStart && msg.dias3.active === true && lastDay <= diaFim){
                     let date2 = new Date(current.year, current.month, d);
                     let dataWeek = date.getDate() - 3;
                     var dataAtualizada = date2.setDate(dataWeek);
@@ -120,7 +120,7 @@ export const GetDiaSemana = (dias, dates, msg, dataFim) => {
                     }   
                 }
     
-                if(date.getDay() == item && date >= diaStart && msg.diaAnterior.active === true && date <= diaFim){
+                if(date.getDay() == item && date >= diaStart && msg.diaAnterior.active === true && lastDay <= diaFim){
                     let date3 = new Date(current.year, current.month, d);
                     let dataWeek = date.getDate() - 1;
                     var dataAtualizada = date3.setDate(dataWeek);
@@ -167,50 +167,51 @@ export const GetDiaMes = (dia, dates, msg, dataFim) => {
         
         for (let d = 1; d <= current.days; d++) {
 
-            let date = new Date(current.year, current.month, d);
+            let date = new Date(current.year, current.month, d, diaStart.getHours(), diaStart.getMinutes() + 1);
+            let lastDay = new Date(current.year, current.month, d);
             let dia2 = dia
 
-            if(current.days < dia2){
+            if(current.days <= dia2){
                 dia2 = current.days
             }
 
-            if (d == dia2 && date >= diaStart && date <= diaFim) {
+            if (d == dia2 && date >= diaStart && lastDay <= diaFim) {
                 var diaFormated = date.getFullYear() + '-' + ((date.getMonth() > 8) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))) + '-' + ((date.getDate() > 9) ? date.getDate() : ('0' + date.getDate()));
                 days.push(diaFormated);
             }
 
-            if(d == dia2 && date >= diaStart && msg.semanaAntes.active === true && date <= diaFim){
+            if(d == dia2 && date >= diaStart && msg.semanaAntes.active === true && lastDay <= diaFim){
                 let date1 = new Date(current.year, current.month, d);
                 let dataWeek = date.getDate() - 7;
                 var dataAtualizada = date1.setDate(dataWeek);
                 let dataNew = new Date(dataAtualizada)
                 var dataFinal = dataNew.getFullYear() + '-' + ((dataNew.getMonth() > 8) ? (dataNew.getMonth() + 1) : ('0' + (dataNew.getMonth() + 1))) + '-' + ((dataNew.getDate() > 9) ? dataNew.getDate() : ('0' + dataNew.getDate()));
                 
-                if(dataNew > diaStart){
+                if(dataNew >= diaStart){
                     messageDays.semanaAntes.push(dataFinal);
                 }   
             }
 
-            if(d == dia2 && date >= diaStart && msg.dias3.active === true && date <= diaFim){
+            if(d == dia2 && date >= diaStart && msg.dias3.active === true && lastDay <= diaFim){
                 let date2 = new Date(current.year, current.month, d);
                 let dataWeek = date.getDate() - 3;
                 var dataAtualizada = date2.setDate(dataWeek);
                 let dataNew = new Date(dataAtualizada)
                 var dataFinal = dataNew.getFullYear() + '-' + ((dataNew.getMonth() > 8) ? (dataNew.getMonth() + 1) : ('0' + (dataNew.getMonth() + 1))) + '-' + ((dataNew.getDate() > 9) ? dataNew.getDate() : ('0' + dataNew.getDate()));
 
-                if(dataNew > diaStart){
+                if(dataNew >= diaStart){
                     messageDays.dias3.push(dataFinal);
                 }   
             }
 
-            if(d == dia2 && date >= diaStart && msg.diaAnterior.active === true && date <= diaFim){
+            if(d == dia2 && date >= diaStart && msg.diaAnterior.active === true && lastDay <= diaFim){
                 let date3 = new Date(current.year, current.month, d);
                 let dataWeek = date.getDate() - 1;
                 var dataAtualizada = date3.setDate(dataWeek);
                 let dataNew = new Date(dataAtualizada)
                 var dataFinal = dataNew.getFullYear() + '-' + ((dataNew.getMonth() > 8) ? (dataNew.getMonth() + 1) : ('0' + (dataNew.getMonth() + 1))) + '-' + ((dataNew.getDate() > 9) ? dataNew.getDate() : ('0' + dataNew.getDate()));
 
-                if(dataNew > diaStart){
+                if(dataNew >= diaStart){
                     messageDays.diaAnterior.push(dataFinal);
                 }
             }
@@ -242,9 +243,10 @@ export const GetEveryday = (dates, dataFim) => {
         
         for (let d = 1; d <= current.days; d++) {
 
-            let date = new Date(current.year, current.month, d);
+            let date = new Date(current.year, current.month, d, diaStart.getHours(), diaStart.getMinutes() + 1);
+            let lastDay = new Date(current.year, current.month, d);
 
-            if (date >= diaStart && date <= diaFim) {
+            if (date >= diaStart && lastDay <= diaFim) {
                 var diaFormated = date.getFullYear() + '-' + ((date.getMonth() > 8) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))) + '-' + ((date.getDate() > 9) ? date.getDate() : ('0' + date.getDate()));
                 days.push(diaFormated);
             }

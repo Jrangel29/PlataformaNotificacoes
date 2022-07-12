@@ -582,7 +582,7 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
         let minutos = horaEvento.substring(3, 5)
         novaData.setHours(hora, minutos);
         novaData.setHours(novaData.getHours() - 1);
-
+        
         let horaFinal = `${novaData.getHours() < 10 ? '0' + novaData.getHours() : novaData.getHours()}:${novaData.getMinutes() < 10 ? '0' + novaData.getMinutes() : novaData.getMinutes()}`
         
 
@@ -642,59 +642,123 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                 })
             }
         } else if(regular === 'Diária' || regular === 'Mensal' || regular === 'Semanal') {
-            dias.diasEvento.map(item => {
-                if(tipologia === 'Agenda'){
-                    notificacoesFinal.push({
-                        mensagem: mensagens.horaAntes.message,
-                        titulo: null,
-                        descricao: null,
-                        botao_titulo: null,
-                        botao_navigate: null,
-                        url_icone: objectImagens[tipologia],
-                        data: item,
-                        hora: horaFinal,
-                        rotina: null,
-                        zapping: 1
-                    })
-                } else if(tipologia === 'Personalizada' && usaIcone === 'Sim') {
-                    notificacoesFinal.push({
-                        mensagem: mensagens.horaAntes.message,
-                        titulo: null,
-                        descricao: null,
-                        botao_titulo: null,
-                        botao_navigate: null,
-                        url_icone: objectImagens[iconePersonalizado],
-                        data: item,
-                        hora: horaFinal,
-                        rotina: null,
-                        zapping: 0
-                    })
-                } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
-                    notificacoesFinal.push({
-                        mensagem: mensagens.horaAntes.message,
-                        titulo: null,
-                        descricao: null,
-                        botao_titulo: null,
-                        botao_navigate: null,
-                        url_icone: null,
-                        data: item,
-                        hora: horaFinal,
-                        rotina: null,
-                        zapping: 0
-                    })
+            let atual = new Date();
+            let primeiroDia = new Date(dias.diasEvento[0]);
+            primeiroDia.setHours(atual.getHours(), atual.getMinutes());
+            let primeiraCria = new Date(dias.diasEvento[0])
+            primeiraCria.setHours(novaData.getHours(), novaData.getMinutes())
+            
+            dias.diasEvento.map((item, key) => {
+                if(key === 0){
+                    if(primeiraCria >= primeiroDia){
+                        if(tipologia === 'Agenda'){
+                            notificacoesFinal.push({
+                                mensagem: mensagens.horaAntes.message,
+                                titulo: null,
+                                descricao: null,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: objectImagens[tipologia],
+                                data: item,
+                                hora: horaFinal,
+                                rotina: null,
+                                zapping: 1
+                            })
+                        } else if(tipologia === 'Personalizada' && usaIcone === 'Sim') {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.horaAntes.message,
+                                titulo: null,
+                                descricao: null,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: objectImagens[iconePersonalizado],
+                                data: item,
+                                hora: horaFinal,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.horaAntes.message,
+                                titulo: null,
+                                descricao: null,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: null,
+                                data: item,
+                                hora: horaFinal,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        } else {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.horaAntes.message,
+                                titulo: null,
+                                descricao: null,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: objectImagens[tipologia],
+                                data: item,
+                                hora: horaFinal,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        }
+                    }
                 } else {
-                    notificacoesFinal.push({
-                        mensagem: mensagens.horaAntes.message,
-                        titulo: null,
-                        descricao: null,
-                        botao_titulo: null,
-                        botao_navigate: null,
-                        url_icone: objectImagens[tipologia],
-                        data: item,
-                        hora: horaFinal,
-                        rotina: null,
-                        zapping: 0
-                    })
+                    if(tipologia === 'Agenda'){
+                        notificacoesFinal.push({
+                            mensagem: mensagens.horaAntes.message,
+                            titulo: null,
+                            descricao: null,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: objectImagens[tipologia],
+                            data: item,
+                            hora: horaFinal,
+                            rotina: null,
+                            zapping: 1
+                        })
+                    } else if(tipologia === 'Personalizada' && usaIcone === 'Sim') {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.horaAntes.message,
+                            titulo: null,
+                            descricao: null,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: objectImagens[iconePersonalizado],
+                            data: item,
+                            hora: horaFinal,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.horaAntes.message,
+                            titulo: null,
+                            descricao: null,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: null,
+                            data: item,
+                            hora: horaFinal,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    } else {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.horaAntes.message,
+                            titulo: null,
+                            descricao: null,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: objectImagens[tipologia],
+                            data: item,
+                            hora: horaFinal,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    }
                 }
             })
         }
@@ -778,72 +842,149 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                 })
             }
         } else if(regular === 'Diária' || regular === 'Mensal' || regular === 'Semanal') {
-            dias.diasEvento.map(item => {
-                if(tipologia === 'Agenda'){
-                    notificacoesFinal.push({
-                        mensagem: mensagens.meiaHora.message,
-                        titulo: mensagens.meiaHora.tituloBlade,
-                        descricao: mensagens.meiaHora.descricao,
-                        botao_titulo: null,
-                        botao_navigate: null,
-                        url_icone: objectImagens[tipologia],
-                        data: item,
-                        hora: horaFinal,
-                        rotina: null,
-                        zapping: 1
-                    })
-                } else if(tipologia === 'Personalizada' && usaIcone === 'Sim') {
-                    notificacoesFinal.push({
-                        mensagem: mensagens.meiaHora.message,
-                        titulo: mensagens.meiaHora.tituloBlade,
-                        descricao: mensagens.meiaHora.descricao,
-                        botao_titulo: null,
-                        botao_navigate: null,
-                        url_icone: objectImagens[iconePersonalizado],
-                        data: item,
-                        hora: horaFinal,
-                        rotina: null,
-                        zapping: 0
-                    })
-                } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
-                    notificacoesFinal.push({
-                        mensagem: mensagens.meiaHora.message,
-                        titulo: mensagens.meiaHora.tituloBlade,
-                        descricao: mensagens.meiaHora.descricao,
-                        botao_titulo: null,
-                        botao_navigate: null,
-                        url_icone: null,
-                        data: item,
-                        hora: horaFinal,
-                        rotina: null,
-                        zapping: 0
-                    })
-                } else if(tipologia === 'Serviços') {
-                    notificacoesFinal.push({
-                        mensagem: mensagens.meiaHora.message,
-                        titulo: mensagens.meiaHora.tituloBlade,
-                        descricao: mensagens.meiaHora.descricao,
-                        botao_titulo: 'Ir para App',
-                        botao_navigate: `page:${canal.id}`,
-                        url_icone: objectImagens[tipologia],
-                        data: item,
-                        hora: horaFinal,
-                        rotina: null,
-                        zapping: 0
-                    })
+            let atual = new Date();
+            let primeiroDia = new Date(dias.diasEvento[0]);
+            primeiroDia.setHours(atual.getHours(), atual.getMinutes());
+            let primeiraCria = new Date(dias.diasEvento[0])
+            primeiraCria.setHours(dataFlex.getHours(), dataFlex.getMinutes())
+
+            dias.diasEvento.map((item, key) => {
+                if(key === 0){
+                    if(primeiraCria >= primeiroDia){
+                        if(tipologia === 'Agenda'){
+                            notificacoesFinal.push({
+                                mensagem: mensagens.meiaHora.message,
+                                titulo: mensagens.meiaHora.tituloBlade,
+                                descricao: mensagens.meiaHora.descricao,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: objectImagens[tipologia],
+                                data: item,
+                                hora: horaFinal,
+                                rotina: null,
+                                zapping: 1
+                            })
+                        } else if(tipologia === 'Personalizada' && usaIcone === 'Sim') {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.meiaHora.message,
+                                titulo: mensagens.meiaHora.tituloBlade,
+                                descricao: mensagens.meiaHora.descricao,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: objectImagens[iconePersonalizado],
+                                data: item,
+                                hora: horaFinal,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.meiaHora.message,
+                                titulo: mensagens.meiaHora.tituloBlade,
+                                descricao: mensagens.meiaHora.descricao,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: null,
+                                data: item,
+                                hora: horaFinal,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        } else if(tipologia === 'Serviços') {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.meiaHora.message,
+                                titulo: mensagens.meiaHora.tituloBlade,
+                                descricao: mensagens.meiaHora.descricao,
+                                botao_titulo: 'Ir para App',
+                                botao_navigate: `page:${canal.id}`,
+                                url_icone: objectImagens[tipologia],
+                                data: item,
+                                hora: horaFinal,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        } else {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.meiaHora.message,
+                                titulo: mensagens.meiaHora.tituloBlade,
+                                descricao: mensagens.meiaHora.descricao,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: objectImagens[tipologia],
+                                data: item,
+                                hora: horaFinal,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        }
+                    }
                 } else {
-                    notificacoesFinal.push({
-                        mensagem: mensagens.meiaHora.message,
-                        titulo: mensagens.meiaHora.tituloBlade,
-                        descricao: mensagens.meiaHora.descricao,
-                        botao_titulo: null,
-                        botao_navigate: null,
-                        url_icone: objectImagens[tipologia],
-                        data: item,
-                        hora: horaFinal,
-                        rotina: null,
-                        zapping: 0
-                    })
+                    if(tipologia === 'Agenda'){
+                        notificacoesFinal.push({
+                            mensagem: mensagens.meiaHora.message,
+                            titulo: mensagens.meiaHora.tituloBlade,
+                            descricao: mensagens.meiaHora.descricao,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: objectImagens[tipologia],
+                            data: item,
+                            hora: horaFinal,
+                            rotina: null,
+                            zapping: 1
+                        })
+                    } else if(tipologia === 'Personalizada' && usaIcone === 'Sim') {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.meiaHora.message,
+                            titulo: mensagens.meiaHora.tituloBlade,
+                            descricao: mensagens.meiaHora.descricao,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: objectImagens[iconePersonalizado],
+                            data: item,
+                            hora: horaFinal,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.meiaHora.message,
+                            titulo: mensagens.meiaHora.tituloBlade,
+                            descricao: mensagens.meiaHora.descricao,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: null,
+                            data: item,
+                            hora: horaFinal,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    } else if(tipologia === 'Serviços') {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.meiaHora.message,
+                            titulo: mensagens.meiaHora.tituloBlade,
+                            descricao: mensagens.meiaHora.descricao,
+                            botao_titulo: 'Ir para App',
+                            botao_navigate: `page:${canal.id}`,
+                            url_icone: objectImagens[tipologia],
+                            data: item,
+                            hora: horaFinal,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    } else {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.meiaHora.message,
+                            titulo: mensagens.meiaHora.tituloBlade,
+                            descricao: mensagens.meiaHora.descricao,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: objectImagens[tipologia],
+                            data: item,
+                            hora: horaFinal,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    }
                 }
             })
         }
@@ -928,72 +1069,149 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                 })
             }
         } else if(regular === 'Diária' || regular === 'Mensal' || regular === 'Semanal') {
-            dias.diasEvento.map(item => {
-                if(tipologia === 'Agenda'){
-                    notificacoesFinal.push({
-                        mensagem: mensagens.quartoHora.message,
-                        titulo: null,
-                        descricao: null,
-                        botao_titulo: null,
-                        botao_navigate: null,
-                        url_icone: objectImagens[tipologia],
-                        data: item,
-                        hora: horaFinal,
-                        rotina: null,
-                        zapping: 1
-                    })
-                } else if(tipologia === 'Personalizada' && usaIcone === 'Sim') {
-                    notificacoesFinal.push({
-                        mensagem: mensagens.quartoHora.message,
-                        titulo: null,
-                        descricao: null,
-                        botao_titulo: null,
-                        botao_navigate: null,
-                        url_icone: objectImagens[iconePersonalizado],
-                        data: item,
-                        hora: horaFinal,
-                        rotina: null,
-                        zapping: 0
-                    })
-                } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
-                    notificacoesFinal.push({
-                        mensagem: mensagens.quartoHora.message,
-                        titulo: null,
-                        descricao: null,
-                        botao_titulo: null,
-                        botao_navigate: null,
-                        url_icone: null,
-                        data: item,
-                        hora: horaFinal,
-                        rotina: null,
-                        zapping: 0
-                    })
-                } else if(tipologia === 'Saúde') {
-                    notificacoesFinal.push({
-                        mensagem: mensagens.quartoHora.message,
-                        titulo: mensagens.quartoHora.tituloBlade,
-                        descricao: mensagens.quartoHora.descricao,
-                        botao_titulo: 'Avisar em 15 minutos',
-                        botao_navigate: 'callback:https://geo-navsafety.ua.pt:443/overtv/resposta?type=reminder',
-                        url_icone: objectImagens[tipologia],
-                        data: item,
-                        hora: horaFinal,
-                        rotina: null,
-                        zapping: 0
-                    })
+            let atual = new Date();
+            let primeiroDia = new Date(dias.diasEvento[0]);
+            primeiroDia.setHours(atual.getHours(), atual.getMinutes());
+            let primeiraCria = new Date(dias.diasEvento[0])
+            primeiraCria.setHours(dataFlex.getHours(), dataFlex.getMinutes())
+            console.log(dias.diasEvento)
+            dias.diasEvento.map((item, key) => {
+                if(key === 0){
+                    if(primeiraCria >= primeiroDia){
+                        if(tipologia === 'Agenda'){
+                            notificacoesFinal.push({
+                                mensagem: mensagens.quartoHora.message,
+                                titulo: null,
+                                descricao: null,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: objectImagens[tipologia],
+                                data: item,
+                                hora: horaFinal,
+                                rotina: null,
+                                zapping: 1
+                            })
+                        } else if(tipologia === 'Personalizada' && usaIcone === 'Sim') {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.quartoHora.message,
+                                titulo: null,
+                                descricao: null,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: objectImagens[iconePersonalizado],
+                                data: item,
+                                hora: horaFinal,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.quartoHora.message,
+                                titulo: null,
+                                descricao: null,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: null,
+                                data: item,
+                                hora: horaFinal,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        } else if(tipologia === 'Saúde') {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.quartoHora.message,
+                                titulo: mensagens.quartoHora.tituloBlade,
+                                descricao: mensagens.quartoHora.descricao,
+                                botao_titulo: 'Avisar em 15 minutos',
+                                botao_navigate: 'callback:https://geo-navsafety.ua.pt:443/overtv/resposta?type=reminder',
+                                url_icone: objectImagens[tipologia],
+                                data: item,
+                                hora: horaFinal,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        } else {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.quartoHora.message,
+                                titulo: null,
+                                descricao: null,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: objectImagens[tipologia],
+                                data: item,
+                                hora: horaFinal,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        }
+                    }
                 } else {
-                    notificacoesFinal.push({
-                        mensagem: mensagens.quartoHora.message,
-                        titulo: null,
-                        descricao: null,
-                        botao_titulo: null,
-                        botao_navigate: null,
-                        url_icone: objectImagens[tipologia],
-                        data: item,
-                        hora: horaFinal,
-                        rotina: null,
-                        zapping: 0
-                    })
+                    if(tipologia === 'Agenda'){
+                        notificacoesFinal.push({
+                            mensagem: mensagens.quartoHora.message,
+                            titulo: null,
+                            descricao: null,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: objectImagens[tipologia],
+                            data: item,
+                            hora: horaFinal,
+                            rotina: null,
+                            zapping: 1
+                        })
+                    } else if(tipologia === 'Personalizada' && usaIcone === 'Sim') {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.quartoHora.message,
+                            titulo: null,
+                            descricao: null,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: objectImagens[iconePersonalizado],
+                            data: item,
+                            hora: horaFinal,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.quartoHora.message,
+                            titulo: null,
+                            descricao: null,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: null,
+                            data: item,
+                            hora: horaFinal,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    } else if(tipologia === 'Saúde') {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.quartoHora.message,
+                            titulo: mensagens.quartoHora.tituloBlade,
+                            descricao: mensagens.quartoHora.descricao,
+                            botao_titulo: 'Avisar em 15 minutos',
+                            botao_navigate: 'callback:https://geo-navsafety.ua.pt:443/overtv/resposta?type=reminder',
+                            url_icone: objectImagens[tipologia],
+                            data: item,
+                            hora: horaFinal,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    } else {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.quartoHora.message,
+                            titulo: null,
+                            descricao: null,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: objectImagens[tipologia],
+                            data: item,
+                            hora: horaFinal,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    }
                 }
             })
         }
@@ -1075,72 +1293,149 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                 })
             }
         } else if(regular === 'Diária' || regular === 'Mensal' || regular === 'Semanal') {
-            dias.diasEvento.map(item => {
-                if(tipologia === 'Agenda'){
-                    notificacoesFinal.push({
-                        mensagem: mensagens.minutos5.message,
-                        titulo: null,
-                        descricao: null,
-                        botao_titulo: null,
-                        botao_navigate: null,
-                        url_icone: objectImagens[tipologia],
-                        data: item,
-                        hora: horaFinal,
-                        rotina: null,
-                        zapping: 1
-                    })
-                } else if(tipologia === 'Personalizada' && usaIcone === 'Sim') {
-                    notificacoesFinal.push({
-                        mensagem: mensagens.minutos5.message,
-                        titulo: null,
-                        descricao: null,
-                        botao_titulo: null,
-                        botao_navigate: null,
-                        url_icone: objectImagens[iconePersonalizado],
-                        data: item,
-                        hora: horaFinal,
-                        rotina: null,
-                        zapping: 0
-                    })
-                } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
-                    notificacoesFinal.push({
-                        mensagem: mensagens.minutos5.message,
-                        titulo: null,
-                        descricao: null,
-                        botao_titulo: null,
-                        botao_navigate: null,
-                        url_icone: null,
-                        data: item,
-                        hora: horaFinal,
-                        rotina: null,
-                        zapping: 0
-                    })
-                } else if(tipologia === 'Programas') {
-                    notificacoesFinal.push({
-                        mensagem: mensagens.minutos5.message,
-                        titulo: mensagens.minutos5.tituloBlade,
-                        descricao: mensagens.minutos5.descricao,
-                        botao_titulo: `Mudar para ${canal.nome}`,
-                        botao_navigate: `tune:${canal.id}`,
-                        url_icone: objectImagens[tipologia],
-                        data: item,
-                        hora: horaFinal,
-                        rotina: null,
-                        zapping: 0
-                    })
+            let atual = new Date();
+            let primeiroDia = new Date(dias.diasEvento[0]);
+            primeiroDia.setHours(atual.getHours(), atual.getMinutes());
+            let primeiraCria = new Date(dias.diasEvento[0])
+            primeiraCria.setHours(dataFlex.getHours(), dataFlex.getMinutes())
+
+            dias.diasEvento.map((item, key) => {
+                if(key === 0){
+                    if(primeiraCria >= primeiroDia){
+                        if(tipologia === 'Agenda'){
+                            notificacoesFinal.push({
+                                mensagem: mensagens.minutos5.message,
+                                titulo: null,
+                                descricao: null,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: objectImagens[tipologia],
+                                data: item,
+                                hora: horaFinal,
+                                rotina: null,
+                                zapping: 1
+                            })
+                        } else if(tipologia === 'Personalizada' && usaIcone === 'Sim') {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.minutos5.message,
+                                titulo: null,
+                                descricao: null,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: objectImagens[iconePersonalizado],
+                                data: item,
+                                hora: horaFinal,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.minutos5.message,
+                                titulo: null,
+                                descricao: null,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: null,
+                                data: item,
+                                hora: horaFinal,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        } else if(tipologia === 'Programas') {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.minutos5.message,
+                                titulo: mensagens.minutos5.tituloBlade,
+                                descricao: mensagens.minutos5.descricao,
+                                botao_titulo: `Mudar para ${canal.nome}`,
+                                botao_navigate: `tune:${canal.id}`,
+                                url_icone: objectImagens[tipologia],
+                                data: item,
+                                hora: horaFinal,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        } else {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.minutos5.message,
+                                titulo: null,
+                                descricao: null,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: objectImagens[tipologia],
+                                data: item,
+                                hora: horaFinal,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        }
+                    }
                 } else {
-                    notificacoesFinal.push({
-                        mensagem: mensagens.minutos5.message,
-                        titulo: null,
-                        descricao: null,
-                        botao_titulo: null,
-                        botao_navigate: null,
-                        url_icone: objectImagens[tipologia],
-                        data: item,
-                        hora: horaFinal,
-                        rotina: null,
-                        zapping: 0
-                    })
+                    if(tipologia === 'Agenda'){
+                        notificacoesFinal.push({
+                            mensagem: mensagens.minutos5.message,
+                            titulo: null,
+                            descricao: null,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: objectImagens[tipologia],
+                            data: item,
+                            hora: horaFinal,
+                            rotina: null,
+                            zapping: 1
+                        })
+                    } else if(tipologia === 'Personalizada' && usaIcone === 'Sim') {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.minutos5.message,
+                            titulo: null,
+                            descricao: null,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: objectImagens[iconePersonalizado],
+                            data: item,
+                            hora: horaFinal,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.minutos5.message,
+                            titulo: null,
+                            descricao: null,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: null,
+                            data: item,
+                            hora: horaFinal,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    } else if(tipologia === 'Programas') {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.minutos5.message,
+                            titulo: mensagens.minutos5.tituloBlade,
+                            descricao: mensagens.minutos5.descricao,
+                            botao_titulo: `Mudar para ${canal.nome}`,
+                            botao_navigate: `tune:${canal.id}`,
+                            url_icone: objectImagens[tipologia],
+                            data: item,
+                            hora: horaFinal,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    } else {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.minutos5.message,
+                            titulo: null,
+                            descricao: null,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: objectImagens[tipologia],
+                            data: item,
+                            hora: horaFinal,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    }
                 }
             })
         }

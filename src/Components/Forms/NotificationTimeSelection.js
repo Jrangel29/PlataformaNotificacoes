@@ -156,7 +156,8 @@ function NotificationTimeSelection(props) {
                     </span>
                     }
                     <span className="col-3">
-                        <p className="subtituloSeccaoPagina mt-2">Data de fim <span className='obrigatorio'>*</span></p>
+                        <p className="subtituloSeccaoPagina mt-2 mb-0">Data de fim <span className='obrigatorio'>*</span></p>
+                        <p className='bigSmallSmall mb-1'>A data é preenchida no formato MM-DD-AAAA. Nas outras páginas, as datas são mostradas no formato DD-MM-AAAA.</p>
                         <span className="row col-12">
                             <span className="col-3">
                                 <input type="date" className='inputsForms w-50' value={props.parametros.dataFim} onChange={props.mudaDataFim} style={{height: "37px"}}/>
@@ -180,7 +181,8 @@ function NotificationTimeSelection(props) {
                         </span>
                         }
                         <span className="col-3">
-                            <p className={props.parametros.tipologia === 'Informação' ? "subtituloSeccaoPagina" : "subtituloSeccaoPagina mt-2"}>Data de fim <span className='obrigatorio'>*</span></p>
+                            <p className={props.parametros.tipologia === 'Informação' ? "subtituloSeccaoPagina mb-0" : "subtituloSeccaoPagina mt-2 mb-0"}>Data de fim <span className='obrigatorio'>*</span></p>
+                            <p className='bigSmallSmall mb-1'>A data é preenchida no formato MM-DD-AAAA. Nas outras páginas, as datas são mostradas no formato DD-MM-AAAA.</p>
                             <span className="row col-12">
                                 <span className="col-3">
                                     <input type="date" className='inputsForms w-50' value={props.parametros.dataFim} onChange={props.mudaDataFim} style={{height: "37px"}}/>
@@ -233,7 +235,8 @@ function NotificationTimeSelection(props) {
                         </span>
                         {props.parametros.tipologia === 'Informação' ?
                         <>
-                        <p className="subtituloSeccaoPagina mt-2">Data de fim <span className='obrigatorio'>*</span></p>
+                        <p className="subtituloSeccaoPagina mt-2 mb-0">Data de fim <span className='obrigatorio'>*</span></p>
+                        <p className='bigSmallSmall mb-1'>A data é preenchida no formato MM-DD-AAAA. Nas outras páginas, as datas são mostradas no formato DD-MM-AAAA.</p>
                         <span className="col-3">
                             <span className="row col-12 m-0">
                                 <span className="col-12 m-0 p-0">
@@ -250,7 +253,8 @@ function NotificationTimeSelection(props) {
                                 <input type="time" className='inputsForms without_ampm w-50' value={props.parametros.hora} onInput={props.mudaHora} onChange={props.mudaHora} style={{height: "37px"}}/>
                             </span>
                             <span className="col-3">
-                                <p className="subtituloSeccaoPagina mt-2">Data de fim <span className='obrigatorio'>*</span></p>
+                                <p className="subtituloSeccaoPagina mt-2 mb-0">Data de fim <span className='obrigatorio'>*</span></p>
+                                <p className='bigSmallSmall mb-1'>A data é preenchida no formato MM-DD-AAAA. Nas outras páginas, as datas são mostradas no formato DD-MM-AAAA.</p>
                                 <span className="row col-12 m-0">
                                     <span className="col-12 m-0 p-0">
                                         <input type="date" className='inputsForms w-50' value={props.parametros.dataFim} onChange={props.mudaDataFim} style={{height: "37px"}}/>

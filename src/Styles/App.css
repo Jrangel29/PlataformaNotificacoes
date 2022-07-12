@@ -200,6 +200,12 @@ textarea:focus, input:focus{
     padding-top: 0;
 }
 
+.bigSmallSmall{
+    font-size: 12px;
+    margin-top: -3px;
+    padding-top: 0;
+}
+
 .backArrow{
     height: 20px;
     width: auto;
