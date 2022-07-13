@@ -57,11 +57,11 @@ const HistoryDetails = () => {
                 }
                 if(item.recebido.data[0] !== 0){
                     recebeu++;
-                }
-                if(item.fechou.data[0] !== 0){
-                    fechou++;
-                } else {
-                    abriu++
+                    if(item.fechou.data[0] !== 0){
+                        fechou++;
+                    } else {
+                        abriu++
+                    }
                 }
             })
             setEstatisticas([
@@ -106,6 +106,7 @@ const HistoryDetails = () => {
             <Loading/>
         )
     }
+    console.log(notificationInfo[0])
 
     return(
         <div>
@@ -174,7 +175,7 @@ const HistoryDetails = () => {
                                     <td style={{fontSize: '14px'}}>{estatiticas[0].value}</td>
                                 </tr>
                                 <tr>
-                                    <td style={{fontSize: '14px'}}>O especatador escolheu "Relembrar daqui a 15 minutos".</td>
+                                    <td style={{fontSize: '14px'}}>{notificationInfo[0].ref_id_tipologia === 1 || notificationInfo[0].ref_id_tipologia === 4 ? 'O espectador escolheu "Relembrar daqui a 15 minutos".' : notificationInfo[0].ref_id_tipologia === 2 ? 'O espectador foi para o canal.' : notificationInfo[0].ref_id_tipologia === 5 ? 'O espectador foi para a app.' : ''}</td>
                                     <td style={{fontSize: '14px'}}>{estatiticas[1].value}</td>
                                 </tr>
                             </tbody>
