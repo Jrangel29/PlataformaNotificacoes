@@ -174,10 +174,14 @@ const HistoryDetails = () => {
                                     <td style={{fontSize: '14px'}}>O utilizador fechou a notificação.</td>
                                     <td style={{fontSize: '14px'}}>{estatiticas[0].value}</td>
                                 </tr>
-                                <tr>
-                                    <td style={{fontSize: '14px'}}>{notificationInfo[0].ref_id_tipologia === 1 || notificationInfo[0].ref_id_tipologia === 4 ? 'O espectador escolheu "Relembrar daqui a 15 minutos".' : notificationInfo[0].ref_id_tipologia === 2 ? 'O espectador foi para o canal.' : notificationInfo[0].ref_id_tipologia === 5 ? 'O espectador foi para a app.' : ''}</td>
-                                    <td style={{fontSize: '14px'}}>{estatiticas[1].value}</td>
-                                </tr>
+                                {notificationInfo[0].ref_id_tipologia !== 2 ?
+                                    <tr>
+                                        <td style={{fontSize: '14px'}}>{notificationInfo[0].ref_id_tipologia === 1 || notificationInfo[0].ref_id_tipologia === 4 ? 'O espectador escolheu "Relembrar daqui a 15 minutos".' : notificationInfo[0].ref_id_tipologia === 2 ? 'O espectador foi para o canal.' : notificationInfo[0].ref_id_tipologia === 5 ? 'O espectador foi para a app.' : ''}</td>
+                                        <td style={{fontSize: '14px'}}>{estatiticas[1].value}</td>
+                                    </tr>
+                                :
+                                <></>
+                                }
                             </tbody>
                         </Table>
                     </span>
