@@ -22,7 +22,7 @@ const EventNotifications = (props) => {
 
                     let dataNova = new Date(getDate);
                     //console.log(dataNova)
-                    var dataFinal = ((dataNova.getDate() + 1 > 9) ? dataNova.getDate() + 1 : ('0' + dataNova.getDate() + 1))  + '/' + ((dataNova.getMonth() > 8) ? (dataNova.getMonth() + 1) : ('0' + (dataNova.getMonth() + 1))) + '/' + dataNova.getFullYear();
+                    var dataFinal = ((dataNova.getDate() + 1 > 9) ? dataNova.getDate() + 1 : ('0' + (dataNova.getDate() + 1)))  + '/' + ((dataNova.getMonth() > 8) ? (dataNova.getMonth() + 1) : ('0' + (dataNova.getMonth() + 1))) + '/' + dataNova.getFullYear();
 
                     let diaSemana = dataNova.getDay()
 
