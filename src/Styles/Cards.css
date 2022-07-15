@@ -9,6 +9,12 @@
     padding: 10px 10px 3px 10px;
 }
 
+.hoverCarta:focus, .hoverCarta:hover{
+    box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.12)!important;
+    transition: box-shadow 0.1s ease-in-out!important;
+    border: none!important;
+}
+
 .cartasForm{
     height: 233px;
     overflow-y: auto;
@@ -144,6 +150,12 @@
 
 .cartaGrupos{
     background-color: #F9F7F7;
+}
+
+.cartaGrupos:focus, .cartaGrupos:hover{
+    box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.12)!important;
+    transition: box-shadow 0.3s ease-in-out!important;
+    border: none!important;
 }
 
 .iconeCardPlus{

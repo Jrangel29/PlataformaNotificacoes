@@ -146,7 +146,7 @@ const NotificationCards = (props) => {
                     return(
                         <span key={index} className='col-4 ps-0 pb-3'>
                             {props.tipo === 'Por enviar' ?
-                            <Card style={{cursor: "pointer", minHeight: "100%"}}>
+                            <Card className='hoverCarta' style={{cursor: "pointer", minHeight: "100%"}}>
                                 <Card.Header as={Link} to={`/notifications/${item.id_notificacao}`} style={{textDecoration: "none"}} className='row headerCarta m-0 gx-1'>
                                     <span className='col-9 p-0 tituloNotificacao'>{item.mensagem}</span>
                                     <span className='col-3 p-0 dataNotificacao'>
@@ -168,7 +168,7 @@ const NotificationCards = (props) => {
                                 </Card.Body>
                             </Card>
                             :
-                            <Card style={{cursor: "pointer", minHeight: "100%"}}>
+                            <Card className='hoverCarta' style={{cursor: "pointer", minHeight: "100%"}}>
                                 <Card.Header as={Link} to={`/history/${item.id_notificacao}`} style={{textDecoration: "none"}} className='row headerCarta m-0 gx-1'>
                                     <span className='col-9 p-0 tituloNotificacao'>{item.mensagem}</span>
                                     <span className='col-3 p-0 dataNotificacao'>
