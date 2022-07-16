@@ -233,7 +233,7 @@ export const PreviewNotif = (props) => {
                     </p>
                     <p className='textoPrefsUser m-0 mb-2'>
                         <span className='itensPreview'>Momentos de envio: </span>
-                        {carrocas === true ? 
+                        {carrocas[0] === true ? 
                         Object.keys(props.mensagens).map((item, index) => {
                             if(props.mensagens[item].active === true){
                                 if(item === 'semanaAntes'){
