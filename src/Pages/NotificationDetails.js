@@ -28,7 +28,7 @@ const NotificationDetails = () => {
 
         if(!isLoadingNotificationInfo){
             let dataNova = new Date(notificationInfo[0].data);
-            var dataFinal = ((dataNova.getDate() > 9) ? dataNova.getDate() : ('0' + dataNova.getDate()))  + '/' + ((dataNova.getMonth() > 8) ? (dataNova.getMonth() + 1) : ('0' + (dataNova.getMonth() + 1))) + '/' + dataNova.getFullYear();
+            var dataFinal = ((dataNova.getMonth() > 8) ? (dataNova.getMonth() + 1) : ('0' + (dataNova.getMonth() + 1))) + '/' + ((dataNova.getDate() > 9) ? dataNova.getDate() : ('0' + dataNova.getDate()))  + '/' + dataNova.getFullYear();
             let hora;
             if(notificationInfo[0].hora !== null){
                 hora = notificationInfo[0].hora.substring(0, 5);

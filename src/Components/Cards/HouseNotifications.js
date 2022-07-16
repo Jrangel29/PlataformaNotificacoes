@@ -24,7 +24,7 @@ const HouseNotifications = (props) => {
 
                         let currentDate = new Date();
                         let dataNova = new Date(item.data);
-                        var dataFinal = ((dataNova.getDate() > 9) ? dataNova.getDate() : ('0' + dataNova.getDate()))  + '/' + ((dataNova.getMonth() > 8) ? (dataNova.getMonth() + 1) : ('0' + (dataNova.getMonth() + 1))) + '/' + dataNova.getFullYear();
+                        var dataFinal = ((dataNova.getMonth() > 8) ? (dataNova.getMonth() + 1) : ('0' + (dataNova.getMonth() + 1))) + '/' + ((dataNova.getDate() > 9) ? dataNova.getDate() : ('0' + dataNova.getDate()))  + '/' + dataNova.getFullYear();
 
                         var hora = 'Indefinida'
                         let diaSemana = dataNova.getDay()
