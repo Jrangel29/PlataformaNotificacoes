@@ -817,10 +817,10 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
             } else if(tipologia === 'Serviços') {
                 notificacoesFinal.push({
                     mensagem: mensagens.meiaHora.message,
-                    titulo: mensagens.meiaHora.tituloBlade,
-                    descricao: mensagens.meiaHora.descricao,
-                    botao_titulo: 'Ir para App',
-                    botao_navigate: `page:${canal.id}`,
+                    titulo: null,
+                    descricao: null,
+                    botao_titulo: null,
+                    botao_navigate: null,
                     url_icone: objectImagens[tipologia],
                     data: diaFormated,
                     hora: horaFinal,
@@ -893,10 +893,10 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                         } else if(tipologia === 'Serviços') {
                             notificacoesFinal.push({
                                 mensagem: mensagens.meiaHora.message,
-                                titulo: mensagens.meiaHora.tituloBlade,
-                                descricao: mensagens.meiaHora.descricao,
-                                botao_titulo: 'Ir para App',
-                                botao_navigate: `page:${canal.id}`,
+                                titulo: null,
+                                descricao: null,
+                                botao_titulo: null,
+                                botao_navigate: null,
                                 url_icone: objectImagens[tipologia],
                                 data: item,
                                 hora: horaFinal,
@@ -961,10 +961,10 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                     } else if(tipologia === 'Serviços') {
                         notificacoesFinal.push({
                             mensagem: mensagens.meiaHora.message,
-                            titulo: mensagens.meiaHora.tituloBlade,
-                            descricao: mensagens.meiaHora.descricao,
-                            botao_titulo: 'Ir para App',
-                            botao_navigate: `page:${canal.id}`,
+                            titulo: null,
+                            descricao: null,
+                            botao_titulo: null,
+                            botao_navigate: null,
                             url_icone: objectImagens[tipologia],
                             data: item,
                             hora: horaFinal,

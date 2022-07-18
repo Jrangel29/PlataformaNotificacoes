@@ -440,7 +440,12 @@ class CreateNotification extends React.Component {
     }
 
     alteraDiaUnico = (valor) => {
-       const data = valor.toLocaleDateString();
+        var newDateOptions = {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit"
+        }
+       const data = valor.toLocaleDateString('en-US', newDateOptions);
         this.setState({
             diaUnico: data
         })
@@ -964,7 +969,7 @@ class CreateNotification extends React.Component {
                                     <BuscaTipologiasNotificacoes tipo={this.state.tipologia} mudaForm={this.alteraFormulario} />
                                 </span>
 
-                                <span className='col-3 p-0 me-3'>
+                                {/*<span className='col-3 p-0 me-3'>
                                     <p className='subtituloSeccaoPagina p-0' style={{ marginTop: "5px"}}>Subcategoria</p>
                                     {this.state.tipologia === "Informação" ?
                                     <Dropdown>
@@ -985,7 +990,7 @@ class CreateNotification extends React.Component {
                                         </Dropdown.Toggle>
                                     </Dropdown>
                                     }
-                                </span>
+                                </span>*/}
 
                                 {<div className='row m-0 mt-2 p-0'>
                                     {this.state.tipologia === "Personalizada" ?
@@ -1091,7 +1096,7 @@ class CreateNotification extends React.Component {
                                     </span>
                                 </div>
                                 :
-                                this.state.tipologia === 'Serviços' ? 
+                                /*this.state.tipologia === 'Serviços' ? 
                                 <div className='row col-12 mt-2'>
                                     <span className='row m-0 col-12 pe-0'>
                                         <p className='subtituloSeccaoPagina p-0' style={{marginTop: "5px"}}>Escolha da aplicação <span className='obrigatorio'>*</span></p>
@@ -1112,7 +1117,7 @@ class CreateNotification extends React.Component {
                                         </span>
                                     </span>
                                 </div>
-                                :
+                                :*/
                                 <></>
                                 }
                             </span>

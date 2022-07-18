@@ -425,7 +425,13 @@ class EditNotification extends React.Component {
     }
 
     alteraDiaUnico = (valor) => {
-       const data = valor.toLocaleDateString();
+        var newDateOptions = {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit"
+        }
+       const data = valor.toLocaleDateString('en-US', newDateOptions);
+
         this.setState({
             diaUnico: data
         })
