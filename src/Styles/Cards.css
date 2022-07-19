@@ -79,6 +79,7 @@
     font-weight: 700;
     font-size: 18px;
     overflow: hidden;
+    max-height: 36px;
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
@@ -93,6 +94,11 @@
     color: #3F72AF;
     font-weight: 700;
     font-size: 18px;
+    max-height: 36px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
 
 .tituloGrupoCartaSmall{
