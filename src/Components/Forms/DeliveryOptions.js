@@ -162,7 +162,7 @@ export const DeliveryOptions = (props) => {
                     </td>
                     <td>
                         <input type="text" value={props.momentos.imediato.message} placeholder='Mensagem do pop-up (Max. 50 caracteres)' onChange={props.changeMensagem} className={props.momentos.imediato.active === true ? 'inputsForms w-100 py-1' : 'inputsFormsDisabled'} id='imediato' maxLength="50"/>
-                        {props.tipo === 'Programas' || props.tipo === 'Serviços' ?
+                        {props.tipo === 'Programas' ?
                             <>
                                 <p className={props.momentos.imediato.active === true ? 'p-0 BladeSection' : 'p-0 BladeSectionDisabled'} style={props.momentos.imediato.active === true ? {display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '2px'} : null}>Blade horizontal <OverlayTrigger placement='right' delay={{ show: 250, hide: 400}} overlay={BladeTooltip}><img src={InformationIcon} style={{width: 'auto', height: '16px', margin: '0', marginLeft:'10px', padding: '0'}}/></OverlayTrigger></p>
                                 <input type="text" value={props.momentos.imediato.tituloBlade} placeholder='Título do blade (Max. 50 caracteres)' onChange={props.blade} className={props.momentos.imediato.active === true ? 'inputsForms w-100' : 'inputsFormsDisabled'} id='imediatoTituloBlade' maxLength="50"/>
@@ -243,11 +243,21 @@ export const DeliveryOptions = (props) => {
                             onChange={props.changeMomento}/>
                     </td>
                     <td>
+                        {props.tipo !== 'Serviços' ?
                         <p className={props.momentos.meiaHora.active === true ? 'p-0 MessageSection' : 'p-0 BladeSectionDisabled'}>Mensagem do pop-up</p>
+                        :
+                        <></>
+                        }
                         <input type="text" value={props.momentos.meiaHora.message} placeholder='Mensagem do pop-up (Max. 50 caracteres)' onChange={props.changeMensagem} className={props.momentos.meiaHora.active === true ? 'inputsForms w-100 pt-1' : 'inputsFormsDisabled'} id='meiaHora' maxLength="50"/>
-                        <p className={props.momentos.meiaHora.active === true ? 'p-0 BladeSection' : 'p-0 BladeSectionDisabled'} style={props.momentos.meiaHora.active === true ? {display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '2px'} : null}>Blade horizontal <OverlayTrigger placement='right' delay={{ show: 250, hide: 400}} overlay={BladeTooltip}><img src={InformationIcon} style={{width: 'auto', height: '16px', margin: '0', marginLeft:'10px', padding: '0'}}/></OverlayTrigger></p>
-                        <input type="text" value={props.momentos.meiaHora.tituloBlade} placeholder='Título do blade (Max. 50 caracteres)' onChange={props.blade} className={props.momentos.meiaHora.active === true ? 'inputsForms w-100' : 'inputsFormsDisabled'} id='meiaHoraTituloBlade' maxLength="50"/>
-                        <textarea rows={3} value={props.momentos.meiaHora.descricao} placeholder='Descrição do blade (Max. 150 caracteres)' onChange={props.blade} className={props.momentos.meiaHora.active === true ? 'inputsForms mt-2 w-100 pb-1' : 'inputsFormsDisabled mt-2'} id='meiaHoraDescricaoBlade' maxLength="150"/>
+                        {props.tipo !== 'Serviços' ? 
+                        <>
+                            <p className={props.momentos.meiaHora.active === true ? 'p-0 BladeSection' : 'p-0 BladeSectionDisabled'} style={props.momentos.meiaHora.active === true ? {display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '2px'} : null}>Blade horizontal <OverlayTrigger placement='right' delay={{ show: 250, hide: 400}} overlay={BladeTooltip}><img src={InformationIcon} style={{width: 'auto', height: '16px', margin: '0', marginLeft:'10px', padding: '0'}}/></OverlayTrigger></p>
+                            <input type="text" value={props.momentos.meiaHora.tituloBlade} placeholder='Título do blade (Max. 50 caracteres)' onChange={props.blade} className={props.momentos.meiaHora.active === true ? 'inputsForms w-100' : 'inputsFormsDisabled'} id='meiaHoraTituloBlade' maxLength="50"/>
+                            <textarea rows={3} value={props.momentos.meiaHora.descricao} placeholder='Descrição do blade (Max. 150 caracteres)' onChange={props.blade} className={props.momentos.meiaHora.active === true ? 'inputsForms mt-2 w-100 pb-1' : 'inputsFormsDisabled mt-2'} id='meiaHoraDescricaoBlade' maxLength="150"/>
+                        </>
+                        :
+                        <></>
+                        }
                     </td>
                 </tr>
 

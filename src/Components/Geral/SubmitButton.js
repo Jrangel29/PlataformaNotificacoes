@@ -488,8 +488,7 @@ const SubmitButton = (props) => {
                     props.params.regularidade === 'Pontual' ?
                         props.params.tipologia === 'Serviços' ?
                             props.params.momentoUnico === 'Imediato' ?
-                                props.params.canal.nome !== '' ?
-                                    props.params.mensagens.imediato.active === true && props.params.mensagens.imediato.message !== '' && props.params.mensagens.imediato.tituloBlade !== '' && props.params.mensagens.imediato.descricao !== '' ?
+                                    props.params.mensagens.imediato.active === true && props.params.mensagens.imediato.message !== '' ?
                                         <span className='row m-0 justify-content-end'>
                                             <Button 
                                                 className='col-2' 
@@ -502,12 +501,8 @@ const SubmitButton = (props) => {
                                     <span className='row m-0 justify-content-end'>
                                         <Button className='col-2' variant='custom' disabled>Criar Notificação</Button>
                                     </span>
-                                :
-                                <span className='row m-0 justify-content-end'>
-                                    <Button className='col-2' variant='custom' disabled>Criar Notificação</Button>
-                                </span>
                             :
-                                props.params.diaUnico !== '' && props.params.hora !== '' && props.params.canal.nome !== '' ?
+                                props.params.diaUnico !== '' && props.params.hora !== '' ?
                                     <>
                                         {Object.keys(props.params.mensagens).map(item => {
                                             if(item !== "meiaHora" && item !== "quartoHora" && props.params.mensagens[item].active === true){
@@ -518,7 +513,7 @@ const SubmitButton = (props) => {
                                             }
                                             if(item === "meiaHora" && props.params.mensagens[item].active === true){
                                                 contagemMomentos++;
-                                                if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                                if(props.params.mensagens[item].message !== ''){
                                                     contagemMensagens++;
                                                 }
                                             }
@@ -589,7 +584,7 @@ const SubmitButton = (props) => {
                                         <Button className='col-2' variant='custom' disabled>Criar Notificação</Button>
                                     </span>
                                     :
-                                props.params.hora !== '' && props.params.dataFim !== '' && props.params.canal.nome !== '' ?
+                                props.params.hora !== '' && props.params.dataFim !== '' ?
                                 <>
                                     {Object.keys(props.params.mensagens).map(item => {
                                         if(item !== "meiaHora" && item !== "quartoHora" && props.params.mensagens[item].active === true){
@@ -600,7 +595,7 @@ const SubmitButton = (props) => {
                                         }
                                         if(item === "meiaHora" && props.params.mensagens[item].active === true){
                                             contagemMomentos++;
-                                            if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                            if(props.params.mensagens[item].message !== ''){
                                                 contagemMensagens++;
                                             }
                                         }
@@ -706,7 +701,7 @@ const SubmitButton = (props) => {
                                     }
                                     if(item === "meiaHora" && props.params.mensagens[item].active === true){
                                         contagemMomentos++;
-                                        if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                        if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== '' || props.params.mensagens[item].message !== '' && props.params.tipologia === 'Serviços'){
                                             contagemMensagens++;
                                         }
                                     }
@@ -723,7 +718,7 @@ const SubmitButton = (props) => {
                                         }
                                     }
                                 })}
-                                {contagemDias !== 0 && contagemMomentos !== 0 && contagemMomentos === contagemMensagens && props.params.hora !== '' && props.params.dataFim !== '' && props.params.tipologia === 'Serviços' && props.params.canal.nome !== '' || contagemDias !== 0 && contagemMomentos !== 0 && props.params.tipologia === 'Informação' ?
+                                {contagemDias !== 0 && contagemMomentos !== 0 && contagemMomentos === contagemMensagens && props.params.hora !== '' && props.params.dataFim !== '' && props.params.tipologia === 'Serviços' || contagemDias !== 0 && contagemMomentos !== 0 && props.params.tipologia === 'Informação' ?
                                 <span className='row m-0 justify-content-end'>
                                     <Button 
                                         className='col-2' 
@@ -744,7 +739,7 @@ const SubmitButton = (props) => {
                                     <Button className='col-2' variant='custom' disabled>Criar Notificação</Button>
                                 </span>
                                 :
-                                props.params.diaMes !== '' && props.params.hora !== '' && props.params.dataFim !== '' && props.params.canal.nome !== '' && props.params.tipologia === 'Serviços' || props.params.diaMes !== '' && props.params.hora !== '' && props.params.dataFim !== '' && props.params.tipologia === 'Informação' ?
+                                props.params.diaMes !== '' && props.params.hora !== '' && props.params.dataFim !== '' && props.params.tipologia === 'Serviços' || props.params.diaMes !== '' && props.params.hora !== '' && props.params.dataFim !== '' && props.params.tipologia === 'Informação' ?
                                     <span className='row m-0 justify-content-end'>
                                         <Button 
                                             className='col-2' 
