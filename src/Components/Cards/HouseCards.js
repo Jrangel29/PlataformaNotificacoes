@@ -31,6 +31,7 @@ const HouseCards = (props) => {
     useEffect(() => {
         let array2 = [];
         if(!isLoadingCasas){
+            casasList.sort((a, b) => a.nome.localeCompare(b.nome))
             casasList.map((item) => {
                 if(props.pesquisa === ''){
                     array2.push(item);

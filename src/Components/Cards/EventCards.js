@@ -28,6 +28,7 @@ const EventCards = (props) => {
     useEffect(() => {
         let array = [];
         if(!isLoadingEvents){
+            eventsList.sort((a, b) => a.nome.localeCompare(b.nome))
             eventsList.map((item) => {
                 if(props.pesquisa === ''){
                     array.push(item);
@@ -69,6 +70,9 @@ const EventCards = (props) => {
                                     <span>
                                         <p className='tituloUserCartaSmall mb-2'>
                                             {item.nome}
+                                        </p>
+                                        <p className='textoSmall mb-2'>
+                                            {item.casa}
                                         </p>
                                         <p className='textoSmall mb-0'>
                                             {item.tipologia}

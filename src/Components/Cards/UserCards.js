@@ -28,6 +28,7 @@ const UserCards = (props) => {
     useEffect(() => {
         let array = [];
         if(!isLoadingUsers){
+            usersList.sort((a, b) => a.utilizador.localeCompare(b.utilizador))
             usersList.map((item) => {
                 if(props.pesquisa === ''){
                     array.push(item);
