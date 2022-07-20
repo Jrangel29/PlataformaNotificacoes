@@ -72,7 +72,7 @@ const EventCards = (props) => {
                                             {item.nome}
                                         </p>
                                         <p className='textoSmall mb-2'>
-                                            {item.casa}
+                                            <b>{item.casa}</b>
                                         </p>
                                         <p className='textoSmall mb-0'>
                                             {item.tipologia}
