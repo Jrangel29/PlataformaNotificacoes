@@ -1175,6 +1175,7 @@ class EditNotification extends React.Component {
                                                 <Dropdown.Item onClick={() => this.alteraIcone("icone", "Informação")}>Informação</Dropdown.Item>
                                                 <Dropdown.Item onClick={() => this.alteraIcone("icone", "Saúde")}>Saúde</Dropdown.Item>
                                                 <Dropdown.Item onClick={() => this.alteraIcone("icone", "Serviços")}>Serviços</Dropdown.Item>
+                                                <Dropdown.Item onClick={() => this.alteraIcone("icone", "Social")}>Social</Dropdown.Item>
                                             </Dropdown.Menu>
                                         </Dropdown>
                                     </span>

@@ -4,6 +4,7 @@ import iconeConteudo from '../../Images/iconeProgramas.png';
 import iconeInfo from '../../Images/iconeInformacao.png';
 import iconeSaude from '../../Images/iconeSaude.png';
 import iconeServico from '../../Images/iconeServicos.png';
+import iconeSocial from '../../Images/Social.png';
 import { Carousel } from 'react-bootstrap';
 
 export const PreviewNotif = (props) => {
@@ -43,7 +44,7 @@ export const PreviewNotif = (props) => {
     const handleSelect = (selectedIndex, e) => {
         setIndex(selectedIndex);
     };
-
+    console.log(props.personalizado.icone)
     return(
         <>
             <div className='prevSeccao ms-0'>
@@ -91,7 +92,10 @@ export const PreviewNotif = (props) => {
                                                 props.personalizado.icone === "Saúde" ?
                                                 iconeSaude
                                                 :
+                                                props.personalizado.icone === "Serviços" ?
                                                 iconeServico
+                                                :
+                                                iconeSocial
                                                 } className="imgPreview"/>
                                                 :
                                                 <></>
@@ -140,7 +144,10 @@ export const PreviewNotif = (props) => {
                                                 props.personalizado.icone === "Saúde" ?
                                                 iconeSaude
                                                 :
+                                                props.personalizado.icone === "Serviços" ?
                                                 iconeServico
+                                                :
+                                                iconeSocial
                                                 } className="imgPreview"/>
                                                 :
                                                 <></>
@@ -185,7 +192,10 @@ export const PreviewNotif = (props) => {
                                 props.personalizado.icone === "Saúde" ?
                                 iconeSaude
                                 :
+                                props.personalizado.icone === "Serviços" ?
                                 iconeServico
+                                :
+                                iconeSocial
                                 } className="imgPreview"/>
                                 :
                                 <></>
