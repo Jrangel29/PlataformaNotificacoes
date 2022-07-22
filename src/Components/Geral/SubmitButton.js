@@ -131,7 +131,7 @@ const SubmitButton = (props) => {
                         props.params.regularidade === 'Pontual' ?
                             props.params.momentoUnico === 'Imediato' ?
                                 props.params.tipologia !== 'Programas' ?
-                                    props.params.mensagens.imediato.active === true && props.params.mensagens.imediato.message !== '' ?
+                                    props.params.mensagens.imediato.active === true && props.params.mensagens.imediato.message !== '' && props.params.mensagens.imediato.persVal === false || props.params.mensagens.imediato.active === true && props.params.mensagens.imediato.message !== '' && props.params.mensagens.imediato.tituloBlade !== '' && props.params.mensagens.imediato.descricao !== '' && props.params.mensagens.imediato.persVal === true ?
                                         <span className='row m-0 justify-content-end'>
                                             <Button 
                                                 className='col-2' 
@@ -168,9 +168,16 @@ const SubmitButton = (props) => {
                                     <>
                                         {Object.keys(props.params.mensagens).map(item => {
                                             if(item !== "meiaHora" && item !== 'quartoHora' && item !== 'minutos5' && item !== 'momentoAcontecimento' && props.params.mensagens[item].active === true){
-                                                contagemMomentos++;
-                                                if(props.params.mensagens[item].message !== ''){
-                                                    contagemMensagens++;
+                                                if(props.params.tipologia !== 'Personalizada'){
+                                                    contagemMomentos++;
+                                                    if(props.params.mensagens[item].message !== ''){
+                                                        contagemMensagens++;
+                                                    }
+                                                } else {
+                                                    contagemMomentos++;
+                                                    if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].persVal === false || props.params.mensagens[item].message !== '' && props.params.mensagens[item].persVal === true && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                                        contagemMensagens++;
+                                                    }
                                                 }
                                             }
                                             if(item === "meiaHora" && props.params.mensagens[item].active === true){
@@ -186,9 +193,16 @@ const SubmitButton = (props) => {
                                                 }
                                             }
                                             if(item === "quartoHora" && props.params.tipologia !== 'Saúde' && props.params.mensagens[item].active === true){
-                                                contagemMomentos++;
-                                                if(props.params.mensagens[item].message !== ''){
-                                                    contagemMensagens++;
+                                                if(props.params.tipologia !== 'Personalizada'){
+                                                    contagemMomentos++;
+                                                    if(props.params.mensagens[item].message !== ''){
+                                                        contagemMensagens++;
+                                                    }
+                                                } else {
+                                                    contagemMomentos++;
+                                                    if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].persVal === false || props.params.mensagens[item].message !== '' && props.params.mensagens[item].persVal === true && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                                        contagemMensagens++;
+                                                    }
                                                 }
                                             }
                                             if(item === 'minutos5' && props.params.tipologia === 'Programas' && props.params.mensagens[item].active === true || item === 'momentoAcontecimento' && props.params.tipologia === 'Programas' && props.params.mensagens[item].active === true){
@@ -198,9 +212,16 @@ const SubmitButton = (props) => {
                                                 }
                                             }
                                             if(item === "minutos5" && props.params.tipologia !== 'Programas' && props.params.mensagens[item].active === true || item === "momentoAcontecimento" && props.params.tipologia !== 'Programas' && props.params.mensagens[item].active === true){
-                                                contagemMomentos++;
-                                                if(props.params.mensagens[item].message !== ''){
-                                                    contagemMensagens++;
+                                                if(props.params.tipologia !== 'Personalizada'){
+                                                    contagemMomentos++;
+                                                    if(props.params.mensagens[item].message !== ''){
+                                                        contagemMensagens++;
+                                                    }
+                                                } else {
+                                                    contagemMomentos++;
+                                                    if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].persVal === false || props.params.mensagens[item].message !== '' && props.params.mensagens[item].persVal === true && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                                        contagemMensagens++;
+                                                    }
                                                 }
                                             }
                                         })}
@@ -250,9 +271,16 @@ const SubmitButton = (props) => {
                                     <>
                                         {Object.keys(props.params.mensagens).map(item => {
                                             if(item !== "meiaHora" && item !== "quartoHora" && item !== 'minutos5' && item !== 'momentoAcontecimento' && props.params.mensagens[item].active === true){
-                                                contagemMomentos++;
-                                                if(props.params.mensagens[item].message !== ''){
-                                                    contagemMensagens++;
+                                                if(props.params.tipologia !== 'Personalizada'){
+                                                    contagemMomentos++;
+                                                    if(props.params.mensagens[item].message !== ''){
+                                                        contagemMensagens++;
+                                                    }
+                                                } else {
+                                                    contagemMomentos++;
+                                                    if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].persVal === false || props.params.mensagens[item].message !== '' && props.params.mensagens[item].persVal === true && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                                        contagemMensagens++;
+                                                    }
                                                 }
                                             }
                                             if(item === "meiaHora" && props.params.mensagens[item].active === true){
@@ -268,9 +296,16 @@ const SubmitButton = (props) => {
                                                 }
                                             }
                                             if(item === "quartoHora" && props.params.tipologia !== 'Saúde' && props.params.mensagens[item].active === true){
-                                                contagemMomentos++;
-                                                if(props.params.mensagens[item].message !== ''){
-                                                    contagemMensagens++;
+                                                if(props.params.tipologia !== 'Personalizada'){
+                                                    contagemMomentos++;
+                                                    if(props.params.mensagens[item].message !== ''){
+                                                        contagemMensagens++;
+                                                    }
+                                                } else {
+                                                    contagemMomentos++;
+                                                    if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].persVal === false || props.params.mensagens[item].message !== '' && props.params.mensagens[item].persVal === true && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                                        contagemMensagens++;
+                                                    }
                                                 }
                                             }
                                             if(item === 'minutos5' && props.params.tipologia === 'Programas' && props.params.mensagens[item].active === true || item === 'momentoAcontecimento' && props.params.tipologia === 'Programas' && props.params.mensagens[item].active === true){
@@ -280,9 +315,16 @@ const SubmitButton = (props) => {
                                                 }
                                             }
                                             if(item === "minutos5" && props.params.tipologia !== 'Programas' && props.params.mensagens[item].active === true || item === "momentoAcontecimento" && props.params.tipologia !== 'Programas' && props.params.mensagens[item].active === true){
-                                                contagemMomentos++;
-                                                if(props.params.mensagens[item].message !== ''){
-                                                    contagemMensagens++;
+                                                if(props.params.tipologia !== 'Personalizada'){
+                                                    contagemMomentos++;
+                                                    if(props.params.mensagens[item].message !== ''){
+                                                        contagemMensagens++;
+                                                    }
+                                                } else {
+                                                    contagemMomentos++;
+                                                    if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].persVal === false || props.params.mensagens[item].message !== '' && props.params.mensagens[item].persVal === true && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                                        contagemMensagens++;
+                                                    }
                                                 }
                                             }
                                         })}
@@ -336,9 +378,16 @@ const SubmitButton = (props) => {
                                     })}
                                     {Object.keys(props.params.mensagens).map(item => {
                                         if(item !== "meiaHora" && item !== "quartoHora" && item !== 'minutos5' && item !== 'momentoAcontecimento' && props.params.mensagens[item].active === true){
-                                            contagemMomentos++;
-                                            if(props.params.mensagens[item].message !== ''){
-                                                contagemMensagens++;
+                                            if(props.params.tipologia !== 'Personalizada'){
+                                                contagemMomentos++;
+                                                if(props.params.mensagens[item].message !== ''){
+                                                    contagemMensagens++;
+                                                }
+                                            } else {
+                                                contagemMomentos++;
+                                                if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].persVal === false || props.params.mensagens[item].message !== '' && props.params.mensagens[item].persVal === true && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                                    contagemMensagens++;
+                                                }
                                             }
                                         }
                                         if(item === "meiaHora" && props.params.mensagens[item].active === true){
@@ -354,9 +403,16 @@ const SubmitButton = (props) => {
                                             }
                                         }
                                         if(item === "quartoHora" && props.params.tipologia !== 'Saúde' && props.params.mensagens[item].active === true){
-                                            contagemMomentos++;
-                                            if(props.params.mensagens[item].message !== ''){
-                                                contagemMensagens++;
+                                            if(props.params.tipologia !== 'Personalizada'){
+                                                contagemMomentos++;
+                                                if(props.params.mensagens[item].message !== ''){
+                                                    contagemMensagens++;
+                                                }
+                                            } else {
+                                                contagemMomentos++;
+                                                if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].persVal === false || props.params.mensagens[item].message !== '' && props.params.mensagens[item].persVal === true && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                                    contagemMensagens++;
+                                                }
                                             }
                                         }
                                         if(item === 'minutos5' && props.params.tipologia === 'Programas' && props.params.mensagens[item].active === true || item === 'momentoAcontecimento' && props.params.tipologia === 'Programas' && props.params.mensagens[item].active === true){
@@ -366,9 +422,16 @@ const SubmitButton = (props) => {
                                             }
                                         }
                                         if(item === "minutos5" && props.params.tipologia !== 'Programas' && props.params.mensagens[item].active === true || item === "momentoAcontecimento" && props.params.tipologia !== 'Programas' && props.params.mensagens[item].active === true){
-                                            contagemMomentos++;
-                                            if(props.params.mensagens[item].message !== ''){
-                                                contagemMensagens++;
+                                            if(props.params.tipologia !== 'Personalizada'){
+                                                contagemMomentos++;
+                                                if(props.params.mensagens[item].message !== ''){
+                                                    contagemMensagens++;
+                                                }
+                                            } else {
+                                                contagemMomentos++;
+                                                if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].persVal === false || props.params.mensagens[item].message !== '' && props.params.mensagens[item].persVal === true && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                                    contagemMensagens++;
+                                                }
                                             }
                                         }
                                     })}
@@ -412,9 +475,16 @@ const SubmitButton = (props) => {
                                 <>
                                     {Object.keys(props.params.mensagens).map(item => {
                                         if(item !== "meiaHora" && item !== "quartoHora" && item !== 'minutos5' && item !== 'momentoAcontecimento' && props.params.mensagens[item].active === true){
-                                            contagemMomentos++;
-                                            if(props.params.mensagens[item].message !== ''){
-                                                contagemMensagens++;
+                                            if(props.params.tipologia !== 'Personalizada'){
+                                                contagemMomentos++;
+                                                if(props.params.mensagens[item].message !== ''){
+                                                    contagemMensagens++;
+                                                }
+                                            } else {
+                                                contagemMomentos++;
+                                                if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].persVal === false || props.params.mensagens[item].message !== '' && props.params.mensagens[item].persVal === true && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                                    contagemMensagens++;
+                                                }
                                             }
                                         }
                                         if(item === "meiaHora" && props.params.mensagens[item].active === true){
@@ -430,9 +500,16 @@ const SubmitButton = (props) => {
                                             }
                                         }
                                         if(item === "quartoHora" && props.params.tipologia !== 'Saúde' && props.params.mensagens[item].active === true){
-                                            contagemMomentos++;
-                                            if(props.params.mensagens[item].message !== ''){
-                                                contagemMensagens++;
+                                            if(props.params.tipologia !== 'Personalizada'){
+                                                contagemMomentos++;
+                                                if(props.params.mensagens[item].message !== ''){
+                                                    contagemMensagens++;
+                                                }
+                                            } else {
+                                                contagemMomentos++;
+                                                if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].persVal === false || props.params.mensagens[item].message !== '' && props.params.mensagens[item].persVal === true && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                                    contagemMensagens++;
+                                                }
                                             }
                                         }
                                         if(item === 'minutos5' && props.params.tipologia === 'Programas' && props.params.mensagens[item].active === true || item === 'momentoAcontecimento' && props.params.tipologia === 'Programas' && props.params.mensagens[item].active === true){
@@ -442,9 +519,16 @@ const SubmitButton = (props) => {
                                             }
                                         }
                                         if(item === "minutos5" && props.params.tipologia !== 'Programas' && props.params.mensagens[item].active === true || item === "momentoAcontecimento" && props.params.tipologia !== 'Programas' && props.params.mensagens[item].active === true){
-                                            contagemMomentos++;
-                                            if(props.params.mensagens[item].message !== ''){
-                                                contagemMensagens++;
+                                            if(props.params.tipologia !== 'Personalizada'){
+                                                contagemMomentos++;
+                                                if(props.params.mensagens[item].message !== ''){
+                                                    contagemMensagens++;
+                                                }
+                                            } else {
+                                                contagemMomentos++;
+                                                if(props.params.mensagens[item].message !== '' && props.params.mensagens[item].persVal === false || props.params.mensagens[item].message !== '' && props.params.mensagens[item].persVal === true && props.params.mensagens[item].tituloBlade !== '' && props.params.mensagens[item].descricao !== ''){
+                                                    contagemMensagens++;
+                                                }
                                             }
                                         }
                                     })}

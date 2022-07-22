@@ -2,6 +2,7 @@ import React from 'react';
 import {Form, Table, OverlayTrigger} from 'react-bootstrap';
 import { BladeTooltip } from './Tooltips';
 import InformationIcon from '../../Images/information.png';
+import { Dropdown } from 'react-bootstrap';
 
 export const DeliveryOptions = (props) => {
     return(
@@ -37,7 +38,36 @@ export const DeliveryOptions = (props) => {
                             onChange={props.changeMomento}/>
                     </td>
                     <td className='tableRowEscolha'>
+                        {props.tipo === 'Personalizada' ?
+                            <p className={props.momentos.semanaAntes.active === true ? 'p-0 MessageSection' : 'p-0 BladeSectionDisabled'}>Mensagem do pop-up</p>
+                            :
+                            <></>
+                        }
                         <input type="text" value={props.momentos.semanaAntes.message} placeholder='Mensagem do pop-up (Max. 50 caracteres)' onChange={props.changeMensagem} className={props.momentos.semanaAntes.active === true ? 'inputsForms w-100 py-1' : 'inputsFormsDisabled'} id='semanaAntes' maxLength="50"/>
+                        {props.tipo === 'Personalizada' && props.momentos.semanaAntes.active === true ? 
+                        <>
+                            <Dropdown>
+                                <Dropdown.Toggle variant="flat" className='dropdownMomento mt-2'>
+                                    {props.momentos.semanaAntes.persVal === true ? 'Tem blade' : 'Não tem blade'}
+                                </Dropdown.Toggle>
+
+                                <Dropdown.Menu className='dropdownFiltro'>
+                                    <Dropdown.Item onClick={() => props.persChange('semanaAntes', true)}>Tem blade</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => props.persChange('semanaAntes', false)}>Não tem blade</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                            {props.momentos.semanaAntes.persVal === true ?
+                            <>
+                                <p className={props.momentos.semanaAntes.active === true ? 'p-0 BladeSection' : 'p-0 BladeSectionDisabled'} style={props.momentos.semanaAntes.active === true ? {display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '2px'} : null}>Blade horizontal <OverlayTrigger placement='right' delay={{ show: 250, hide: 400}} overlay={BladeTooltip}><img src={InformationIcon} style={{width: 'auto', height: '16px', margin: '0', marginLeft:'10px', padding: '0'}}/></OverlayTrigger></p>
+                                <input type="text" value={props.momentos.semanaAntes.tituloBlade} placeholder='Título do blade (Max. 50 caracteres)' onChange={props.blade} className={props.momentos.semanaAntes.active === true ? 'inputsForms w-100' : 'inputsFormsDisabled'} id='semanaAntesTituloBlade' maxLength="50"/>
+                                <textarea rows={3} value={props.momentos.semanaAntes.descricao} placeholder='Descrição do blade (Max. 150 caracteres)' onChange={props.blade} className={props.momentos.semanaAntes.active === true ? 'inputsForms mt-2 w-100 pb-1' : 'inputsFormsDisabled mt-2'} id='semanaAntesDescricaoBlade' maxLength="150"/>
+                            </>
+                            :
+                            <></>}
+                        </>
+                        :
+                        <></>
+                        }
                     </td>
                 </tr>
 
@@ -64,6 +94,30 @@ export const DeliveryOptions = (props) => {
                     </td>
                     <td>
                         <input type="text" value={props.momentos.dias3.message} placeholder='Mensagem do pop-up (Max. 50 carateres)' onChange={props.changeMensagem} className={props.momentos.dias3.active === true ? 'inputsForms w-100 py-1' : 'inputsFormsDisabled'} id='dias3' maxLength="50"/>
+                        {props.tipo === 'Personalizada' && props.momentos.dias3.active === true ? 
+                        <>
+                            <Dropdown>
+                                <Dropdown.Toggle variant="flat" className='dropdownMomento mt-2'>
+                                    {props.momentos.dias3.persVal === true ? 'Tem blade' : 'Não tem blade'}
+                                </Dropdown.Toggle>
+
+                                <Dropdown.Menu className='dropdownFiltro'>
+                                    <Dropdown.Item onClick={() => props.persChange('dias3', true)}>Tem blade</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => props.persChange('dias3', false)}>Não tem blade</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                            {props.momentos.dias3.persVal === true ?
+                            <>
+                                <p className={props.momentos.dias3.active === true ? 'p-0 BladeSection' : 'p-0 BladeSectionDisabled'} style={props.momentos.dias3.active === true ? {display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '2px'} : null}>Blade horizontal <OverlayTrigger placement='right' delay={{ show: 250, hide: 400}} overlay={BladeTooltip}><img src={InformationIcon} style={{width: 'auto', height: '16px', margin: '0', marginLeft:'10px', padding: '0'}}/></OverlayTrigger></p>
+                                <input type="text" value={props.momentos.dias3.tituloBlade} placeholder='Título do blade (Max. 50 caracteres)' onChange={props.blade} className={props.momentos.dias3.active === true ? 'inputsForms w-100' : 'inputsFormsDisabled'} id='dias3TituloBlade' maxLength="50"/>
+                                <textarea rows={3} value={props.momentos.dias3.descricao} placeholder='Descrição do blade (Max. 150 caracteres)' onChange={props.blade} className={props.momentos.dias3.active === true ? 'inputsForms mt-2 w-100 pb-1' : 'inputsFormsDisabled mt-2'} id='dias3DescricaoBlade' maxLength="150"/>
+                            </>
+                            :
+                            <></>}
+                        </>
+                        :
+                        <></>
+                        }
                     </td>
                 </tr>
 
@@ -88,6 +142,30 @@ export const DeliveryOptions = (props) => {
                     </td>
                     <td>
                         <input type="text" value={props.momentos.diaAnterior.message} placeholder='Mensagem do pop-up (Max. 50 carateres)' onChange={props.changeMensagem} className={props.momentos.diaAnterior.active === true ? 'inputsForms w-100 py-1' : 'inputsFormsDisabled'} id='diaAnterior' maxLength="50"/>
+                        {props.tipo === 'Personalizada' && props.momentos.diaAnterior.active === true ? 
+                        <>
+                            <Dropdown>
+                                <Dropdown.Toggle variant="flat" className='dropdownMomento mt-2'>
+                                    {props.momentos.diaAnterior.persVal === true ? 'Tem blade' : 'Não tem blade'}
+                                </Dropdown.Toggle>
+
+                                <Dropdown.Menu className='dropdownFiltro'>
+                                    <Dropdown.Item onClick={() => props.persChange('diaAnterior', true)}>Tem blade</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => props.persChange('diaAnterior', false)}>Não tem blade</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                            {props.momentos.diaAnterior.persVal === true ?
+                            <>
+                                <p className={props.momentos.diaAnterior.active === true ? 'p-0 BladeSection' : 'p-0 BladeSectionDisabled'} style={props.momentos.diaAnterior.active === true ? {display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '2px'} : null}>Blade horizontal <OverlayTrigger placement='right' delay={{ show: 250, hide: 400}} overlay={BladeTooltip}><img src={InformationIcon} style={{width: 'auto', height: '16px', margin: '0', marginLeft:'10px', padding: '0'}}/></OverlayTrigger></p>
+                                <input type="text" value={props.momentos.diaAnterior.tituloBlade} placeholder='Título do blade (Max. 50 caracteres)' onChange={props.blade} className={props.momentos.diaAnterior.active === true ? 'inputsForms w-100' : 'inputsFormsDisabled'} id='diaAnteriorTituloBlade' maxLength="50"/>
+                                <textarea rows={3} value={props.momentos.diaAnterior.descricao} placeholder='Descrição do blade (Max. 150 caracteres)' onChange={props.blade} className={props.momentos.diaAnterior.active === true ? 'inputsForms mt-2 w-100 pb-1' : 'inputsFormsDisabled mt-2'} id='diaAnteriorDescricaoBlade' maxLength="150"/>
+                            </>
+                            :
+                            <></>}
+                        </>
+                        :
+                        <></>
+                        }
                     </td>
                 </tr>
 
@@ -112,6 +190,30 @@ export const DeliveryOptions = (props) => {
                     </td>
                     <td>
                         <input type="text" value={props.momentos.diaProprio.message} placeholder='Mensagem do pop-up (Max. 50 caracteres)' onChange={props.changeMensagem} className={props.momentos.diaProprio.active === true ? 'inputsForms w-100 py-1' : 'inputsFormsDisabled'} id='diaProprio' maxLength="50"/>
+                        {props.tipo === 'Personalizada' && props.momentos.diaProprio.active === true ? 
+                        <>
+                            <Dropdown>
+                                <Dropdown.Toggle variant="flat" className='dropdownMomento mt-2'>
+                                    {props.momentos.diaProprio.persVal === true ? 'Tem blade' : 'Não tem blade'}
+                                </Dropdown.Toggle>
+
+                                <Dropdown.Menu className='dropdownFiltro'>
+                                    <Dropdown.Item onClick={() => props.persChange('diaProprio', true)}>Tem blade</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => props.persChange('diaProprio', false)}>Não tem blade</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                            {props.momentos.diaProprio.persVal === true ?
+                            <>
+                                <p className={props.momentos.diaProprio.active === true ? 'p-0 BladeSection' : 'p-0 BladeSectionDisabled'} style={props.momentos.diaProprio.active === true ? {display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '2px'} : null}>Blade horizontal <OverlayTrigger placement='right' delay={{ show: 250, hide: 400}} overlay={BladeTooltip}><img src={InformationIcon} style={{width: 'auto', height: '16px', margin: '0', marginLeft:'10px', padding: '0'}}/></OverlayTrigger></p>
+                                <input type="text" value={props.momentos.diaProprio.tituloBlade} placeholder='Título do blade (Max. 50 caracteres)' onChange={props.blade} className={props.momentos.diaProprio.active === true ? 'inputsForms w-100' : 'inputsFormsDisabled'} id='diaProprioTituloBlade' maxLength="50"/>
+                                <textarea rows={3} value={props.momentos.diaProprio.descricao} placeholder='Descrição do blade (Max. 150 caracteres)' onChange={props.blade} className={props.momentos.diaProprio.active === true ? 'inputsForms mt-2 w-100 pb-1' : 'inputsFormsDisabled mt-2'} id='diaProprioDescricaoBlade' maxLength="150"/>
+                            </>
+                            :
+                            <></>}
+                        </>
+                        :
+                        <></>
+                        }
                     </td>
                 </tr>
 
@@ -171,6 +273,30 @@ export const DeliveryOptions = (props) => {
                             :
                             <></>
                         }
+                        {props.tipo === 'Personalizada' && props.momentos.imediato.active === true ? 
+                        <>
+                            <Dropdown>
+                                <Dropdown.Toggle variant="flat" className='dropdownMomento mt-2'>
+                                    {props.momentos.imediato.persVal === true ? 'Tem blade' : 'Não tem blade'}
+                                </Dropdown.Toggle>
+
+                                <Dropdown.Menu className='dropdownFiltro'>
+                                    <Dropdown.Item onClick={() => props.persChange('imediato', true)}>Tem blade</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => props.persChange('imediato', false)}>Não tem blade</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                            {props.momentos.imediato.persVal === true ?
+                            <>
+                                <p className={props.momentos.imediato.active === true ? 'p-0 BladeSection' : 'p-0 BladeSectionDisabled'} style={props.momentos.imediato.active === true ? {display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '2px'} : null}>Blade horizontal <OverlayTrigger placement='right' delay={{ show: 250, hide: 400}} overlay={BladeTooltip}><img src={InformationIcon} style={{width: 'auto', height: '16px', margin: '0', marginLeft:'10px', padding: '0'}}/></OverlayTrigger></p>
+                                <input type="text" value={props.momentos.imediato.tituloBlade} placeholder='Título do blade (Max. 50 caracteres)' onChange={props.blade} className={props.momentos.imediato.active === true ? 'inputsForms w-100' : 'inputsFormsDisabled'} id='imediatoTituloBlade' maxLength="50"/>
+                                <textarea rows={3} value={props.momentos.imediato.descricao} placeholder='Descrição do blade (Max. 150 caracteres)' onChange={props.blade} className={props.momentos.imediato.active === true ? 'inputsForms mt-2 w-100 pb-1' : 'inputsFormsDisabled mt-2'} id='imediatoDescricaoBlade' maxLength="150"/>
+                            </>
+                            :
+                            <></>}
+                        </>
+                        :
+                        <></>
+                        }
                     </td>
                 </tr>
 
@@ -221,6 +347,30 @@ export const DeliveryOptions = (props) => {
                     </td>
                     <td>
                         <input type="text" value={props.momentos.horaAntes.message} placeholder='Mensagem do pop-up (Max. 50 caracteres)' onChange={props.changeMensagem} className={props.momentos.horaAntes.active === true ? 'inputsForms w-100 py-1' : 'inputsFormsDisabled'} id='horaAntes' maxLength="50"/>
+                        {props.tipo === 'Personalizada' && props.momentos.horaAntes.active === true ? 
+                        <>
+                            <Dropdown>
+                                <Dropdown.Toggle variant="flat" className='dropdownMomento mt-2'>
+                                    {props.momentos.horaAntes.persVal === true ? 'Tem blade' : 'Não tem blade'}
+                                </Dropdown.Toggle>
+
+                                <Dropdown.Menu className='dropdownFiltro'>
+                                    <Dropdown.Item onClick={() => props.persChange('horaAntes', true)}>Tem blade</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => props.persChange('horaAntes', false)}>Não tem blade</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                            {props.momentos.horaAntes.persVal === true ?
+                            <>
+                                <p className={props.momentos.horaAntes.active === true ? 'p-0 BladeSection' : 'p-0 BladeSectionDisabled'} style={props.momentos.horaAntes.active === true ? {display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '2px'} : null}>Blade horizontal <OverlayTrigger placement='right' delay={{ show: 250, hide: 400}} overlay={BladeTooltip}><img src={InformationIcon} style={{width: 'auto', height: '16px', margin: '0', marginLeft:'10px', padding: '0'}}/></OverlayTrigger></p>
+                                <input type="text" value={props.momentos.horaAntes.tituloBlade} placeholder='Título do blade (Max. 50 caracteres)' onChange={props.blade} className={props.momentos.horaAntes.active === true ? 'inputsForms w-100' : 'inputsFormsDisabled'} id='horaAntesTituloBlade' maxLength="50"/>
+                                <textarea rows={3} value={props.momentos.horaAntes.descricao} placeholder='Descrição do blade (Max. 150 caracteres)' onChange={props.blade} className={props.momentos.horaAntes.active === true ? 'inputsForms mt-2 w-100 pb-1' : 'inputsFormsDisabled mt-2'} id='horaAntesDescricaoBlade' maxLength="150"/>
+                            </>
+                            :
+                            <></>}
+                        </>
+                        :
+                        <></>
+                        }
                     </td>
                 </tr>
 
@@ -289,6 +439,30 @@ export const DeliveryOptions = (props) => {
                         </>
                         :
                         <></>}
+                        {props.tipo === 'Personalizada' && props.momentos.quartoHora.active === true ? 
+                        <>
+                            <Dropdown>
+                                <Dropdown.Toggle variant="flat" className='dropdownMomento mt-2'>
+                                    {props.momentos.quartoHora.persVal === true ? 'Tem blade' : 'Não tem blade'}
+                                </Dropdown.Toggle>
+
+                                <Dropdown.Menu className='dropdownFiltro'>
+                                    <Dropdown.Item onClick={() => props.persChange('quartoHora', true)}>Tem blade</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => props.persChange('quartoHora', false)}>Não tem blade</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                            {props.momentos.quartoHora.persVal === true ?
+                            <>
+                                <p className={props.momentos.quartoHora.active === true ? 'p-0 BladeSection' : 'p-0 BladeSectionDisabled'} style={props.momentos.quartoHora.active === true ? {display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '2px'} : null}>Blade horizontal <OverlayTrigger placement='right' delay={{ show: 250, hide: 400}} overlay={BladeTooltip}><img src={InformationIcon} style={{width: 'auto', height: '16px', margin: '0', marginLeft:'10px', padding: '0'}}/></OverlayTrigger></p>
+                                <input type="text" value={props.momentos.quartoHora.tituloBlade} placeholder='Título do blade (Max. 50 caracteres)' onChange={props.blade} className={props.momentos.quartoHora.active === true ? 'inputsForms w-100' : 'inputsFormsDisabled'} id='quartoHoraTituloBlade' maxLength="50"/>
+                                <textarea rows={3} value={props.momentos.quartoHora.descricao} placeholder='Descrição do blade (Max. 150 caracteres)' onChange={props.blade} className={props.momentos.quartoHora.active === true ? 'inputsForms mt-2 w-100 pb-1' : 'inputsFormsDisabled mt-2'} id='quartoHoraDescricaoBlade' maxLength="150"/>
+                            </>
+                            :
+                            <></>}
+                        </>
+                        :
+                        <></>
+                        }
                     </td>
                 </tr> 
 
@@ -322,6 +496,30 @@ export const DeliveryOptions = (props) => {
                             :
                             <></>
                         }
+                        {props.tipo === 'Personalizada' && props.momentos.minutos5.active === true ? 
+                        <>
+                            <Dropdown>
+                                <Dropdown.Toggle variant="flat" className='dropdownMomento mt-2'>
+                                    {props.momentos.minutos5.persVal === true ? 'Tem blade' : 'Não tem blade'}
+                                </Dropdown.Toggle>
+
+                                <Dropdown.Menu className='dropdownFiltro'>
+                                    <Dropdown.Item onClick={() => props.persChange('minutos5', true)}>Tem blade</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => props.persChange('minutos5', false)}>Não tem blade</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                            {props.momentos.minutos5.persVal === true ?
+                            <>
+                                <p className={props.momentos.minutos5.active === true ? 'p-0 BladeSection' : 'p-0 BladeSectionDisabled'} style={props.momentos.minutos5.active === true ? {display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '2px'} : null}>Blade horizontal <OverlayTrigger placement='right' delay={{ show: 250, hide: 400}} overlay={BladeTooltip}><img src={InformationIcon} style={{width: 'auto', height: '16px', margin: '0', marginLeft:'10px', padding: '0'}}/></OverlayTrigger></p>
+                                <input type="text" value={props.momentos.minutos5.tituloBlade} placeholder='Título do blade (Max. 50 caracteres)' onChange={props.blade} className={props.momentos.minutos5.active === true ? 'inputsForms w-100' : 'inputsFormsDisabled'} id='minutos5TituloBlade' maxLength="50"/>
+                                <textarea rows={3} value={props.momentos.minutos5.descricao} placeholder='Descrição do blade (Max. 150 caracteres)' onChange={props.blade} className={props.momentos.minutos5.active === true ? 'inputsForms mt-2 w-100 pb-1' : 'inputsFormsDisabled mt-2'} id='minutos5DescricaoBlade' maxLength="150"/>
+                            </>
+                            :
+                            <></>}
+                        </>
+                        :
+                        <></>
+                        }
                     </td>
                 </tr> 
 
@@ -353,6 +551,30 @@ export const DeliveryOptions = (props) => {
                             </>
                             :
                             <></>
+                        }
+                        {props.tipo === 'Personalizada' && props.momentos.momentoAcontecimento.active === true ? 
+                        <>
+                            <Dropdown>
+                                <Dropdown.Toggle variant="flat" className='dropdownMomento mt-2'>
+                                    {props.momentos.momentoAcontecimento.persVal === true ? 'Tem blade' : 'Não tem blade'}
+                                </Dropdown.Toggle>
+
+                                <Dropdown.Menu className='dropdownFiltro'>
+                                    <Dropdown.Item onClick={() => props.persChange('momentoAcontecimento', true)}>Tem blade</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => props.persChange('momentoAcontecimento', false)}>Não tem blade</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                            {props.momentos.momentoAcontecimento.persVal === true ?
+                            <>
+                                <p className={props.momentos.momentoAcontecimento.active === true ? 'p-0 BladeSection' : 'p-0 BladeSectionDisabled'} style={props.momentos.momentoAcontecimento.active === true ? {display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '2px'} : null}>Blade horizontal <OverlayTrigger placement='right' delay={{ show: 250, hide: 400}} overlay={BladeTooltip}><img src={InformationIcon} style={{width: 'auto', height: '16px', margin: '0', marginLeft:'10px', padding: '0'}}/></OverlayTrigger></p>
+                                <input type="text" value={props.momentos.momentoAcontecimento.tituloBlade} placeholder='Título do blade (Max. 50 caracteres)' onChange={props.blade} className={props.momentos.momentoAcontecimento.active === true ? 'inputsForms w-100' : 'inputsFormsDisabled'} id='momentoAcontecimentoTituloBlade' maxLength="50"/>
+                                <textarea rows={3} value={props.momentos.momentoAcontecimento.descricao} placeholder='Descrição do blade (Max. 150 caracteres)' onChange={props.blade} className={props.momentos.momentoAcontecimento.active === true ? 'inputsForms mt-2 w-100 pb-1' : 'inputsFormsDisabled mt-2'} id='momentoAcontecimentoDescricaoBlade' maxLength="150"/>
+                            </>
+                            :
+                            <></>}
+                        </>
+                        :
+                        <></>
                         }
                     </td>
                 </tr> 

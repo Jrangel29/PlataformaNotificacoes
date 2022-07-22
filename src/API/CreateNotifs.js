@@ -60,31 +60,61 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                         zapping: 1
                     })
                 } else if(tipologia === 'Personalizada' && usaIcone === 'Sim') {
-                    notificacoesFinal.push({
-                        mensagem: mensagens.semanaAntes.message,
-                        titulo: null,
-                        descricao: null,
-                        botao_titulo: null,
-                        botao_navigate: null,
-                        url_icone: objectImagens[iconePersonalizado],
-                        data: item,
-                        hora: horaEvento,
-                        rotina: null,
-                        zapping: 0
-                    })
+                    if(mensagens.semanaAntes.persVal === false){
+                        notificacoesFinal.push({
+                            mensagem: mensagens.semanaAntes.message,
+                            titulo: null,
+                            descricao: null,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: objectImagens[iconePersonalizado],
+                            data: item,
+                            hora: horaEvento,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    } else {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.semanaAntes.message,
+                            titulo: mensagens.semanaAntes.tituloBlade,
+                            descricao: mensagens.semanaAntes.descricao,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: objectImagens[iconePersonalizado],
+                            data: item,
+                            hora: horaEvento,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    }
                 } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
-                    notificacoesFinal.push({
-                        mensagem: mensagens.semanaAntes.message,
-                        titulo: null,
-                        descricao: null,
-                        botao_titulo: null,
-                        botao_navigate: null,
-                        url_icone: null,
-                        data: item,
-                        hora: horaEvento,
-                        rotina: null,
-                        zapping: 0
-                    })
+                    if(mensagens.semanaAntes.persVal === false){
+                        notificacoesFinal.push({
+                            mensagem: mensagens.semanaAntes.message,
+                            titulo: null,
+                            descricao: null,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: null,
+                            data: item,
+                            hora: horaEvento,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    } else {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.semanaAntes.message,
+                            titulo: mensagens.semanaAntes.tituloBlade,
+                            descricao: mensagens.semanaAntes.descricao,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: null,
+                            data: item,
+                            hora: horaEvento,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    }
                 } else {
                     notificacoesFinal.push({
                         mensagem: mensagens.semanaAntes.message,
@@ -121,31 +151,61 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                             zapping: 1
                         })
                     } else if(tipologia === 'Personalizada' && usaIcone === 'Sim') {
-                        notificacoesFinal.push({
-                            mensagem: mensagens.dias3.message,
-                            titulo: null,
-                            descricao: null,
-                            botao_titulo: null,
-                            botao_navigate: null,
-                            url_icone: objectImagens[iconePersonalizado],
-                            data: item.data,
-                            hora: horaEvento,
-                            rotina: null,
-                            zapping: 0
-                        })
+                        if(mensagens.dias3.persVal === false){
+                            notificacoesFinal.push({
+                                mensagem: mensagens.dias3.message,
+                                titulo: null,
+                                descricao: null,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: objectImagens[iconePersonalizado],
+                                data: item.data,
+                                hora: horaEvento,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        } else {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.dias3.message,
+                                titulo: mensagens.dias3.tituloBlade,
+                                descricao: mensagens.dias3.descricao,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: objectImagens[iconePersonalizado],
+                                data: item.data,
+                                hora: horaEvento,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        }
                     } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
-                        notificacoesFinal.push({
-                            mensagem: mensagens.dias3.message,
-                            titulo: null,
-                            descricao: null,
-                            botao_titulo: null,
-                            botao_navigate: null,
-                            url_icone: null,
-                            data: item.data,
-                            hora: horaEvento,
-                            rotina: null,
-                            zapping: 0
-                        })
+                        if(mensagens.dias3.persVal === false){
+                            notificacoesFinal.push({
+                                mensagem: mensagens.dias3.message,
+                                titulo: null,
+                                descricao: null,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: null,
+                                data: item.data,
+                                hora: horaEvento,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        } else {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.dias3.message,
+                                titulo: mensagens.dias3.tituloBlade,
+                                descricao: mensagens.dias3.descricao,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: null,
+                                data: item.data,
+                                hora: horaEvento,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        }
                     } else {
                         notificacoesFinal.push({
                             mensagem: mensagens.dias3.message,
@@ -178,31 +238,61 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                         zapping: 1
                     })
                 } else if(tipologia === 'Personalizada' && usaIcone === 'Sim') {
-                    notificacoesFinal.push({
-                        mensagem: mensagens.dias3.message,
-                        titulo: null,
-                        descricao: null,
-                        botao_titulo: null,
-                        botao_navigate: null,
-                        url_icone: objectImagens[iconePersonalizado],
-                        data: item,
-                        hora: horaEvento,
-                        rotina: null,
-                        zapping: 0
-                    })
+                    if(mensagens.dias3.persVal === false){
+                        notificacoesFinal.push({
+                            mensagem: mensagens.dias3.message,
+                            titulo: null,
+                            descricao: null,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: objectImagens[iconePersonalizado],
+                            data: item,
+                            hora: horaEvento,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    } else {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.dias3.message,
+                            titulo: mensagens.dias3.tituloBlade,
+                            descricao: mensagens.dias3.descricao,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: objectImagens[iconePersonalizado],
+                            data: item,
+                            hora: horaEvento,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    }
                 } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
-                    notificacoesFinal.push({
-                        mensagem: mensagens.dias3.message,
-                        titulo: null,
-                        descricao: null,
-                        botao_titulo: null,
-                        botao_navigate: null,
-                        url_icone: null,
-                        data: item,
-                        hora: horaEvento,
-                        rotina: null,
-                        zapping: 0
-                    })
+                    if(mensagens.dias3.persVal === false){
+                        notificacoesFinal.push({
+                            mensagem: mensagens.dias3.message,
+                            titulo: null,
+                            descricao: null,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: null,
+                            data: item,
+                            hora: horaEvento,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    } else {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.dias3.message,
+                            titulo: mensagens.dias3.tituloBlade,
+                            descricao: mensagens.dias3.descricao,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: null,
+                            data: item,
+                            hora: horaEvento,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    }
                 } else {
                     notificacoesFinal.push({
                         mensagem: mensagens.dias3.message,
@@ -241,31 +331,61 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                             zapping: 1
                         })
                     } else if(tipologia === 'Personalizada' && usaIcone === 'Sim') {
-                        notificacoesFinal.push({
-                            mensagem: mensagens.diaAnterior.message,
-                            titulo: null,
-                            descricao: null,
-                            botao_titulo: null,
-                            botao_navigate: null,
-                            url_icone: objectImagens[iconePersonalizado],
-                            data: item.data,
-                            hora: null,
-                            rotina: 2,
-                            zapping: 0
-                        })
+                        if(mensagens.diaAnterior.persVal === false){
+                            notificacoesFinal.push({
+                                mensagem: mensagens.diaAnterior.message,
+                                titulo: null,
+                                descricao: null,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: objectImagens[iconePersonalizado],
+                                data: item.data,
+                                hora: null,
+                                rotina: 2,
+                                zapping: 0
+                            })
+                        } else {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.diaAnterior.message,
+                                titulo: mensagens.diaAnterior.tituloBlade,
+                                descricao: mensagens.diaAnterior.descricao,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: objectImagens[iconePersonalizado],
+                                data: item.data,
+                                hora: null,
+                                rotina: 2,
+                                zapping: 0
+                            })
+                        }
                     } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
-                        notificacoesFinal.push({
-                            mensagem: mensagens.diaAnterior.message,
-                            titulo: null,
-                            descricao: null,
-                            botao_titulo: null,
-                            botao_navigate: null,
-                            url_icone: null,
-                            data: item.data,
-                            hora: null,
-                            rotina: 2,
-                            zapping: 0
-                        })
+                        if(mensagens.diaAnterior.persVal === false){
+                            notificacoesFinal.push({
+                                mensagem: mensagens.diaAnterior.message,
+                                titulo: null,
+                                descricao: null,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: null,
+                                data: item.data,
+                                hora: null,
+                                rotina: 2,
+                                zapping: 0
+                            })
+                        } else {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.diaAnterior.message,
+                                titulo: mensagens.diaAnterior.tituloBlade,
+                                descricao: mensagens.diaAnterior.descricao,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: null,
+                                data: item.data,
+                                hora: null,
+                                rotina: 2,
+                                zapping: 0
+                            })
+                        }
                     } else if(tipologia === 'Informação'){
                         notificacoesFinal.push({
                             mensagem: mensagens.diaAnterior.message,
@@ -311,31 +431,61 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                         zapping: 1
                     })
                 } else if(tipologia === 'Personalizada' && usaIcone === 'Sim') {
-                    notificacoesFinal.push({
-                        mensagem: mensagens.diaAnterior.message,
-                        titulo: null,
-                        descricao: null,
-                        botao_titulo: null,
-                        botao_navigate: null,
-                        url_icone: objectImagens[iconePersonalizado],
-                        data: item,
-                        hora: null,
-                        rotina: 2,
-                        zapping: 0
-                    })
+                    if(mensagens.diaAnterior.persVal === false){
+                        notificacoesFinal.push({
+                            mensagem: mensagens.diaAnterior.message,
+                            titulo: null,
+                            descricao: null,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: objectImagens[iconePersonalizado],
+                            data: item,
+                            hora: null,
+                            rotina: 2,
+                            zapping: 0
+                        })
+                    } else {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.diaAnterior.message,
+                            titulo: mensagens.diaAnterior.tituloBlade,
+                            descricao: mensagens.diaAnterior.descricao,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: objectImagens[iconePersonalizado],
+                            data: item,
+                            hora: null,
+                            rotina: 2,
+                            zapping: 0
+                        })
+                    }
                 } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
-                    notificacoesFinal.push({
-                        mensagem: mensagens.diaAnterior.message,
-                        titulo: null,
-                        descricao: null,
-                        botao_titulo: null,
-                        botao_navigate: null,
-                        url_icone: null,
-                        data: item,
-                        hora: null,
-                        rotina: 2,
-                        zapping: 0
-                    })
+                    if(mensagens.diaAnterior.persVal === false){
+                        notificacoesFinal.push({
+                            mensagem: mensagens.diaAnterior.message,
+                            titulo: null,
+                            descricao: null,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: null,
+                            data: item,
+                            hora: null,
+                            rotina: 2,
+                            zapping: 0
+                        })
+                    } else {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.diaAnterior.message,
+                            titulo: mensagens.diaAnterior.tituloBlade,
+                            descricao: mensagens.diaAnterior.descricao,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: null,
+                            data: item,
+                            hora: null,
+                            rotina: 2,
+                            zapping: 0
+                        })
+                    }
                 } else if(tipologia === 'Informação'){
                     notificacoesFinal.push({
                         mensagem: mensagens.diaAnterior.message,
@@ -380,31 +530,61 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                         zapping: 1
                     })
                 } else if(tipologia === 'Personalizada' && usaIcone === 'Sim') {
-                    notificacoesFinal.push({
-                        mensagem: mensagens.diaAnterior.message,
-                        titulo: null,
-                        descricao: null,
-                        botao_titulo: null,
-                        botao_navigate: null,
-                        url_icone: objectImagens[iconePersonalizado],
-                        data: item,
-                        hora: null,
-                        rotina: 2,
-                        zapping: 0
-                    })
+                    if(mensagens.diaAnterior.persVal === false){
+                        notificacoesFinal.push({
+                            mensagem: mensagens.diaAnterior.message,
+                            titulo: null,
+                            descricao: null,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: objectImagens[iconePersonalizado],
+                            data: item,
+                            hora: null,
+                            rotina: 2,
+                            zapping: 0
+                        })
+                    } else {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.diaAnterior.message,
+                            titulo: mensagens.diaAnterior.tituloBlade,
+                            descricao: mensagens.diaAnterior.descricao,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: objectImagens[iconePersonalizado],
+                            data: item,
+                            hora: null,
+                            rotina: 2,
+                            zapping: 0
+                        })
+                    }
                 } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
-                    notificacoesFinal.push({
-                        mensagem: mensagens.diaAnterior.message,
-                        titulo: null,
-                        descricao: null,
-                        botao_titulo: null,
-                        botao_navigate: null,
-                        url_icone: null,
-                        data: item,
-                        hora: null,
-                        rotina: 2,
-                        zapping: 0
-                    })
+                    if(mensagens.diaAnterior.persVal === false){
+                        notificacoesFinal.push({
+                            mensagem: mensagens.diaAnterior.message,
+                            titulo: null,
+                            descricao: null,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: null,
+                            data: item,
+                            hora: null,
+                            rotina: 2,
+                            zapping: 0
+                        })
+                    } else {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.diaAnterior.message,
+                            titulo: mensagens.diaAnterior.tituloBlade,
+                            descricao: mensagens.diaAnterior.descricao,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: null,
+                            data: item,
+                            hora: null,
+                            rotina: 2,
+                            zapping: 0
+                        })
+                    }
                 } else if(tipologia === 'Informação'){
                     notificacoesFinal.push({
                         mensagem: mensagens.diaAnterior.message,
@@ -453,31 +633,61 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                     zapping: 1
                 })
             } else if(tipologia === 'Personalizada' && usaIcone === 'Sim') {
-                notificacoesFinal.push({
-                    mensagem: mensagens.diaProprio.message,
-                    titulo: null,
-                    descricao: null,
-                    botao_titulo: null,
-                    botao_navigate: null,
-                    url_icone: objectImagens[iconePersonalizado],
-                    data: diaFormated,
-                    hora: null,
-                    rotina: 1,
-                    zapping: 0
-                })
+                if(mensagens.diaProprio.persVal === false){
+                    notificacoesFinal.push({
+                        mensagem: mensagens.diaProprio.message,
+                        titulo: null,
+                        descricao: null,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                        url_icone: objectImagens[iconePersonalizado],
+                        data: diaFormated,
+                        hora: null,
+                        rotina: 1,
+                        zapping: 0
+                    })
+                } else {
+                    notificacoesFinal.push({
+                        mensagem: mensagens.diaProprio.message,
+                        titulo: mensagens.diaProprio.tituloBlade,
+                        descricao: mensagens.diaProprio.descricao,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                        url_icone: objectImagens[iconePersonalizado],
+                        data: diaFormated,
+                        hora: null,
+                        rotina: 1,
+                        zapping: 0
+                    })
+                }
             } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
-                notificacoesFinal.push({
-                    mensagem: mensagens.diaProprio.message,
-                    titulo: null,
-                    descricao: null,
-                    botao_titulo: null,
-                    botao_navigate: null,
-                    url_icone: null,
-                    data: diaFormated,
-                    hora: null,
-                    rotina: 1,
-                    zapping: 0
-                })
+                if(mensagens.diaProprio.persVal === false){
+                    notificacoesFinal.push({
+                        mensagem: mensagens.diaProprio.message,
+                        titulo: null,
+                        descricao: null,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                        url_icone: null,
+                        data: diaFormated,
+                        hora: null,
+                        rotina: 1,
+                        zapping: 0
+                    })
+                } else {
+                    notificacoesFinal.push({
+                        mensagem: mensagens.diaProprio.message,
+                        titulo: mensagens.diaProprio.tituloBlade,
+                        descricao: mensagens.diaProprio.descricao,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                        url_icone: null,
+                        data: diaFormated,
+                        hora: null,
+                        rotina: 1,
+                        zapping: 0
+                    })
+                }
             } else if(tipologia === 'Informação'){
                 notificacoesFinal.push({
                     mensagem: mensagens.diaProprio.message,
@@ -521,31 +731,61 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                         zapping: 1
                     })
                 } else if(tipologia === 'Personalizada' && usaIcone === 'Sim') {
-                    notificacoesFinal.push({
-                        mensagem: mensagens.diaProprio.message,
-                        titulo: null,
-                        descricao: null,
-                        botao_titulo: null,
-                        botao_navigate: null,
-                        url_icone: objectImagens[iconePersonalizado],
-                        data: item,
-                        hora: null,
-                        rotina: 1,
-                        zapping: 0
-                    })
+                    if(mensagens.diaProprio.persVal === false){
+                        notificacoesFinal.push({
+                            mensagem: mensagens.diaProprio.message,
+                            titulo: null,
+                            descricao: null,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: objectImagens[iconePersonalizado],
+                            data: item,
+                            hora: null,
+                            rotina: 1,
+                            zapping: 0
+                        })
+                    } else {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.diaProprio.message,
+                            titulo: mensagens.diaProprio.tituloBlade,
+                            descricao: mensagens.diaProprio.descricao,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: objectImagens[iconePersonalizado],
+                            data: item,
+                            hora: null,
+                            rotina: 1,
+                            zapping: 0
+                        })
+                    }
                 } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
-                    notificacoesFinal.push({
-                        mensagem: mensagens.diaProprio.message,
-                        titulo: null,
-                        descricao: null,
-                        botao_titulo: null,
-                        botao_navigate: null,
-                        url_icone: null,
-                        data: item,
-                        hora: null,
-                        rotina: 1,
-                        zapping: 0
-                    })
+                    if(mensagens.diaProprio.persVal === false){
+                        notificacoesFinal.push({
+                            mensagem: mensagens.diaProprio.message,
+                            titulo: null,
+                            descricao: null,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: null,
+                            data: item,
+                            hora: null,
+                            rotina: 1,
+                            zapping: 0
+                        })
+                    } else {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.diaProprio.message,
+                            titulo: mensagens.diaProprio.tituloBlade,
+                            descricao: mensagens.diaProprio.descricao,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: null,
+                            data: item,
+                            hora: null,
+                            rotina: 1,
+                            zapping: 0
+                        })
+                    }
                 } else if(tipologia === 'Informação'){
                     notificacoesFinal.push({
                         mensagem: mensagens.diaProprio.message,
@@ -603,31 +843,61 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                     zapping: 1
                 })
             } else if(tipologia === 'Personalizada' && usaIcone === 'Sim') {
-                notificacoesFinal.push({
-                    mensagem: mensagens.horaAntes.message,
-                    titulo: null,
-                    descricao: null,
-                    botao_titulo: null,
-                    botao_navigate: null,
-                    url_icone: objectImagens[iconePersonalizado],
-                    data: diaFormated,
-                    hora: horaFinal,
-                    rotina: null,
-                    zapping: 0
-                })
+                if(mensagens.horaAntes.persVal === false){
+                    notificacoesFinal.push({
+                        mensagem: mensagens.horaAntes.message,
+                        titulo: null,
+                        descricao: null,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                        url_icone: objectImagens[iconePersonalizado],
+                        data: diaFormated,
+                        hora: horaFinal,
+                        rotina: null,
+                        zapping: 0
+                    })
+                } else {
+                    notificacoesFinal.push({
+                        mensagem: mensagens.horaAntes.message,
+                        titulo: mensagens.horaAntes.tituloBlade,
+                        descricao: mensagens.horaAntes.descricao,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                        url_icone: objectImagens[iconePersonalizado],
+                        data: diaFormated,
+                        hora: horaFinal,
+                        rotina: null,
+                        zapping: 0
+                    })
+                }
             } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
-                notificacoesFinal.push({
-                    mensagem: mensagens.horaAntes.message,
-                    titulo: null,
-                    descricao: null,
-                    botao_titulo: null,
-                    botao_navigate: null,
-                    url_icone: null,
-                    data: diaFormated,
-                    hora: horaFinal,
-                    rotina: null,
-                    zapping: 0
-                })
+                if(mensagens.horaAntes.persVal === false){
+                    notificacoesFinal.push({
+                        mensagem: mensagens.horaAntes.message,
+                        titulo: null,
+                        descricao: null,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                        url_icone: null,
+                        data: diaFormated,
+                        hora: horaFinal,
+                        rotina: null,
+                        zapping: 0
+                    })
+                } else {
+                    notificacoesFinal.push({
+                        mensagem: mensagens.horaAntes.message,
+                        titulo: mensagens.horaAntes.tituloBlade,
+                        descricao: mensagens.horaAntes.descricao,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                        url_icone: null,
+                        data: diaFormated,
+                        hora: horaFinal,
+                        rotina: null,
+                        zapping: 0
+                    })
+                }
             } else {
                 notificacoesFinal.push({
                     mensagem: mensagens.horaAntes.message,
@@ -666,31 +936,61 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                                 zapping: 1
                             })
                         } else if(tipologia === 'Personalizada' && usaIcone === 'Sim') {
-                            notificacoesFinal.push({
-                                mensagem: mensagens.horaAntes.message,
-                                titulo: null,
-                                descricao: null,
-                                botao_titulo: null,
-                                botao_navigate: null,
-                                url_icone: objectImagens[iconePersonalizado],
-                                data: item,
-                                hora: horaFinal,
-                                rotina: null,
-                                zapping: 0
-                            })
+                            if(mensagens.horaAntes.persVal === false){
+                                notificacoesFinal.push({
+                                    mensagem: mensagens.horaAntes.message,
+                                    titulo: null,
+                                    descricao: null,
+                                    botao_titulo: null,
+                                    botao_navigate: null,
+                                    url_icone: objectImagens[iconePersonalizado],
+                                    data: item,
+                                    hora: horaFinal,
+                                    rotina: null,
+                                    zapping: 0
+                                })
+                            } else {
+                                notificacoesFinal.push({
+                                    mensagem: mensagens.horaAntes.message,
+                                    titulo: mensagens.horaAntes.tituloBlade,
+                                    descricao: mensagens.horaAntes.descricao,
+                                    botao_titulo: null,
+                                    botao_navigate: null,
+                                    url_icone: objectImagens[iconePersonalizado],
+                                    data: item,
+                                    hora: horaFinal,
+                                    rotina: null,
+                                    zapping: 0
+                                })
+                            }
                         } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
-                            notificacoesFinal.push({
-                                mensagem: mensagens.horaAntes.message,
-                                titulo: null,
-                                descricao: null,
-                                botao_titulo: null,
-                                botao_navigate: null,
-                                url_icone: null,
-                                data: item,
-                                hora: horaFinal,
-                                rotina: null,
-                                zapping: 0
-                            })
+                            if(mensagens.horaAntes.persVal === false){
+                                notificacoesFinal.push({
+                                    mensagem: mensagens.horaAntes.message,
+                                    titulo: null,
+                                    descricao: null,
+                                    botao_titulo: null,
+                                    botao_navigate: null,
+                                    url_icone: null,
+                                    data: item,
+                                    hora: horaFinal,
+                                    rotina: null,
+                                    zapping: 0
+                                })
+                            } else {
+                                notificacoesFinal.push({
+                                    mensagem: mensagens.horaAntes.message,
+                                    titulo: mensagens.horaAntes.tituloBlade,
+                                    descricao: mensagens.horaAntes.descricao,
+                                    botao_titulo: null,
+                                    botao_navigate: null,
+                                    url_icone: null,
+                                    data: item,
+                                    hora: horaFinal,
+                                    rotina: null,
+                                    zapping: 0
+                                })
+                            }
                         } else {
                             notificacoesFinal.push({
                                 mensagem: mensagens.horaAntes.message,
@@ -721,31 +1021,61 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                             zapping: 1
                         })
                     } else if(tipologia === 'Personalizada' && usaIcone === 'Sim') {
-                        notificacoesFinal.push({
-                            mensagem: mensagens.horaAntes.message,
-                            titulo: null,
-                            descricao: null,
-                            botao_titulo: null,
-                            botao_navigate: null,
-                            url_icone: objectImagens[iconePersonalizado],
-                            data: item,
-                            hora: horaFinal,
-                            rotina: null,
-                            zapping: 0
-                        })
+                        if(mensagens.horaAntes.persVal === false){
+                            notificacoesFinal.push({
+                                mensagem: mensagens.horaAntes.message,
+                                titulo: null,
+                                descricao: null,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: objectImagens[iconePersonalizado],
+                                data: item,
+                                hora: horaFinal,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        } else {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.horaAntes.message,
+                                titulo: mensagens.horaAntes.tituloBlade,
+                                descricao: mensagens.horaAntes.descricao,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: objectImagens[iconePersonalizado],
+                                data: item,
+                                hora: horaFinal,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        }
                     } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
-                        notificacoesFinal.push({
-                            mensagem: mensagens.horaAntes.message,
-                            titulo: null,
-                            descricao: null,
-                            botao_titulo: null,
-                            botao_navigate: null,
-                            url_icone: null,
-                            data: item,
-                            hora: horaFinal,
-                            rotina: null,
-                            zapping: 0
-                        })
+                        if(mensagens.horaAntes.persVal === false){
+                            notificacoesFinal.push({
+                                mensagem: mensagens.horaAntes.message,
+                                titulo: null,
+                                descricao: null,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: null,
+                                data: item,
+                                hora: horaFinal,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        } else {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.horaAntes.message,
+                                titulo: mensagens.horaAntes.tituloBlade,
+                                descricao: mensagens.horaAntes.descricao,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: null,
+                                data: item,
+                                hora: horaFinal,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        }
                     } else {
                         notificacoesFinal.push({
                             mensagem: mensagens.horaAntes.message,
@@ -1017,31 +1347,61 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                     zapping: 1
                 })
             } else if(tipologia === 'Personalizada' && usaIcone === 'Sim') {
-                notificacoesFinal.push({
-                    mensagem: mensagens.quartoHora.message,
-                    titulo: null,
-                    descricao: null,
-                    botao_titulo: null,
-                    botao_navigate: null,
-                    url_icone: objectImagens[iconePersonalizado],
-                    data: diaFormated,
-                    hora: horaFinal,
-                    rotina: null,
-                    zapping: 0
-                })
+                if(mensagens.quartoHora.persVal === false){
+                    notificacoesFinal.push({
+                        mensagem: mensagens.quartoHora.message,
+                        titulo: null,
+                        descricao: null,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                        url_icone: objectImagens[iconePersonalizado],
+                        data: diaFormated,
+                        hora: horaFinal,
+                        rotina: null,
+                        zapping: 0
+                    })
+                } else {
+                    notificacoesFinal.push({
+                        mensagem: mensagens.quartoHora.message,
+                        titulo: mensagens.quartoHora.tituloBlade,
+                        descricao: mensagens.quartoHora.descricao,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                        url_icone: objectImagens[iconePersonalizado],
+                        data: diaFormated,
+                        hora: horaFinal,
+                        rotina: null,
+                        zapping: 0
+                    })
+                }
             } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
-                notificacoesFinal.push({
-                    mensagem: mensagens.quartoHora.message,
-                    titulo: null,
-                    descricao: null,
-                    botao_titulo: null,
-                    botao_navigate: null,
-                    url_icone: null,
-                    data: diaFormated,
-                    hora: horaFinal,
-                    rotina: null,
-                    zapping: 0
-                })
+                if(mensagens.quartoHora.persVal === false){
+                    notificacoesFinal.push({
+                        mensagem: mensagens.quartoHora.message,
+                        titulo: null,
+                        descricao: null,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                        url_icone: null,
+                        data: diaFormated,
+                        hora: horaFinal,
+                        rotina: null,
+                        zapping: 0
+                    }) 
+                } else {
+                    notificacoesFinal.push({
+                        mensagem: mensagens.quartoHora.message,
+                        titulo: mensagens.quartoHora.tituloBlade,
+                        descricao: mensagens.quartoHora.descricao,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                        url_icone: null,
+                        data: diaFormated,
+                        hora: horaFinal,
+                        rotina: null,
+                        zapping: 0
+                    }) 
+                }
             } else if(tipologia === 'Saúde') {
                 notificacoesFinal.push({
                     mensagem: mensagens.quartoHora.message,
@@ -1093,31 +1453,61 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                                 zapping: 1
                             })
                         } else if(tipologia === 'Personalizada' && usaIcone === 'Sim') {
-                            notificacoesFinal.push({
-                                mensagem: mensagens.quartoHora.message,
-                                titulo: null,
-                                descricao: null,
-                                botao_titulo: null,
-                                botao_navigate: null,
-                                url_icone: objectImagens[iconePersonalizado],
-                                data: item,
-                                hora: horaFinal,
-                                rotina: null,
-                                zapping: 0
-                            })
+                            if(mensagens.quartoHora.persVal === false){
+                                notificacoesFinal.push({
+                                    mensagem: mensagens.quartoHora.message,
+                                    titulo: null,
+                                    descricao: null,
+                                    botao_titulo: null,
+                                    botao_navigate: null,
+                                    url_icone: objectImagens[iconePersonalizado],
+                                    data: item,
+                                    hora: horaFinal,
+                                    rotina: null,
+                                    zapping: 0
+                                })
+                            } else {
+                                notificacoesFinal.push({
+                                    mensagem: mensagens.quartoHora.message,
+                                    titulo: mensagens.quartoHora.tituloBlade,
+                                    descricao: mensagens.quartoHora.descricao,
+                                    botao_titulo: null,
+                                    botao_navigate: null,
+                                    url_icone: objectImagens[iconePersonalizado],
+                                    data: item,
+                                    hora: horaFinal,
+                                    rotina: null,
+                                    zapping: 0
+                                })
+                            }
                         } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
-                            notificacoesFinal.push({
-                                mensagem: mensagens.quartoHora.message,
-                                titulo: null,
-                                descricao: null,
-                                botao_titulo: null,
-                                botao_navigate: null,
-                                url_icone: null,
-                                data: item,
-                                hora: horaFinal,
-                                rotina: null,
-                                zapping: 0
-                            })
+                            if(mensagens.quartoHora.persVal === false){
+                                notificacoesFinal.push({
+                                    mensagem: mensagens.quartoHora.message,
+                                    titulo: null,
+                                    descricao: null,
+                                    botao_titulo: null,
+                                    botao_navigate: null,
+                                    url_icone: null,
+                                    data: item,
+                                    hora: horaFinal,
+                                    rotina: null,
+                                    zapping: 0
+                                })
+                            } else {
+                                notificacoesFinal.push({
+                                    mensagem: mensagens.quartoHora.message,
+                                    titulo: mensagens.quartoHora.tituloBlade,
+                                    descricao: mensagens.quartoHora.descricao,
+                                    botao_titulo: null,
+                                    botao_navigate: null,
+                                    url_icone: null,
+                                    data: item,
+                                    hora: horaFinal,
+                                    rotina: null,
+                                    zapping: 0
+                                })
+                            }
                         } else if(tipologia === 'Saúde') {
                             notificacoesFinal.push({
                                 mensagem: mensagens.quartoHora.message,
@@ -1161,31 +1551,61 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                             zapping: 1
                         })
                     } else if(tipologia === 'Personalizada' && usaIcone === 'Sim') {
-                        notificacoesFinal.push({
-                            mensagem: mensagens.quartoHora.message,
-                            titulo: null,
-                            descricao: null,
-                            botao_titulo: null,
-                            botao_navigate: null,
-                            url_icone: objectImagens[iconePersonalizado],
-                            data: item,
-                            hora: horaFinal,
-                            rotina: null,
-                            zapping: 0
-                        })
+                        if(mensagens.quartoHora.persVal === false){
+                            notificacoesFinal.push({
+                                mensagem: mensagens.quartoHora.message,
+                                titulo: null,
+                                descricao: null,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: objectImagens[iconePersonalizado],
+                                data: item,
+                                hora: horaFinal,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        } else {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.quartoHora.message,
+                                titulo: mensagens.quartoHora.tituloBlade,
+                                descricao: mensagens.quartoHora.descricao,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: objectImagens[iconePersonalizado],
+                                data: item,
+                                hora: horaFinal,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        }
                     } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
-                        notificacoesFinal.push({
-                            mensagem: mensagens.quartoHora.message,
-                            titulo: null,
-                            descricao: null,
-                            botao_titulo: null,
-                            botao_navigate: null,
-                            url_icone: null,
-                            data: item,
-                            hora: horaFinal,
-                            rotina: null,
-                            zapping: 0
-                        })
+                        if(mensagens.quartoHora.persVal === false){
+                            notificacoesFinal.push({
+                                mensagem: mensagens.quartoHora.message,
+                                titulo: null,
+                                descricao: null,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: null,
+                                data: item,
+                                hora: horaFinal,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        } else {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.quartoHora.message,
+                                titulo: mensagens.quartoHora.tituloBlade,
+                                descricao: mensagens.quartoHora.descricao,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: null,
+                                data: item,
+                                hora: horaFinal,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        }
                     } else if(tipologia === 'Saúde') {
                         notificacoesFinal.push({
                             mensagem: mensagens.quartoHora.message,
@@ -1242,31 +1662,61 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                     zapping: 1
                 })
             } else if(tipologia === 'Personalizada' && usaIcone === 'Sim') {
-                notificacoesFinal.push({
-                    mensagem: mensagens.minutos5.message,
-                    titulo: null,
-                    descricao: null,
-                    botao_titulo: null,
-                    botao_navigate: null,
-                    url_icone: objectImagens[iconePersonalizado],
-                    data: diaFormated,
-                    hora: horaFinal,
-                    rotina: null,
-                    zapping: 0
-                })
+                if(mensagens.minutos5.persVal === false){
+                    notificacoesFinal.push({
+                        mensagem: mensagens.minutos5.message,
+                        titulo: null,
+                        descricao: null,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                        url_icone: objectImagens[iconePersonalizado],
+                        data: diaFormated,
+                        hora: horaFinal,
+                        rotina: null,
+                        zapping: 0
+                    })
+                } else {
+                    notificacoesFinal.push({
+                        mensagem: mensagens.minutos5.message,
+                        titulo: mensagens.minutos5.tituloBlade,
+                        descricao: mensagens.minutos5.descricao,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                        url_icone: objectImagens[iconePersonalizado],
+                        data: diaFormated,
+                        hora: horaFinal,
+                        rotina: null,
+                        zapping: 0
+                    })
+                }
             } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
-                notificacoesFinal.push({
-                    mensagem: mensagens.minutos5.message,
-                    titulo: null,
-                    descricao: null,
-                    botao_titulo: null,
-                    botao_navigate: null,
-                    url_icone: null,
-                    data: diaFormated,
-                    hora: horaFinal,
-                    rotina: null,
-                    zapping: 0
-                })
+                if(mensagens.minutos5.persVal === false){
+                    notificacoesFinal.push({
+                        mensagem: mensagens.minutos5.message,
+                        titulo: null,
+                        descricao: null,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                        url_icone: null,
+                        data: diaFormated,
+                        hora: horaFinal,
+                        rotina: null,
+                        zapping: 0
+                    })
+                } else {
+                    notificacoesFinal.push({
+                        mensagem: mensagens.minutos5.message,
+                        titulo: mensagens.minutos5.tituloBlade,
+                        descricao: mensagens.minutos5.descricao,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                        url_icone: null,
+                        data: diaFormated,
+                        hora: horaFinal,
+                        rotina: null,
+                        zapping: 0
+                    })
+                }
             } else if(tipologia === 'Programas') {
                 notificacoesFinal.push({
                     mensagem: mensagens.minutos5.message,
@@ -1317,31 +1767,61 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                                 zapping: 1
                             })
                         } else if(tipologia === 'Personalizada' && usaIcone === 'Sim') {
-                            notificacoesFinal.push({
-                                mensagem: mensagens.minutos5.message,
-                                titulo: null,
-                                descricao: null,
-                                botao_titulo: null,
-                                botao_navigate: null,
-                                url_icone: objectImagens[iconePersonalizado],
-                                data: item,
-                                hora: horaFinal,
-                                rotina: null,
-                                zapping: 0
-                            })
+                            if(mensagens.minutos5.persVal === false){
+                                notificacoesFinal.push({
+                                    mensagem: mensagens.minutos5.message,
+                                    titulo: null,
+                                    descricao: null,
+                                    botao_titulo: null,
+                                    botao_navigate: null,
+                                    url_icone: objectImagens[iconePersonalizado],
+                                    data: item,
+                                    hora: horaFinal,
+                                    rotina: null,
+                                    zapping: 0
+                                })
+                            } else {
+                                notificacoesFinal.push({
+                                    mensagem: mensagens.minutos5.message,
+                                    titulo: mensagens.minutos5.tituloBlade,
+                                    descricao: mensagens.minutos5.descricao,
+                                    botao_titulo: null,
+                                    botao_navigate: null,
+                                    url_icone: objectImagens[iconePersonalizado],
+                                    data: item,
+                                    hora: horaFinal,
+                                    rotina: null,
+                                    zapping: 0
+                                })
+                            }
                         } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
-                            notificacoesFinal.push({
-                                mensagem: mensagens.minutos5.message,
-                                titulo: null,
-                                descricao: null,
-                                botao_titulo: null,
-                                botao_navigate: null,
-                                url_icone: null,
-                                data: item,
-                                hora: horaFinal,
-                                rotina: null,
-                                zapping: 0
-                            })
+                            if(mensagens.minutos5.persVal === false){
+                                notificacoesFinal.push({
+                                    mensagem: mensagens.minutos5.message,
+                                    titulo: null,
+                                    descricao: null,
+                                    botao_titulo: null,
+                                    botao_navigate: null,
+                                    url_icone: null,
+                                    data: item,
+                                    hora: horaFinal,
+                                    rotina: null,
+                                    zapping: 0
+                                })
+                            } else {
+                                notificacoesFinal.push({
+                                    mensagem: mensagens.minutos5.message,
+                                    titulo: mensagens.minutos5.tituloBlade,
+                                    descricao: mensagens.minutos5.descricao,
+                                    botao_titulo: null,
+                                    botao_navigate: null,
+                                    url_icone: null,
+                                    data: item,
+                                    hora: horaFinal,
+                                    rotina: null,
+                                    zapping: 0
+                                })
+                            }
                         } else if(tipologia === 'Programas') {
                             notificacoesFinal.push({
                                 mensagem: mensagens.minutos5.message,
@@ -1385,31 +1865,61 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                             zapping: 1
                         })
                     } else if(tipologia === 'Personalizada' && usaIcone === 'Sim') {
-                        notificacoesFinal.push({
-                            mensagem: mensagens.minutos5.message,
-                            titulo: null,
-                            descricao: null,
-                            botao_titulo: null,
-                            botao_navigate: null,
-                            url_icone: objectImagens[iconePersonalizado],
-                            data: item,
-                            hora: horaFinal,
-                            rotina: null,
-                            zapping: 0
-                        })
+                        if(mensagens.minutos5.persVal === false){
+                            notificacoesFinal.push({
+                                mensagem: mensagens.minutos5.message,
+                                titulo: null,
+                                descricao: null,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: objectImagens[iconePersonalizado],
+                                data: item,
+                                hora: horaFinal,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        } else {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.minutos5.message,
+                                titulo: mensagens.minutos5.tituloBlade,
+                                descricao: mensagens.minutos5.descricao,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: objectImagens[iconePersonalizado],
+                                data: item,
+                                hora: horaFinal,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        }
                     } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
-                        notificacoesFinal.push({
-                            mensagem: mensagens.minutos5.message,
-                            titulo: null,
-                            descricao: null,
-                            botao_titulo: null,
-                            botao_navigate: null,
-                            url_icone: null,
-                            data: item,
-                            hora: horaFinal,
-                            rotina: null,
-                            zapping: 0
-                        })
+                        if(mensagens.minutos5.persVal === false){
+                            notificacoesFinal.push({
+                                mensagem: mensagens.minutos5.message,
+                                titulo: null,
+                                descricao: null,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: null,
+                                data: item,
+                                hora: horaFinal,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        } else {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.minutos5.message,
+                                titulo: mensagens.minutos5.tituloBlade,
+                                descricao: mensagens.minutos5.descricao,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: null,
+                                data: item,
+                                hora: horaFinal,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        }
                     } else if(tipologia === 'Programas') {
                         notificacoesFinal.push({
                             mensagem: mensagens.minutos5.message,
@@ -1458,31 +1968,61 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                     zapping: 1
                 })
             } else if(tipologia === 'Personalizada' && usaIcone === 'Sim') {
-                notificacoesFinal.push({
-                    mensagem: mensagens.momentoAcontecimento.message,
-                    titulo: null,
-                    descricao: null,
-                    botao_titulo: null,
-                    botao_navigate: null,
-                    url_icone: objectImagens[iconePersonalizado],
-                    data: diaFormated,
-                    hora: horaEvento,
-                    rotina: null,
-                    zapping: 0
-                })
+                if(mensagens.momentoAcontecimento.persVal === false){
+                    notificacoesFinal.push({
+                        mensagem: mensagens.momentoAcontecimento.message,
+                        titulo: null,
+                        descricao: null,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                        url_icone: objectImagens[iconePersonalizado],
+                        data: diaFormated,
+                        hora: horaEvento,
+                        rotina: null,
+                        zapping: 0
+                    })
+                } else {
+                    notificacoesFinal.push({
+                        mensagem: mensagens.momentoAcontecimento.message,
+                        titulo: mensagens.momentoAcontecimento.tituloBlade,
+                        descricao: mensagens.momentoAcontecimento.descricao,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                        url_icone: objectImagens[iconePersonalizado],
+                        data: diaFormated,
+                        hora: horaEvento,
+                        rotina: null,
+                        zapping: 0
+                    })
+                }
             } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
-                notificacoesFinal.push({
-                    mensagem: mensagens.momentoAcontecimento.message,
-                    titulo: null,
-                    descricao: null,
-                    botao_titulo: null,
-                    botao_navigate: null,
-                    url_icone: null,
-                    data: diaFormated,
-                    hora: horaEvento,
-                    rotina: null,
-                    zapping: 0
-                })
+                if(mensagens.momentoAcontecimento.persVal === false){
+                    notificacoesFinal.push({
+                        mensagem: mensagens.momentoAcontecimento.message,
+                        titulo: null,
+                        descricao: null,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                        url_icone: null,
+                        data: diaFormated,
+                        hora: horaEvento,
+                        rotina: null,
+                        zapping: 0
+                    })
+                } else {
+                    notificacoesFinal.push({
+                        mensagem: mensagens.momentoAcontecimento.message,
+                        titulo: mensagens.momentoAcontecimento.tituloBlade,
+                        descricao: mensagens.momentoAcontecimento.descricao,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                        url_icone: null,
+                        data: diaFormated,
+                        hora: horaEvento,
+                        rotina: null,
+                        zapping: 0
+                    })
+                }
             } else if(tipologia === 'Programas') {
                 notificacoesFinal.push({
                     mensagem: mensagens.momentoAcontecimento.message,
@@ -1525,31 +2065,61 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                         zapping: 1
                     })
                 } else if(tipologia === 'Personalizada' && usaIcone === 'Sim') {
-                    notificacoesFinal.push({
-                        mensagem: mensagens.momentoAcontecimento.message,
-                        titulo: null,
-                        descricao: null,
-                        botao_titulo: null,
-                        botao_navigate: null,
-                        url_icone: objectImagens[iconePersonalizado],
-                        data: item,
-                        hora: horaEvento,
-                        rotina: null,
-                        zapping: 0
-                    })
+                    if(mensagens.momentoAcontecimento.persVal === false){
+                        notificacoesFinal.push({
+                            mensagem: mensagens.momentoAcontecimento.message,
+                            titulo: null,
+                            descricao: null,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: objectImagens[iconePersonalizado],
+                            data: item,
+                            hora: horaEvento,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    } else {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.momentoAcontecimento.message,
+                            titulo: mensagens.momentoAcontecimento.tituloBlade,
+                            descricao: mensagens.momentoAcontecimento.descricao,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: objectImagens[iconePersonalizado],
+                            data: item,
+                            hora: horaEvento,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    }
                 } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
-                    notificacoesFinal.push({
-                        mensagem: mensagens.momentoAcontecimento.message,
-                        titulo: null,
-                        descricao: null,
-                        botao_titulo: null,
-                        botao_navigate: null,
-                        url_icone: null,
-                        data: item,
-                        hora: horaEvento,
-                        rotina: null,
-                        zapping: 0
-                    })
+                    if(mensagens.momentoAcontecimento.persVal === false){
+                        notificacoesFinal.push({
+                            mensagem: mensagens.momentoAcontecimento.message,
+                            titulo: null,
+                            descricao: null,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: null,
+                            data: item,
+                            hora: horaEvento,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    } else {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.momentoAcontecimento.message,
+                            titulo: mensagens.momentoAcontecimento.tituloBlade,
+                            descricao: mensagens.momentoAcontecimento.descricao,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: null,
+                            data: item,
+                            hora: horaEvento,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    }
                 } else if(tipologia === 'Programas') {
                     notificacoesFinal.push({
                         mensagem: mensagens.momentoAcontecimento.message,

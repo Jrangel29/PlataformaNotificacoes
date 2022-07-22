@@ -28,6 +28,8 @@ export const ListaMeo = [
     { channel: 48, name: "Jim Jam" },
     { channel: 49, name: "Baby TV" },
     { channel: 50, name: "Lolly Kids" },
+    { channel: 70, name: "FOX" },
+    { channel: 72, name: "FOX Crime" },
     { channel: 92, name: "Odisseia" },
     { channel: 95, name: "National Geographic Channel" },
   ];

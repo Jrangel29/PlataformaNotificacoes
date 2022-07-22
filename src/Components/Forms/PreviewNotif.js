@@ -44,7 +44,7 @@ export const PreviewNotif = (props) => {
     const handleSelect = (selectedIndex, e) => {
         setIndex(selectedIndex);
     };
-    console.log(props.personalizado.icone)
+    //console.log(props.personalizado.icone)
     return(
         <>
             <div className='prevSeccao ms-0'>

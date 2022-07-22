@@ -66,46 +66,76 @@ class CreateNotification extends React.Component {
             mensagens: {
                 semanaAntes: {
                     active: false, 
-                    message: ''},
+                    message: '',
+                    tituloBlade: '',
+                    descricao: '',
+                    persVal: false},
                 dias3: {
                     active: false, 
-                    message: ''},
+                    message: '',
+                    tituloBlade: '',
+                    descricao: '',
+                    persVal: false},
                 diaAnterior: {
                     active: false, 
-                    message: ''},
+                    message: '',
+                    tituloBlade: '',
+                    descricao: '',
+                    persVal: false},
                 diaProprio: {
                     active: false, 
-                    message: ''},
+                    message: '',
+                    tituloBlade: '',
+                    descricao: '',
+                    persVal: false},
                 horaEspecifica: {
                     active: false, 
-                    message: ''},
+                    message: '',
+                    tituloBlade: '',
+                    descricao: '',
+                    persVal: false},
                 imediato: {
                     active: false, 
                     message: '',
                     tituloBlade: '',
-                    descricao: ''},
+                    descricao: '',
+                    persVal: false},
                 intervaloHoras: {
                     active: false, 
-                    message: ''},
+                    message: '',
+                    tituloBlade: '',
+                    descricao: '',
+                    persVal: false},
                 horaAntes: {
                     active: false, 
-                    message: ''},
+                    message: '',
+                    tituloBlade: '',
+                    descricao: '',
+                    persVal: false},
                 meiaHora: {
                     active: false, 
                     message: '',
                     tituloBlade: '',
-                    descricao: ''},
+                    descricao: '',
+                    persVal: false},
                 quartoHora: {
                     active: false, 
                     message: '',
                     tituloBlade: '',
-                    descricao: ''},
+                    descricao: '',
+                    persVal: false},
                 minutos5: {
                     active: false, 
-                    message: ''},
+                    message: '',
+                    tituloBlade: '',
+                    descricao: '',
+                    persVal: false},
                 momentoAcontecimento: {
                     active: false, 
-                    message: ''}
+                    message: '',
+                    tituloBlade: '',
+                    descricao: '',
+                    persVal: false}
             }
         }
     }
@@ -136,48 +166,76 @@ class CreateNotification extends React.Component {
                 mensagens: {
                     semanaAntes: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     dias3: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     diaAnterior: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     diaProprio: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     horaEspecifica: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     imediato: {
                         active: false, 
                         message: '',
                         tituloBlade: '',
-                        descricao: ''},
+                        descricao: '',
+                        persVal: false},
                     intervaloHoras: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     horaAntes: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     meiaHora: {
                         active: false, 
                         message: '',
                         tituloBlade: '',
-                        descricao: ''},
+                        descricao: '',
+                        persVal: false},
                     quartoHora: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     minutos5: {
                         active: false, 
                         message: '',
                         tituloBlade: '',
-                        descricao: ''},
+                        descricao: '',
+                        persVal: false},
                     momentoAcontecimento: {
                         active: false, 
                         message: '',
                         tituloBlade: '',
-                        descricao: ''}
+                        descricao: '',
+                        persVal: false}
                 }
             })
         }
@@ -195,44 +253,76 @@ class CreateNotification extends React.Component {
                 mensagens: {
                     semanaAntes: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     dias3: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     diaAnterior: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     diaProprio: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     horaEspecifica: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     imediato: {
                         active: false, 
                         message: '',
                         tituloBlade: '',
-                        descricao: ''},
+                        descricao: '',
+                        persVal: false},
                     intervaloHoras: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     horaAntes: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     meiaHora: {
                         active: false, 
                         message: '',
                         tituloBlade: '',
-                        descricao: ''},
+                        descricao: '',
+                        persVal: false},
                     quartoHora: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     minutos5: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     momentoAcontecimento: {
                         active: false, 
-                        message: ''}
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false}
                 }
             })
         }
@@ -246,44 +336,76 @@ class CreateNotification extends React.Component {
                 mensagens: {
                     semanaAntes: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     dias3: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     diaAnterior: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     diaProprio: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     horaEspecifica: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     imediato: {
                         active: false, 
                         message: '',
                         tituloBlade: '',
-                        descricao: ''},
+                        descricao: '',
+                        persVal: false},
                     intervaloHoras: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     horaAntes: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     meiaHora: {
                         active: false, 
                         message: '',
                         tituloBlade: '',
-                        descricao: ''},
+                        descricao: '',
+                        persVal: false},
                     quartoHora: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     minutos5: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     momentoAcontecimento: {
                         active: false, 
-                        message: ''}
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false}
                 }
             })
         }
@@ -294,44 +416,76 @@ class CreateNotification extends React.Component {
                 mensagens: {
                     semanaAntes: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     dias3: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     diaAnterior: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     diaProprio: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     horaEspecifica: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     imediato: {
                         active: false, 
                         message: '',
                         tituloBlade: '',
-                        descricao: ''},
+                        descricao: '',
+                        persVal: false},
                     intervaloHoras: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     horaAntes: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     meiaHora: {
                         active: false, 
                         message: '',
                         tituloBlade: '',
-                        descricao: ''},
+                        descricao: '',
+                        persVal: false},
                     quartoHora: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     minutos5: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     momentoAcontecimento: {
                         active: false, 
-                        message: ''}
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false}
                 }
             })
         }
@@ -342,44 +496,76 @@ class CreateNotification extends React.Component {
                 mensagens: {
                     semanaAntes: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     dias3: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     diaAnterior: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     diaProprio: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     horaEspecifica: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     imediato: {
                         active: false, 
                         message: '',
                         tituloBlade: '',
-                        descricao: ''},
+                        descricao: '',
+                        persVal: false},
                     intervaloHoras: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     horaAntes: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     meiaHora: {
                         active: false, 
                         message: '',
                         tituloBlade: '',
-                        descricao: ''},
+                        descricao: '',
+                        persVal: false},
                     quartoHora: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     minutos5: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     momentoAcontecimento: {
                         active: false, 
-                        message: ''}
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false}
                 }
             })
         }
@@ -390,44 +576,76 @@ class CreateNotification extends React.Component {
                 mensagens: {
                     semanaAntes: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     dias3: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     diaAnterior: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     diaProprio: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     horaEspecifica: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     imediato: {
                         active: false, 
                         message: '',
                         tituloBlade: '',
-                        descricao: ''},
+                        descricao: '',
+                        persVal: false},
                     intervaloHoras: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     horaAntes: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     meiaHora: {
                         active: false, 
                         message: '',
                         tituloBlade: '',
-                        descricao: ''},
+                        descricao: '',
+                        persVal: false},
                     quartoHora: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     minutos5: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     momentoAcontecimento: {
                         active: false, 
-                        message: ''}
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false}
                 }
             })
         }
@@ -472,44 +690,76 @@ class CreateNotification extends React.Component {
                 mensagens: {
                     semanaAntes: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     dias3: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     diaAnterior: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     diaProprio: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     horaEspecifica: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     imediato: {
                         active: false, 
                         message: '',
                         tituloBlade: '',
-                        descricao: ''},
+                        descricao: '',
+                        persVal: false},
                     intervaloHoras: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     horaAntes: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     meiaHora: {
                         active: false, 
                         message: '',
                         tituloBlade: '',
-                        descricao: ''},
+                        descricao: '',
+                        persVal: false},
                     quartoHora: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     minutos5: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     momentoAcontecimento: {
                         active: false, 
-                        message: ''}
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false}
                 }
             })
         } else if(valor.target.value === "Pontual" && this.state.tipologia === 'Informação') {
@@ -520,44 +770,76 @@ class CreateNotification extends React.Component {
                 mensagens: {
                     semanaAntes: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     dias3: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     diaAnterior: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     diaProprio: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     horaEspecifica: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     imediato: {
                         active: false, 
                         message: '',
                         tituloBlade: '',
-                        descricao: ''},
+                        descricao: '',
+                        persVal: false},
                     intervaloHoras: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     horaAntes: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     meiaHora: {
                         active: false, 
                         message: '',
                         tituloBlade: '',
-                        descricao: ''},
+                        descricao: '',
+                        persVal: false},
                     quartoHora: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     minutos5: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     momentoAcontecimento: {
                         active: false, 
-                        message: ''}
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false}
                 }
             })
         } else{
@@ -568,44 +850,76 @@ class CreateNotification extends React.Component {
                 mensagens: {
                     semanaAntes: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     dias3: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     diaAnterior: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     diaProprio: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     horaEspecifica: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     imediato: {
                         active: false, 
                         message: '',
                         tituloBlade: '',
-                        descricao: ''},
+                        descricao: '',
+                        persVal: false},
                     intervaloHoras: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     horaAntes: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     meiaHora: {
                         active: false, 
                         message: '',
                         tituloBlade: '',
-                        descricao: ''},
+                        descricao: '',
+                        persVal: false},
                     quartoHora: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     minutos5: {
                         active: false, 
-                        message: ''},
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false},
                     momentoAcontecimento: {
                         active: false, 
-                        message: ''}
+                        message: '',
+                        tituloBlade: '',
+                        descricao: '',
+                        persVal: false}
                 }
             })
         }
@@ -617,44 +931,76 @@ class CreateNotification extends React.Component {
             mensagens: {
                 semanaAntes: {
                     active: false, 
-                    message: ''},
+                    message: '',
+                    tituloBlade: '',
+                    descricao: '',
+                    persVal: false},
                 dias3: {
                     active: false, 
-                    message: ''},
+                    message: '',
+                    tituloBlade: '',
+                    descricao: '',
+                    persVal: false},
                 diaAnterior: {
                     active: false, 
-                    message: ''},
+                    message: '',
+                    tituloBlade: '',
+                    descricao: '',
+                    persVal: false},
                 diaProprio: {
                     active: false, 
-                    message: ''},
+                    message: '',
+                    tituloBlade: '',
+                    descricao: '',
+                    persVal: false},
                 horaEspecifica: {
                     active: false, 
-                    message: ''},
+                    message: '',
+                    tituloBlade: '',
+                    descricao: '',
+                    persVal: false},
                 imediato: {
                     active: false, 
                     message: '',
                     tituloBlade: '',
-                    descricao: ''},
+                    descricao: '',
+                    persVal: false},
                 intervaloHoras: {
                     active: false, 
-                    message: ''},
+                    message: '',
+                    tituloBlade: '',
+                    descricao: '',
+                    persVal: false},
                 horaAntes: {
                     active: false, 
-                    message: ''},
+                    message: '',
+                    tituloBlade: '',
+                    descricao: '',
+                    persVal: false},
                 meiaHora: {
                     active: false, 
                     message: '',
                     tituloBlade: '',
-                    descricao: ''},
+                    descricao: '',
+                    persVal: false},
                 quartoHora: {
                     active: false, 
-                    message: ''},
+                    message: '',
+                    tituloBlade: '',
+                    descricao: '',
+                    persVal: false},
                 minutos5: {
                     active: false, 
-                    message: ''},
+                    message: '',
+                    tituloBlade: '',
+                    descricao: '',
+                    persVal: false},
                 momentoAcontecimento: {
                     active: false, 
-                    message: ''}
+                    message: '',
+                    tituloBlade: '',
+                    descricao: '',
+                    persVal: false}
             }
         })
     }
@@ -787,10 +1133,123 @@ class CreateNotification extends React.Component {
         })
     }
 
+    updatePersCheck = (val, pick) => {
+        //console.log(val, pick)
+        this.setState({
+            mensagens:{
+                ...this.state.mensagens,
+                [val]: {
+                    ...this.state.mensagens[val],
+                    persVal: pick
+                }
+            }
+        })
+    }
+
     updateBlade = (val) => {
         let escolhido = val.target.id;
         let escrito = val.target.value;
-        if(escolhido === 'meiaHoraTituloBlade'){
+        if(escolhido === 'semanaAntesTituloBlade'){
+            this.setState({
+                mensagens:{
+                    ...this.state.mensagens,
+                    semanaAntes: {
+                        ...this.state.mensagens.semanaAntes,
+                        tituloBlade: escrito
+                    }
+                }
+            })
+        } else if(escolhido === 'semanaAntesDescricaoBlade'){
+            this.setState({
+                mensagens:{
+                    ...this.state.mensagens,
+                    semanaAntes: {
+                        ...this.state.mensagens.semanaAntes,
+                        descricao: escrito
+                    }
+                }
+            })
+        } else if(escolhido === 'dias3TituloBlade'){
+            this.setState({
+                mensagens:{
+                    ...this.state.mensagens,
+                    dias3: {
+                        ...this.state.mensagens.dias3,
+                        tituloBlade: escrito
+                    }
+                }
+            })
+        } else if(escolhido === 'dias3DescricaoBlade'){
+            this.setState({
+                mensagens:{
+                    ...this.state.mensagens,
+                    dias3: {
+                        ...this.state.mensagens.dias3,
+                        descricao: escrito
+                    }
+                }
+            })
+        } else if(escolhido === 'diaAnteriorTituloBlade'){
+            this.setState({
+                mensagens:{
+                    ...this.state.mensagens,
+                    diaAnterior: {
+                        ...this.state.mensagens.diaAnterior,
+                        tituloBlade: escrito
+                    }
+                }
+            })
+        } else if(escolhido === 'diaAnteriorDescricaoBlade'){
+            this.setState({
+                mensagens:{
+                    ...this.state.mensagens,
+                    diaAnterior: {
+                        ...this.state.mensagens.diaAnterior,
+                        descricao: escrito
+                    }
+                }
+            })
+        } else if(escolhido === 'diaProprioTituloBlade'){
+            this.setState({
+                mensagens:{
+                    ...this.state.mensagens,
+                    diaProprio: {
+                        ...this.state.mensagens.diaProprio,
+                        tituloBlade: escrito
+                    }
+                }
+            })
+        } else if(escolhido === 'diaProprioDescricaoBlade'){
+            this.setState({
+                mensagens:{
+                    ...this.state.mensagens,
+                    diaProprio: {
+                        ...this.state.mensagens.diaProprio,
+                        descricao: escrito
+                    }
+                }
+            })
+        } else if(escolhido === 'horaAntesTituloBlade'){
+            this.setState({
+                mensagens:{
+                    ...this.state.mensagens,
+                    horaAntes: {
+                        ...this.state.mensagens.horaAntes,
+                        tituloBlade: escrito
+                    }
+                }
+            })
+        } else if(escolhido === 'horaAntesDescricaoBlade'){
+            this.setState({
+                mensagens:{
+                    ...this.state.mensagens,
+                    horaAntes: {
+                        ...this.state.mensagens.horaAntes,
+                        descricao: escrito
+                    }
+                }
+            })
+        } else if(escolhido === 'meiaHoraTituloBlade'){
             this.setState({
                 mensagens:{
                     ...this.state.mensagens,
@@ -950,6 +1409,7 @@ class CreateNotification extends React.Component {
     }
 
     render(){
+        //console.log(this.state.mensagens)
         return(
             <div>
                 <div className='mainBodyForm container px-0'>
@@ -1196,7 +1656,7 @@ class CreateNotification extends React.Component {
                                 <p className='subtituloSeccaoPaginaBigger mt-2'>Criação das notificações <span className='obrigatorio'>*</span> <OverlayTrigger placement='right' delay={{ show: 250, hide: 400}} overlay={MomentsTooltip}><img src={InformationIcon} style={{width: 'auto', height: '22px', margin: '0', marginLeft:'10px', padding: '0'}}/></OverlayTrigger></p>
                                 <p className='bigSmall mb-1'>Selecione os momentos em que quer mandar notifições.</p>
                                 <div className='row col-9'>
-                                    <DeliveryOptions subSaude={this.state.categoriaInfo} changeMomento={this.updateMomentosEnvio} blade={this.updateBlade} changeMensagem={this.updateMensagensEnvio} momentos={this.state.mensagens} tipo={this.state.tipologia} verificaMomento={this.state.momentoUnico} periodicidade={this.state.envioNotif}/>
+                                    <DeliveryOptions subSaude={this.state.categoriaInfo} changeMomento={this.updateMomentosEnvio} blade={this.updateBlade} persChange={this.updatePersCheck} changeMensagem={this.updateMensagensEnvio} momentos={this.state.mensagens} tipo={this.state.tipologia} verificaMomento={this.state.momentoUnico} periodicidade={this.state.envioNotif}/>
                                 </div>
 
                                 <div className='col-3 pe-0'>

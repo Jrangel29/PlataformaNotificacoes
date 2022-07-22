@@ -64,3 +64,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     overflow-y: auto;
     font-size: 14px!important;
 }
+
+.dropdownMomento{
+    width: 40%;
+    left: 0!important;
+    right: auto;
+    max-height: 250px!important;
+    overflow-y: auto;
+    font-size: 14px!important;
+}

@@ -414,33 +414,65 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
             var horaImediato = `${diaInicio.getHours() < 10 ? `0${diaInicio.getHours()}` : diaInicio.getHours()}:${(diaInicio.getMinutes() < 10) ? `0${diaInicio.getMinutes()}` : diaInicio.getMinutes()}`;
 
             if(tipologia === 'Personalizada' && paramsPersonalizado.usaIcone === "Sim"){
-                let imediato = {
-                    mensagem: mensagens.imediato.message,
-                    url_icone: objectImagens[paramsPersonalizado.icone],
-                    data: diaImediato,
-                    hora: horaImediato,
-                    rotina: null,
-                    zapping: 0,
-                    titulo: null,
-                    descricao: null,
-                    botao_titulo: null,
-                    botao_navigate: null,
+                if(mensagens.imediato.persVal === false){
+                    let imediato = {
+                        mensagem: mensagens.imediato.message,
+                        url_icone: objectImagens[paramsPersonalizado.icone],
+                        data: diaImediato,
+                        hora: horaImediato,
+                        rotina: null,
+                        zapping: 0,
+                        titulo: null,
+                        descricao: null,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                    }
+                    ObjetoEnvio.notificacoes.push(imediato)
+                } else {
+                    let imediato = {
+                        mensagem: mensagens.imediato.message,
+                        url_icone: objectImagens[paramsPersonalizado.icone],
+                        data: diaImediato,
+                        hora: horaImediato,
+                        rotina: null,
+                        zapping: 0,
+                        titulo: mensagens.imediato.tituloBlade,
+                        descricao: mensagens.imediato.descricao,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                    }
+                    ObjetoEnvio.notificacoes.push(imediato)
                 }
-                ObjetoEnvio.notificacoes.push(imediato)
             } else if(tipologia === 'Personalizada' && paramsPersonalizado.usaIcone === "Não"){
-                let imediato = {
-                    mensagem: mensagens.imediato.message,
-                    url_icone: null,
-                    data: diaImediato,
-                    hora: horaImediato,
-                    rotina: null,
-                    zapping: 0,
-                    titulo: null,
-                    descricao: null,
-                    botao_titulo: null,
-                    botao_navigate: null,
+                if(mensagens.imediato.persVal === false){
+                    let imediato = {
+                        mensagem: mensagens.imediato.message,
+                        url_icone: null,
+                        data: diaImediato,
+                        hora: horaImediato,
+                        rotina: null,
+                        zapping: 0,
+                        titulo: null,
+                        descricao: null,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                    }
+                    ObjetoEnvio.notificacoes.push(imediato)
+                } else {
+                    let imediato = {
+                        mensagem: mensagens.imediato.message,
+                        url_icone: null,
+                        data: diaImediato,
+                        hora: horaImediato,
+                        rotina: null,
+                        zapping: 0,
+                        titulo: mensagens.imediato.tituloBlade,
+                        descricao: mensagens.imediato.descricao,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                    }
+                    ObjetoEnvio.notificacoes.push(imediato)
                 }
-                ObjetoEnvio.notificacoes.push(imediato)
             } else {
                 let imediato = {
                     mensagem: mensagens.imediato.message,
@@ -481,33 +513,65 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
             var diaImediato = diaInicio.getFullYear() + '-' + ((diaInicio.getMonth() > 8) ? (diaInicio.getMonth() + 1) : ('0' + (diaInicio.getMonth() + 1))) + '-' + ((diaInicio.getDate() > 9) ? diaInicio.getDate() : ('0' + diaInicio.getDate()));
             var horaImediato = `${diaInicio.getHours() < 10 ? `0${diaInicio.getHours()}` : diaInicio.getHours()}:${(diaInicio.getMinutes() < 10) ? `0${diaInicio.getMinutes()}` : diaInicio.getMinutes()}`;
             if(tipologia === 'Personalizada' && paramsPersonalizado.usaIcone === "Sim"){
-                let imediato = {
-                    mensagem: mensagens.imediato.message,
-                    url_icone: objectImagens[paramsPersonalizado.icone],
-                    data: diaImediato,
-                    hora: horaImediato,
-                    rotina: null,
-                    zapping: 0,
-                    titulo: null,
-                    descricao: null,
-                    botao_titulo: null,
-                    botao_navigate: null,
+                if(mensagens.imediato.persVal === false){
+                    let imediato = {
+                        mensagem: mensagens.imediato.message,
+                        url_icone: objectImagens[paramsPersonalizado.icone],
+                        data: diaImediato,
+                        hora: horaImediato,
+                        rotina: null,
+                        zapping: 0,
+                        titulo: null,
+                        descricao: null,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                    }
+                    ObjetoEnvio.notificacoes.push(imediato)
+                } else {
+                    let imediato = {
+                        mensagem: mensagens.imediato.message,
+                        url_icone: objectImagens[paramsPersonalizado.icone],
+                        data: diaImediato,
+                        hora: horaImediato,
+                        rotina: null,
+                        zapping: 0,
+                        titulo: mensagens.imediato.tituloBlade,
+                        descricao: mensagens.imediato.descricao,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                    }
+                    ObjetoEnvio.notificacoes.push(imediato)
                 }
-                ObjetoEnvio.notificacoes.push(imediato)
             } else if(tipologia === 'Personalizada' && paramsPersonalizado.usaIcone === "Não"){
-                let imediato = {
-                    mensagem: mensagens.imediato.message,
-                    url_icone: null,
-                    data: diaImediato,
-                    hora: horaImediato,
-                    rotina: null,
-                    zapping: 0,
-                    titulo: null,
-                    descricao: null,
-                    botao_titulo: null,
-                    botao_navigate: null,
+                if(mensagens.imediato.persVal === false){
+                    let imediato = {
+                        mensagem: mensagens.imediato.message,
+                        url_icone: null,
+                        data: diaImediato,
+                        hora: horaImediato,
+                        rotina: null,
+                        zapping: 0,
+                        titulo: null,
+                        descricao: null,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                    }
+                    ObjetoEnvio.notificacoes.push(imediato)
+                } else {
+                    let imediato = {
+                        mensagem: mensagens.imediato.message,
+                        url_icone: null,
+                        data: diaImediato,
+                        hora: horaImediato,
+                        rotina: null,
+                        zapping: 0,
+                        titulo: mensagens.imediato.tituloBlade,
+                        descricao: mensagens.imediato.descricao,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                    }
+                    ObjetoEnvio.notificacoes.push(imediato)
                 }
-                ObjetoEnvio.notificacoes.push(imediato)
             } else {
                 let imediato = {
                     mensagem: mensagens.imediato.message,
@@ -541,33 +605,65 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
             var diaImediato = diaInicio.getFullYear() + '-' + ((diaInicio.getMonth() > 8) ? (diaInicio.getMonth() + 1) : ('0' + (diaInicio.getMonth() + 1))) + '-' + ((diaInicio.getDate() > 9) ? diaInicio.getDate() : ('0' + diaInicio.getDate()));
             var horaImediato = `${diaInicio.getHours() < 10 ? `0${diaInicio.getHours()}` : diaInicio.getHours()}:${(diaInicio.getMinutes() < 10) ? `0${diaInicio.getMinutes()}` : diaInicio.getMinutes()}`;
             if(tipologia === 'Personalizada' && paramsPersonalizado.usaIcone === "Sim"){
-                let imediato = {
-                    mensagem: mensagens.imediato.message,
-                    url_icone: objectImagens[paramsPersonalizado.icone],
-                    data: diaImediato,
-                    hora: horaImediato,
-                    rotina: null,
-                    zapping: 0,
-                    titulo: null,
-                    descricao: null,
-                    botao_titulo: null,
-                    botao_navigate: null,
+                if(mensagens.imediato.persVal === false){
+                    let imediato = {
+                        mensagem: mensagens.imediato.message,
+                        url_icone: objectImagens[paramsPersonalizado.icone],
+                        data: diaImediato,
+                        hora: horaImediato,
+                        rotina: null,
+                        zapping: 0,
+                        titulo: mensagens.imediato.tituloBlade,
+                        descricao: mensagens.imediato.descricao,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                    }
+                    ObjetoEnvio.notificacoes.push(imediato)
+                } else {
+                    let imediato = {
+                        mensagem: mensagens.imediato.message,
+                        url_icone: objectImagens[paramsPersonalizado.icone],
+                        data: diaImediato,
+                        hora: horaImediato,
+                        rotina: null,
+                        zapping: 0,
+                        titulo: mensagens.imediato.tituloBlade,
+                        descricao: mensagens.imediato.descricao,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                    }
+                    ObjetoEnvio.notificacoes.push(imediato)
                 }
-                ObjetoEnvio.notificacoes.push(imediato)
             } else if(tipologia === 'Personalizada' && paramsPersonalizado.usaIcone === "Não"){
-                let imediato = {
-                    mensagem: mensagens.imediato.message,
-                    url_icone: null,
-                    data: diaImediato,
-                    hora: horaImediato,
-                    rotina: null,
-                    zapping: 0,
-                    titulo: null,
-                    descricao: null,
-                    botao_titulo: null,
-                    botao_navigate: null,
+                if(mensagens.imediato.persVal === false){
+                    let imediato = {
+                        mensagem: mensagens.imediato.message,
+                        url_icone: null,
+                        data: diaImediato,
+                        hora: horaImediato,
+                        rotina: null,
+                        zapping: 0,
+                        titulo: null,
+                        descricao: null,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                    }
+                    ObjetoEnvio.notificacoes.push(imediato)
+                } else {
+                    let imediato = {
+                        mensagem: mensagens.imediato.message,
+                        url_icone: null,
+                        data: diaImediato,
+                        hora: horaImediato,
+                        rotina: null,
+                        zapping: 0,
+                        titulo: mensagens.imediato.tituloBlade,
+                        descricao: mensagens.imediato.descricao,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                    }
+                    ObjetoEnvio.notificacoes.push(imediato)
                 }
-                ObjetoEnvio.notificacoes.push(imediato)
             } else {
                 let imediato = {
                     mensagem: mensagens.imediato.message,
@@ -684,33 +780,65 @@ export const updateNotification = (id, tipologia, intervaloTempo, nomeItem, mome
             var horaImediato = `${diaInicio.getHours() < 10 ? `0${diaInicio.getHours()}` : diaInicio.getHours()}:${(diaInicio.getMinutes() < 10) ? `0${diaInicio.getMinutes()}` : diaInicio.getMinutes()}`;
 
             if(tipologia === 'Personalizada' && paramsPersonalizado.usaIcone === "Sim"){
-                let imediato = {
-                    mensagem: mensagens.imediato.message,
-                    url_icone: objectImagens[paramsPersonalizado.icone],
-                    data: diaImediato,
-                    hora: horaImediato,
-                    rotina: null,
-                    zapping: 0,
-                    titulo: null,
-                    descricao: null,
-                    botao_titulo: null,
-                    botao_navigate: null,
+                if(mensagens.imediato.persVal === false){
+                    let imediato = {
+                        mensagem: mensagens.imediato.message,
+                        url_icone: objectImagens[paramsPersonalizado.icone],
+                        data: diaImediato,
+                        hora: horaImediato,
+                        rotina: null,
+                        zapping: 0,
+                        titulo: mensagens.imediato.tituloBlade,
+                        descricao: mensagens.imediato.descricao,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                    }
+                    ObjetoEnvio.notificacoes.push(imediato)
+                } else {
+                    let imediato = {
+                        mensagem: mensagens.imediato.message,
+                        url_icone: objectImagens[paramsPersonalizado.icone],
+                        data: diaImediato,
+                        hora: horaImediato,
+                        rotina: null,
+                        zapping: 0,
+                        titulo: mensagens.imediato.tituloBlade,
+                        descricao: mensagens.imediato.descricao,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                    }
+                    ObjetoEnvio.notificacoes.push(imediato)
                 }
-                ObjetoEnvio.notificacoes.push(imediato)
             } else if(tipologia === 'Personalizada' && paramsPersonalizado.usaIcone === "Não"){
-                let imediato = {
-                    mensagem: mensagens.imediato.message,
-                    url_icone: null,
-                    data: diaImediato,
-                    hora: horaImediato,
-                    rotina: null,
-                    zapping: 0,
-                    titulo: null,
-                    descricao: null,
-                    botao_titulo: null,
-                    botao_navigate: null,
+                if(mensagens.imediato.persVal === false){
+                    let imediato = {
+                        mensagem: mensagens.imediato.message,
+                        url_icone: null,
+                        data: diaImediato,
+                        hora: horaImediato,
+                        rotina: null,
+                        zapping: 0,
+                        titulo: null,
+                        descricao: null,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                    }
+                    ObjetoEnvio.notificacoes.push(imediato)
+                } else {
+                    let imediato = {
+                        mensagem: mensagens.imediato.message,
+                        url_icone: null,
+                        data: diaImediato,
+                        hora: horaImediato,
+                        rotina: null,
+                        zapping: 0,
+                        titulo: mensagens.imediato.tituloBlade,
+                        descricao: mensagens.imediato.descricao,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                    }
+                    ObjetoEnvio.notificacoes.push(imediato)
                 }
-                ObjetoEnvio.notificacoes.push(imediato)
             } else {
                 let imediato = {
                     mensagem: mensagens.imediato.message,
@@ -803,33 +931,65 @@ export const updateNotification = (id, tipologia, intervaloTempo, nomeItem, mome
             var horaImediato = `${diaInicio.getHours() < 10 ? `0${diaInicio.getHours()}` : diaInicio.getHours()}:${(diaInicio.getMinutes() < 10) ? `0${diaInicio.getMinutes()}` : diaInicio.getMinutes()}`;
 
             if(tipologia === 'Personalizada' && paramsPersonalizado.usaIcone === "Sim"){
-                let imediato = {
-                    mensagem: mensagens.imediato.message,
-                    url_icone: objectImagens[paramsPersonalizado.icone],
-                    data: diaImediato,
-                    hora: horaImediato,
-                    rotina: null,
-                    zapping: 0,
-                    titulo: null,
-                    descricao: null,
-                    botao_titulo: null,
-                    botao_navigate: null,
+                if(mensagens.imediato.persVal === false){
+                    let imediato = {
+                        mensagem: mensagens.imediato.message,
+                        url_icone: objectImagens[paramsPersonalizado.icone],
+                        data: diaImediato,
+                        hora: horaImediato,
+                        rotina: null,
+                        zapping: 0,
+                        titulo: mensagens.imediato.tituloBlade,
+                        descricao: mensagens.imediato.descricao,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                    }
+                    ObjetoEnvio.notificacoes.push(imediato)
+                } else {
+                    let imediato = {
+                        mensagem: mensagens.imediato.message,
+                        url_icone: objectImagens[paramsPersonalizado.icone],
+                        data: diaImediato,
+                        hora: horaImediato,
+                        rotina: null,
+                        zapping: 0,
+                        titulo: mensagens.imediato.tituloBlade,
+                        descricao: mensagens.imediato.descricao,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                    }
+                    ObjetoEnvio.notificacoes.push(imediato)
                 }
-                ObjetoEnvio.notificacoes.push(imediato)
             } else if(tipologia === 'Personalizada' && paramsPersonalizado.usaIcone === "Não"){
-                let imediato = {
-                    mensagem: mensagens.imediato.message,
-                    url_icone: null,
-                    data: diaImediato,
-                    hora: horaImediato,
-                    rotina: null,
-                    zapping: 0,
-                    titulo: null,
-                    descricao: null,
-                    botao_titulo: null,
-                    botao_navigate: null,
+                if(mensagens.imediato.persVal === false){
+                    let imediato = {
+                        mensagem: mensagens.imediato.message,
+                        url_icone: null,
+                        data: diaImediato,
+                        hora: horaImediato,
+                        rotina: null,
+                        zapping: 0,
+                        titulo: null,
+                        descricao: null,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                    }
+                    ObjetoEnvio.notificacoes.push(imediato)
+                } else {
+                    let imediato = {
+                        mensagem: mensagens.imediato.message,
+                        url_icone: null,
+                        data: diaImediato,
+                        hora: horaImediato,
+                        rotina: null,
+                        zapping: 0,
+                        titulo: mensagens.imediato.tituloBlade,
+                        descricao: mensagens.imediato.descricao,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                    }
+                    ObjetoEnvio.notificacoes.push(imediato)
                 }
-                ObjetoEnvio.notificacoes.push(imediato)
             } else {
                 let imediato = {
                     mensagem: mensagens.imediato.message,
@@ -870,33 +1030,65 @@ export const updateNotification = (id, tipologia, intervaloTempo, nomeItem, mome
             var diaImediato = diaInicio.getFullYear() + '-' + ((diaInicio.getMonth() > 8) ? (diaInicio.getMonth() + 1) : ('0' + (diaInicio.getMonth() + 1))) + '-' + ((diaInicio.getDate() > 9) ? diaInicio.getDate() : ('0' + diaInicio.getDate()));
             var horaImediato = `${diaInicio.getHours() < 10 ? `0${diaInicio.getHours()}` : diaInicio.getHours()}:${(diaInicio.getMinutes() < 10) ? `0${diaInicio.getMinutes()}` : diaInicio.getMinutes()}`;
             if(tipologia === 'Personalizada' && paramsPersonalizado.usaIcone === "Sim"){
-                let imediato = {
-                    mensagem: mensagens.imediato.message,
-                    url_icone: objectImagens[paramsPersonalizado.icone],
-                    data: diaImediato,
-                    hora: horaImediato,
-                    rotina: null,
-                    zapping: 0,
-                    titulo: null,
-                    descricao: null,
-                    botao_titulo: null,
-                    botao_navigate: null,
+                if(mensagens.imediato.persVal === false){
+                    let imediato = {
+                        mensagem: mensagens.imediato.message,
+                        url_icone: objectImagens[paramsPersonalizado.icone],
+                        data: diaImediato,
+                        hora: horaImediato,
+                        rotina: null,
+                        zapping: 0,
+                        titulo: mensagens.imediato.tituloBlade,
+                        descricao: mensagens.imediato.descricao,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                    }
+                    ObjetoEnvio.notificacoes.push(imediato)
+                } else {
+                    let imediato = {
+                        mensagem: mensagens.imediato.message,
+                        url_icone: objectImagens[paramsPersonalizado.icone],
+                        data: diaImediato,
+                        hora: horaImediato,
+                        rotina: null,
+                        zapping: 0,
+                        titulo: mensagens.imediato.tituloBlade,
+                        descricao: mensagens.imediato.descricao,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                    }
+                    ObjetoEnvio.notificacoes.push(imediato)
                 }
-                ObjetoEnvio.notificacoes.push(imediato)
             } else if(tipologia === 'Personalizada' && paramsPersonalizado.usaIcone === "Não"){
-                let imediato = {
-                    mensagem: mensagens.imediato.message,
-                    url_icone: null,
-                    data: diaImediato,
-                    hora: horaImediato,
-                    rotina: null,
-                    zapping: 0,
-                    titulo: null,
-                    descricao: null,
-                    botao_titulo: null,
-                    botao_navigate: null,
+                if(mensagens.imediato.persVal === false){
+                    let imediato = {
+                        mensagem: mensagens.imediato.message,
+                        url_icone: null,
+                        data: diaImediato,
+                        hora: horaImediato,
+                        rotina: null,
+                        zapping: 0,
+                        titulo: null,
+                        descricao: null,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                    }
+                    ObjetoEnvio.notificacoes.push(imediato)
+                } else {
+                    let imediato = {
+                        mensagem: mensagens.imediato.message,
+                        url_icone: null,
+                        data: diaImediato,
+                        hora: horaImediato,
+                        rotina: null,
+                        zapping: 0,
+                        titulo: mensagens.imediato.tituloBlade,
+                        descricao: mensagens.imediato.descricao,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                    }
+                    ObjetoEnvio.notificacoes.push(imediato)
                 }
-                ObjetoEnvio.notificacoes.push(imediato)
             } else {
                 let imediato = {
                     mensagem: mensagens.imediato.message,
@@ -930,33 +1122,65 @@ export const updateNotification = (id, tipologia, intervaloTempo, nomeItem, mome
             var diaImediato = diaInicio.getFullYear() + '-' + ((diaInicio.getMonth() > 8) ? (diaInicio.getMonth() + 1) : ('0' + (diaInicio.getMonth() + 1))) + '-' + ((diaInicio.getDate() > 9) ? diaInicio.getDate() : ('0' + diaInicio.getDate()));
             var horaImediato = `${diaInicio.getHours() < 10 ? `0${diaInicio.getHours()}` : diaInicio.getHours()}:${(diaInicio.getMinutes() < 10) ? `0${diaInicio.getMinutes()}` : diaInicio.getMinutes()}`;
             if(tipologia === 'Personalizada' && paramsPersonalizado.usaIcone === "Sim"){
-                let imediato = {
-                    mensagem: mensagens.imediato.message,
-                    url_icone: objectImagens[paramsPersonalizado.icone],
-                    data: diaImediato,
-                    hora: horaImediato,
-                    rotina: null,
-                    zapping: 0,
-                    titulo: null,
-                    descricao: null,
-                    botao_titulo: null,
-                    botao_navigate: null,
+                if(mensagens.imediato.persVal === false){
+                    let imediato = {
+                        mensagem: mensagens.imediato.message,
+                        url_icone: objectImagens[paramsPersonalizado.icone],
+                        data: diaImediato,
+                        hora: horaImediato,
+                        rotina: null,
+                        zapping: 0,
+                        titulo: mensagens.imediato.tituloBlade,
+                        descricao: mensagens.imediato.descricao,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                    }
+                    ObjetoEnvio.notificacoes.push(imediato)
+                } else {
+                    let imediato = {
+                        mensagem: mensagens.imediato.message,
+                        url_icone: objectImagens[paramsPersonalizado.icone],
+                        data: diaImediato,
+                        hora: horaImediato,
+                        rotina: null,
+                        zapping: 0,
+                        titulo: mensagens.imediato.tituloBlade,
+                        descricao: mensagens.imediato.descricao,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                    }
+                    ObjetoEnvio.notificacoes.push(imediato)
                 }
-                ObjetoEnvio.notificacoes.push(imediato)
             } else if(tipologia === 'Personalizada' && paramsPersonalizado.usaIcone === "Não"){
-                let imediato = {
-                    mensagem: mensagens.imediato.message,
-                    url_icone: null,
-                    data: diaImediato,
-                    hora: horaImediato,
-                    rotina: null,
-                    zapping: 0,
-                    titulo: null,
-                    descricao: null,
-                    botao_titulo: null,
-                    botao_navigate: null,
+                if(mensagens.imediato.persVal === false){
+                    let imediato = {
+                        mensagem: mensagens.imediato.message,
+                        url_icone: null,
+                        data: diaImediato,
+                        hora: horaImediato,
+                        rotina: null,
+                        zapping: 0,
+                        titulo: null,
+                        descricao: null,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                    }
+                    ObjetoEnvio.notificacoes.push(imediato)
+                } else {
+                    let imediato = {
+                        mensagem: mensagens.imediato.message,
+                        url_icone: null,
+                        data: diaImediato,
+                        hora: horaImediato,
+                        rotina: null,
+                        zapping: 0,
+                        titulo: mensagens.imediato.tituloBlade,
+                        descricao: mensagens.imediato.descricao,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                    }
+                    ObjetoEnvio.notificacoes.push(imediato)
                 }
-                ObjetoEnvio.notificacoes.push(imediato)
             } else {
                 let imediato = {
                     mensagem: mensagens.imediato.message,
