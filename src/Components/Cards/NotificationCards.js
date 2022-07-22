@@ -134,7 +134,7 @@ const NotificationCards = (props) => {
             <div className='row cartasMainBody'>
                 {currentItems.current.map((item, index) => {
                     let dataNova = new Date(item.data);
-                    var dataFinal = ((dataNova.getMonth() > 8) ? (dataNova.getMonth() + 1) : ('0' + (dataNova.getMonth() + 1))) + '/' + ((dataNova.getDate() > 9) ? dataNova.getDate() : ('0' + dataNova.getDate()))  + '/' + dataNova.getFullYear();
+                    var dataFinal = ((dataNova.getDate() > 9) ? dataNova.getDate() : ('0' + dataNova.getDate()))  + '/' + ((dataNova.getMonth() > 8) ? (dataNova.getMonth() + 1) : ('0' + (dataNova.getMonth() + 1))) + '/' + dataNova.getFullYear();
 
                     var hora = 'Indefinida'
                     let diaSemana = dataNova.getDay()
