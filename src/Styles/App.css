@@ -230,6 +230,15 @@ textarea:focus, input:focus{
     margin-right: auto!important;
 }
 
+.page-item{
+    width: 50px!important;
+    text-align: center!important;
+}
+.page-item2{
+    width: 60px!important;
+    text-align: center!important;
+}
+
 .paginacaoTop{
     display: flex;
     flex-direction: row;

@@ -60,7 +60,6 @@ const NotificationDetails = () => {
                     <span className='m-0 p-0'>
                         <p className='subtituloSeccaoPagina mt-2 mb-0'>Nome do evento</p>
                         <p className='textoSeccaoPagina'>{notificationInfo[0].nomeEvento}</p>
-                        {console.log(notificationInfo[0])}
                     </span> 
                     <div className='m-0 p-0'>
                         <p className='subtituloSeccaoPagina mt-3 mb-0'>Informação da notificação</p>
