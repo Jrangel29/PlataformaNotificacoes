@@ -30,6 +30,8 @@ import EditHouse from "./Pages/Forms/EditHouse.js";
 import Error404 from "./Pages/404.js";
 import "./Styles/App.css";
 import NotificationDetails from './Pages/NotificationDetails.js'
+import Stats from "./Pages/Stats.js";
+import HouseStats from "./Pages/HouseStats.js";
 
 function App() {
   const currentUser = useAuth();
@@ -50,13 +52,6 @@ function App() {
               <Route exact path='/users/create' element={<CreateUser />} />
               <Route exact path='/users/edit/:id' element={<EditUser />} />
               <Route exact path='/routines' element={<Routines />} />
-              {/*<Route exact path="/groups" element={<Groups/>}/>
-          <Route exact path="/groups/group" element={<Group/>}/>
-          <Route exact path="/groups/create" element={<CreateGroup/>}/>
-          <Route exact path="/groups/edit" element={<EditGroup/>}/>
-          <Route exact path="/templates" element={<Templates/>}/>
-          <Route exact path="/templates/create" element={<CreateTemplate/>}/>
-          <Route exact path="/templates/edit" element={<EditTemplate/>}/>*/}
               <Route exact path='/history' element={<History />} />
               <Route exact path='/history/:id' element={<HistoryDetails />} />
               <Route exact path='/houses' element={<Houses />} />
@@ -68,6 +63,8 @@ function App() {
               <Route exact path='/events/create' element={<CreateNotification />} />
               <Route exact path='/events/edit/:id' element={<EditNotification />} />
               <Route exact path='/registar' element={<SignIn />} />
+              <Route exact path='/estatisticas' element={<Stats />} />
+              <Route exact path='/estatisticasCasas' element={<HouseStats />} />
               <Route path='*' element={<Error404 />} />
             </Route>
           </Routes>

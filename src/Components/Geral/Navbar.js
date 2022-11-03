@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../../Styles/Navbar.css";
 import { Navbar, Nav, Container, Tabs, Tab } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { logOut } from "../../firebase";
 
 function TerminarSessao() {
@@ -25,6 +25,8 @@ const BarraNav = () => {
   const lugar = window.location.pathname;
   const [tipo, setTipo] = useState("");
 
+  let navigate = useNavigate();
+
   const stringEvent = lugar.substring(0, 7);
   const stringUser = lugar.substring(0, 6);
   const stringHouse = lugar.substring(0, 7);
@@ -43,15 +45,27 @@ const BarraNav = () => {
       lugar === "/houses/create"
     ) {
       setTipo("Destino");
+    } else if (lugar === '/') {
+      setTipo('nada')
+    } else if (lugar === '/estatisticas' || lugar === '/estatisticasCasas') {
+      setTipo("Stats");      
     } else {
       setTipo("Notifications");
     }
   }, []);
 
   return (
-    <div className={tipo === "Notifs" ? "barraNavegacao pt1 m-0 p-0" : "barraNavegacao pt2 m-0 p-0"}>
+    <div className={tipo === "nada" ? "" : tipo === "Notifs" ? "barraNavegacao pt1 m-0 p-0" : "barraNavegacao pt2 m-0 p-0"}>
       <div className='containerNavBar topPart'>
         <div className='topBar m-0 p-0 h-100'>
+          <div
+              className={"btn btnNav home logout"}
+              onClick={() => navigate('/')}
+            >
+              <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='white' className='bi bi-box-arrow-right' viewBox='0 0 16 16'>
+                <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/> <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+              </svg>
+          </div>
           <div
             className={tipo === "Eventos" ? "btn btnNav escolheHalf" : "btn btnNav escolheHalfNot H1"}
             onClick={() => setTipo("Eventos")}
@@ -70,21 +84,21 @@ const BarraNav = () => {
           >
             Destinatários
           </div>
+          <div
+            className={tipo === "Stats" ? "btn btnNav escolheHalf" : "btn btnNav escolheHalfNot H2"}
+            onClick={() => setTipo("Stats")}
+          >
+            Estatísticas
+          </div>
           <TerminarSessao />
         </div>
       </div>
-      <div className='containerNavBar w-100'>
+      <div className='containerNavBar w-100 row' style={{paddingLeft:'5%', paddingRight: '5%'}}>
         <Navbar className='m-0 p-0 h-100 w-100'>
           <Nav
             activeKey={lugar}
-            className='containerNavBar'
-            style={
-              tipo === "Eventos"
-                ? { textAlign: "center", marginLeft: "10%", marginRight: "auto" }
-                : tipo === "Notifications"
-                ? { textAlign: "center", marginLeft: "38%", marginRight: 'auto' }
-                : { textAlign: "center", marginLeft: "auto", marginRight: "13%" }
-            }
+            className={tipo === "Eventos" ? 'containerNavBar col-3 p-0' : tipo === "Notifications" ? 'containerNavBar col-3 offset-3 p-0' : tipo === "Stats" ? 'containerNavBar col-3 offset-9 p-0' : 'containerNavBar col-3 offset-6 p-0'}
+            style={{justifyContent: 'center'}}
           >
             {tipo === "Eventos" ? (
               <>
@@ -99,7 +113,10 @@ const BarraNav = () => {
                   Eventos
                 </Nav.Link>
               </>
-            ) : tipo === "Notifications" ? (
+            ) : tipo === 'nada' ?
+              <>
+              </> 
+            : tipo === "Notifications" ? (
               <>
                 <Nav.Link as={Link} className={lugar === "/notifications" || stringNotification === '/notifications' ? "navSelected" : ""} to='/notifications'>
                   Agendadas
@@ -110,6 +127,19 @@ const BarraNav = () => {
                   to='/history'
                 >
                   Enviadas
+                </Nav.Link>
+              </>
+            ) : tipo === "Stats" ? (
+              <>
+                <Nav.Link as={Link} className={lugar === "/estatisticas" ? "navSelected" : ""} to='/estatisticas'>
+                  Geral
+                </Nav.Link>
+                <Nav.Link
+                  as={Link}
+                  className={lugar === "/estatisticasCasas" ? "navSelected" : ""}
+                  to='/estatisticasCasas'
+                >
+                  Por Casa
                 </Nav.Link>
               </>
             ) : (

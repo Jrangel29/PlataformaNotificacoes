@@ -8,32 +8,11 @@ import { getNotificationInfo } from '../Store/Notifications/Actions';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
 import Loading from '../Pages/Loading';
-import { PieChart } from '../Components/Charts/PieChart';
 
 const HistoryDetails = () => {
 
     const dispatch = useDispatch();
     const {id} = useParams();
-
-    const [estatiticas, setEstatisticas] = useState([
-        {
-            name: 'Fechou',
-            value: 0
-        },
-        {
-            name: 'Abriu',
-            value: 0
-        },
-        {
-            name: 'Recebeu',
-            value: 0
-        },
-        {
-            name: 'Enviou',
-            value: 0
-        },
-    ])
-
     const [dataHora, setDataHora] = useState([])
 
     const notificationInfo = useSelector(({ notificacoes }) => notificacoes.singleNotification)
@@ -42,48 +21,6 @@ const HistoryDetails = () => {
     useEffect(() => {
         dispatch(getNotificationInfo(id))
     }, [])
-
-    useEffect(() => {
-
-        var fechou = 0;
-        var abriu = 0;
-        var recebeu = 0;
-        var enviou = 0;
-
-        if(!isLoadingNotificationInfo){
-            notificationInfo.map(item => {
-                if(item.enviado.data[0] !== 0){
-                    enviou++;
-                }
-                if(item.recebido.data[0] !== 0){
-                    recebeu++;
-                    if(item.fechou.data[0] !== 0){
-                        fechou++;
-                    } else {
-                        abriu++
-                    }
-                }
-            })
-            setEstatisticas([
-                {
-                    name: 'Fechou',
-                    value: fechou
-                },
-                {
-                    name: 'Abriu',
-                    value: abriu
-                },
-                {
-                    name: 'Recebeu',
-                    value: recebeu
-                },
-                {
-                    name: 'Enviou',
-                    value: enviou
-                },
-            ])
-        }
-    }, [isLoadingNotificationInfo])
 
     useEffect(() => {
 
@@ -106,7 +43,7 @@ const HistoryDetails = () => {
             <Loading/>
         )
     }
-    console.log(notificationInfo[0])
+    //console.log(notificationInfo[0])
 
     return(
         <div>
@@ -135,60 +72,6 @@ const HistoryDetails = () => {
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className='prevSeccao ms-0'>
-                    <h1 className='tituloSeccaoPaginaNotifs'>Estatísticas</h1>
-                </div>
-                <div style={{padding: '0 40px'}} className="mx-2 row">
-                    <p className='subtituloSeccaoPagina mt-2 px-0'>Contagem das interações</p>
-                    <span className='col-5 m-0 p-0'>
-                        <Table striped bordered hover className='tabelaHistorico'>
-                            <thead>
-                                <tr>
-                                    <th style={{fontSize: '16px'}}>Envio/Receção da notificação</th>
-                                    <th style={{fontSize: '16px'}}>Contagem</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td style={{fontSize: '14px'}}>A notificação foi enviada.</td>
-                                    <td style={{fontSize: '14px'}}>{estatiticas[3].value}</td>
-                                </tr>
-                                <tr>
-                                    <td style={{fontSize: '14px'}}>A notificação foi recebida.</td>
-                                    <td style={{fontSize: '14px'}}>{estatiticas[2].value}</td>
-                                </tr>
-                            </tbody>
-                        </Table>
-                    </span>
-                    <span className='col-5 offset-1 p-0'>
-                        <Table striped bordered hover className='tabelaHistorico'>
-                            <thead>
-                                <tr>
-                                    <th style={{fontSize: '16px'}}>Interação</th>
-                                    <th style={{fontSize: '16px'}}>Contagem</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td style={{fontSize: '14px'}}>O utilizador fechou a notificação.</td>
-                                    <td style={{fontSize: '14px'}}>{estatiticas[0].value}</td>
-                                </tr>
-                                {notificationInfo[0].ref_id_tipologia !== 2 ?
-                                    <tr>
-                                        <td style={{fontSize: '14px'}}>{notificationInfo[0].ref_id_tipologia === 1 || notificationInfo[0].ref_id_tipologia === 4 ? 'O espectador escolheu "Relembrar daqui a 15 minutos".' : notificationInfo[0].ref_id_tipologia === 2 ? 'O espectador foi para o canal.' : notificationInfo[0].ref_id_tipologia === 5 ? 'O espectador foi para a app.' : ''}</td>
-                                        <td style={{fontSize: '14px'}}>{estatiticas[1].value}</td>
-                                    </tr>
-                                :
-                                <></>
-                                }
-                            </tbody>
-                        </Table>
-                    </span>
-                    <span className='row col-12 m-0 p-0'>
-                        <p className='subtituloSeccaoPagina px-0 mb-0 pb-0'>Representação gráfica</p>
-                        <PieChart info={estatiticas}/>
-                    </span>
                 </div>
                 <div className='prevSeccao ms-0'>
                     <h1 className='tituloSeccaoPaginaNotifs'>Interações detalhadas</h1>

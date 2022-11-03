@@ -1,7 +1,7 @@
 .mainHomepage{
     border: 0;
     position: absolute;
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
     background-color: #FFFFFF;
 }
@@ -12,6 +12,15 @@
     align-items:center;
     justify-content:center;
 }
+
+.tituloHomepage{
+    font-size: 28px;
+    font-weight: 700;
+    padding-bottom: 10px;
+    color: #112D4E;
+    margin-bottom: 0;
+}
+
 
 .conteudoLoading{
     display: flex;

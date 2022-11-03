@@ -66,6 +66,27 @@
   background-color: #b73f3f !important;
 }
 
+.home {
+  position: relative;
+  color: #f9f7f7 !important;
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  height: 97% !important;
+  width: 5% !important;
+  padding: 0 20px !important;
+  line-height: 45px !important;
+  background-color: #34962b !important;
+  cursor: pointer !important;
+  z-index: 0 !important;
+  border-radius: 0 !important;
+}
+
+.home:hover {
+  background-color: #1a4c16 !important;
+  transition: background-color 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
+  cursor: pointer !important;
+}
+
 .H1 {
   box-shadow: inset 7px -6px 23px -1px rgba(0, 0, 0, 0.1) !important;
 }

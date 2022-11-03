@@ -8,7 +8,6 @@ import { getNotificationInfo } from '../Store/Notifications/Actions';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
 import Loading from '../Pages/Loading';
-import { PieChart } from '../Components/Charts/PieChart';
 
 const NotificationDetails = () => {
 

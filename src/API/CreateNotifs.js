@@ -1435,7 +1435,7 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
             primeiroDia.setHours(atual.getHours(), atual.getMinutes());
             let primeiraCria = new Date(dias.diasEvento[0])
             primeiraCria.setHours(dataFlex.getHours(), dataFlex.getMinutes())
-            console.log(dias.diasEvento)
+            //console.log(dias.diasEvento)
             dias.diasEvento.map((item, key) => {
                 if(key === 0){
                     if(primeiraCria >= primeiroDia){

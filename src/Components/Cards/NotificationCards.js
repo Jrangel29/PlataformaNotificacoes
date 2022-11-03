@@ -10,9 +10,6 @@ import Loading from '../../Pages/Loading';
 import { getNotifications } from '../../Store/Notifications/Actions';
 import NotificationModal from '../../Components/Modal/NotificationModal';
 import Pagination from '../Geral/Pagination';
-import { PieChartNotiList } from '../Charts/PieChart';
-import { Table } from 'react-bootstrap'
-import Stats from './Stats';
 
 const NotificationCards = (props) => {
 
@@ -145,11 +142,6 @@ const NotificationCards = (props) => {
                 :
                 <></>}
             </div>
-            {props.tipo === 'Enviadas' ? 
-            <Stats items={currentItems.todos}/>  
-            :
-            <></>
-            }
             <NotificationModal show={modal[0]} onHide={() => setModal([false, {}])} tipo="notificacoes" info={modal[1]}/>
         </div>
     )

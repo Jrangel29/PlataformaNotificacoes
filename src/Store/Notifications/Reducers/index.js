@@ -9,6 +9,8 @@ import {
     NOTIFICATION_SINGLE_GET_START,
     NOTIFICATION_UPDATE_SUCCESS,
     NOTIFICATION_UPDATE_START,
+    NOTIFICATION_STATS_ALL_GET_START,
+    NOTIFICATION_STATS_ALL_GET_SUCCESS,
 } from '../Actions/Constants'
 
 const initialState = {
@@ -16,6 +18,7 @@ const initialState = {
     singleNotification: {},
     isLoading: true,
     isLoadingAll: true,
+    isLoadingAllStats: true,
     isLoadingSingle: true,
     isLoadingEdit: true
 }
@@ -38,6 +41,10 @@ export default (state = initialState, { type, payload }) => {
             return { ...state, isLoadingAll: true };
         case NOTIFICATION_ALL_GET_SUCCESS:
             return { ...state, data: payload, isLoadingAll: false };
+        case NOTIFICATION_STATS_ALL_GET_START:
+            return { ...state, isLoadingAllStats: true };
+        case NOTIFICATION_STATS_ALL_GET_SUCCESS:
+            return { ...state, data: payload, isLoadingAllStats: false };
         case NOTIFICATION_SINGLE_GET_START:
             return { ...state, isLoadingSingle: true };
         case NOTIFICATION_SINGLE_GET_SUCCESS:

@@ -277,7 +277,7 @@ export const CasasPesquisa = (props) => {
         )
     }
 
-    console.log(arrayCasas)
+    //console.log(arrayCasas)
 
     return(
         <>
