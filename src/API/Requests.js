@@ -55,7 +55,7 @@ export const createHouse = (nome, idBox, concelho) => {
     }).then(response => response.json())
 }
 
-export const updateHouse = (id_casa, nome, idBox, concelho) => {
+export const updateHouse = (id_casa, nome, idBox, concelho, recebe) => {
     
     //console.log(id_casa)
     fetch(`https://geo-navsafety.ua.pt:443/overtv/casas`, {
@@ -63,7 +63,7 @@ export const updateHouse = (id_casa, nome, idBox, concelho) => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({id_casa, nome, idBox, concelho})
+        body: JSON.stringify({id_casa, nome, idBox, concelho, recebe})
     }).then(response => response.json())
 }
 
