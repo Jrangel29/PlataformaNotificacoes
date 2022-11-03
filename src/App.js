@@ -29,9 +29,10 @@ import EditTemplate from "./Pages/Forms/EditTemplate.js";
 import EditHouse from "./Pages/Forms/EditHouse.js";
 import Error404 from "./Pages/404.js";
 import "./Styles/App.css";
-import NotificationDetails from './Pages/NotificationDetails.js'
+import NotificationDetails from "./Pages/NotificationDetails.js";
 import Stats from "./Pages/Stats.js";
 import HouseStats from "./Pages/HouseStats.js";
+import UpdatePassword from "./Pages/UpdatePassword.js";
 
 function App() {
   const currentUser = useAuth();
@@ -44,28 +45,29 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route element={<ProtectedRoutes />}>
-              <Route exact path='/' element={<Homepage />} />
-              <Route exact path='/notifications' element={<Notifications />} />
-              <Route exact path='/notifications/:id' element={<NotificationDetails />} />
-              <Route exact path='/users' element={<Users />} />
-              <Route exact path='/users/:id' element={<User />} />
-              <Route exact path='/users/create' element={<CreateUser />} />
-              <Route exact path='/users/edit/:id' element={<EditUser />} />
-              <Route exact path='/routines' element={<Routines />} />
-              <Route exact path='/history' element={<History />} />
-              <Route exact path='/history/:id' element={<HistoryDetails />} />
-              <Route exact path='/houses' element={<Houses />} />
-              <Route exact path='/houses/:id' element={<House />} />
-              <Route exact path='/houses/create' element={<CreateHouse />} />
-              <Route exact path='/houses/edit/:id' element={<EditHouse />} />
-              <Route exact path='/events' element={<Events />} />
-              <Route exact path='/events/:id' element={<Event />} />
-              <Route exact path='/events/create' element={<CreateNotification />} />
-              <Route exact path='/events/edit/:id' element={<EditNotification />} />
-              <Route exact path='/registar' element={<SignIn />} />
-              <Route exact path='/estatisticas' element={<Stats />} />
-              <Route exact path='/estatisticasCasas' element={<HouseStats />} />
-              <Route path='*' element={<Error404 />} />
+              <Route exact path="/" element={<Homepage />} />
+              <Route exact path="/notifications" element={<Notifications />} />
+              <Route exact path="/notifications/:id" element={<NotificationDetails />} />
+              <Route exact path="/users" element={<Users />} />
+              <Route exact path="/users/:id" element={<User />} />
+              <Route exact path="/users/create" element={<CreateUser />} />
+              <Route exact path="/users/edit/:id" element={<EditUser />} />
+              <Route exact path="/routines" element={<Routines />} />
+              <Route exact path="/history" element={<History />} />
+              <Route exact path="/history/:id" element={<HistoryDetails />} />
+              <Route exact path="/houses" element={<Houses />} />
+              <Route exact path="/houses/:id" element={<House />} />
+              <Route exact path="/houses/create" element={<CreateHouse />} />
+              <Route exact path="/houses/edit/:id" element={<EditHouse />} />
+              <Route exact path="/events" element={<Events />} />
+              <Route exact path="/events/:id" element={<Event />} />
+              <Route exact path="/events/create" element={<CreateNotification />} />
+              <Route exact path="/events/edit/:id" element={<EditNotification />} />
+              <Route exact path="/registar" element={<SignIn />} />
+              <Route exact path="/update-password" element={<UpdatePassword />} />
+              <Route exact path="/estatisticas" element={<Stats />} />
+              <Route exact path="/estatisticasCasas" element={<HouseStats />} />
+              <Route path="*" element={<Error404 />} />
             </Route>
           </Routes>
         </BrowserRouter>

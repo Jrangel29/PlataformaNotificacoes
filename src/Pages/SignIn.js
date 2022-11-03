@@ -1,6 +1,7 @@
 import React from "react";
 import "../Styles/Login.css";
 import SignInInputs from "../Components/Forms/SignInInputs";
+import Navbar from "../Components/Geral/Navbar";
 //import axios from 'axios';
 import lapis from "../Images/Lapis.svg";
 import historico from "../Images/Historico.svg";
@@ -28,9 +29,12 @@ class SignIn extends React.Component {
 
   render() {
     return (
-      <div className='login-page'>
-        <div className='login-form'>
-          <SignInInputs />
+      <div className="mainBody container">
+        <Navbar />
+        <div className="login-page">
+          <div className="login-form">
+            <SignInInputs />
+          </div>
         </div>
       </div>
     );
