@@ -1,8 +1,18 @@
 // Import the functions you need from the SDKs you need
 import { useState, useEffect } from "react";
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
+import {
+  getAuth,
+  updatePassword,
+  reauthenticateWithCredential,
+  EmailAuthProvider,
+} from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+} from "firebase/auth";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -49,6 +59,32 @@ export const useAuth = () => {
 
 export const logOut = () => {
   return signOut(auth);
+};
+
+export const resetPassword = async (old_password, new_password, confirm_new_password) => {
+  const user = auth.currentUser;
+
+  if (new_password === confirm_new_password) {
+    return reauthenticateWithCredential(
+      user,
+      EmailAuthProvider.credential(user.email, old_password)
+    )
+      .then(() => {
+        return updatePassword(user, new_password)
+          .then(() => {
+            return true;
+          })
+          .catch((error) => {
+            throw error;
+          });
+      })
+      .catch((error) => {
+        console.log(error);
+        throw Error("Palavra-Passe errada");
+      });
+  } else {
+    throw Error("Palavra-Passes não coincidem");
+  }
 };
 
 export default app;

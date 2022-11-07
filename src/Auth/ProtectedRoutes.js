@@ -10,7 +10,7 @@ function ProtectedRoutes() {
         <Outlet />
       ) : (
         <Routes>
-          <Route path='/*' element={<Login />} />
+          <Route path="/*" element={<Login />} />
           {/*<Route path='*' element={<Navigate replace to='/' />} />*/}
         </Routes>
       )}

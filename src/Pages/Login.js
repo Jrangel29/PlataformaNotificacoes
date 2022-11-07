@@ -28,8 +28,8 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div className='login-page'>
-        <div className='login-form'>
+      <div className="login-page">
+        <div className="login-form">
           <LoginInputs />
         </div>
       </div>
