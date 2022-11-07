@@ -50,9 +50,9 @@ const SubmitButton = (props) => {
         dispatch(createNewHouse(nome, id, concelho));
     };
 
-    const editaCasa = (idCasa, nome, id, concelho) => {
+    const editaCasa = (idCasa, nome, id, concelho, recebe) => {
         props.openModal();
-        dispatch(updateHouseInfo(idCasa, nome, id, concelho));
+        dispatch(updateHouseInfo(idCasa, nome, id, concelho, recebe));
     };
 
     if(props.tipoForm === "User"){
@@ -1488,7 +1488,7 @@ const SubmitButton = (props) => {
                         className='col-2' 
                         variant='flat'
                         onClick={
-                            () => editaCasa(props.params.infoUser.idHouse, props.params.infoUser.nomeCasa, props.params.infoUser.idBox, props.params.infoUser.concelho)
+                            () => editaCasa(props.params.infoUser.idHouse, props.params.infoUser.nomeCasa, props.params.infoUser.idBox, props.params.infoUser.concelho, props.params.infoUser.casa_recebe)
                         } 
                         >Editar Casa</Button>
                 </span>

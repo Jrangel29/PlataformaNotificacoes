@@ -8,6 +8,7 @@ import SubmitButton from '../../Components/Geral/SubmitButton';
 import { BuscaDistritosConcelhosEdit } from '../../Components/Forms/Hooks';
 import { getHousePeopleList } from '../../Store/Casas/Actions';
 import Loading from '../../Pages/Loading';
+import { Dropdown } from 'react-bootstrap';
 
 const EditHouse = () => {
 
@@ -40,6 +41,7 @@ const EditHouse = () => {
                     distrito: casaInfo.parent_id,
                     idBox: casaInfo.id_box,
                     concelho: casaInfo.id_localidade,
+                    casa_recebe: casaInfo.recebe.data[0],
                     idHouse: id
                 }
             })
@@ -77,6 +79,18 @@ const EditHouse = () => {
         })
     }
 
+    const atualizaRecebe = (e) => {
+        var num = parseInt(e)
+        setInfo({
+            infoUser: {
+                ...info.infoUser,
+                casa_recebe: num
+            }
+        })
+    }
+
+    //console.log(info)
+
     if (isLoadingCasaInfo) {
         return (
             <Loading />
@@ -101,6 +115,23 @@ const EditHouse = () => {
                         <span className='col-4 p-0 mt-3'>
                             <p className='subtituloSeccaoPagina'>ID da box <span className='obrigatorio'>*</span></p>
                             <input type="text" value={info.infoUser.idBox} id='idBox' onChange={atualizaInfo} className='inputsForms w-100'/>
+                        </span>
+                    </div>
+
+                    <div className='row col-12 mx-3' style={{padding: "0 40px"}}>
+                        <span className='col-3 ps-0 mt-3'>
+                            <p className='subtituloSeccaoPagina'>Recebe notificações? <span className='obrigatorio'>*</span></p>
+                            <Dropdown value={info.infoUser.casa_recebe} onSelect={atualizaRecebe}>
+                                <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
+                                    <span className="m-0 p-0">{info.infoUser.casa_recebe === 1 ? "Sim" : "Não" }</span>
+                                </Dropdown.Toggle>
+                                
+
+                                <Dropdown.Menu className='dropdownFiltro'>
+                                    <Dropdown.Item eventKey={1}>Sim</Dropdown.Item>
+                                    <Dropdown.Item eventKey={0}>Não</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
                         </span>
                     </div>
 

@@ -48,6 +48,9 @@ function House(props) {
             <p className="textoSeccaoPagina">
               <b>ID da box:</b> {casaInfo.id_box}
             </p>
+            <p className="textoSeccaoPagina">
+              <b>Recebe notificações:</b> {casaInfo.recebe.data[0] === 1 ? "Sim" : "Não"}
+            </p>
           </div>
           <div className="prevSeccao ms-0 mb-3">
             <h1 className="tituloSeccaoPaginaNotifs">Membros da casa</h1>
@@ -81,6 +84,7 @@ function House(props) {
           </div>
         </div>
       </div>
+      <HouseNotifications seccao={seccao} info={casaInfo.notificacoes} />
     </div>
   );
 }

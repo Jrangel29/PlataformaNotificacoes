@@ -29,11 +29,11 @@ export const createNewHouse = ( nome = '', id = '', concelho = '') => {
     }
 }
 
-export const updateHouseInfo = ( idHouse = '', nome = '', id = '', concelho = '') => {
+export const updateHouseInfo = ( idHouse = '', nome = '', id = '', concelho = '', recebe = '') => {
 
   return(dispatch) => {
       dispatch({ type: CASAS_UPDATE_START });
-      updateHouse(idHouse, nome, id, concelho)
+      updateHouse(idHouse, nome, id, concelho, recebe)
       .then(Info => {
           dispatch({type: CASAS_UPDATE_SUCCESS, payload: Info})
       })
