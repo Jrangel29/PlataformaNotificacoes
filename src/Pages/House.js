@@ -84,7 +84,6 @@ function House(props) {
           </div>
         </div>
       </div>
-      <HouseNotifications seccao={seccao} info={casaInfo.notificacoes} />
     </div>
   );
 }
