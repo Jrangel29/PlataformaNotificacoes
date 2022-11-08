@@ -64,8 +64,8 @@ const HouseStats = () => {
         <Navbar/>
         <Header nome="Estatísticas por casa" apagaMuda="nao"/>
         <HouseSelectDropdown casas={casasList} atual={casa} atualiza={atualizaCasa}/>
-        <div>
-            <div className='btn btnSeccao ms-0' style={colapsados[0] !== true ? {marginBottom: '10px'} : {}} onClick={() => setColapsados([!colapsados[0], colapsados[1]])}>
+        <div style={{paddingBottom: '10px'}}>
+            <div className='btn btnSeccao ms-0' onClick={() => setColapsados([!colapsados[0], colapsados[1]])}>
                 <h1 className='tituloSeccaoPaginaNotifs'>Estatísticas gerais</h1>
                 <img src={DownArrow} className={colapsados[0] !== true ? "ArrowDown" : "ArrowDownRotated"}/>
             </div>
