@@ -42,7 +42,7 @@ const HouseStats = () => {
     }, [isLoadingCasas])
 
     useEffect(() => {
-        if(!isLoadingCasas){
+        if(!isLoadingCasas && casa !== ''){
             dispatch(getHousePeopleList(casa.id_casa));
         }
     }, [casa])
@@ -57,7 +57,7 @@ const HouseStats = () => {
         setCasa(valor)
     }
 
-    console.log(casa)
+    //console.log(casa)
 
     return (
       <div className='mainBodyForm container p-0'>
