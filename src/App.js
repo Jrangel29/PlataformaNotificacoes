@@ -64,7 +64,7 @@ function App() {
               <Route exact path="/events/create" element={<CreateNotification />} />
               <Route exact path="/events/edit/:id" element={<EditNotification />} />
               <Route exact path="/registar" element={<SignIn />} />
-              <Route exact path="/update-password" element={<UpdatePassword />} />
+              <Route exact path="/account" element={<UpdatePassword />} />
               <Route exact path="/estatisticas" element={<Stats />} />
               <Route exact path="/estatisticasCasas" element={<HouseStats />} />
               <Route path="*" element={<Error404 />} />

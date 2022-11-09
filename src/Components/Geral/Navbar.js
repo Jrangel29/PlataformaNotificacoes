@@ -4,25 +4,12 @@ import { Navbar, Nav, Container, Tabs, Tab } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { logOut } from "../../firebase";
 
-function TerminarSessao() {
+function TerminarSessao(props) {
   return (
-    <div onClick={logOut} className={"btn btnNav logoutButton logout"}>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="20"
-        fill="white"
-        className="bi bi-box-arrow-right"
-        viewBox="0 0 16 16"
-      >
-        <path
-          fillRule="evenodd"
-          d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"
-        />
-        <path
-          fillRule="evenodd"
-          d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"
-        />
+    <div onClick={() => props.navegar('/account')} className={"btn btnNav account logout"}>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+        <circle cx="12" cy="7" r="4"></circle>
       </svg>
     </div>
   );
@@ -52,7 +39,7 @@ const BarraNav = () => {
       lugar === "/houses/create"
     ) {
       setTipo("Destino");
-    } else if (lugar === "/") {
+    } else if (lugar === "/" || lugar === "/account") {
       setTipo("nada");
     } else if (lugar === "/estatisticas" || lugar === "/estatisticasCasas") {
       setTipo("Stats");
@@ -122,7 +109,7 @@ const BarraNav = () => {
           >
             Estatísticas
           </div>
-          <TerminarSessao />
+          <TerminarSessao navegar={navigate}/>
         </div>
       </div>
       <div className="containerNavBar w-100 row" style={{ paddingLeft: "5%", paddingRight: "5%" }}>

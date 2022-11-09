@@ -11,6 +11,10 @@
   width: 700px;
 }
 
+.vertical{
+  border-right: solid 1px lightgrey;
+}
+
 .form-control {
   padding: 0.8rem 0.8rem !important;
   font-size: 18px !important;
@@ -28,4 +32,8 @@
 h3 {
   font-weight: 700 !important;
   font-size: 18px !important;
+}
+
+.botaoSessao{
+  background-color: rgb(204, 15, 15)!important;
 }

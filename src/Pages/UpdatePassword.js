@@ -1,6 +1,7 @@
 import React from "react";
 import "../Styles/Login.css";
 import UpdatePasswordInputs from "../Components/Forms/UpdatePasswordInputs";
+import LogoutBtn from "../Components/Forms/Logout";
 import Navbar from "../Components/Geral/Navbar";
 //import axios from 'axios';
 import lapis from "../Images/Lapis.svg";
@@ -19,8 +20,11 @@ class UpdatePassword extends React.Component {
         <div className="mainBodyForm container p-0">
           <Navbar />
           <div className="login-page">
-            <div className="login-form">
+            <div className="login-form vertical">
               <UpdatePasswordInputs />
+            </div>
+            <div className="login-form">
+              <LogoutBtn/>
             </div>
           </div>
         </div>
