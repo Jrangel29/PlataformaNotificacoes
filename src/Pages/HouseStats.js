@@ -34,9 +34,6 @@ const HouseStats = () => {
 
     useEffect(() => {
         if(!isLoadingCasas){
-            casasList.map(item => {
-                dispatch(getHousePeopleList(item.id_casa));
-            })
             setCasa(casasList[0])
         }
     }, [isLoadingCasas])
@@ -57,7 +54,7 @@ const HouseStats = () => {
         setCasa(valor)
     }
 
-    //console.log(casa)
+    //console.log(casa, casasList[0], casaInfo.utilizadores)
 
     return (
       <div className='mainBodyForm container p-0'>
