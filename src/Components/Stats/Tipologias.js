@@ -40,7 +40,7 @@ export const TipologiaStats = (props) => {
         if(props.geral === true){
             props.stats.map(item => {
                 var dataItem = new Date(item.data);
-                if(dataItem > dataInicio && dataItem < dataFim){
+                if(dataItem > dataInicio && dataItem < dataFim && item.ref_id_utilizador !== 1){
                     // Primeiro verifica as que não são info ou personalizada 
                     // Depois verifica se é personalizada e sem bom dia ou boa noite e depois verifica as de informação + rotina de bom dia e boa noite
                     if(item.ref_id_tipologia !== 6 && item.ref_id_tipologia !== 3){

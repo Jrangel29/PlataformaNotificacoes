@@ -28,7 +28,7 @@ export const AllNotifications = (props) => {
         if(props.geral === true) {
             props.stats.map(item => {
                 var dataItem = new Date(item.data);
-                if(dataItem > dataInicio && dataItem < dataFim){
+                if(dataItem > dataInicio && dataItem < dataFim && item.ref_id_utilizador !== 1){
                     if(item.recebido.data[0] !== 0){
                         recebidas++;
                     } else {
@@ -118,7 +118,7 @@ export const AllNotificationsDiaNoite = (props) => {
         if(props.geral ===  true) {
             props.stats.map(item => {
                 var dataItem = new Date(item.data);
-                if(dataItem > dataInicio && dataItem < dataFim){
+                if(dataItem > dataInicio && dataItem < dataFim && item.ref_id_utilizador !== 1){
                     if(item.ref_id_rotinas === 1){
                         total++;
                         bomDia++;
@@ -210,7 +210,7 @@ export const AllNotificationsBomDia = (props) => {
         if(props.geral === true){
             props.stats.map(item => {
                 var dataItem = new Date(item.data);
-                if(dataItem > dataInicio && dataItem < dataFim){
+                if(dataItem > dataInicio && dataItem < dataFim && item.ref_id_utilizador !== 1){
                     if(item.ref_id_rotinas === 1){
                         total++;
                         if(item.recebido.data[0] !== 0){
@@ -304,7 +304,7 @@ export const AllNotificationsBoaNoite = (props) => {
         if(props.geral === true){
             props.stats.map(item => {
                 var dataItem = new Date(item.data);
-                if(dataItem > dataInicio && dataItem < dataFim){
+                if(dataItem > dataInicio && dataItem < dataFim && item.ref_id_utilizador !== 1){
                     if(item.ref_id_rotinas === 2){
                         total++;
                         if(item.recebido.data[0] !== 0){
