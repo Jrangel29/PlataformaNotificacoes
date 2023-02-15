@@ -3,6 +3,7 @@ import "../../Styles/Navbar.css";
 import { Navbar, Nav, Container, Tabs, Tab } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { logOut } from "../../firebase";
+import {fetchNews, fetchNewsTitle} from '../../API/Requests';
 
 function TerminarSessao(props) {
   return (
@@ -26,6 +27,9 @@ const BarraNav = () => {
   const stringHouse = lugar.substring(0, 7);
   const stringHistory = lugar.substring(0, 8);
   const stringNotification = lugar.substring(0, 14);
+
+  fetchNews();
+  fetchNewsTitle();
 
   useEffect(() => {
     if (lugar === "/notifications/create" || lugar === "/events" || stringEvent === "/events") {

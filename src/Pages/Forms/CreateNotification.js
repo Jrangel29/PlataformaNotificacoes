@@ -17,6 +17,7 @@ import UserPreferencesModal from '../../Components/Modal/UserPreferencesModal';
 import InformationIcon from '../../Images/information.png';
 import { MomentsTooltip, CategoryTooltip } from '../../Components/Forms/Tooltips';
 import { ListaMeo, Apps } from '../../Components/Forms/ListaMeo';
+import Demo from '../../Components/Forms/Demo'; 
 
 class CreateNotification extends React.Component {
 
@@ -37,6 +38,7 @@ class CreateNotification extends React.Component {
             momentoUnico: '',
             usersEscolhidos: [],
             casasEscolhidas: [],
+            tipoPersonalizado: 'Relembra',
             diaMes: '',
             dataFim: '',
             canal: {
@@ -147,6 +149,12 @@ class CreateNotification extends React.Component {
         this.setState({
             hora: horaFinal,
             dataFim: DataFinal
+        })
+    }
+
+    mudaTipoPersonalizado = (valor) => {
+        this.setState({
+            tipoPersonalizado: valor,
         })
     }
 
@@ -1409,7 +1417,7 @@ class CreateNotification extends React.Component {
     }
 
     render(){
-        //console.log(this.state.mensagens)
+        //console.log(this.state)
         return(
             <div>
                 <div className='mainBodyForm container px-0'>
@@ -1422,6 +1430,7 @@ class CreateNotification extends React.Component {
                             <h1 className='tituloSeccaoPaginaNotifs'>Tipologia</h1>
                             <img src={DownArrow} className={this.state.colapsado.collapse1 !== true ? "ArrowDown" : "ArrowDownRotated"}/>
                         </div>
+
                         <Collapse in={this.state.colapsado.collapse1}>
                             <div className='row m-0' style={{padding: "0 40px"}}>
                                 <span className='col-3 me-3' style={{marginTop: "5px"}}>
@@ -1429,7 +1438,7 @@ class CreateNotification extends React.Component {
                                     <BuscaTipologiasNotificacoes tipo={this.state.tipologia} mudaForm={this.alteraFormulario} />
                                 </span>
 
-                                {/*<span className='col-3 p-0 me-3'>
+                                <span className='col-3 p-0 me-3'>
                                     <p className='subtituloSeccaoPagina p-0' style={{ marginTop: "5px"}}>Subcategoria</p>
                                     {this.state.tipologia === "Informação" ?
                                     <Dropdown>
@@ -1450,7 +1459,24 @@ class CreateNotification extends React.Component {
                                         </Dropdown.Toggle>
                                     </Dropdown>
                                     }
-                                </span>*/}
+                                </span>
+
+                                {this.state.tipologia === "Personalizada" ?
+                                <span className='col-3 p-0 me-3'>
+                                    <p className='subtituloSeccaoPagina p-0' style={{ marginTop: "5px"}}>Tipo de blade</p>
+                                    <Dropdown>
+                                        <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
+                                            {this.state.tipoPersonalizado === "Relembra" ? 'Relembrar em 15 minutos' : 'Jogo do Gabriel'}
+                                        </Dropdown.Toggle>
+                                        <Dropdown.Menu className='dropdownFiltro'>
+                                            <Dropdown.Item onClick={() => this.mudaTipoPersonalizado("Relembra")}>Relembrar em 15 minutos</Dropdown.Item>
+                                            <Dropdown.Item onClick={() => this.mudaTipoPersonalizado("Jogo")}>Jogo do Gabriel</Dropdown.Item>
+                                        </Dropdown.Menu>
+                                    </Dropdown>
+                                </span>
+                                :
+                                <></>
+                                }
 
                                 {<div className='row m-0 mt-2 p-0'>
                                     {this.state.tipologia === "Personalizada" ?
@@ -1674,6 +1700,13 @@ class CreateNotification extends React.Component {
                     <div className='row m-0' style={{padding: "0 40px"}}>
                         <SubmitButton params={this.state} openModal={this.onOpen} tipoForm="Notification"/>
                     </div>
+
+
+                    <div className='row m-0' style={{padding: "0 40px"}}>
+                        <h1 className='subtituloSeccaoPagina mt-3 mb-3'>Exemplos</h1>
+                        <Demo/>
+                    </div>
+
                 </div>
                 {this.state.tipologia === 'Agenda' || this.state.tipologia === 'Programas' || this.state.tipologia === 'Saúde' || this.state.tipologia === 'Personalizada' && this.state.paramsPersonalizado.tipoRecetor === 'Recetores Individuais' ?
                 <UserPreferencesModal show={this.state.mostraModalInfo} users={this.state.usersEscolhidos} onHide={this.onCloseInfo}/>

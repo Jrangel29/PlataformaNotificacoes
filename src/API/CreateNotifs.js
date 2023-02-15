@@ -7,7 +7,7 @@ const objectImagens = {
     'Social': 'https://firebasestorage.googleapis.com/v0/b/tdi-rangel.appspot.com/o/Social.png?alt=media&token=71468c63-2340-4eef-85a5-007f6f83b9f9'
 }
 
-export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, regular, dia, iconePersonalizado, usaIcone, canal) => {
+export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, regular, dia, iconePersonalizado, usaIcone, canal, tipoPersonalizado) => {
     
     let notificacoesFinal = [];
     
@@ -74,18 +74,33 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                             zapping: 0
                         })
                     } else {
-                        notificacoesFinal.push({
-                            mensagem: mensagens.semanaAntes.message,
-                            titulo: mensagens.semanaAntes.tituloBlade,
-                            descricao: mensagens.semanaAntes.descricao,
-                            botao_titulo: null,
-                            botao_navigate: null,
-                            url_icone: objectImagens[iconePersonalizado],
-                            data: item,
-                            hora: horaEvento,
-                            rotina: null,
-                            zapping: 0
-                        })
+                        if(tipoPersonalizado === 'Jogo') {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.semanaAntes.message,
+                                titulo: mensagens.semanaAntes.tituloBlade,
+                                descricao: mensagens.semanaAntes.descricao,
+                                botao_titulo: 'Abrir o jogo',
+                                botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                                url_icone: objectImagens[iconePersonalizado],
+                                data: item,
+                                hora: horaEvento,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        } else {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.semanaAntes.message,
+                                titulo: mensagens.semanaAntes.tituloBlade,
+                                descricao: mensagens.semanaAntes.descricao,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: objectImagens[iconePersonalizado],
+                                data: item,
+                                hora: horaEvento,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        }
                     }
                 } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
                     if(mensagens.semanaAntes.persVal === false){
@@ -102,18 +117,33 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                             zapping: 0
                         })
                     } else {
-                        notificacoesFinal.push({
-                            mensagem: mensagens.semanaAntes.message,
-                            titulo: mensagens.semanaAntes.tituloBlade,
-                            descricao: mensagens.semanaAntes.descricao,
-                            botao_titulo: null,
-                            botao_navigate: null,
-                            url_icone: null,
-                            data: item,
-                            hora: horaEvento,
-                            rotina: null,
-                            zapping: 0
-                        })
+                        if(tipoPersonalizado === 'Jogo') {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.semanaAntes.message,
+                                titulo: mensagens.semanaAntes.tituloBlade,
+                                descricao: mensagens.semanaAntes.descricao,
+                                botao_titulo: 'Abrir o jogo',
+                                botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                                url_icone: null,
+                                data: item,
+                                hora: horaEvento,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        } else {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.semanaAntes.message,
+                                titulo: mensagens.semanaAntes.tituloBlade,
+                                descricao: mensagens.semanaAntes.descricao,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: null,
+                                data: item,
+                                hora: horaEvento,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        }
                     }
                 } else {
                     notificacoesFinal.push({
@@ -165,18 +195,33 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                                 zapping: 0
                             })
                         } else {
-                            notificacoesFinal.push({
-                                mensagem: mensagens.dias3.message,
-                                titulo: mensagens.dias3.tituloBlade,
-                                descricao: mensagens.dias3.descricao,
-                                botao_titulo: null,
-                                botao_navigate: null,
-                                url_icone: objectImagens[iconePersonalizado],
-                                data: item.data,
-                                hora: horaEvento,
-                                rotina: null,
-                                zapping: 0
-                            })
+                            if(tipoPersonalizado === 'Jogo') {
+                                notificacoesFinal.push({
+                                    mensagem: mensagens.dias3.message,
+                                    titulo: mensagens.dias3.tituloBlade,
+                                    descricao: mensagens.dias3.descricao,
+                                    botao_titulo: 'Abrir o jogo',
+                                    botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                                    url_icone: objectImagens[iconePersonalizado],
+                                    data: item.data,
+                                    hora: horaEvento,
+                                    rotina: null,
+                                    zapping: 0
+                                })
+                            } else {
+                                notificacoesFinal.push({
+                                    mensagem: mensagens.dias3.message,
+                                    titulo: mensagens.dias3.tituloBlade,
+                                    descricao: mensagens.dias3.descricao,
+                                    botao_titulo: null,
+                                    botao_navigate: null,
+                                    url_icone: objectImagens[iconePersonalizado],
+                                    data: item.data,
+                                    hora: horaEvento,
+                                    rotina: null,
+                                    zapping: 0
+                                })
+                            }
                         }
                     } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
                         if(mensagens.dias3.persVal === false){
@@ -193,18 +238,33 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                                 zapping: 0
                             })
                         } else {
-                            notificacoesFinal.push({
-                                mensagem: mensagens.dias3.message,
-                                titulo: mensagens.dias3.tituloBlade,
-                                descricao: mensagens.dias3.descricao,
-                                botao_titulo: null,
-                                botao_navigate: null,
-                                url_icone: null,
-                                data: item.data,
-                                hora: horaEvento,
-                                rotina: null,
-                                zapping: 0
-                            })
+                            if(tipoPersonalizado === 'Jogo') {
+                                notificacoesFinal.push({
+                                    mensagem: mensagens.dias3.message,
+                                    titulo: mensagens.dias3.tituloBlade,
+                                    descricao: mensagens.dias3.descricao,
+                                    botao_titulo: 'Abrir o jogo',
+                                    botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                                    url_icone: null,
+                                    data: item.data,
+                                    hora: horaEvento,
+                                    rotina: null,
+                                    zapping: 0
+                                })
+                            } else {
+                                notificacoesFinal.push({
+                                    mensagem: mensagens.dias3.message,
+                                    titulo: mensagens.dias3.tituloBlade,
+                                    descricao: mensagens.dias3.descricao,
+                                    botao_titulo: null,
+                                    botao_navigate: null,
+                                    url_icone: null,
+                                    data: item.data,
+                                    hora: horaEvento,
+                                    rotina: null,
+                                    zapping: 0
+                                })
+                            }
                         }
                     } else {
                         notificacoesFinal.push({
@@ -252,18 +312,33 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                             zapping: 0
                         })
                     } else {
-                        notificacoesFinal.push({
-                            mensagem: mensagens.dias3.message,
-                            titulo: mensagens.dias3.tituloBlade,
-                            descricao: mensagens.dias3.descricao,
-                            botao_titulo: null,
-                            botao_navigate: null,
-                            url_icone: objectImagens[iconePersonalizado],
-                            data: item,
-                            hora: horaEvento,
-                            rotina: null,
-                            zapping: 0
-                        })
+                        if(tipoPersonalizado === 'Jogo') {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.dias3.message,
+                                titulo: mensagens.dias3.tituloBlade,
+                                descricao: mensagens.dias3.descricao,
+                                botao_titulo: 'Abrir o jogo',
+                                botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                                url_icone: objectImagens[iconePersonalizado],
+                                data: item,
+                                hora: horaEvento,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        } else {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.dias3.message,
+                                titulo: mensagens.dias3.tituloBlade,
+                                descricao: mensagens.dias3.descricao,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: objectImagens[iconePersonalizado],
+                                data: item,
+                                hora: horaEvento,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        }
                     }
                 } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
                     if(mensagens.dias3.persVal === false){
@@ -280,18 +355,33 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                             zapping: 0
                         })
                     } else {
-                        notificacoesFinal.push({
-                            mensagem: mensagens.dias3.message,
-                            titulo: mensagens.dias3.tituloBlade,
-                            descricao: mensagens.dias3.descricao,
-                            botao_titulo: null,
-                            botao_navigate: null,
-                            url_icone: null,
-                            data: item,
-                            hora: horaEvento,
-                            rotina: null,
-                            zapping: 0
-                        })
+                        if(tipoPersonalizado === 'Jogo') {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.dias3.message,
+                                titulo: mensagens.dias3.tituloBlade,
+                                descricao: mensagens.dias3.descricao,
+                                botao_titulo: 'Abrir o jogo',
+                                botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                                url_icone: null,
+                                data: item,
+                                hora: horaEvento,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        } else {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.dias3.message,
+                                titulo: mensagens.dias3.tituloBlade,
+                                descricao: mensagens.dias3.descricao,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: null,
+                                data: item,
+                                hora: horaEvento,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        }
                     }
                 } else {
                     notificacoesFinal.push({
@@ -345,18 +435,33 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                                 zapping: 0
                             })
                         } else {
-                            notificacoesFinal.push({
-                                mensagem: mensagens.diaAnterior.message,
-                                titulo: mensagens.diaAnterior.tituloBlade,
-                                descricao: mensagens.diaAnterior.descricao,
-                                botao_titulo: null,
-                                botao_navigate: null,
-                                url_icone: objectImagens[iconePersonalizado],
-                                data: item.data,
-                                hora: null,
-                                rotina: 2,
-                                zapping: 0
-                            })
+                            if(tipoPersonalizado === 'Jogo') {
+                                notificacoesFinal.push({
+                                    mensagem: mensagens.diaAnterior.message,
+                                    titulo: mensagens.diaAnterior.tituloBlade,
+                                    descricao: mensagens.diaAnterior.descricao,
+                                    botao_titulo: 'Abrir o jogo',
+                                    botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                                    url_icone: objectImagens[iconePersonalizado],
+                                    data: item.data,
+                                    hora: null,
+                                    rotina: 2,
+                                    zapping: 0
+                                })
+                            } else {
+                                notificacoesFinal.push({
+                                    mensagem: mensagens.diaAnterior.message,
+                                    titulo: mensagens.diaAnterior.tituloBlade,
+                                    descricao: mensagens.diaAnterior.descricao,
+                                    botao_titulo: null,
+                                    botao_navigate: null,
+                                    url_icone: objectImagens[iconePersonalizado],
+                                    data: item.data,
+                                    hora: null,
+                                    rotina: 2,
+                                    zapping: 0
+                                })
+                            }
                         }
                     } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
                         if(mensagens.diaAnterior.persVal === false){
@@ -373,18 +478,33 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                                 zapping: 0
                             })
                         } else {
-                            notificacoesFinal.push({
-                                mensagem: mensagens.diaAnterior.message,
-                                titulo: mensagens.diaAnterior.tituloBlade,
-                                descricao: mensagens.diaAnterior.descricao,
-                                botao_titulo: null,
-                                botao_navigate: null,
-                                url_icone: null,
-                                data: item.data,
-                                hora: null,
-                                rotina: 2,
-                                zapping: 0
-                            })
+                            if(tipoPersonalizado === 'Jogo') {
+                                notificacoesFinal.push({
+                                    mensagem: mensagens.diaAnterior.message,
+                                    titulo: mensagens.diaAnterior.tituloBlade,
+                                    descricao: mensagens.diaAnterior.descricao,
+                                    botao_titulo: 'Abrir o jogo',
+                                    botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                                    url_icone: null,
+                                    data: item.data,
+                                    hora: null,
+                                    rotina: 2,
+                                    zapping: 0
+                                })
+                            } else {
+                                notificacoesFinal.push({
+                                    mensagem: mensagens.diaAnterior.message,
+                                    titulo: mensagens.diaAnterior.tituloBlade,
+                                    descricao: mensagens.diaAnterior.descricao,
+                                    botao_titulo: null,
+                                    botao_navigate: null,
+                                    url_icone: null,
+                                    data: item.data,
+                                    hora: null,
+                                    rotina: 2,
+                                    zapping: 0
+                                })
+                            }
                         }
                     } else if(tipologia === 'Informação'){
                         notificacoesFinal.push({
@@ -445,18 +565,33 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                             zapping: 0
                         })
                     } else {
-                        notificacoesFinal.push({
-                            mensagem: mensagens.diaAnterior.message,
-                            titulo: mensagens.diaAnterior.tituloBlade,
-                            descricao: mensagens.diaAnterior.descricao,
-                            botao_titulo: null,
-                            botao_navigate: null,
-                            url_icone: objectImagens[iconePersonalizado],
-                            data: item,
-                            hora: null,
-                            rotina: 2,
-                            zapping: 0
-                        })
+                        if(tipoPersonalizado === 'Jogo') {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.diaAnterior.message,
+                                titulo: mensagens.diaAnterior.tituloBlade,
+                                descricao: mensagens.diaAnterior.descricao,
+                                botao_titulo: 'Abrir o jogo',
+                                botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                                url_icone: objectImagens[iconePersonalizado],
+                                data: item,
+                                hora: null,
+                                rotina: 2,
+                                zapping: 0
+                            })
+                        } else {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.diaAnterior.message,
+                                titulo: mensagens.diaAnterior.tituloBlade,
+                                descricao: mensagens.diaAnterior.descricao,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: objectImagens[iconePersonalizado],
+                                data: item,
+                                hora: null,
+                                rotina: 2,
+                                zapping: 0
+                            })
+                        }
                     }
                 } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
                     if(mensagens.diaAnterior.persVal === false){
@@ -473,18 +608,33 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                             zapping: 0
                         })
                     } else {
-                        notificacoesFinal.push({
-                            mensagem: mensagens.diaAnterior.message,
-                            titulo: mensagens.diaAnterior.tituloBlade,
-                            descricao: mensagens.diaAnterior.descricao,
-                            botao_titulo: null,
-                            botao_navigate: null,
-                            url_icone: null,
-                            data: item,
-                            hora: null,
-                            rotina: 2,
-                            zapping: 0
-                        })
+                        if(tipoPersonalizado === 'Jogo') {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.diaAnterior.message,
+                                titulo: mensagens.diaAnterior.tituloBlade,
+                                descricao: mensagens.diaAnterior.descricao,
+                                botao_titulo: 'Abrir o jogo',
+                                botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                                url_icone: null,
+                                data: item,
+                                hora: null,
+                                rotina: 2,
+                                zapping: 0
+                            })
+                        } else {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.diaAnterior.message,
+                                titulo: mensagens.diaAnterior.tituloBlade,
+                                descricao: mensagens.diaAnterior.descricao,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: null,
+                                data: item,
+                                hora: null,
+                                rotina: 2,
+                                zapping: 0
+                            })
+                        }
                     }
                 } else if(tipologia === 'Informação'){
                     notificacoesFinal.push({
@@ -544,18 +694,33 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                             zapping: 0
                         })
                     } else {
-                        notificacoesFinal.push({
-                            mensagem: mensagens.diaAnterior.message,
-                            titulo: mensagens.diaAnterior.tituloBlade,
-                            descricao: mensagens.diaAnterior.descricao,
-                            botao_titulo: null,
-                            botao_navigate: null,
-                            url_icone: objectImagens[iconePersonalizado],
-                            data: item,
-                            hora: null,
-                            rotina: 2,
-                            zapping: 0
-                        })
+                        if(tipoPersonalizado === 'Jogo') {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.diaAnterior.message,
+                                titulo: mensagens.diaAnterior.tituloBlade,
+                                descricao: mensagens.diaAnterior.descricao,
+                                botao_titulo: 'Abrir o jogo',
+                                botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                                url_icone: objectImagens[iconePersonalizado],
+                                data: item,
+                                hora: null,
+                                rotina: 2,
+                                zapping: 0
+                            })
+                        } else {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.diaAnterior.message,
+                                titulo: mensagens.diaAnterior.tituloBlade,
+                                descricao: mensagens.diaAnterior.descricao,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: objectImagens[iconePersonalizado],
+                                data: item,
+                                hora: null,
+                                rotina: 2,
+                                zapping: 0
+                            })
+                        }
                     }
                 } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
                     if(mensagens.diaAnterior.persVal === false){
@@ -572,18 +737,33 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                             zapping: 0
                         })
                     } else {
-                        notificacoesFinal.push({
-                            mensagem: mensagens.diaAnterior.message,
-                            titulo: mensagens.diaAnterior.tituloBlade,
-                            descricao: mensagens.diaAnterior.descricao,
-                            botao_titulo: null,
-                            botao_navigate: null,
-                            url_icone: null,
-                            data: item,
-                            hora: null,
-                            rotina: 2,
-                            zapping: 0
-                        })
+                        if(tipoPersonalizado === 'Jogo') {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.diaAnterior.message,
+                                titulo: mensagens.diaAnterior.tituloBlade,
+                                descricao: mensagens.diaAnterior.descricao,
+                                botao_titulo: 'Abrir o jogo',
+                                botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                                url_icone: null,
+                                data: item,
+                                hora: null,
+                                rotina: 2,
+                                zapping: 0
+                            })
+                        } else {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.diaAnterior.message,
+                                titulo: mensagens.diaAnterior.tituloBlade,
+                                descricao: mensagens.diaAnterior.descricao,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: null,
+                                data: item,
+                                hora: null,
+                                rotina: 2,
+                                zapping: 0
+                            })
+                        }
                     }
                 } else if(tipologia === 'Informação'){
                     notificacoesFinal.push({
@@ -647,18 +827,33 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                         zapping: 0
                     })
                 } else {
-                    notificacoesFinal.push({
-                        mensagem: mensagens.diaProprio.message,
-                        titulo: mensagens.diaProprio.tituloBlade,
-                        descricao: mensagens.diaProprio.descricao,
-                        botao_titulo: null,
-                        botao_navigate: null,
-                        url_icone: objectImagens[iconePersonalizado],
-                        data: diaFormated,
-                        hora: null,
-                        rotina: 1,
-                        zapping: 0
-                    })
+                    if(tipoPersonalizado === 'Jogo') {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.diaProprio.message,
+                            titulo: mensagens.diaProprio.tituloBlade,
+                            descricao: mensagens.diaProprio.descricao,
+                            botao_titulo: 'Abrir o jogo',
+                            botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                            url_icone: objectImagens[iconePersonalizado],
+                            data: diaFormated,
+                            hora: null,
+                            rotina: 1,
+                            zapping: 0
+                        })
+                    } else {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.diaProprio.message,
+                            titulo: mensagens.diaProprio.tituloBlade,
+                            descricao: mensagens.diaProprio.descricao,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: objectImagens[iconePersonalizado],
+                            data: diaFormated,
+                            hora: null,
+                            rotina: 1,
+                            zapping: 0
+                        })
+                    }
                 }
             } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
                 if(mensagens.diaProprio.persVal === false){
@@ -675,18 +870,33 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                         zapping: 0
                     })
                 } else {
-                    notificacoesFinal.push({
-                        mensagem: mensagens.diaProprio.message,
-                        titulo: mensagens.diaProprio.tituloBlade,
-                        descricao: mensagens.diaProprio.descricao,
-                        botao_titulo: null,
-                        botao_navigate: null,
-                        url_icone: null,
-                        data: diaFormated,
-                        hora: null,
-                        rotina: 1,
-                        zapping: 0
-                    })
+                    if(tipoPersonalizado === 'Jogo') {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.diaProprio.message,
+                            titulo: mensagens.diaProprio.tituloBlade,
+                            descricao: mensagens.diaProprio.descricao,
+                            botao_titulo: 'Abrir o jogo',
+                            botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                            url_icone: null,
+                            data: diaFormated,
+                            hora: null,
+                            rotina: 1,
+                            zapping: 0
+                        })
+                    } else {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.diaProprio.message,
+                            titulo: mensagens.diaProprio.tituloBlade,
+                            descricao: mensagens.diaProprio.descricao,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: null,
+                            data: diaFormated,
+                            hora: null,
+                            rotina: 1,
+                            zapping: 0
+                        })
+                    }
                 }
             } else if(tipologia === 'Informação'){
                 notificacoesFinal.push({
@@ -745,18 +955,33 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                             zapping: 0
                         })
                     } else {
-                        notificacoesFinal.push({
-                            mensagem: mensagens.diaProprio.message,
-                            titulo: mensagens.diaProprio.tituloBlade,
-                            descricao: mensagens.diaProprio.descricao,
-                            botao_titulo: null,
-                            botao_navigate: null,
-                            url_icone: objectImagens[iconePersonalizado],
-                            data: item,
-                            hora: null,
-                            rotina: 1,
-                            zapping: 0
-                        })
+                        if(tipoPersonalizado === 'Jogo') {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.diaProprio.message,
+                                titulo: mensagens.diaProprio.tituloBlade,
+                                descricao: mensagens.diaProprio.descricao,
+                                botao_titulo: 'Abrir o jogo',
+                                botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                                url_icone: objectImagens[iconePersonalizado],
+                                data: item,
+                                hora: null,
+                                rotina: 1,
+                                zapping: 0
+                            })
+                        } else {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.diaProprio.message,
+                                titulo: mensagens.diaProprio.tituloBlade,
+                                descricao: mensagens.diaProprio.descricao,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: objectImagens[iconePersonalizado],
+                                data: item,
+                                hora: null,
+                                rotina: 1,
+                                zapping: 0
+                            })
+                        }
                     }
                 } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
                     if(mensagens.diaProprio.persVal === false){
@@ -773,18 +998,33 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                             zapping: 0
                         })
                     } else {
-                        notificacoesFinal.push({
-                            mensagem: mensagens.diaProprio.message,
-                            titulo: mensagens.diaProprio.tituloBlade,
-                            descricao: mensagens.diaProprio.descricao,
-                            botao_titulo: null,
-                            botao_navigate: null,
-                            url_icone: null,
-                            data: item,
-                            hora: null,
-                            rotina: 1,
-                            zapping: 0
-                        })
+                        if(tipoPersonalizado === 'Jogo') {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.diaProprio.message,
+                                titulo: mensagens.diaProprio.tituloBlade,
+                                descricao: mensagens.diaProprio.descricao,
+                                botao_titulo: 'Abrir o jogo',
+                                botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                                url_icone: null,
+                                data: item,
+                                hora: null,
+                                rotina: 1,
+                                zapping: 0
+                            })
+                        } else {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.diaProprio.message,
+                                titulo: mensagens.diaProprio.tituloBlade,
+                                descricao: mensagens.diaProprio.descricao,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: null,
+                                data: item,
+                                hora: null,
+                                rotina: 1,
+                                zapping: 0
+                            })
+                        }
                     }
                 } else if(tipologia === 'Informação'){
                     notificacoesFinal.push({
@@ -857,18 +1097,33 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                         zapping: 0
                     })
                 } else {
-                    notificacoesFinal.push({
-                        mensagem: mensagens.horaAntes.message,
-                        titulo: mensagens.horaAntes.tituloBlade,
-                        descricao: mensagens.horaAntes.descricao,
-                        botao_titulo: null,
-                        botao_navigate: null,
-                        url_icone: objectImagens[iconePersonalizado],
-                        data: diaFormated,
-                        hora: horaFinal,
-                        rotina: null,
-                        zapping: 0
-                    })
+                    if(tipoPersonalizado === 'Jogo') {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.horaAntes.message,
+                            titulo: mensagens.horaAntes.tituloBlade,
+                            descricao: mensagens.horaAntes.descricao,
+                            botao_titulo: 'Abrir o jogo',
+                            botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                            url_icone: objectImagens[iconePersonalizado],
+                            data: diaFormated,
+                            hora: horaFinal,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    } else {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.horaAntes.message,
+                            titulo: mensagens.horaAntes.tituloBlade,
+                            descricao: mensagens.horaAntes.descricao,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: objectImagens[iconePersonalizado],
+                            data: diaFormated,
+                            hora: horaFinal,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    }
                 }
             } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
                 if(mensagens.horaAntes.persVal === false){
@@ -885,18 +1140,33 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                         zapping: 0
                     })
                 } else {
-                    notificacoesFinal.push({
-                        mensagem: mensagens.horaAntes.message,
-                        titulo: mensagens.horaAntes.tituloBlade,
-                        descricao: mensagens.horaAntes.descricao,
-                        botao_titulo: null,
-                        botao_navigate: null,
-                        url_icone: null,
-                        data: diaFormated,
-                        hora: horaFinal,
-                        rotina: null,
-                        zapping: 0
-                    })
+                    if(tipoPersonalizado === 'Jogo') {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.horaAntes.message,
+                            titulo: mensagens.horaAntes.tituloBlade,
+                            descricao: mensagens.horaAntes.descricao,
+                            botao_titulo: 'Abrir o jogo',
+                            botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                            url_icone: null,
+                            data: diaFormated,
+                            hora: horaFinal,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    } else {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.horaAntes.message,
+                            titulo: mensagens.horaAntes.tituloBlade,
+                            descricao: mensagens.horaAntes.descricao,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: null,
+                            data: diaFormated,
+                            hora: horaFinal,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    }
                 }
             } else {
                 notificacoesFinal.push({
@@ -950,18 +1220,33 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                                     zapping: 0
                                 })
                             } else {
-                                notificacoesFinal.push({
-                                    mensagem: mensagens.horaAntes.message,
-                                    titulo: mensagens.horaAntes.tituloBlade,
-                                    descricao: mensagens.horaAntes.descricao,
-                                    botao_titulo: null,
-                                    botao_navigate: null,
-                                    url_icone: objectImagens[iconePersonalizado],
-                                    data: item,
-                                    hora: horaFinal,
-                                    rotina: null,
-                                    zapping: 0
-                                })
+                                if(tipoPersonalizado === 'Jogo') {
+                                    notificacoesFinal.push({
+                                        mensagem: mensagens.horaAntes.message,
+                                        titulo: mensagens.horaAntes.tituloBlade,
+                                        descricao: mensagens.horaAntes.descricao,
+                                        botao_titulo: 'Abrir o jogo',
+                                        botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                                        url_icone: objectImagens[iconePersonalizado],
+                                        data: item,
+                                        hora: horaFinal,
+                                        rotina: null,
+                                        zapping: 0
+                                    })
+                                } else {
+                                    notificacoesFinal.push({
+                                        mensagem: mensagens.horaAntes.message,
+                                        titulo: mensagens.horaAntes.tituloBlade,
+                                        descricao: mensagens.horaAntes.descricao,
+                                        botao_titulo: null,
+                                        botao_navigate: null,
+                                        url_icone: objectImagens[iconePersonalizado],
+                                        data: item,
+                                        hora: horaFinal,
+                                        rotina: null,
+                                        zapping: 0
+                                    })
+                                }
                             }
                         } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
                             if(mensagens.horaAntes.persVal === false){
@@ -978,18 +1263,33 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                                     zapping: 0
                                 })
                             } else {
-                                notificacoesFinal.push({
-                                    mensagem: mensagens.horaAntes.message,
-                                    titulo: mensagens.horaAntes.tituloBlade,
-                                    descricao: mensagens.horaAntes.descricao,
-                                    botao_titulo: null,
-                                    botao_navigate: null,
-                                    url_icone: null,
-                                    data: item,
-                                    hora: horaFinal,
-                                    rotina: null,
-                                    zapping: 0
-                                })
+                                if(tipoPersonalizado === 'Jogo') {
+                                    notificacoesFinal.push({
+                                        mensagem: mensagens.horaAntes.message,
+                                        titulo: mensagens.horaAntes.tituloBlade,
+                                        descricao: mensagens.horaAntes.descricao,
+                                        botao_titulo: 'Abrir o jogo',
+                                        botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                                        url_icone: null,
+                                        data: item,
+                                        hora: horaFinal,
+                                        rotina: null,
+                                        zapping: 0
+                                    })
+                                } else {
+                                    notificacoesFinal.push({
+                                        mensagem: mensagens.horaAntes.message,
+                                        titulo: mensagens.horaAntes.tituloBlade,
+                                        descricao: mensagens.horaAntes.descricao,
+                                        botao_titulo: null,
+                                        botao_navigate: null,
+                                        url_icone: null,
+                                        data: item,
+                                        hora: horaFinal,
+                                        rotina: null,
+                                        zapping: 0
+                                    })
+                                }
                             }
                         } else {
                             notificacoesFinal.push({
@@ -1035,18 +1335,33 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                                 zapping: 0
                             })
                         } else {
-                            notificacoesFinal.push({
-                                mensagem: mensagens.horaAntes.message,
-                                titulo: mensagens.horaAntes.tituloBlade,
-                                descricao: mensagens.horaAntes.descricao,
-                                botao_titulo: null,
-                                botao_navigate: null,
-                                url_icone: objectImagens[iconePersonalizado],
-                                data: item,
-                                hora: horaFinal,
-                                rotina: null,
-                                zapping: 0
-                            })
+                            if(tipoPersonalizado === 'Jogo') {
+                                notificacoesFinal.push({
+                                    mensagem: mensagens.horaAntes.message,
+                                    titulo: mensagens.horaAntes.tituloBlade,
+                                    descricao: mensagens.horaAntes.descricao,
+                                    botao_titulo: 'Abrir o jogo',
+                                    botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                                    url_icone: objectImagens[iconePersonalizado],
+                                    data: item,
+                                    hora: horaFinal,
+                                    rotina: null,
+                                    zapping: 0
+                                })
+                            } else {
+                                notificacoesFinal.push({
+                                    mensagem: mensagens.horaAntes.message,
+                                    titulo: mensagens.horaAntes.tituloBlade,
+                                    descricao: mensagens.horaAntes.descricao,
+                                    botao_titulo: null,
+                                    botao_navigate: null,
+                                    url_icone: objectImagens[iconePersonalizado],
+                                    data: item,
+                                    hora: horaFinal,
+                                    rotina: null,
+                                    zapping: 0
+                                })
+                            }
                         }
                     } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
                         if(mensagens.horaAntes.persVal === false){
@@ -1063,18 +1378,33 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                                 zapping: 0
                             })
                         } else {
-                            notificacoesFinal.push({
-                                mensagem: mensagens.horaAntes.message,
-                                titulo: mensagens.horaAntes.tituloBlade,
-                                descricao: mensagens.horaAntes.descricao,
-                                botao_titulo: null,
-                                botao_navigate: null,
-                                url_icone: null,
-                                data: item,
-                                hora: horaFinal,
-                                rotina: null,
-                                zapping: 0
-                            })
+                            if(tipoPersonalizado === 'Jogo') {
+                                notificacoesFinal.push({
+                                    mensagem: mensagens.horaAntes.message,
+                                    titulo: mensagens.horaAntes.tituloBlade,
+                                    descricao: mensagens.horaAntes.descricao,
+                                    botao_titulo: 'Abrir o jogo',
+                                    botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                                    url_icone: null,
+                                    data: item,
+                                    hora: horaFinal,
+                                    rotina: null,
+                                    zapping: 0
+                                })
+                            } else {
+                                notificacoesFinal.push({
+                                    mensagem: mensagens.horaAntes.message,
+                                    titulo: mensagens.horaAntes.tituloBlade,
+                                    descricao: mensagens.horaAntes.descricao,
+                                    botao_titulo: null,
+                                    botao_navigate: null,
+                                    url_icone: null,
+                                    data: item,
+                                    hora: horaFinal,
+                                    rotina: null,
+                                    zapping: 0
+                                })
+                            }
                         }
                     } else {
                         notificacoesFinal.push({
@@ -1120,31 +1450,61 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                     zapping: 1
                 })
             } else if(tipologia === 'Personalizada' && usaIcone === 'Sim') {
-                notificacoesFinal.push({
-                    mensagem: mensagens.meiaHora.message,
-                    titulo: mensagens.meiaHora.tituloBlade,
-                    descricao: mensagens.meiaHora.descricao,
-                    botao_titulo: 'Avisar em 15 minutos',
-                    botao_navigate: 'callback:https://geo-navsafety.ua.pt:443/overtv/resposta?type=reminder',
-                    url_icone: objectImagens[iconePersonalizado],
-                    data: diaFormated,
-                    hora: horaFinal,
-                    rotina: null,
-                    zapping: 0
-                })
+                if(tipoPersonalizado === 'Jogo') {
+                    notificacoesFinal.push({
+                        mensagem: mensagens.meiaHora.message,
+                        titulo: mensagens.meiaHora.tituloBlade,
+                        descricao: mensagens.meiaHora.descricao,
+                        botao_titulo: 'Abrir o jogo',
+                        botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                        url_icone: objectImagens[iconePersonalizado],
+                        data: diaFormated,
+                        hora: horaFinal,
+                        rotina: null,
+                        zapping: 0
+                    })
+                } else {
+                    notificacoesFinal.push({
+                        mensagem: mensagens.meiaHora.message,
+                        titulo: mensagens.meiaHora.tituloBlade,
+                        descricao: mensagens.meiaHora.descricao,
+                        botao_titulo: 'Avisar em 15 minutos',
+                        botao_navigate: 'callback:https://geo-navsafety.ua.pt:443/overtv/resposta?type=reminder',
+                        url_icone: objectImagens[iconePersonalizado],
+                        data: diaFormated,
+                        hora: horaFinal,
+                        rotina: null,
+                        zapping: 0
+                    })
+                }
             } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
-                notificacoesFinal.push({
-                    mensagem: mensagens.meiaHora.message,
-                    titulo: mensagens.meiaHora.tituloBlade,
-                    descricao: mensagens.meiaHora.descricao,
-                    botao_titulo: 'Avisar em 15 minutos',
-                    botao_navigate: 'callback:https://geo-navsafety.ua.pt:443/overtv/resposta?type=reminder',
-                    url_icone: null,
-                    data: diaFormated,
-                    hora: horaFinal,
-                    rotina: null,
-                    zapping: 0
-                })
+                if(tipoPersonalizado === 'Jogo') {
+                    notificacoesFinal.push({
+                        mensagem: mensagens.meiaHora.message,
+                        titulo: mensagens.meiaHora.tituloBlade,
+                        descricao: mensagens.meiaHora.descricao,
+                        botao_titulo: 'Abrir o jogo',
+                        botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                        url_icone: null,
+                        data: diaFormated,
+                        hora: horaFinal,
+                        rotina: null,
+                        zapping: 0
+                    })
+                } else {
+                    notificacoesFinal.push({
+                        mensagem: mensagens.meiaHora.message,
+                        titulo: mensagens.meiaHora.tituloBlade,
+                        descricao: mensagens.meiaHora.descricao,
+                        botao_titulo: 'Avisar em 15 minutos',
+                        botao_navigate: 'callback:https://geo-navsafety.ua.pt:443/overtv/resposta?type=reminder',
+                        url_icone: null,
+                        data: diaFormated,
+                        hora: horaFinal,
+                        rotina: null,
+                        zapping: 0
+                    })
+                }
             } else if(tipologia === 'Serviços') {
                 notificacoesFinal.push({
                     mensagem: mensagens.meiaHora.message,
@@ -1196,31 +1556,61 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                                 zapping: 1
                             })
                         } else if(tipologia === 'Personalizada' && usaIcone === 'Sim') {
-                            notificacoesFinal.push({
-                                mensagem: mensagens.meiaHora.message,
-                                titulo: mensagens.meiaHora.tituloBlade,
-                                descricao: mensagens.meiaHora.descricao,
-                                botao_titulo: 'Avisar em 15 minutos',
-                                botao_navigate: 'callback:https://geo-navsafety.ua.pt:443/overtv/resposta?type=reminder',
-                                url_icone: objectImagens[iconePersonalizado],
-                                data: item,
-                                hora: horaFinal,
-                                rotina: null,
-                                zapping: 0
-                            })
+                            if(tipoPersonalizado === 'Jogo') {
+                                notificacoesFinal.push({
+                                    mensagem: mensagens.meiaHora.message,
+                                    titulo: mensagens.meiaHora.tituloBlade,
+                                    descricao: mensagens.meiaHora.descricao,
+                                    botao_titulo: 'Abrir o jogo',
+                                    botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                                    url_icone: objectImagens[iconePersonalizado],
+                                    data: item,
+                                    hora: horaFinal,
+                                    rotina: null,
+                                    zapping: 0
+                                })
+                            } else {
+                                notificacoesFinal.push({
+                                    mensagem: mensagens.meiaHora.message,
+                                    titulo: mensagens.meiaHora.tituloBlade,
+                                    descricao: mensagens.meiaHora.descricao,
+                                    botao_titulo: 'Avisar em 15 minutos',
+                                    botao_navigate: 'callback:https://geo-navsafety.ua.pt:443/overtv/resposta?type=reminder',
+                                    url_icone: objectImagens[iconePersonalizado],
+                                    data: item,
+                                    hora: horaFinal,
+                                    rotina: null,
+                                    zapping: 0
+                                })
+                            }
                         } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
-                            notificacoesFinal.push({
-                                mensagem: mensagens.meiaHora.message,
-                                titulo: mensagens.meiaHora.tituloBlade,
-                                descricao: mensagens.meiaHora.descricao,
-                                botao_titulo: 'Avisar em 15 minutos',
-                                botao_navigate: 'callback:https://geo-navsafety.ua.pt:443/overtv/resposta?type=reminder',
-                                url_icone: null,
-                                data: item,
-                                hora: horaFinal,
-                                rotina: null,
-                                zapping: 0
-                            })
+                            if(tipoPersonalizado === 'Jogo') {
+                                notificacoesFinal.push({
+                                    mensagem: mensagens.meiaHora.message,
+                                    titulo: mensagens.meiaHora.tituloBlade,
+                                    descricao: mensagens.meiaHora.descricao,
+                                    botao_titulo: 'Abrir o jogo',
+                                    botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                                    url_icone: null,
+                                    data: item,
+                                    hora: horaFinal,
+                                    rotina: null,
+                                    zapping: 0
+                                })
+                            } else {
+                                notificacoesFinal.push({
+                                    mensagem: mensagens.meiaHora.message,
+                                    titulo: mensagens.meiaHora.tituloBlade,
+                                    descricao: mensagens.meiaHora.descricao,
+                                    botao_titulo: 'Avisar em 15 minutos',
+                                    botao_navigate: 'callback:https://geo-navsafety.ua.pt:443/overtv/resposta?type=reminder',
+                                    url_icone: null,
+                                    data: item,
+                                    hora: horaFinal,
+                                    rotina: null,
+                                    zapping: 0
+                                })
+                            }
                         } else if(tipologia === 'Serviços') {
                             notificacoesFinal.push({
                                 mensagem: mensagens.meiaHora.message,
@@ -1264,31 +1654,61 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                             zapping: 1
                         })
                     } else if(tipologia === 'Personalizada' && usaIcone === 'Sim') {
-                        notificacoesFinal.push({
-                            mensagem: mensagens.meiaHora.message,
-                            titulo: mensagens.meiaHora.tituloBlade,
-                            descricao: mensagens.meiaHora.descricao,
-                            botao_titulo: 'Avisar em 15 minutos',
-                            botao_navigate: 'callback:https://geo-navsafety.ua.pt:443/overtv/resposta?type=reminder',
-                            url_icone: objectImagens[iconePersonalizado],
-                            data: item,
-                            hora: horaFinal,
-                            rotina: null,
-                            zapping: 0
-                        })
+                        if(tipoPersonalizado === 'Jogo') {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.meiaHora.message,
+                                titulo: mensagens.meiaHora.tituloBlade,
+                                descricao: mensagens.meiaHora.descricao,
+                                botao_titulo: 'Abrir o jogo',
+                                botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                                url_icone: objectImagens[iconePersonalizado],
+                                data: item,
+                                hora: horaFinal,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        } else {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.meiaHora.message,
+                                titulo: mensagens.meiaHora.tituloBlade,
+                                descricao: mensagens.meiaHora.descricao,
+                                botao_titulo: 'Avisar em 15 minutos',
+                                botao_navigate: 'callback:https://geo-navsafety.ua.pt:443/overtv/resposta?type=reminder',
+                                url_icone: objectImagens[iconePersonalizado],
+                                data: item,
+                                hora: horaFinal,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        }
                     } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
-                        notificacoesFinal.push({
-                            mensagem: mensagens.meiaHora.message,
-                            titulo: mensagens.meiaHora.tituloBlade,
-                            descricao: mensagens.meiaHora.descricao,
-                            botao_titulo: 'Avisar em 15 minutos',
-                            botao_navigate: 'callback:https://geo-navsafety.ua.pt:443/overtv/resposta?type=reminder',
-                            url_icone: null,
-                            data: item,
-                            hora: horaFinal,
-                            rotina: null,
-                            zapping: 0
-                        })
+                        if(tipoPersonalizado === 'Jogo') {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.meiaHora.message,
+                                titulo: mensagens.meiaHora.tituloBlade,
+                                descricao: mensagens.meiaHora.descricao,
+                                botao_titulo: 'Abrir o jogo',
+                                botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                                url_icone: null,
+                                data: item,
+                                hora: horaFinal,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        } else {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.meiaHora.message,
+                                titulo: mensagens.meiaHora.tituloBlade,
+                                descricao: mensagens.meiaHora.descricao,
+                                botao_titulo: 'Avisar em 15 minutos',
+                                botao_navigate: 'callback:https://geo-navsafety.ua.pt:443/overtv/resposta?type=reminder',
+                                url_icone: null,
+                                data: item,
+                                hora: horaFinal,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        }
                     } else if(tipologia === 'Serviços') {
                         notificacoesFinal.push({
                             mensagem: mensagens.meiaHora.message,
@@ -1361,18 +1781,33 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                         zapping: 0
                     })
                 } else {
-                    notificacoesFinal.push({
-                        mensagem: mensagens.quartoHora.message,
-                        titulo: mensagens.quartoHora.tituloBlade,
-                        descricao: mensagens.quartoHora.descricao,
-                        botao_titulo: null,
-                        botao_navigate: null,
-                        url_icone: objectImagens[iconePersonalizado],
-                        data: diaFormated,
-                        hora: horaFinal,
-                        rotina: null,
-                        zapping: 0
-                    })
+                    if(tipoPersonalizado === 'Jogo') {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.quartoHora.message,
+                            titulo: mensagens.quartoHora.tituloBlade,
+                            descricao: mensagens.quartoHora.descricao,
+                            botao_titulo: 'Abrir o jogo',
+                            botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                            url_icone: objectImagens[iconePersonalizado],
+                            data: diaFormated,
+                            hora: horaFinal,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    } else {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.quartoHora.message,
+                            titulo: mensagens.quartoHora.tituloBlade,
+                            descricao: mensagens.quartoHora.descricao,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: objectImagens[iconePersonalizado],
+                            data: diaFormated,
+                            hora: horaFinal,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    }
                 }
             } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
                 if(mensagens.quartoHora.persVal === false){
@@ -1389,18 +1824,33 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                         zapping: 0
                     }) 
                 } else {
-                    notificacoesFinal.push({
-                        mensagem: mensagens.quartoHora.message,
-                        titulo: mensagens.quartoHora.tituloBlade,
-                        descricao: mensagens.quartoHora.descricao,
-                        botao_titulo: null,
-                        botao_navigate: null,
-                        url_icone: null,
-                        data: diaFormated,
-                        hora: horaFinal,
-                        rotina: null,
-                        zapping: 0
-                    }) 
+                    if(tipoPersonalizado === 'Jogo') {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.quartoHora.message,
+                            titulo: mensagens.quartoHora.tituloBlade,
+                            descricao: mensagens.quartoHora.descricao,
+                            botao_titulo: 'Abrir o jogo',
+                            botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                            url_icone: null,
+                            data: diaFormated,
+                            hora: horaFinal,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    } else {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.quartoHora.message,
+                            titulo: mensagens.quartoHora.tituloBlade,
+                            descricao: mensagens.quartoHora.descricao,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: null,
+                            data: diaFormated,
+                            hora: horaFinal,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    }
                 }
             } else if(tipologia === 'Saúde') {
                 notificacoesFinal.push({
@@ -1467,18 +1917,33 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                                     zapping: 0
                                 })
                             } else {
-                                notificacoesFinal.push({
-                                    mensagem: mensagens.quartoHora.message,
-                                    titulo: mensagens.quartoHora.tituloBlade,
-                                    descricao: mensagens.quartoHora.descricao,
-                                    botao_titulo: null,
-                                    botao_navigate: null,
-                                    url_icone: objectImagens[iconePersonalizado],
-                                    data: item,
-                                    hora: horaFinal,
-                                    rotina: null,
-                                    zapping: 0
-                                })
+                                if(tipoPersonalizado === 'Jogo') {
+                                    notificacoesFinal.push({
+                                        mensagem: mensagens.quartoHora.message,
+                                        titulo: mensagens.quartoHora.tituloBlade,
+                                        descricao: mensagens.quartoHora.descricao,
+                                        botao_titulo: 'Abrir o jogo',
+                                        botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                                        url_icone: objectImagens[iconePersonalizado],
+                                        data: item,
+                                        hora: horaFinal,
+                                        rotina: null,
+                                        zapping: 0
+                                    })
+                                } else {
+                                    notificacoesFinal.push({
+                                        mensagem: mensagens.quartoHora.message,
+                                        titulo: mensagens.quartoHora.tituloBlade,
+                                        descricao: mensagens.quartoHora.descricao,
+                                        botao_titulo: null,
+                                        botao_navigate: null,
+                                        url_icone: objectImagens[iconePersonalizado],
+                                        data: item,
+                                        hora: horaFinal,
+                                        rotina: null,
+                                        zapping: 0
+                                    })
+                                }
                             }
                         } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
                             if(mensagens.quartoHora.persVal === false){
@@ -1495,18 +1960,33 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                                     zapping: 0
                                 })
                             } else {
-                                notificacoesFinal.push({
-                                    mensagem: mensagens.quartoHora.message,
-                                    titulo: mensagens.quartoHora.tituloBlade,
-                                    descricao: mensagens.quartoHora.descricao,
-                                    botao_titulo: null,
-                                    botao_navigate: null,
-                                    url_icone: null,
-                                    data: item,
-                                    hora: horaFinal,
-                                    rotina: null,
-                                    zapping: 0
-                                })
+                                if(tipoPersonalizado === 'Jogo') {
+                                    notificacoesFinal.push({
+                                        mensagem: mensagens.quartoHora.message,
+                                        titulo: mensagens.quartoHora.tituloBlade,
+                                        descricao: mensagens.quartoHora.descricao,
+                                        botao_titulo: 'Abrir o jogo',
+                                        botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                                        url_icone: null,
+                                        data: item,
+                                        hora: horaFinal,
+                                        rotina: null,
+                                        zapping: 0
+                                    })
+                                } else {
+                                    notificacoesFinal.push({
+                                        mensagem: mensagens.quartoHora.message,
+                                        titulo: mensagens.quartoHora.tituloBlade,
+                                        descricao: mensagens.quartoHora.descricao,
+                                        botao_titulo: null,
+                                        botao_navigate: null,
+                                        url_icone: null,
+                                        data: item,
+                                        hora: horaFinal,
+                                        rotina: null,
+                                        zapping: 0
+                                    })
+                                }
                             }
                         } else if(tipologia === 'Saúde') {
                             notificacoesFinal.push({
@@ -1565,18 +2045,33 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                                 zapping: 0
                             })
                         } else {
-                            notificacoesFinal.push({
-                                mensagem: mensagens.quartoHora.message,
-                                titulo: mensagens.quartoHora.tituloBlade,
-                                descricao: mensagens.quartoHora.descricao,
-                                botao_titulo: null,
-                                botao_navigate: null,
-                                url_icone: objectImagens[iconePersonalizado],
-                                data: item,
-                                hora: horaFinal,
-                                rotina: null,
-                                zapping: 0
-                            })
+                            if(tipoPersonalizado === 'Jogo') {
+                                notificacoesFinal.push({
+                                    mensagem: mensagens.quartoHora.message,
+                                    titulo: mensagens.quartoHora.tituloBlade,
+                                    descricao: mensagens.quartoHora.descricao,
+                                    botao_titulo: 'Abrir o jogo',
+                                    botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                                    url_icone: objectImagens[iconePersonalizado],
+                                    data: item,
+                                    hora: horaFinal,
+                                    rotina: null,
+                                    zapping: 0
+                                })
+                            } else {
+                                notificacoesFinal.push({
+                                    mensagem: mensagens.quartoHora.message,
+                                    titulo: mensagens.quartoHora.tituloBlade,
+                                    descricao: mensagens.quartoHora.descricao,
+                                    botao_titulo: null,
+                                    botao_navigate: null,
+                                    url_icone: objectImagens[iconePersonalizado],
+                                    data: item,
+                                    hora: horaFinal,
+                                    rotina: null,
+                                    zapping: 0
+                                })
+                            }
                         }
                     } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
                         if(mensagens.quartoHora.persVal === false){
@@ -1593,18 +2088,33 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                                 zapping: 0
                             })
                         } else {
-                            notificacoesFinal.push({
-                                mensagem: mensagens.quartoHora.message,
-                                titulo: mensagens.quartoHora.tituloBlade,
-                                descricao: mensagens.quartoHora.descricao,
-                                botao_titulo: null,
-                                botao_navigate: null,
-                                url_icone: null,
-                                data: item,
-                                hora: horaFinal,
-                                rotina: null,
-                                zapping: 0
-                            })
+                            if(tipoPersonalizado === 'Jogo') {
+                                notificacoesFinal.push({
+                                    mensagem: mensagens.quartoHora.message,
+                                    titulo: mensagens.quartoHora.tituloBlade,
+                                    descricao: mensagens.quartoHora.descricao,
+                                    botao_titulo: 'Abrir o jogo',
+                                    botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                                    url_icone: null,
+                                    data: item,
+                                    hora: horaFinal,
+                                    rotina: null,
+                                    zapping: 0
+                                })
+                            } else {
+                                notificacoesFinal.push({
+                                    mensagem: mensagens.quartoHora.message,
+                                    titulo: mensagens.quartoHora.tituloBlade,
+                                    descricao: mensagens.quartoHora.descricao,
+                                    botao_titulo: null,
+                                    botao_navigate: null,
+                                    url_icone: null,
+                                    data: item,
+                                    hora: horaFinal,
+                                    rotina: null,
+                                    zapping: 0
+                                })
+                            }
                         }
                     } else if(tipologia === 'Saúde') {
                         notificacoesFinal.push({
@@ -1676,18 +2186,33 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                         zapping: 0
                     })
                 } else {
-                    notificacoesFinal.push({
-                        mensagem: mensagens.minutos5.message,
-                        titulo: mensagens.minutos5.tituloBlade,
-                        descricao: mensagens.minutos5.descricao,
-                        botao_titulo: null,
-                        botao_navigate: null,
-                        url_icone: objectImagens[iconePersonalizado],
-                        data: diaFormated,
-                        hora: horaFinal,
-                        rotina: null,
-                        zapping: 0
-                    })
+                    if(tipoPersonalizado === 'Jogo') {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.minutos5.message,
+                            titulo: mensagens.minutos5.tituloBlade,
+                            descricao: mensagens.minutos5.descricao,
+                            botao_titulo: 'Abrir o jogo',
+                            botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                            url_icone: objectImagens[iconePersonalizado],
+                            data: diaFormated,
+                            hora: horaFinal,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    } else {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.minutos5.message,
+                            titulo: mensagens.minutos5.tituloBlade,
+                            descricao: mensagens.minutos5.descricao,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: objectImagens[iconePersonalizado],
+                            data: diaFormated,
+                            hora: horaFinal,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    }
                 }
             } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
                 if(mensagens.minutos5.persVal === false){
@@ -1704,18 +2229,33 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                         zapping: 0
                     })
                 } else {
-                    notificacoesFinal.push({
-                        mensagem: mensagens.minutos5.message,
-                        titulo: mensagens.minutos5.tituloBlade,
-                        descricao: mensagens.minutos5.descricao,
-                        botao_titulo: null,
-                        botao_navigate: null,
-                        url_icone: null,
-                        data: diaFormated,
-                        hora: horaFinal,
-                        rotina: null,
-                        zapping: 0
-                    })
+                    if(tipoPersonalizado === 'Jogo') {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.minutos5.message,
+                            titulo: mensagens.minutos5.tituloBlade,
+                            descricao: mensagens.minutos5.descricao,
+                            botao_titulo: 'Abrir o jogo',
+                            botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                            url_icone: null,
+                            data: diaFormated,
+                            hora: horaFinal,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    } else {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.minutos5.message,
+                            titulo: mensagens.minutos5.tituloBlade,
+                            descricao: mensagens.minutos5.descricao,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: null,
+                            data: diaFormated,
+                            hora: horaFinal,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    }
                 }
             } else if(tipologia === 'Programas') {
                 notificacoesFinal.push({
@@ -1781,18 +2321,33 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                                     zapping: 0
                                 })
                             } else {
-                                notificacoesFinal.push({
-                                    mensagem: mensagens.minutos5.message,
-                                    titulo: mensagens.minutos5.tituloBlade,
-                                    descricao: mensagens.minutos5.descricao,
-                                    botao_titulo: null,
-                                    botao_navigate: null,
-                                    url_icone: objectImagens[iconePersonalizado],
-                                    data: item,
-                                    hora: horaFinal,
-                                    rotina: null,
-                                    zapping: 0
-                                })
+                                if(tipoPersonalizado === 'Jogo') {
+                                    notificacoesFinal.push({
+                                        mensagem: mensagens.minutos5.message,
+                                        titulo: mensagens.minutos5.tituloBlade,
+                                        descricao: mensagens.minutos5.descricao,
+                                        botao_titulo: 'Abrir o jogo',
+                                        botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                                        url_icone: objectImagens[iconePersonalizado],
+                                        data: item,
+                                        hora: horaFinal,
+                                        rotina: null,
+                                        zapping: 0
+                                    })
+                                } else {
+                                    notificacoesFinal.push({
+                                        mensagem: mensagens.minutos5.message,
+                                        titulo: mensagens.minutos5.tituloBlade,
+                                        descricao: mensagens.minutos5.descricao,
+                                        botao_titulo: null,
+                                        botao_navigate: null,
+                                        url_icone: objectImagens[iconePersonalizado],
+                                        data: item,
+                                        hora: horaFinal,
+                                        rotina: null,
+                                        zapping: 0
+                                    })
+                                }
                             }
                         } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
                             if(mensagens.minutos5.persVal === false){
@@ -1809,18 +2364,33 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                                     zapping: 0
                                 })
                             } else {
-                                notificacoesFinal.push({
-                                    mensagem: mensagens.minutos5.message,
-                                    titulo: mensagens.minutos5.tituloBlade,
-                                    descricao: mensagens.minutos5.descricao,
-                                    botao_titulo: null,
-                                    botao_navigate: null,
-                                    url_icone: null,
-                                    data: item,
-                                    hora: horaFinal,
-                                    rotina: null,
-                                    zapping: 0
-                                })
+                                if(tipoPersonalizado === 'Jogo') {
+                                    notificacoesFinal.push({
+                                        mensagem: mensagens.minutos5.message,
+                                        titulo: mensagens.minutos5.tituloBlade,
+                                        descricao: mensagens.minutos5.descricao,
+                                        botao_titulo: 'Abrir o jogo',
+                                        botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                                        url_icone: null,
+                                        data: item,
+                                        hora: horaFinal,
+                                        rotina: null,
+                                        zapping: 0
+                                    })
+                                } else {
+                                    notificacoesFinal.push({
+                                        mensagem: mensagens.minutos5.message,
+                                        titulo: mensagens.minutos5.tituloBlade,
+                                        descricao: mensagens.minutos5.descricao,
+                                        botao_titulo: null,
+                                        botao_navigate: null,
+                                        url_icone: null,
+                                        data: item,
+                                        hora: horaFinal,
+                                        rotina: null,
+                                        zapping: 0
+                                    })
+                                }
                             }
                         } else if(tipologia === 'Programas') {
                             notificacoesFinal.push({
@@ -1879,18 +2449,33 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                                 zapping: 0
                             })
                         } else {
-                            notificacoesFinal.push({
-                                mensagem: mensagens.minutos5.message,
-                                titulo: mensagens.minutos5.tituloBlade,
-                                descricao: mensagens.minutos5.descricao,
-                                botao_titulo: null,
-                                botao_navigate: null,
-                                url_icone: objectImagens[iconePersonalizado],
-                                data: item,
-                                hora: horaFinal,
-                                rotina: null,
-                                zapping: 0
-                            })
+                            if(tipoPersonalizado === 'Jogo') {
+                                notificacoesFinal.push({
+                                    mensagem: mensagens.minutos5.message,
+                                    titulo: mensagens.minutos5.tituloBlade,
+                                    descricao: mensagens.minutos5.descricao,
+                                    botao_titulo: 'Abrir o jogo',
+                                    botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                                    url_icone: objectImagens[iconePersonalizado],
+                                    data: item,
+                                    hora: horaFinal,
+                                    rotina: null,
+                                    zapping: 0
+                                })
+                            } else {
+                                notificacoesFinal.push({
+                                    mensagem: mensagens.minutos5.message,
+                                    titulo: mensagens.minutos5.tituloBlade,
+                                    descricao: mensagens.minutos5.descricao,
+                                    botao_titulo: null,
+                                    botao_navigate: null,
+                                    url_icone: objectImagens[iconePersonalizado],
+                                    data: item,
+                                    hora: horaFinal,
+                                    rotina: null,
+                                    zapping: 0
+                                })
+                            }
                         }
                     } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
                         if(mensagens.minutos5.persVal === false){
@@ -1907,18 +2492,33 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                                 zapping: 0
                             })
                         } else {
-                            notificacoesFinal.push({
-                                mensagem: mensagens.minutos5.message,
-                                titulo: mensagens.minutos5.tituloBlade,
-                                descricao: mensagens.minutos5.descricao,
-                                botao_titulo: null,
-                                botao_navigate: null,
-                                url_icone: null,
-                                data: item,
-                                hora: horaFinal,
-                                rotina: null,
-                                zapping: 0
-                            })
+                            if(tipoPersonalizado === 'Jogo') {
+                                notificacoesFinal.push({
+                                    mensagem: mensagens.minutos5.message,
+                                    titulo: mensagens.minutos5.tituloBlade,
+                                    descricao: mensagens.minutos5.descricao,
+                                    botao_titulo: 'Abrir o jogo',
+                                    botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                                    url_icone: null,
+                                    data: item,
+                                    hora: horaFinal,
+                                    rotina: null,
+                                    zapping: 0
+                                })
+                            } else {
+                                notificacoesFinal.push({
+                                    mensagem: mensagens.minutos5.message,
+                                    titulo: mensagens.minutos5.tituloBlade,
+                                    descricao: mensagens.minutos5.descricao,
+                                    botao_titulo: null,
+                                    botao_navigate: null,
+                                    url_icone: null,
+                                    data: item,
+                                    hora: horaFinal,
+                                    rotina: null,
+                                    zapping: 0
+                                })
+                            }
                         }
                     } else if(tipologia === 'Programas') {
                         notificacoesFinal.push({
@@ -1982,18 +2582,33 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                         zapping: 0
                     })
                 } else {
-                    notificacoesFinal.push({
-                        mensagem: mensagens.momentoAcontecimento.message,
-                        titulo: mensagens.momentoAcontecimento.tituloBlade,
-                        descricao: mensagens.momentoAcontecimento.descricao,
-                        botao_titulo: null,
-                        botao_navigate: null,
-                        url_icone: objectImagens[iconePersonalizado],
-                        data: diaFormated,
-                        hora: horaEvento,
-                        rotina: null,
-                        zapping: 0
-                    })
+                    if(tipoPersonalizado === 'Jogo') {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.momentoAcontecimento.message,
+                            titulo: mensagens.momentoAcontecimento.tituloBlade,
+                            descricao: mensagens.momentoAcontecimento.descricao,
+                            botao_titulo: 'Abrir o jogo',
+                            botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                            url_icone: objectImagens[iconePersonalizado],
+                            data: diaFormated,
+                            hora: horaEvento,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    } else {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.momentoAcontecimento.message,
+                            titulo: mensagens.momentoAcontecimento.tituloBlade,
+                            descricao: mensagens.momentoAcontecimento.descricao,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: objectImagens[iconePersonalizado],
+                            data: diaFormated,
+                            hora: horaEvento,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    }
                 }
             } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
                 if(mensagens.momentoAcontecimento.persVal === false){
@@ -2010,18 +2625,33 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                         zapping: 0
                     })
                 } else {
-                    notificacoesFinal.push({
-                        mensagem: mensagens.momentoAcontecimento.message,
-                        titulo: mensagens.momentoAcontecimento.tituloBlade,
-                        descricao: mensagens.momentoAcontecimento.descricao,
-                        botao_titulo: null,
-                        botao_navigate: null,
-                        url_icone: null,
-                        data: diaFormated,
-                        hora: horaEvento,
-                        rotina: null,
-                        zapping: 0
-                    })
+                    if(tipoPersonalizado === 'Jogo') {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.momentoAcontecimento.message,
+                            titulo: mensagens.momentoAcontecimento.tituloBlade,
+                            descricao: mensagens.momentoAcontecimento.descricao,
+                            botao_titulo: 'Abrir o jogo',
+                            botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                            url_icone: null,
+                            data: diaFormated,
+                            hora: horaEvento,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    } else {
+                        notificacoesFinal.push({
+                            mensagem: mensagens.momentoAcontecimento.message,
+                            titulo: mensagens.momentoAcontecimento.tituloBlade,
+                            descricao: mensagens.momentoAcontecimento.descricao,
+                            botao_titulo: null,
+                            botao_navigate: null,
+                            url_icone: null,
+                            data: diaFormated,
+                            hora: horaEvento,
+                            rotina: null,
+                            zapping: 0
+                        })
+                    }
                 }
             } else if(tipologia === 'Programas') {
                 notificacoesFinal.push({
@@ -2079,18 +2709,33 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                             zapping: 0
                         })
                     } else {
-                        notificacoesFinal.push({
-                            mensagem: mensagens.momentoAcontecimento.message,
-                            titulo: mensagens.momentoAcontecimento.tituloBlade,
-                            descricao: mensagens.momentoAcontecimento.descricao,
-                            botao_titulo: null,
-                            botao_navigate: null,
-                            url_icone: objectImagens[iconePersonalizado],
-                            data: item,
-                            hora: horaEvento,
-                            rotina: null,
-                            zapping: 0
-                        })
+                        if(tipoPersonalizado === 'Jogo') {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.momentoAcontecimento.message,
+                                titulo: mensagens.momentoAcontecimento.tituloBlade,
+                                descricao: mensagens.momentoAcontecimento.descricao,
+                                botao_titulo: 'Abrir o jogo',
+                                botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                                url_icone: objectImagens[iconePersonalizado],
+                                data: item,
+                                hora: horaEvento,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        } else {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.momentoAcontecimento.message,
+                                titulo: mensagens.momentoAcontecimento.tituloBlade,
+                                descricao: mensagens.momentoAcontecimento.descricao,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: objectImagens[iconePersonalizado],
+                                data: item,
+                                hora: horaEvento,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        }
                     }
                 } else if(tipologia === 'Personalizada' && usaIcone === 'Não') {
                     if(mensagens.momentoAcontecimento.persVal === false){
@@ -2107,18 +2752,33 @@ export const GeraNotificacoes = (mensagens, dias, tipologia, horaEvento, tipo, r
                             zapping: 0
                         })
                     } else {
-                        notificacoesFinal.push({
-                            mensagem: mensagens.momentoAcontecimento.message,
-                            titulo: mensagens.momentoAcontecimento.tituloBlade,
-                            descricao: mensagens.momentoAcontecimento.descricao,
-                            botao_titulo: null,
-                            botao_navigate: null,
-                            url_icone: null,
-                            data: item,
-                            hora: horaEvento,
-                            rotina: null,
-                            zapping: 0
-                        })
+                        if(tipoPersonalizado === 'Jogo') {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.momentoAcontecimento.message,
+                                titulo: mensagens.momentoAcontecimento.tituloBlade,
+                                descricao: mensagens.momentoAcontecimento.descricao,
+                                botao_titulo: 'Abrir o jogo',
+                                botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                                url_icone: null,
+                                data: item,
+                                hora: horaEvento,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        } else {
+                            notificacoesFinal.push({
+                                mensagem: mensagens.momentoAcontecimento.message,
+                                titulo: mensagens.momentoAcontecimento.tituloBlade,
+                                descricao: mensagens.momentoAcontecimento.descricao,
+                                botao_titulo: null,
+                                botao_navigate: null,
+                                url_icone: null,
+                                data: item,
+                                hora: horaEvento,
+                                rotina: null,
+                                zapping: 0
+                            })
+                        }
                     }
                 } else if(tipologia === 'Programas') {
                     notificacoesFinal.push({

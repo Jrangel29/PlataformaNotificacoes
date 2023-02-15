@@ -20,11 +20,11 @@ import {
 } from './Constants';
 import {createNotification, fetchNotifications, fetchAllNotifications, fetchNotificationInfo, updateNotification, fetchAllNotificationsStats} from '../../../API/Requests';
 
-export const createNewNotification = ( tipologia = '', regularidade = '', nomeItem = '', momentoUnico = '', mensagens = '', idTipologia = '', hora = '', envioNotif = '', idRegular = '', dias = '', diaUnico = '', diaMes = '', subcategoria = '', paramsPersonalizado = '', casasEscolhidas = '', usersEscolhidos = '', dataFim = '', canal = '') => {
+export const createNewNotification = ( tipologia = '', regularidade = '', nomeItem = '', momentoUnico = '', mensagens = '', idTipologia = '', hora = '', envioNotif = '', idRegular = '', dias = '', diaUnico = '', diaMes = '', subcategoria = '', paramsPersonalizado = '', casasEscolhidas = '', usersEscolhidos = '', dataFim = '', canal = '', tipoPersonalizado = '') => {
     
     return(dispatch) => {
         dispatch({ type: NOTIFICATION_CREATE_START });
-        createNotification(tipologia, regularidade, nomeItem, momentoUnico, mensagens, idTipologia, hora, envioNotif, idRegular, dias, diaUnico, diaMes, subcategoria, paramsPersonalizado, casasEscolhidas, usersEscolhidos, dataFim, canal)
+        createNotification(tipologia, regularidade, nomeItem, momentoUnico, mensagens, idTipologia, hora, envioNotif, idRegular, dias, diaUnico, diaMes, subcategoria, paramsPersonalizado, casasEscolhidas, usersEscolhidos, dataFim, canal, tipoPersonalizado)
         .then(Info => {
             dispatch({type: NOTIFICATION_CREATE_SUCCESS, payload: Info})
         })
@@ -79,11 +79,11 @@ export const getNotificationsUser = (id) => {
     }
   }
 
-export const updateEventNotification = ( idEvent = '', tipologia = '', regularidade = '', nomeItem = '', momentoUnico = '', mensagens = '', idTipologia = '', hora = '', envioNotif = '', idRegular = '', dias = '', diaUnico = '', diaMes = '', subcategoria = '', paramsPersonalizado = '', casasEscolhidas = '', usersEscolhidos = '', dataFim = '', canal = '') => {
+export const updateEventNotification = ( idEvent = '', tipologia = '', regularidade = '', nomeItem = '', momentoUnico = '', mensagens = '', idTipologia = '', hora = '', envioNotif = '', idRegular = '', dias = '', diaUnico = '', diaMes = '', subcategoria = '', paramsPersonalizado = '', casasEscolhidas = '', usersEscolhidos = '', dataFim = '', canal = '', tipoPersonalizado = '') => {
     
     return(dispatch) => {
         dispatch({ type: NOTIFICATION_UPDATE_START });
-        updateNotification(idEvent, tipologia, regularidade, nomeItem, momentoUnico, mensagens, idTipologia, hora, envioNotif, idRegular, dias, diaUnico, diaMes, subcategoria, paramsPersonalizado, casasEscolhidas, usersEscolhidos, dataFim, canal)
+        updateNotification(idEvent, tipologia, regularidade, nomeItem, momentoUnico, mensagens, idTipologia, hora, envioNotif, idRegular, dias, diaUnico, diaMes, subcategoria, paramsPersonalizado, casasEscolhidas, usersEscolhidos, dataFim, canal, tipoPersonalizado)
         .then(Info => {
             dispatch({type: NOTIFICATION_UPDATE_SUCCESS, payload: Info})
         })

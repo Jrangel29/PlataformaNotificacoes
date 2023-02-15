@@ -36,6 +36,7 @@ class EditNotification extends React.Component {
             momentoUnico: '',
             usersEscolhidos: [],
             casasEscolhidas: [],
+            tipoPersonalizado: 'Relembra',
             diaMes: '',
             dataFim: '',
             canal: {
@@ -137,6 +138,12 @@ class EditNotification extends React.Component {
                     persVal: false}
             }
         }
+    }
+
+    mudaTipoPersonalizado = (valor) => {
+        this.setState({
+            tipoPersonalizado: valor,
+        })
     }
 
     alteraFormulario = (valor, id, subcategoria) => {
@@ -1475,6 +1482,7 @@ class EditNotification extends React.Component {
                 momentoUnico: reg.momento,
                 usersEscolhidos: array,
                 casasEscolhidas: [],
+                tipoPersonalizado: 'Relembra',
                 diaMes: '',
                 dataFim: DataFinal,
                 canal: {
@@ -1635,6 +1643,23 @@ class EditNotification extends React.Component {
                                     </Dropdown>
                                     }
                                 </span>
+
+                                {this.state.tipologia === "Personalizada" ?
+                                <span className='col-3 p-0 me-3'>
+                                    <p className='subtituloSeccaoPagina p-0' style={{ marginTop: "5px"}}>Tipo de blade</p>
+                                    <Dropdown>
+                                        <Dropdown.Toggle variant="flat" className='dropdownFiltro'>
+                                            {this.state.tipoPersonalizado === "Relembra" ? 'Relembrar em 15 minutos' : 'Jogo do Gabriel'}
+                                        </Dropdown.Toggle>
+                                        <Dropdown.Menu className='dropdownFiltro'>
+                                            <Dropdown.Item onClick={() => this.mudaTipoPersonalizado("Relembra")}>Relembrar em 15 minutos</Dropdown.Item>
+                                            <Dropdown.Item onClick={() => this.mudaTipoPersonalizado("Jogo")}>Jogo do Gabriel</Dropdown.Item>
+                                        </Dropdown.Menu>
+                                    </Dropdown>
+                                </span>
+                                :
+                                <></>
+                                }
 
                                 {<div className='row m-0 mt-2 p-0'>
                                     {this.state.tipologia === "Personalizada" ?
