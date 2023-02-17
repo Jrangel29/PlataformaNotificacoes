@@ -425,41 +425,121 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
             ObjetoEnvio.regularidade.dias = [];
             ObjetoEnvio.notificacoes.push(notificacao);
         } else if(tipologia === 'Personalizada' && paramsPersonalizado.usaIcone === "Sim"){
-            let imediato = {
-                mensagem: mensagens.imediato.message,
-                url_icone: objectImagens[paramsPersonalizado.icone],
-                data: diaImediato,
-                hora: horaImediato,
-                rotina: null,
-                zapping: 0,
-                titulo: null,
-                descricao: null,
-                botao_titulo: null,
-                botao_navigate: null,
+            if(mensagens.imediato.persVal === false){
+                let imediato = {
+                    mensagem: mensagens.imediato.message,
+                    url_icone: objectImagens[paramsPersonalizado.icone],
+                    data: diaImediato,
+                    hora: horaImediato,
+                    rotina: null,
+                    zapping: 0,
+                    titulo: null,
+                    descricao: null,
+                    botao_titulo: null,
+                    botao_navigate: null,
+                }
+                ObjetoEnvio.regularidade.tipo = 1;
+                ObjetoEnvio.regularidade.data = diaImediato;
+                ObjetoEnvio.regularidade.hora = horaImediato;
+                ObjetoEnvio.regularidade.dias = [];
+                ObjetoEnvio.notificacoes.push(imediato)
+            } else {
+                if(tipoPersonalizado === 'Jogo') {
+                    let imediato = {
+                        mensagem: mensagens.imediato.message,
+                        url_icone: objectImagens[paramsPersonalizado.icone],
+                        data: diaImediato,
+                        hora: horaImediato,
+                        rotina: null,
+                        zapping: 0,
+                        titulo: mensagens.imediato.tituloBlade,
+                        descricao: mensagens.imediato.descricao,
+                        botao_titulo: 'Abrir o jogo',
+                        botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                    }
+                    ObjetoEnvio.regularidade.tipo = 1;
+                    ObjetoEnvio.regularidade.data = diaImediato;
+                    ObjetoEnvio.regularidade.hora = horaImediato;
+                    ObjetoEnvio.regularidade.dias = [];
+                    ObjetoEnvio.notificacoes.push(imediato)
+                } else {
+                    let imediato = {
+                        mensagem: mensagens.imediato.message,
+                        url_icone: objectImagens[paramsPersonalizado.icone],
+                        data: diaImediato,
+                        hora: horaImediato,
+                        rotina: null,
+                        zapping: 0,
+                        titulo: mensagens.imediato.tituloBlade,
+                        descricao: mensagens.imediato.descricao,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                    }
+                    ObjetoEnvio.regularidade.tipo = 1;
+                    ObjetoEnvio.regularidade.data = diaImediato;
+                    ObjetoEnvio.regularidade.hora = horaImediato;
+                    ObjetoEnvio.regularidade.dias = [];
+                    ObjetoEnvio.notificacoes.push(imediato)
+                }
             }
-            ObjetoEnvio.regularidade.tipo = 1;
-            ObjetoEnvio.regularidade.data = diaImediato;
-            ObjetoEnvio.regularidade.hora = horaImediato;
-            ObjetoEnvio.regularidade.dias = [];
-            ObjetoEnvio.notificacoes.push(imediato)
         } else if(tipologia === 'Personalizada' && paramsPersonalizado.usaIcone === "Não"){
-            let imediato = {
-                mensagem: mensagens.imediato.message,
-                url_icone: null,
-                data: diaImediato,
-                hora: horaImediato,
-                rotina: null,
-                zapping: 0,
-                titulo: null,
-                descricao: null,
-                botao_titulo: null,
-                botao_navigate: null,
+            if(mensagens.imediato.persVal === false){
+                let imediato = {
+                    mensagem: mensagens.imediato.message,
+                    url_icone: null,
+                    data: diaImediato,
+                    hora: horaImediato,
+                    rotina: null,
+                    zapping: 0,
+                    titulo: null,
+                    descricao: null,
+                    botao_titulo: null,
+                    botao_navigate: null,
+                }
+                ObjetoEnvio.regularidade.tipo = 1;
+                ObjetoEnvio.regularidade.data = diaImediato;
+                ObjetoEnvio.regularidade.hora = horaImediato;
+                ObjetoEnvio.regularidade.dias = [];
+                ObjetoEnvio.notificacoes.push(imediato)
+            } else {
+                if(tipoPersonalizado === 'Jogo') {
+                    let imediato = {
+                        mensagem: mensagens.imediato.message,
+                        url_icone: null,
+                        data: diaImediato,
+                        hora: horaImediato,
+                        rotina: null,
+                        zapping: 0,
+                        titulo: mensagens.imediato.tituloBlade,
+                        descricao: mensagens.imediato.descricao,
+                        botao_titulo: 'Abrir o jogo',
+                        botao_navigate: 'callback:http://prosenior.ddns.net/proseniortv',
+                    }
+                    ObjetoEnvio.regularidade.tipo = 1;
+                    ObjetoEnvio.regularidade.data = diaImediato;
+                    ObjetoEnvio.regularidade.hora = horaImediato;
+                    ObjetoEnvio.regularidade.dias = [];
+                    ObjetoEnvio.notificacoes.push(imediato)
+                } else {
+                    let imediato = {
+                        mensagem: mensagens.imediato.message,
+                        url_icone: null,
+                        data: diaImediato,
+                        hora: horaImediato,
+                        rotina: null,
+                        zapping: 0,
+                        titulo: mensagens.imediato.tituloBlade,
+                        descricao: mensagens.imediato.descricao,
+                        botao_titulo: null,
+                        botao_navigate: null,
+                    }
+                    ObjetoEnvio.regularidade.tipo = 1;
+                    ObjetoEnvio.regularidade.data = diaImediato;
+                    ObjetoEnvio.regularidade.hora = horaImediato;
+                    ObjetoEnvio.regularidade.dias = [];
+                    ObjetoEnvio.notificacoes.push(imediato)
+                }
             }
-            ObjetoEnvio.regularidade.tipo = 1;
-            ObjetoEnvio.regularidade.data = diaImediato;
-            ObjetoEnvio.regularidade.hora = horaImediato;
-            ObjetoEnvio.regularidade.dias = [];
-            ObjetoEnvio.notificacoes.push(imediato)
         } else {
             let notificacao = {
                 mensagem: mensagens.imediato.message,
@@ -861,7 +941,7 @@ export const createNotification = (tipologia, intervaloTempo, nomeItem, momentoU
         }
     }
 
-    //console.log(ObjetoEnvio)
+    console.log('ola:', ObjetoEnvio)
 
     fetch(`https://geo-navsafety.ua.pt:443/overtv/eventos/new`, {
         method: 'POST',
